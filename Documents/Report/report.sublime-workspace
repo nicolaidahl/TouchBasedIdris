@@ -1,0 +1,478 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"inser",
+				"InsertSearchWorksProofs"
+			],
+			[
+				"Insert",
+				"InsertSearchWorksProofs"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "sections/03.ProblemAnalysis.tex",
+			"settings":
+			{
+				"buffer_size": 22174,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sections/01.Introduction.tex",
+			"settings":
+			{
+				"buffer_size": 1958,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "BPlusTree-report.tex",
+			"settings":
+			{
+				"buffer_size": 2097,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sections/06.RelatedWork.tex",
+			"settings":
+			{
+				"buffer_size": 1444,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sections/07.Conclusion.tex",
+			"settings":
+			{
+				"buffer_size": 1832,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
+	"command_palette":
+	{
+		"height": 247.0,
+		"selected_items":
+		[
+			[
+				"upgrade",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"upg",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"log",
+				"Git: Log All"
+			],
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"quic",
+				"Git: Quick Commit"
+			],
+			[
+				"git log",
+				"Git: Log All"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git qui",
+				"Git: Quick Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git dif",
+				"Git: Diff Current File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/.git/MERGE_MSG",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/coqdoc/three_main_proofs.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/09.Appendix.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/07.Conclusion.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/BPlusTree-report.bib",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/03.ProblemAnalysis.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/04.ProofRealization.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/BPlusTree-report.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/02.Background.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/coqdoc/three_main_proofs.v",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/appendix/find_subtree.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/appendix/valid_sub_bplustree.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/appendix/valid_sub_bplustree.v",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/coqdoc/valid_bplustree.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/coqdoc/valid_splits.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/coqdoc/valid_splits.v",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/code/Makefile",
+		"/Users/ndahl89/Desktop/saved application id",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/Evaluation.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/Evaluation",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/01.Introduction.tex",
+		"/Users/ndahl89/Desktop/Noter til paper",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/sections/requirements.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/sections/architecture.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/sections/solution/database.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/main.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/sections/solution.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/bibliography.bib",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/sections/solution/solution.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/report/sections/futurework.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/background.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/article.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/introduction.tex",
+		"/Users/ndahl89/Dropbox/Pencilware/Projects/magiskeByEventyr/database.dump",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/conclusion.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/related_work.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/results.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/experience.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/clire.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/acp_framework.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/technological_background.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/kernel.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/.git/MERGE_MSG",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/abstract.txt",
+		"/newnewdoc1.txt",
+		"/Users/ndahl89/Desktop/newdemo.txt",
+		"/Users/ndahl89/Desktop/demo4321.txt",
+		"/Users/ndahl89/Desktop/if nat_eq_dec x y then",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/code/scalaExamples.scala",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/source/sublime_plugin/updater.py",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/article.bib",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/sections/references.tex",
+		"/Users/ndahl89/Dropbox/ITU/job/Actulus/ica-article/article.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/.git/MERGE_MSG",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/deliverable4/sections/introduction.tex",
+		"/Users/ndahl89/Dropbox/Pencilware/Projects/magiskeByEventyr/.git/MERGE_MSG",
+		"/Users/ndahl89/Dropbox/Pencilware/Projects/magiskebyeventyr/.git/MERGE_MSG",
+		"/Users/ndahl89/Dropbox/Pencilware/Projects/magiskebyeventyr/dump.sql",
+		"/Volumes/coq-8.3pl5/coq-8.3pl5.pkg/Contents/PkgInfo",
+		"/Users/ndahl89/Dropbox/ITU/job/Actulus/ica-article/acp_framework.tex",
+		"/Users/ndahl89/Dropbox/ITU/Job/Actulus/ica-article/acp_framework",
+		"/Users/ndahl89/Dropbox/ITU/job/Actulus/ica-article/.gitignore",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/source/YACS_WebServices/.settings/org.eclipse.jst.j2ee.ejb.annotations.xdoclet.prefs",
+		"/Users/ndahl89/Dropbox/Pencilware/Projects/magiskeByEventyr/dump.sql",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/deliverable3/sections/introduction.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/deliverable3/sections/data_model.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/CC2013-2/Final Project/tex/deliverable3/main.tex",
+		"/Users/ndahl89/Google Drive/ITU/Master/2. semester/Cloud Computing/test.php",
+		"/Users/ndahl89/Desktop/Præsentation torsdag",
+		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/Cloud Computing/AmazonDynamoDB/HAMRDB/src/AwsCredentials.properties",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/src/policies/DeferredTemporaryLifeAnnuity.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/Scala/ActulusCalculationProcessor/build.sbt",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/Scala/First_AML/build.sbt",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/Scala/ActulusCalculationProcessor/CLIRE/src/generatedPolicies/SuperKernel.cu",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/src/policies/SuperKernel.cu",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/Makefile",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/src/policies/PureEndowment.cu",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/legacy/C#/Actulus_v2.cs",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/src/clireCustomer.cu",
+		"/Users/ndahl89/Dropbox/ITU/bachelor/6. semester/clire/src/policies/DisabilityTermInsurance.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/src/clireSimulatedIRPaths.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/src/policies/DisabilityAnnuity.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/src/policies/TemporaryLifeAnnuityPremium.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/src/policies/SuperKernel.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/src/policies/DeferredTemporaryLifeAnnuity.cu",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/Scala/ActulusCalculationProcessor/bin/customersInput",
+		"/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/src/generatedPolicies/SuperKernel.cu",
+		"/Users/ndahl89/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/ndahl89/Seeding/Microsoft.Office.2011.With.SP1.MAC.OSX-CRBS/c-o.osx.nfo"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"by 1",
+			"insertpreserves",
+			"begin{",
+			"lowlevel",
+			"SearchWorksProofs",
+			"InsertWorksProofs",
+			"HeightProofs.v",
+			"delete",
+			"CUDAGe",
+			"Nikolaj",
+			"GM",
+			"RK4_n",
+			"pureendowment"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"AppearsImplSearchFound",
+			"InsertImplAppears",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "sections/03.ProblemAnalysis.tex",
+					"settings":
+					{
+						"buffer_size": 22174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5609.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sections/01.Introduction.tex",
+					"settings":
+					{
+						"buffer_size": 1958,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "BPlusTree-report.tex",
+					"settings":
+					{
+						"buffer_size": 2097,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 214.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sections/06.RelatedWork.tex",
+					"settings":
+					{
+						"buffer_size": 1444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								506,
+								506
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "sections/07.Conclusion.tex",
+					"settings":
+					{
+						"buffer_size": 1832,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 238.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"super",
+				"src/policies/SuperKernel.cu"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 185.0,
+	"status_bar_visible": true
+}

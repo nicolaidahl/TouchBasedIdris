@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "./",
+      "file_exclude_patterns": ["*.aux", "*.fdb_latexmk", "*.fls", "*.log", 
+      "*.synctex.*", "*.toc", "*.bbl", "*.blg", "*.sublime-workspace"]
+		}
+	],
+  "settings":
+  {
+    "spell_check": true,
+    "dictionary": "Packages/Language - English/en_US.dic",
+    "word_wrap": true,
+    "wrap_width": 80
+  }
+}
