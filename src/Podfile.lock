@@ -1,0 +1,90 @@
+PODS:
+  - Classy (0.2.3)
+  - ClassyLiveLayout (HEAD based on 0.4.0):
+    - Classy
+    - Masonry
+  - DCIntrospect (0.0.2)
+  - dyci (0.1.5.20140124):
+    - dyci/Core
+    - dyci/Helpers
+    - dyci/Injections
+    - dyci/UIKit Support
+  - dyci/Core (0.1.5.20140124)
+  - dyci/Helpers (0.1.5.20140124)
+  - dyci/Injections (0.1.5.20140124)
+  - dyci/UIKit Support (0.1.5.20140124)
+  - EKKeyboardAvoiding (2.0)
+  - GCNetworkReachability (1.3.2)
+  - libextobjc (0.4):
+    - libextobjc/EXTADT
+    - libextobjc/EXTConcreteProtocol
+    - libextobjc/EXTKeyPathCoding
+    - libextobjc/EXTNil
+    - libextobjc/EXTSafeCategory
+    - libextobjc/EXTScope
+    - libextobjc/EXTSelectorChecking
+    - libextobjc/EXTSynthesize
+    - libextobjc/NSInvocation+EXT
+    - libextobjc/NSMethodSignature+EXT
+    - libextobjc/RuntimeExtensions
+    - libextobjc/UmbrellaHeader
+  - libextobjc/EXTADT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTConcreteProtocol (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTKeyPathCoding (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTNil (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSafeCategory (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSelectorChecking (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSynthesize (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSInvocation+EXT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSMethodSignature+EXT (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.4)
+  - libextobjc/UmbrellaHeader (0.4)
+  - Masonry (0.4.0)
+  - ReactiveCocoa (2.2.4):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/Core (2.2.4):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.2.4)
+  - Reveal-iOS-SDK (1.0.3)
+
+DEPENDENCIES:
+  - Classy
+  - ClassyLiveLayout (HEAD)
+  - DCIntrospect
+  - dyci (from `https://github.com/DyCI/dyci-main.git`)
+  - EKKeyboardAvoiding
+  - GCNetworkReachability
+  - libextobjc (~> 0.4)
+  - Masonry
+  - ReactiveCocoa (~> 2.2.0)
+  - Reveal-iOS-SDK
+
+EXTERNAL SOURCES:
+  dyci:
+    :git: https://github.com/DyCI/dyci-main.git
+
+SPEC CHECKSUMS:
+  Classy: cc3b912e93d55e24782277295e5cdee54d6f7480
+  ClassyLiveLayout: f2a3592de6b2b792cfa5b1239798a59e31bdf844
+  DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
+  dyci: a547f35263983aad987afa301ba0a10d2d160c51
+  EKKeyboardAvoiding: b589dcaa5ff765818f69e69f03a1efab618d6953
+  GCNetworkReachability: 42b752786acb7c8b58b83a07fed1f5fcfae8c2a6
+  libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
+  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
+  ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
+  Reveal-iOS-SDK: f2525cb560a564fdc086316e89ec45ced6977fd3
+
+COCOAPODS: 0.29.0

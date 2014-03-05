@@ -16,52 +16,84 @@
 	"buffers":
 	[
 		{
-			"file": "sections/03.ProblemAnalysis.tex",
+			"file": "sections/09.Appendix.tex",
 			"settings":
 			{
-				"buffer_size": 22174,
+				"buffer_size": 213,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "sections/01.Introduction.tex",
+			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 1958,
+				"buffer_size": 266,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "BPlusTree-report.tex",
+			"contents": "Searching 37 files for \"BPlusTree-\"\n\n/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/BPlusTree-report.fdb_latexmk:\n    1  # Fdb version 3\n    2: [\"bibtex BPlusTree-report\"] 1371804279 \"BPlusTree-report.aux\" \"BPlusTree-report.bbl\" \"BPlusTree-report\" 1371804280\n    3    \"/usr/local/texlive/2012/texmf-dist/bibtex/bst/base/plain.bst\" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f \"\"\n    4:   \"BPlusTree-report.aux\" 1371804280 14033 ebd1610d2663c61a87fad6d6c0916cd6 \"\"\n    5:   \"BPlusTree-report.bcf\" 0 -1 0 \"\"\n    6:   \"BPlusTree-report.bib\" 1369161765 2514 36c0eecd31c124c6502d57177cce9d79 \"\"\n    7    (generated)\n    8:   \"BPlusTree-report.bbl\"\n    9:   \"BPlusTree-report.blg\"\n   10: [\"pdflatex\"] 1371804279 \"BPlusTree-report.tex\" \"BPlusTree-report.pdf\" \"BPlusTree-report\" 1371804280\n   11    \"./coqdoc/find_subtree_finds.tex\" 1369172230 815 814d4cc0dfe6bc994c47a58c5c98a66a \"\"\n   12    \"./coqdoc/insert_impl_appears.tex\" 1369172230 904 2908c80fcafd7e5ac0b374d6b979904b \"\"\n   ..\n  122    \"/usr/local/texlive/2012/texmf.cnf\" 1341108668 572 7ea7194897937febeb63145e1c3a1f03 \"\"\n  123    \"/usr/local/texlive/2012/texmf/web2c/texmf.cnf\" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 \"\"\n  124:   \"BPlusTree-report.aux\" 1371804280 14033 ebd1610d2663c61a87fad6d6c0916cd6 \"\"\n  125:   \"BPlusTree-report.bbl\" 1371804279 1565 e537278ece703ffb5d54c16baf693dbb \"bibtex BPlusTree-report\"\n  126:   \"BPlusTree-report.out\" 1371804280 76 8591f2ee3b22d538fd677596ea161d2b \"\"\n  127:   \"BPlusTree-report.tex\" 1370204120 2097 e8c7340fd99a2afc3f1265c434b6a096 \"\"\n  128    \"coqdoc.sty\" 1368029349 5493 c987eb4067cee1bb7b19897da78c7c2c \"\"\n  129    \"coqdoc/find_subtree_finds.tex\" 1369172230 815 814d4cc0dfe6bc994c47a58c5c98a66a \"\"\n  ...\n  152    \"sections/appendix/valid_sub_bplustree.tex\" 1369158718 2665 7eff0af8495a353c180edb28e0b66203 \"\"\n  153    (generated)\n  154:   \"BPlusTree-report.pdf\"\n  155:   \"BPlusTree-report.aux\"\n  156:   \"BPlusTree-report.out\"\n  157    \"coqdoc/valid_splits.tex.aux\"\n  158:   \"BPlusTree-report.log\"\n  159  \n\n/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/BPlusTree-report.fls:\n    3  INPUT /usr/local/texlive/2012/texmf/web2c/texmf.cnf\n    4  INPUT /usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt\n    5: INPUT BPlusTree-report.tex\n    6: OUTPUT BPlusTree-report.log\n    7  INPUT llncs.cls\n    8  INPUT llncs.cls\n    .\n  100  INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/xr.sty\n  101  INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/xr.sty\n  102: INPUT BPlusTree-report.aux\n  103: INPUT BPlusTree-report.aux\n  104: OUTPUT BPlusTree-report.aux\n  105  INPUT /usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii\n  106  INPUT /usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii\n  ...\n  115  INPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty\n  116  INPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty\n  117: INPUT BPlusTree-report.out\n  118: INPUT BPlusTree-report.out\n  119: INPUT BPlusTree-report.out\n  120: INPUT BPlusTree-report.out\n  121: OUTPUT BPlusTree-report.pdf\n  122: INPUT ./BPlusTree-report.out\n  123: INPUT ./BPlusTree-report.out\n  124: OUTPUT BPlusTree-report.out\n  125  INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm\n  126  INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm\n  ...\n  186  INPUT sections/08.References.tex\n  187  INPUT sections/08.References.tex\n  188: INPUT BPlusTree-report.bbl\n  189: INPUT BPlusTree-report.bbl\n  190  INPUT sections/09.Appendix.tex\n  191  INPUT sections/09.Appendix.tex\n  ...\n  194  INPUT sections/appendix/valid_sub_bplustree.tex\n  195  INPUT sections/appendix/valid_sub_bplustree.tex\n  196: INPUT BPlusTree-report.aux\n  197: INPUT ./BPlusTree-report.out\n  198: INPUT ./BPlusTree-report.out\n  199  INPUT /usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc\n  200  INPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb\n\n/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/Makefile:\n    1: all:    BPlusTree-report.pdf\n    2: BPlusTree-report.pdf: BPlusTree-report.tex BPlusTree-report.bib sections/*.tex\n    3: 	pdflatex BPlusTree-report\n    4: 	bibtex BPlusTree-report\n    5: 	pdflatex BPlusTree-report\n    6: 	pdflatex BPlusTree-report\n    7  clean:\n    8: 	rm -f BPlusTree-report.aux\n    9: 	rm -f BPlusTree-report.bbl\n   10: 	rm -f BPlusTree-report.blg\n   11: 	rm -f BPlusTree-report.dvi\n   12: 	rm -f BPlusTree-report.log\n   13: 	rm -f BPlusTree-report.toc\n   14: 	rm -f BPlusTree-report.pdf\n\n/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/sections/08.References.tex:\n    3  %\\label{sec:References}\n    4  \n    5: \\bibliography{BPlusTree-report}\n\n55 matches across 4 files\n",
 			"settings":
 			{
-				"buffer_size": 2097,
+				"buffer_size": 4884,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"contents": "# Fdb version 3\n[\"bibtex report\"] 1371804279 \"report.aux\" \"report.bbl\" \"report\" 1371804280\n  \"/usr/local/texlive/2012/texmf-dist/bibtex/bst/base/plain.bst\" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f \"\"\n  \"report.aux\" 1371804280 14033 ebd1610d2663c61a87fad6d6c0916cd6 \"\"\n  \"report.bcf\" 0 -1 0 \"\"\n  \"report.bib\" 1369161765 2514 36c0eecd31c124c6502d57177cce9d79 \"\"\n  (generated)\n  \"report.bbl\"\n  \"report.blg\"\n[\"pdflatex\"] 1371804279 \"report.tex\" \"report.pdf\" \"report\" 1371804280\n  \"./coqdoc/find_subtree_finds.tex\" 1369172230 815 814d4cc0dfe6bc994c47a58c5c98a66a \"\"\n  \"./coqdoc/insert_impl_appears.tex\" 1369172230 904 2908c80fcafd7e5ac0b374d6b979904b \"\"\n  \"./coqdoc/insert_search_works.tex\" 1369156765 1799 5baae45b01ad99818dc9d5e02824423d \"\"\n  \"./coqdoc/key_sorted_lemmas.tex\" 1369156765 2139 a9d6142bdc023d3ee59abc5bd42dee72 \"\"\n  \"./coqdoc/kv_appears_in_kvl_and_tree.tex\" 1369156765 3866 23f5e07fa38731f296ea0473f1572184 \"\"\n  \"./coqdoc/search_works.tex\" 1369156765 1424 c2c2ea90decced674138b796bf59c201 \"\"\n  \"./coqdoc/three_main_proofs.tex\" 1369172230 2100 11111491b8eadd14441905d7e199f1e8 \"\"\n  \"./coqdoc/valid_bplustree.tex\" 1369139604 2471 5e6d956fc9a330971556e24a07a5bc52 \"\"\n  \"./coqdoc/valid_splits.tex\" 1369139553 1646 1caf002497f0b0dedea3218908f8ea60 \"\"\n  \"./sections/01.Introduction.tex\" 1369177342 1958 bb920e2bc210e48f1b08614a5e146a70 \"\"\n  \"./sections/02.Background.tex\" 1369171029 4956 0f131a247e1c0a1f707224eb4f64727a \"\"\n  \"./sections/03.ProblemAnalysis.tex\" 1369177342 22174 ed079035a707aae6716df77bd55f5dfc \"\"\n  \"./sections/04.ProofRealization.tex\" 1369178962 12308 6e6762458b0ce9a3cb5d01301752864b \"\"\n  \"./sections/05.Evaluation.tex\" 1369179169 4060 1a18b3d868a192ddf2b9d2256b4c20de \"\"\n  \"./sections/06.RelatedWork.tex\" 1369177342 1444 1d0f950cc78cf38a5e589bccdae07272 \"\"\n  \"./sections/07.Conclusion.tex\" 1369177342 1832 8f308037ed6be17bc52a56f6cc6c5212 \"\"\n  \"./sections/08.References.tex\" 1369060830 115 a2ef8d206f837634a570f9052b1c9e61 \"\"\n  \"./sections/09.Appendix.tex\" 1370204120 25022 6fc0130c690a01e6c247d6d9864dd8cb \"\"\n  \"./sections/appendix/find_subtree.tex\" 1369158718 1599 4cfbaa2d0ab18a203ffd4b80d88bba8c \"\"\n  \"./sections/appendix/valid_sub_bplustree.tex\" 1369158718 2665 7eff0af8495a353c180edb28e0b66203 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc\" 1136849721 2971 def0b6c1f0b107b3b936def894055589 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map\" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx0900.tfm\" 1136768653 3584 1a7de6c99457381c64abc1a7c545505f \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm\" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm\" 1136768653 3584 402da0b29eafbad07963b1224b222f18 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm\" 1136768653 3584 13049b61b922a28b158a38aeff75ee9b \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm\" 1136768653 3584 d3d8ac8b25ca19c0a40b86a5db1e8ccc \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm\" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm\" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm\" 1136768653 3584 3169d30142b88a27d4ab0e3468e963a2 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecti0900.tfm\" 1136768653 3072 a603fa6d934ebc72197ed1c389943d86 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm\" 1136768653 3072 3bce340d4c075dffe6d4ec732b4c32fe \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ectt0900.tfm\" 1136768653 1536 ae7aab2f8a4bc9edfce2899f53ba88c3 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm\" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm\" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm\" 1136768653 1524 d89e2d087a9828407a196f428428ef4a \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmr6.tfm\" 1136768653 1300 b62933e007d01cfd073f79b963c01526 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmr9.tfm\" 1136768653 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm\" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm\" 1136768653 1116 25a7bf822c58caf309a702ef79f4afbb \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb\" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb\" 1248133631 36281 c355509802a035cadc5f15869451dcee \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb\" 1248133631 36094 798f80770b3b148ceedd006d487db67c \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb\" 1248133631 35752 024fb6c41858982481f6968b5fc26508 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb\" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb\" 1248133631 33993 9b89b85fd2d9df0482bd47194d1d3bf3 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb\" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb\" 1248133631 32716 08e384dc442464e7285e891af9f45947 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb\" 1248133631 32442 c975af247b6702f7ca0c299af3616b80 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb\" 1215737283 143961 201304b65f97bc643fbd0bcf0685d1fe \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb\" 1215737283 145408 43d44302ca7d82d487f511f83e309505 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb\" 1215737283 140176 d4962f948b4cc0adf4d3dde77a128c95 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb\" 1215737283 135942 859a90cad7494a1e79c94baf546d7de5 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb\" 1215737283 149037 995a6f1e12c1d647b99b1cf55db78699 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb\" 1215737283 138258 6525c253f16cededa14c7fd0da7f67b2 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb\" 1215737283 183673 6df73819bb3e1246a6315a4913a2d331 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb\" 1215737283 186554 e8f0fa8ca05e038f257a06405232745f \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb\" 1215737283 170827 2e4b634de7b58578eae1dc93e51dfe48 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb\" 1215737283 169201 9ebf99020dde51a5086e186761a34e8f \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii\" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty\" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/atbegshi.sty\" 1335995445 24460 92f559a71aac869021852c227c704b38 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty\" 1303254447 8237 52810bdb4db2270e717422560a104aea \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty\" 1338332114 189108 8b3553a56c83ff61acecb36b75d817e2 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty\" 1338332114 70752 45fa392800e07da61fa13446ad46b34d \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty\" 1303254447 7140 ece2cc23d9f20e1f53975ac167f42d3e \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty\" 1335995445 8253 3bdedc8409aa5d290a2339be6f09af03 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty\" 1335995445 18425 775b341047ce304520cc7c11ca41392e \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls\" 1254151887 20571 b8bd218bf2e18b4f5817ee643cd9c515 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty\" 1254151887 4435 b97063eb2f20be499e7725926af85c55 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/ifthen.sty\" 1254151887 5022 2ec7815b07dc68e65542e23a180bc839 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/inputenc.sty\" 1254151887 4388 1cb2ca8d423695bd22ea8d126c276f33 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/makeidx.sty\" 1254151887 1803 73774dc5d3e5e39067964331f0b99649 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/omsenc.dfu\" 1254151887 1868 39c80c053f689193a1ca9a83d05b2744 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/ot1enc.dfu\" 1254151887 2620 9a36ef7e0369aa29d9d298a6bf19588e \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo\" 1254151887 9042 248dfba326a1b8733d6bb8e0a3ac1e49 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd\" 1254151887 2083 a6bdb02552dfa1602e8c6cc47e0ba8cf \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def\" 1254151887 9172 67c33288b50eb57eab968f345e8befb0 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.dfu\" 1254151887 7480 2a6bcf9edfeb9ff088a3f0cf7f1a196c \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/base/utf8.def\" 1254151887 6350 d390538f995713c986118b8607d58f49 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/carlisle/remreset.sty\" 1137109962 1096 6a75275ca00e32428c6f059d2f618ea7 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/enumitem/enumitem.sty\" 1317339792 42666 6fa770e3485520a6a5f2ea7d259c8f8d \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/eso-pic/eso-pic.sty\" 1286577940 11442 613b1f42c35ebbd862fd65943e4aa9b2 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/float/float.sty\" 1137110151 6749 16d2656a1984957e674b149555f1ea1d \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty\" 1254151804 14183 42a8fc761b806986eef292369afc2988 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty\" 1156702488 7882 3bd78469d444e8d494e27cfd7ca92719 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty\" 1156702488 2266 7054435e4584a41cf53b0a7ca624d0cb \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty\" 1156702488 3153 c50e6bd54d2dd3933fc52bcf369bec4a \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def\" 1336949684 46827 aa71bcb51439ad95a1a3bf6a562edb81 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty\" 1336949684 214680 dcb1cf0d694984ac45356529aefbe1dc \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty\" 1272755529 12492 22b3864ec821d6b950df3dc0de961f18 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def\" 1336949684 13744 71c3a9768074852e3f36d5b4ddc409b9 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg\" 1254097189 802 7b8c8d72c24d795ed7720e4dfd29bff3 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg\" 1279039959 678 4792914a8f45be57bb98413425e4c7af \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg\" 1278958963 3563 d35e897cae3b8c6848f6677b73370b54 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg\" 1254097189 235 6031e5765137be07eed51a510b2b8fb7 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/aliascnt.sty\" 1335995445 2511 8ef653ad0c83209793c35dc808929370 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty\" 1303254447 12029 04d7fdf76e0464c23b5aa3a727952d7c \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty\" 1335995445 7075 bd0c34fbf1ae8fd1debd2a554e41b2d5 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty\" 1335995445 22417 c74ff4af6a1aa2b65d1924020edbbe11 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty\" 1303254447 9581 1158efc648bc09d5064db5703c882159 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/pdfpages/pdfpages.sty\" 1333988955 50769 5f707b0a9bc70b2bf43035da430ed1f9 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/pdfpages/pppdftex.def\" 1333988955 5611 f3242e964116449d9ae8b15ea8be2322 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def\" 1306616590 55368 3c8a0d99822330f2dfabc0dfb09ce897 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/tools/calc.sty\" 1254151720 10075 18f0ccff816231e9905cd2b3a482a622 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/tools/multicol.sty\" 1312409015 26766 56c30c5bea3083b5a0d6fc2ce0063096 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xr.sty\" 1254151720 2238 eeba9184baa70835e1282a95a5d10799 \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty\" 1264379145 21932 e3a9cf32ee9b853b42be14c2f25b873c \"\"\n  \"/usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty\" 1169481954 55224 a43bab84e0ac5e6efcaf9a98bde73a94 \"\"\n  \"/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map\" 1341108684 846150 32f09260c10acd3a5389b805e291b540 \"\"\n  \"/usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt\" 1341108725 3691572 80746d7cec090b0770bc87079bef471d \"\"\n  \"/usr/local/texlive/2012/texmf.cnf\" 1341108668 572 7ea7194897937febeb63145e1c3a1f03 \"\"\n  \"/usr/local/texlive/2012/texmf/web2c/texmf.cnf\" 1336865692 31299 729e216d9b945005c0d4b079c0500bc9 \"\"\n  \"report.aux\" 1371804280 14033 ebd1610d2663c61a87fad6d6c0916cd6 \"\"\n  \"report.bbl\" 1371804279 1565 e537278ece703ffb5d54c16baf693dbb \"bibtex report\"\n  \"report.out\" 1371804280 76 8591f2ee3b22d538fd677596ea161d2b \"\"\n  \"report.tex\" 1370204120 2097 e8c7340fd99a2afc3f1265c434b6a096 \"\"\n  \"coqdoc.sty\" 1368029349 5493 c987eb4067cee1bb7b19897da78c7c2c \"\"\n  \"coqdoc/find_subtree_finds.tex\" 1369172230 815 814d4cc0dfe6bc994c47a58c5c98a66a \"\"\n  \"coqdoc/insert_impl_appears.tex\" 1369172230 904 2908c80fcafd7e5ac0b374d6b979904b \"\"\n  \"coqdoc/insert_search_works.tex\" 1369156765 1799 5baae45b01ad99818dc9d5e02824423d \"\"\n  \"coqdoc/key_sorted_lemmas.tex\" 1369156765 2139 a9d6142bdc023d3ee59abc5bd42dee72 \"\"\n  \"coqdoc/kv_appears_in_kvl_and_tree.tex\" 1369156765 3866 23f5e07fa38731f296ea0473f1572184 \"\"\n  \"coqdoc/search_works.tex\" 1369156765 1424 c2c2ea90decced674138b796bf59c201 \"\"\n  \"coqdoc/three_main_proofs.tex\" 1369172230 2100 11111491b8eadd14441905d7e199f1e8 \"\"\n  \"coqdoc/valid_bplustree.tex\" 1369139604 2471 5e6d956fc9a330971556e24a07a5bc52 \"\"\n  \"coqdoc/valid_splits.tex\" 1369139553 1646 1caf002497f0b0dedea3218908f8ea60 \"\"\n  \"diagrams/BPlusTree.pdf\" 1369155968 54772 80088396499efe7ff77a0e8586363dc9 \"\"\n  \"diagrams/BPlusTreeImpl.pdf\" 1368607574 54795 4ce8ebde7a7f4e46165f186264906ba4 \"\"\n  \"diagrams/BPlusTreeMapImpl.pdf\" 1369138402 56110 c6a051759428abcd1a8156c7c796102e \"\"\n  \"llncs.cls\" 1355228226 42776 44493c38e57a29ba7e15792efea18b8f \"\"\n  \"sections/01.Introduction.tex\" 1369177342 1958 bb920e2bc210e48f1b08614a5e146a70 \"\"\n  \"sections/02.Background.tex\" 1369171029 4956 0f131a247e1c0a1f707224eb4f64727a \"\"\n  \"sections/03.ProblemAnalysis.tex\" 1369177342 22174 ed079035a707aae6716df77bd55f5dfc \"\"\n  \"sections/04.ProofRealization.tex\" 1369178962 12308 6e6762458b0ce9a3cb5d01301752864b \"\"\n  \"sections/05.Evaluation.tex\" 1369179169 4060 1a18b3d868a192ddf2b9d2256b4c20de \"\"\n  \"sections/06.RelatedWork.tex\" 1369177342 1444 1d0f950cc78cf38a5e589bccdae07272 \"\"\n  \"sections/07.Conclusion.tex\" 1369177342 1832 8f308037ed6be17bc52a56f6cc6c5212 \"\"\n  \"sections/08.References.tex\" 1369060830 115 a2ef8d206f837634a570f9052b1c9e61 \"\"\n  \"sections/09.Appendix.tex\" 1370204120 25022 6fc0130c690a01e6c247d6d9864dd8cb \"\"\n  \"sections/appendix/find_subtree.tex\" 1369158718 1599 4cfbaa2d0ab18a203ffd4b80d88bba8c \"\"\n  \"sections/appendix/valid_sub_bplustree.tex\" 1369158718 2665 7eff0af8495a353c180edb28e0b66203 \"\"\n  (generated)\n  \"report.pdf\"\n  \"report.aux\"\n  \"report.out\"\n  \"coqdoc/valid_splits.tex.aux\"\n  \"report.log\"\n",
+			"file": "BPlusTree-report.fdb_latexmk",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 16289,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "sections/06.RelatedWork.tex",
+			"contents": "PWD /Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report\nINPUT /usr/local/texlive/2012/texmf.cnf\nINPUT /usr/local/texlive/2012/texmf/web2c/texmf.cnf\nINPUT /usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt\nINPUT report.tex\nOUTPUT report.log\nINPUT llncs.cls\nINPUT llncs.cls\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/article.cls\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/size10.clo\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/multicol.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/multicol.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/aliascnt.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/aliascnt.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/carlisle/remreset.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/carlisle/remreset.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/makeidx.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/makeidx.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/inputenc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/inputenc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/utf8.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/utf8.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.dfu\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.dfu\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/ot1enc.dfu\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/ot1enc.dfu\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/omsenc.dfu\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/omsenc.dfu\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/pdfpages/pdfpages.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/pdfpages/pdfpages.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/ifthen.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/ifthen.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/calc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/calc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/eso-pic/eso-pic.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/eso-pic/eso-pic.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/atbegshi.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/atbegshi.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/pdfpages/pppdftex.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/pdfpages/pppdftex.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/float/float.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/float/float.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/enumitem/enumitem.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/enumitem/enumitem.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty\nINPUT coqdoc.sty\nINPUT coqdoc.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/ifxetex/ifxetex.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/xr.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/tools/xr.sty\nINPUT report.aux\nINPUT report.aux\nOUTPUT report.aux\nINPUT /usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii\nINPUT /usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty\nINPUT /usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty\nINPUT report.out\nINPUT report.out\nINPUT report.out\nINPUT report.out\nOUTPUT report.pdf\nINPUT ./report.out\nINPUT ./report.out\nOUTPUT report.out\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd\nINPUT /usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx0900.tfm\nINPUT sections/01.Introduction.tex\nINPUT sections/01.Introduction.tex\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm\nINPUT sections/02.Background.tex\nINPUT sections/02.Background.tex\nINPUT /usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map\nINPUT diagrams/BPlusTree.pdf\nINPUT ./diagrams/BPlusTree.pdf\nINPUT ./diagrams/BPlusTree.pdf\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmr9.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmr6.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm\nINPUT sections/03.ProblemAnalysis.tex\nINPUT sections/03.ProblemAnalysis.tex\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ectt0900.tfm\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/jknappen/ec/ecti0900.tfm\nINPUT diagrams/BPlusTreeImpl.pdf\nINPUT ./diagrams/BPlusTreeImpl.pdf\nINPUT ./diagrams/BPlusTreeImpl.pdf\nINPUT diagrams/BPlusTreeMapImpl.pdf\nINPUT ./diagrams/BPlusTreeMapImpl.pdf\nINPUT ./diagrams/BPlusTreeMapImpl.pdf\nINPUT coqdoc/valid_splits.tex\nINPUT coqdoc/valid_splits.tex\nINPUT coqdoc/valid_bplustree.tex\nINPUT coqdoc/valid_bplustree.tex\nINPUT coqdoc/three_main_proofs.tex\nINPUT coqdoc/three_main_proofs.tex\nINPUT sections/04.ProofRealization.tex\nINPUT sections/04.ProofRealization.tex\nINPUT coqdoc/key_sorted_lemmas.tex\nINPUT coqdoc/key_sorted_lemmas.tex\nINPUT coqdoc/kv_appears_in_kvl_and_tree.tex\nINPUT coqdoc/kv_appears_in_kvl_and_tree.tex\nINPUT coqdoc/search_works.tex\nINPUT coqdoc/search_works.tex\nINPUT coqdoc/find_subtree_finds.tex\nINPUT coqdoc/find_subtree_finds.tex\nINPUT coqdoc/insert_impl_appears.tex\nINPUT coqdoc/insert_impl_appears.tex\nINPUT coqdoc/insert_search_works.tex\nINPUT coqdoc/insert_search_works.tex\nINPUT sections/05.Evaluation.tex\nINPUT sections/05.Evaluation.tex\nINPUT sections/06.RelatedWork.tex\nINPUT sections/06.RelatedWork.tex\nINPUT sections/07.Conclusion.tex\nINPUT sections/07.Conclusion.tex\nINPUT sections/08.References.tex\nINPUT sections/08.References.tex\nINPUT report.bbl\nINPUT report.bbl\nINPUT sections/09.Appendix.tex\nINPUT sections/09.Appendix.tex\nINPUT sections/appendix/find_subtree.tex\nINPUT sections/appendix/find_subtree.tex\nINPUT sections/appendix/valid_sub_bplustree.tex\nINPUT sections/appendix/valid_sub_bplustree.tex\nINPUT report.aux\nINPUT ./report.out\nINPUT ./report.out\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb\nINPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb\n",
+			"file": "BPlusTree-report.fls",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 1444,
+				"buffer_size": 12857,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "sections/07.Conclusion.tex",
+			"file": "report.tex",
 			"settings":
 			{
-				"buffer_size": 1832,
+				"buffer_size": 1752,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/legacy/C#/GF820-DPM.cs",
+			"settings":
+			{
+				"buffer_size": 23209,
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "Packages/LaTeXTools/LaTeX.sublime-build",
+	"build_system": "Packages/LaTeXing/LaTeX.sublime-build",
 	"command_palette":
 	{
-		"height": 247.0,
+		"height": 47.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
 			[
 				"upgrade",
 				"Package Control: Upgrade Package"
@@ -105,17 +137,18 @@
 			[
 				"git dif",
 				"Git: Diff Current File"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 449.0
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 125.0,
+		"history":
+		[
+			"sublime.packages_path()",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -128,6 +161,16 @@
 	},
 	"file_history":
 	[
+		"/Users/ndahl89/Dropbox Fitbay/Dropbox/FitbayGit/Shape/Fitbay/iOS/Fitbay/resource_images.h",
+		"/Users/ndahl89/Dropbox Fitbay/Dropbox/FitbayGit/Shape/Fitbay/iOS/Podfile",
+		"/Users/ndahl89/Dropbox Fitbay/Dropbox/FitbayGit/Shape/Fitbay/iOS/Fitbay.xcodeproj/project.pbxproj",
+		"/Users/ndahl89/Dropbox/Pencilware/Projects/Level Counter/levelcounter/src/Podfile",
+		"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/sections/08.References.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/sections/07.Conclusion.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/sections/06.RelatedWork.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/sections/03.ProblemAnalysis.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/sections/01.Introduction.tex",
+		"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report/BPlusTree-report.tex",
 		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/.git/MERGE_MSG",
 		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/coqdoc/three_main_proofs.tex",
 		"/Users/ndahl89/Dropbox/ITU/Master/2. semester/SASP/BPlusTrees/report/sections/09.Appendix.tex",
@@ -224,9 +267,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/Users/ndahl89/Dropbox/ITU/Master/4. semester/TouchBasedIdris/Documents/Report"
 		]
 	},
 	"find_state":
@@ -234,6 +278,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sizelabel",
+			"sty",
+			".sty",
+			"coq",
+			"BPlusTree-",
 			"by 1",
 			"insertpreserves",
 			"begin{",
@@ -254,6 +303,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"AppearsImplSearchFound",
 			"InsertImplAppears",
 			""
@@ -267,43 +317,44 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "sections/03.ProblemAnalysis.tex",
+					"file": "sections/09.Appendix.tex",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 22174,
+						"buffer_size": 213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								16,
+								16
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/LaTeXing/support/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5609.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "sections/01.Introduction.tex",
+					"file": "Makefile",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1958,
+						"buffer_size": 266,
 						"regions":
 						{
 						},
@@ -316,22 +367,251 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "BPlusTree-report.tex",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2097,
+						"buffer_size": 4884,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										185,
+										195
+									],
+									[
+										216,
+										226
+									],
+									[
+										239,
+										249
+									],
+									[
+										262,
+										272
+									],
+									[
+										426,
+										436
+									],
+									[
+										511,
+										521
+									],
+									[
+										553,
+										563
+									],
+									[
+										658,
+										668
+									],
+									[
+										690,
+										700
+									],
+									[
+										744,
+										754
+									],
+									[
+										767,
+										777
+									],
+									[
+										790,
+										800
+									],
+									[
+										1230,
+										1240
+									],
+									[
+										1315,
+										1325
+									],
+									[
+										1394,
+										1404
+									],
+									[
+										1422,
+										1432
+									],
+									[
+										1504,
+										1514
+									],
+									[
+										1886,
+										1896
+									],
+									[
+										1918,
+										1928
+									],
+									[
+										1950,
+										1960
+									],
+									[
+										2021,
+										2031
+									],
+									[
+										2298,
+										2308
+									],
+									[
+										2333,
+										2343
+									],
+									[
+										2561,
+										2571
+									],
+									[
+										2595,
+										2605
+									],
+									[
+										2630,
+										2640
+									],
+									[
+										3004,
+										3014
+									],
+									[
+										3038,
+										3048
+									],
+									[
+										3072,
+										3082
+									],
+									[
+										3106,
+										3116
+									],
+									[
+										3141,
+										3151
+									],
+									[
+										3177,
+										3187
+									],
+									[
+										3213,
+										3223
+									],
+									[
+										3248,
+										3258
+									],
+									[
+										3534,
+										3544
+									],
+									[
+										3568,
+										3578
+									],
+									[
+										3794,
+										3804
+									],
+									[
+										3830,
+										3840
+									],
+									[
+										3866,
+										3876
+									],
+									[
+										4171,
+										4181
+									],
+									[
+										4199,
+										4209
+									],
+									[
+										4221,
+										4231
+									],
+									[
+										4242,
+										4252
+									],
+									[
+										4295,
+										4305
+									],
+									[
+										4327,
+										4337
+									],
+									[
+										4361,
+										4371
+									],
+									[
+										4395,
+										4405
+									],
+									[
+										4440,
+										4450
+									],
+									[
+										4475,
+										4485
+									],
+									[
+										4510,
+										4520
+									],
+									[
+										4545,
+										4555
+									],
+									[
+										4580,
+										4590
+									],
+									[
+										4615,
+										4625
+									],
+									[
+										4650,
+										4660
+									],
+									[
+										4839,
+										4849
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
@@ -342,46 +622,29 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 214.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "sections/06.RelatedWork.tex",
+					"file": "BPlusTree-report.fdb_latexmk",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								506,
-								506
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "sections/07.Conclusion.tex",
-					"settings":
-					{
-						"buffer_size": 1832,
+						"buffer_size": 16289,
 						"regions":
 						{
 						},
@@ -394,12 +657,99 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "BPlusTree-report.fls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "report.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1752,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1639,
+								1639
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeXing/support/LaTeX.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/ndahl89/Dropbox/ITU/Bachelor/6. semester/CLIRE/legacy/C#/GF820-DPM.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18088,
+								18088
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -440,10 +790,23 @@
 	{
 		"height": 238.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
 	"output.git":
 	{
 		"height": 100.0
 	},
+	"output.sbt":
+	{
+		"height": 0.0
+	},
+	"output.sbt_error":
+	{
+		"height": 0.0
+	},
+	"project": "report.sublime-project",
 	"replace":
 	{
 		"height": 64.0
@@ -469,10 +832,24 @@
 		],
 		"width": 0.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 185.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
