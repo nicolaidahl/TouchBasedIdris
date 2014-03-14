@@ -31,6 +31,7 @@ static NSString *const kNameOfStylesheetFile = @"Stylesheets/stylesheet.cas";
     self.window.backgroundColor = [UIColor whiteColor];
 
 
+
     [self.window makeKeyAndVisible];
     return YES;
 }

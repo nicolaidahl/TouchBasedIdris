@@ -1,0 +1,54 @@
+
+$text-field-height = 32;
+$menlo-font-14 = Menlo-Bold 14;
+$general-marker-color = #4876FF;
+
+///DATA DECLARATION
+
+^UIView.data-dec-type-inference-rule {
+
+}
+
+UILabel.data-dec-data-label {
+    font: $menlo-font-14;
+    cas_margin-right: 5;
+    text-color: #32CC32;
+}
+
+UILabel.data-dec-where-label {
+    font: $menlo-font-14;
+    cas_margin-left: 5;
+
+}
+
+///INFERENCE RULE
+
+^UIView.inference-rule-premises-input-group {
+    cas_size-height: $text-field-height;
+}
+
+^UIView.group-input-view {
+    cas_margin-left 5;
+    cas_margin-right 5;
+}
+
+^UITextField.input-group-dashed-text-field {
+    text-alignment: center;
+
+    font: $menlo-font-14;
+
+}
+
+UIView.inference-rule-separator-line {
+    cas_size-height 3;
+    cas_margin-top 4;
+    cas_margin-bottom 4;
+}
+
+
+^UIView.inference-rule-conclusion {
+    cas_size-height: $text-field-height;
+    cas_size-width: 100;
+
+    text-alignment: center;
+}

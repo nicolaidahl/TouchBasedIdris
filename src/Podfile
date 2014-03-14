@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 xcodeproj 'IdrisTouch/IdrisTouch.xcodeproj'
-# inhibit_all_warnings!
+inhibit_all_warnings!
 
 pod 'DCIntrospect'
 pod 'ReactiveCocoa', '~>2.2.0'
@@ -9,7 +9,6 @@ pod 'Masonry'
 pod 'GCNetworkReachability'
 pod 'Classy'
 pod 'ClassyLiveLayout', :head
-pod 'EKKeyboardAvoiding'
 
 # Only for debug. Remove before shipping
 pod 'Reveal-iOS-SDK'

@@ -4,21 +4,41 @@
 //
 
 #import "IDTMainView.h"
+#import "IDTInferenceRuleView.h"
+#import "IDTDataDeclarationView.h"
 
+@interface IDTMainView ()
+
+@property (nonatomic, strong) IDTDataDeclarationView *dataDeclarationView;
+
+@end
 
 @implementation IDTMainView {
 
 }
 
 - (void)addSubviews {
-
+    [self addSubview:self.dataDeclarationView];
 
 }
 
 - (void)defineLayout {
 
-    self.backgroundColor = [UIColor redColor];
+    [self.dataDeclarationView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.top.equalTo(self).with.offset(20);
+    }];
 
+
+}
+
+
+- (IDTDataDeclarationView *)dataDeclarationView {
+    if(!_dataDeclarationView)
+    {
+        _dataDeclarationView = [[IDTDataDeclarationView alloc] initAndLayout];
+    }
+    return _dataDeclarationView;
 }
 
 

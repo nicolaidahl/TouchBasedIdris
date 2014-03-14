@@ -11,7 +11,8 @@
 
 @interface IDTMainViewController ()
 
-@property (nonatomic, strong) IDTMainViewModel *viewModel;
+@property (nonatomic, readonly) IDTMainView *mainView;
+@property (nonatomic, readonly) IDTMainViewModel *viewModel;
 
 @end
 
@@ -20,13 +21,31 @@
     IDTMainView *_mainView;
 }
 
+
+- (void)viewDidLoad {
+
+
+
+    [super viewDidLoad];
+
+
+}
+
+
+
+
+
+
+
+#pragma mark - Accessors
+
 - (IDTMainView *)mainView {
     if(!_mainView)
     {
         _mainView = [[IDTMainView alloc] initAndLayout];
     }
     
-    return nil;
+    return _mainView;
 }
 
 - (IDTAbstractViewModel *)viewModel {

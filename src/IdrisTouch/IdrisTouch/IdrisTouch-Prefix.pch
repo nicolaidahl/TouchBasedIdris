@@ -14,4 +14,12 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    #import "ReactiveCocoa.h"
+    #import "EXTScope.h"
+    #import "Masonry.h"
+    #import "Classy.h"
+    #import "ClassyLiveLayout.h"
+
+
 #endif
