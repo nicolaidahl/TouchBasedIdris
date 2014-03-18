@@ -2,6 +2,23 @@
 $text-field-height = 32;
 $menlo-font-14 = Menlo-Bold 14;
 $general-marker-color = #4876FF;
+$general-red-color = #ff6666;
+
+/// TOP LEVEL DECLARATION
+
+^UIView.top-level-dec-vertical-line{
+    cas_margin-top: 20;
+    cas_margin-left: 20;
+
+    cas_size-width: 3;
+    background-color: $general-red-color;
+}
+
+^UIButton.top-level-dec-add-button {
+    cas_size-width: 40;
+    cas_size-height: 24;
+}
+
 
 ///DATA DECLARATION
 
