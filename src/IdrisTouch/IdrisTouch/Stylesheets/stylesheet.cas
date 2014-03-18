@@ -9,10 +9,23 @@ $general-marker-color = #4876FF;
 
 }
 
+
+
 UILabel.data-dec-data-label {
     font: $menlo-font-14;
     cas_margin-right: 5;
+    cas_size-height: 24;
     text-color: #32CC32;
+}
+
+UIView.data-dec-vertical-line {
+    cas_size-width: 3;
+    background-color: black;
+}
+
+^UIButton.data-dec-add-button {
+    cas_size-width: 40;
+    cas_size-height: 24;
 }
 
 UILabel.data-dec-where-label {
@@ -41,8 +54,8 @@ UILabel.data-dec-where-label {
 
 UIView.inference-rule-separator-line {
     cas_size-height 3;
-    cas_margin-top 4;
-    cas_margin-bottom 4;
+    cas_margin-top 3;
+    cas_margin-bottom 3;
 }
 
 

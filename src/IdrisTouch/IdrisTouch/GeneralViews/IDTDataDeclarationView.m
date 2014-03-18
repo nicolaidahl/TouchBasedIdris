@@ -12,24 +12,37 @@
 @property (nonatomic, strong) UILabel *dataLabel;
 @property (nonatomic, strong) IDTInferenceRuleView *typeDeclaration;
 @property (nonatomic, strong) UILabel *whereLabel;
-@property (nonatomic, strong) NSArray *constructors;
+@property (nonatomic, strong) UIView *verticalLine;
+@property (nonatomic, strong) NSMutableArray *constructors;
+@property (nonatomic, strong) UIButton *addConstructorButton;
 
 
 @end
 
 @implementation IDTDataDeclarationView {
-
+    NSArray *_constructorConstraints;
 }
+
+- (id)initAndLayout {
+    self = [super initAndLayout];
+    if (self) {
+        [[self.addConstructorButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            [self addConstructor];
+            [self updateConstraints];
+        }];
+    }
+
+    return self;
+}
+
 
 - (void)addSubviews {
 
     [self addSubview:self.dataLabel];
+    [self addSubview:self.verticalLine];
+    [self addSubview:self.addConstructorButton];
     [self addSubview:self.typeDeclaration];
     [self addSubview:self.whereLabel];
-
-    for (IDTInferenceRuleView *inferenceRuleView in self.constructors) {
-        [self addSubview:inferenceRuleView];
-    }
 }
 
 - (void)defineLayout {
@@ -39,7 +52,22 @@
     [self.dataLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.typeDeclaration);
     }];
-    [self mas_updateConstraintsHeightFromStylesheet];
+    [self.dataLabel mas_updateConstraintsHeightFromStylesheet];
+
+    [self.verticalLine mas_updateConstraintsWidthFromStylesheet];
+    [self.verticalLine mas_updateConstraintsWithTopMarginRelativeTo:self.dataLabel.mas_bottom];
+    [self.verticalLine mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.dataLabel);
+    }];
+
+    [self.addConstructorButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.verticalLine);
+        make.top.equalTo(self.verticalLine.mas_bottom);
+    }];
+    [self.addConstructorButton mas_updateConstraintsWidthFromStylesheet];
+    [self.addConstructorButton mas_updateConstraintsHeightFromStylesheet];
+    [self.addConstructorButton mas_updateConstraintsWithBottomMarginRelativeToSuperview];
+
 
     [self.typeDeclaration mas_updateConstraintsWithTopMarginRelativeToSuperview];
 
@@ -49,8 +77,57 @@
         make.centerY.equalTo(self.typeDeclaration);
     }];
 
+    [self.constructors enumerateObjectsUsingBlock:^(UIView *constructor, NSUInteger idx, BOOL *stop) {
+
+        UIView *topNeighbor;
+        if(idx == 0)
+        {
+            topNeighbor = self.typeDeclaration;
+        }
+        else
+        {
+            topNeighbor = _constructors[idx-1];
+        }
+
+        [constructor mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(topNeighbor.mas_bottom).with.offset(10);
+            make.left.equalTo(self.verticalLine.mas_right).with.offset(6);
+        }];
+    }];
+
+    [_constructorConstraints enumerateObjectsUsingBlock:^(MASConstraint *constraint, NSUInteger idx, BOOL *stop) {
+        [constraint uninstall];
+    }];
+
+    if(self.constructors.count == 0)
+    {
+        _constructorConstraints = [self.addConstructorButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.typeDeclaration.mas_bottom);
+        }];
+    }
+    else
+    {
+        UIView *lowestConstructor = self.constructors[_constructors.count - 1];
+        _constructorConstraints = [self.addConstructorButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(lowestConstructor.mas_bottom);
+        }];
+    }
 
 }
+
+
+
+- (void) addConstructor {
+
+    IDTInferenceRuleView *newConstructor = [[IDTInferenceRuleView alloc] initAndLayout];
+    newConstructor.cas_styleClass = @"data-dec-constructor";
+
+    [self addSubview:newConstructor];
+    [self.constructors addObject:newConstructor];
+
+}
+
+#pragma mark - Accessors
 
 - (UILabel *)dataLabel {
     if(!_dataLabel)
@@ -84,12 +161,33 @@
     return _whereLabel;
 }
 
-- (NSArray *)constructors {
+- (UIView *)verticalLine {
+    if(!_verticalLine)
+    {
+        _verticalLine = [[UIView alloc] init];
+        _verticalLine.cas_styleClass = @"data-dec-vertical-line";
+    }
+    return _verticalLine;
+}
+
+
+- (NSMutableArray *)constructors {
     if(!_constructors)
     {
         _constructors = [@[] mutableCopy];
     }
     return _constructors;
+}
+
+- (UIButton *)addConstructorButton {
+    if(!_addConstructorButton)
+    {
+        _addConstructorButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_addConstructorButton setTitle:@"Add" forState:UIControlStateNormal];
+        _addConstructorButton.cas_styleClass = @"data-dec-add-button";
+    }
+
+    return _addConstructorButton;
 }
 
 
