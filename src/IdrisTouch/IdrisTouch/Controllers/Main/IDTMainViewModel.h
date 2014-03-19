@@ -8,4 +8,7 @@
 
 
 @interface IDTMainViewModel : IDTAbstractViewModel
+
+@property (nonatomic, strong) RACCommand *addTopLevelDecCommand;
+
 @end

@@ -3,6 +3,7 @@ $text-field-height = 32;
 $menlo-font-14 = Menlo-Bold 14;
 $general-marker-color = #4876FF;
 $general-red-color = #ff6666;
+$line-width = 3;
 
 /// MAIN VIEW
 
@@ -21,7 +22,7 @@ UIScrollView.main-view-scroll-view {
     cas_margin-top: 20;
     cas_margin-left: 30;
 
-    cas_size-width: 3;
+    cas_size-width: $line-width;
     background-color: $general-red-color;
 }
 
@@ -30,39 +31,48 @@ UIScrollView.main-view-scroll-view {
 }
 
 ^UIView.top-level-dec-data {
-    cas_margin-left: 30;
+    cas_margin-left: 0;
 }
 
-///DATA DECLARATION
 
 ^UIView.data-dec-type-inference-rule {
 
 }
 
-
-
-UILabel.data-dec-data-label {
-    font: $menlo-font-14;
-    cas_margin-right: 5;
-    cas_size-height: 24;
-    text-color: #32CC32;
-}
-
-UIView.data-dec-vertical-line {
-    cas_size-width: 3;
+UIView.data-dec-connecting-line, ^UIView.function-dec-connecting-line {
+    cas_size-height: $line-width;
+    cas_size-width: 34;
     background-color: black;
 }
 
-^UIButton.data-dec-add-button {
-    cas_size-width: 40;
+UILabel.data-dec-data-label, UILabel.function-name-label {
+    font: $menlo-font-14;
+    cas_margin-left: 5;
+    cas_margin-right: 5;
     cas_size-height: 24;
+
 }
+
+UILabel.data-dec-data-label {
+    text-color: #32CC32;
+}
+
+UILabel.function-name-label {
+    text-color: $general-marker-color;
+}
+
+UIView.data-dec-vertical-line, UIView.function-dec-vertical-line {
+    cas_size-width: $line-width;
+    background-color: black;
+}
+
 
 UILabel.data-dec-where-label {
     font: $menlo-font-14;
     cas_margin-left: 5;
-
+    text-color: #32CC32;
 }
+
 
 ///INFERENCE RULE
 
@@ -83,7 +93,7 @@ UILabel.data-dec-where-label {
 }
 
 UIView.inference-rule-separator-line {
-    cas_size-height 3;
+    cas_size-height $line-width;
     cas_margin-top 3;
     cas_margin-bottom 3;
 }

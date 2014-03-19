@@ -6,34 +6,22 @@
 #import "IDTMainView.h"
 #import "IDTInferenceRuleView.h"
 #import "IDTDataDeclarationView.h"
+#import "IDTFunctionDeclarationView.h"
 
 @interface IDTMainView () <UIToolbarDelegate>
 
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) NSMutableArray *dataDeclarationViews;
+@property (nonatomic, strong) NSMutableArray *topLevelDeclarationTuples;
 @property (nonatomic, strong) UIView *verticalLine;
-@property (nonatomic, strong) UIButton *addTopLevelDecButton;
+
 
 @end
 
 @implementation IDTMainView {
 
     NSArray *_topLevelDecConstraints;
-}
-
-- (id)initAndLayout {
-    self = [super initAndLayout];
-    if (self) {
-        [[self.addTopLevelDecButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self addDataDeclaration];
-            [self updateConstraints];
-
-        }];
-    }
-
-    return self;
 }
 
 
@@ -50,8 +38,35 @@
     IDTDataDeclarationView *dataDeclarationView = [[IDTDataDeclarationView alloc] initAndLayout];
     dataDeclarationView.cas_styleClass = @"top-level-dec-data";
 
-    [self.scrollView addSubview:dataDeclarationView];
-    [self.dataDeclarationViews addObject:dataDeclarationView];
+    UIButton *lineActionButton = [self newLineActionButton];
+    [lineActionButton setImage:[UIImage imageNamed:@"line_action_button"] forState:UIControlStateNormal];
+    [self.scrollView addSubview:lineActionButton];
+
+    RACTuple *dataDeclarationTuple = RACTuplePack(lineActionButton, dataDeclarationView);
+
+    [self.scrollView insertSubview:dataDeclarationView belowSubview:self.verticalLine];
+    [self.topLevelDeclarationTuples addObject:dataDeclarationTuple];
+}
+
+- (void) addFunctionDeclaration
+{
+    IDTFunctionDeclarationView *funcDeclarationView = [[IDTFunctionDeclarationView alloc] initAndLayout];
+    funcDeclarationView.cas_styleClass = @"top-level-dec-function";
+
+    UIButton *lineActionButton = [self newLineActionButton];
+    [self.scrollView addSubview:lineActionButton];
+
+    RACTuple *funcDeclarationTuple = RACTuplePack(lineActionButton, funcDeclarationView);
+
+    [self.scrollView insertSubview:funcDeclarationView belowSubview:self.verticalLine];
+    [self.topLevelDeclarationTuples addObject:funcDeclarationTuple];
+}
+
+- (UIButton*) newLineActionButton
+{
+    UIButton *lineActionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [lineActionButton setImage:[UIImage imageNamed:@"line_action_button"] forState:UIControlStateNormal];
+    return lineActionButton;
 }
 
 - (void)defineLayout {
@@ -75,18 +90,24 @@
     }];
     [self.addTopLevelDecButton mas_updateConstraintsWithBottomMarginRelativeToSuperview];
 
-    [self.dataDeclarationViews enumerateObjectsUsingBlock:^(UIView *topLevelDec, NSUInteger idx, BOOL *stop) {
+    [self.topLevelDeclarationTuples enumerateObjectsUsingBlock:^(RACTuple *tuple, NSUInteger idx, BOOL *stop) {
 
-        if(idx == 0)
-        {
-            
+        RACTupleUnpack(UIButton *lineActionButton, IDTAbstractTopLevelDeclarationView *topLevelDec) = tuple;
+
+        UIView *viewToConnectTo = [topLevelDec viewThatConnectsThisToViewHierarchy];
+        [lineActionButton mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.verticalLine);
+            make.centerY.equalTo(viewToConnectTo);
+        }];
+
+        if (idx == 0) {
+
             [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(self.verticalLine).with.offset(10);
             }];
         }
-        else
-        {
-            UIView *topNeighbor = _dataDeclarationViews[idx-1];
+        else {
+            UIView *topNeighbor = ((RACTuple*) _topLevelDeclarationTuples[idx - 1]).second;
             [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(topNeighbor.mas_bottom).with.offset(10);
             }];
@@ -105,11 +126,12 @@
 
     //If there is more than one top level declaration, attach the top of the add button to the bottom of the lowest
     // data declaration. Remember the constraints so that they can be removed when the number of data decs change
-    if(self.dataDeclarationViews.count != 0)
+    if(self.topLevelDeclarationTuples.count != 0)
     {
         NSMutableArray *constraints = [@[] mutableCopy];
 
-        UIView *lowestConstructor = self.dataDeclarationViews[_dataDeclarationViews.count - 1];
+        IDTAbstractTopLevelDeclarationView *lowestConstructor = ((RACTuple*) self
+                        .topLevelDeclarationTuples[_topLevelDeclarationTuples.count - 1]).second;
         [constraints addObjectsFromArray:[self.addTopLevelDecButton mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(lowestConstructor.mas_bottom);
         }]];
@@ -172,12 +194,12 @@
 }
 
 
-- (NSMutableArray *)dataDeclarationViews {
-    if(!_dataDeclarationViews)
+- (NSMutableArray *)topLevelDeclarationTuples {
+    if(!_topLevelDeclarationTuples)
     {
-        _dataDeclarationViews = [@[] mutableCopy];
+        _topLevelDeclarationTuples = [@[] mutableCopy];
     }
-    return _dataDeclarationViews;
+    return _topLevelDeclarationTuples;
 }
 
 

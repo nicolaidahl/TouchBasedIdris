@@ -11,4 +11,9 @@
 
 @interface IDTMainView : IDTAbstractView
 
+@property (nonatomic, strong) UIButton *addTopLevelDecButton;
+
+- (void)addDataDeclaration;
+
+- (void)addFunctionDeclaration;
 @end

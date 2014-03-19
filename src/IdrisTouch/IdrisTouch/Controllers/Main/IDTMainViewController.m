@@ -7,6 +7,7 @@
 #import "IDTAbstractViewModel.h"
 #import "IDTMainViewModel.h"
 #import "IDTMainView.h"
+#import "IDTContextViewController.h"
 
 
 @interface IDTMainViewController ()
@@ -19,6 +20,45 @@
 @implementation IDTMainViewController {
     IDTMainViewModel *_viewModel;
     IDTMainView *_mainView;
+    UIPopoverController *_contextPopoverController;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        _viewModel = [[IDTMainViewModel alloc] init];
+
+        self.mainView.addTopLevelDecButton.rac_command = _viewModel.addTopLevelDecCommand;
+        [[_viewModel.addTopLevelDecCommand.executionSignals flatten] subscribeNext:^(id x) {
+            [self showContextPickerFromView: _mainView.addTopLevelDecButton];
+        }];
+    }
+
+    return self;
+}
+
+- (void)showContextPickerFromView:(UIView *)view {
+
+    IDTContextViewController *cvc = [[IDTContextViewController alloc] init];
+    [[cvc.selectionCommand.executionSignals flatten] subscribeNext:^(NSNumber *index) {
+        if([index isEqualToNumber:@0])
+            [_mainView addDataDeclaration];
+        else if([index isEqualToNumber:@1])
+            [_mainView addFunctionDeclaration];
+
+        [_contextPopoverController dismissPopoverAnimated:YES];
+        _contextPopoverController = nil;
+
+        [_mainView updateConstraints];
+    }];
+
+    _contextPopoverController = [[UIPopoverController alloc] initWithContentViewController:cvc];
+
+    CGRect convertedRect = [view convertRect:view.bounds toView:self.mainView];
+    [_contextPopoverController presentPopoverFromRect:convertedRect inView:self.mainView
+                             permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+
 }
 
 

@@ -70,6 +70,11 @@
 }
 
 
+- (UIView *)viewThatConnectsThisToViewHierarchy {
+    return self.separatorLine;
+}
+
+
 
 #pragma mark - Accessors
 

@@ -9,6 +9,7 @@
 
 @interface IDTDataDeclarationView ()
 
+@property (nonatomic, strong) UIView *connectingLine;
 @property (nonatomic, strong) UILabel *dataLabel;
 @property (nonatomic, strong) IDTInferenceRuleView *typeDeclaration;
 @property (nonatomic, strong) UILabel *whereLabel;
@@ -38,6 +39,7 @@
 
 - (void)addSubviews {
 
+    [self addSubview:self.connectingLine];
     [self addSubview:self.dataLabel];
     [self addSubview:self.verticalLine];
     [self addSubview:self.addConstructorButton];
@@ -47,7 +49,14 @@
 
 - (void)defineLayout {
 
-    [self.dataLabel mas_updateConstraintsWithLeftMarginRelativeToSuperview];
+    [self.connectingLine mas_updateConstraintsWithLeftMarginRelativeToSuperview];
+    [self.connectingLine mas_updateConstraintsWidthFromStylesheet];
+    [self.connectingLine mas_updateConstraintsHeightFromStylesheet];
+    [self.connectingLine mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.dataLabel);
+    }];
+
+    [self.dataLabel mas_updateConstraintsWithLeftMarginRelativeTo:self.connectingLine.mas_right];
     [self.dataLabel mas_updateConstraintsWithRightMarginRelativeTo:self.typeDeclaration.mas_left];
     [self.dataLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.typeDeclaration);
@@ -125,7 +134,22 @@
 
 }
 
+- (UIView *)viewThatConnectsThisToViewHierarchy {
+    return self.connectingLine;
+}
+
+
 #pragma mark - Accessors
+
+- (UIView *)connectingLine {
+    if(!_connectingLine)
+    {
+        _connectingLine = [[UIView alloc] init];
+        _connectingLine.cas_styleClass = @"data-dec-connecting-line";
+    }
+
+    return _connectingLine;
+}
 
 - (UILabel *)dataLabel {
     if(!_dataLabel)

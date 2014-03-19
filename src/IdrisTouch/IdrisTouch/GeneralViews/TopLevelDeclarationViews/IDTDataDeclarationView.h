@@ -5,7 +5,9 @@
 
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
+#import "IDTAbstractHierarchyView.h"
+#import "IDTAbstractTopLevelDeclarationView.h"
 
 
-@interface IDTDataDeclarationView : IDTAbstractView
+@interface IDTDataDeclarationView : IDTAbstractTopLevelDeclarationView
 @end

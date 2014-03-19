@@ -7,4 +7,5 @@
 
 
 @interface IDTAbstractViewModel : NSObject
+@property(nonatomic, strong) RACCommand *selectionCommand;
 @end

@@ -9,4 +9,15 @@
 @implementation IDTAbstractViewModel {
 
 }
+- (RACCommand *)selectionCommand {
+    if(!_selectionCommand)
+    {
+        _selectionCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *index) {
+            return [RACSignal return:index];
+        }];
+    }
+
+    return _selectionCommand;
+}
+
 @end
