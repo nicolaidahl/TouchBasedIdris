@@ -348,8 +348,6 @@
 			mainGroup = E3C13D5618C7641A004442D9;
 			productRefGroup = E3C13D6018C7641A004442D9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				E3C13D5E18C7641A004442D9 /* IdrisTouch */,
@@ -639,6 +637,7 @@
 				E3C13D9318C7641A004442D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E3C13D9418C7641A004442D9 /* Build configuration list for PBXNativeTarget "IdrisTouchTests" */ = {
 			isa = XCConfigurationList;
@@ -647,6 +646,7 @@
 				E3C13D9618C7641A004442D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

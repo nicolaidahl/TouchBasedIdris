@@ -4,21 +4,34 @@ $menlo-font-14 = Menlo-Bold 14;
 $general-marker-color = #4876FF;
 $general-red-color = #ff6666;
 
+/// MAIN VIEW
+
+UIToolbar.main-view-toolbar {
+    cas_margin-top:20;
+}
+
+UIScrollView.main-view-scroll-view {
+
+}
+
+
 /// TOP LEVEL DECLARATION
 
 ^UIView.top-level-dec-vertical-line{
     cas_margin-top: 20;
-    cas_margin-left: 20;
+    cas_margin-left: 30;
 
     cas_size-width: 3;
     background-color: $general-red-color;
 }
 
 ^UIButton.top-level-dec-add-button {
-    cas_size-width: 40;
-    cas_size-height: 24;
+
 }
 
+^UIView.top-level-dec-data {
+    cas_margin-left: 30;
+}
 
 ///DATA DECLARATION
 

@@ -64,8 +64,6 @@
         make.centerX.equalTo(self.verticalLine);
         make.top.equalTo(self.verticalLine.mas_bottom);
     }];
-    [self.addConstructorButton mas_updateConstraintsWidthFromStylesheet];
-    [self.addConstructorButton mas_updateConstraintsHeightFromStylesheet];
     [self.addConstructorButton mas_updateConstraintsWithBottomMarginRelativeToSuperview];
 
 
@@ -182,8 +180,8 @@
 - (UIButton *)addConstructorButton {
     if(!_addConstructorButton)
     {
-        _addConstructorButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_addConstructorButton setTitle:@"Add" forState:UIControlStateNormal];
+        _addConstructorButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_addConstructorButton setImage:[UIImage imageNamed:@"add_button"] forState:UIControlStateNormal];
         _addConstructorButton.cas_styleClass = @"data-dec-add-button";
     }
 

@@ -7,7 +7,10 @@
 #import "IDTInferenceRuleView.h"
 #import "IDTDataDeclarationView.h"
 
-@interface IDTMainView ()
+@interface IDTMainView () <UIToolbarDelegate>
+
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) NSMutableArray *dataDeclarationViews;
 @property (nonatomic, strong) UIView *verticalLine;
@@ -35,12 +38,32 @@
 
 
 - (void)addSubviews {
-    [self addSubview:self.verticalLine];
-    [self addSubview:self.addTopLevelDecButton];
+    [self addSubview:self.toolbar];
+    [self addSubview:self.scrollView];
+    [self.scrollView addSubview:self.verticalLine];
+    [self.scrollView addSubview:self.addTopLevelDecButton];
 
 }
 
+- (void) addDataDeclaration
+{
+    IDTDataDeclarationView *dataDeclarationView = [[IDTDataDeclarationView alloc] initAndLayout];
+    dataDeclarationView.cas_styleClass = @"top-level-dec-data";
+
+    [self.scrollView addSubview:dataDeclarationView];
+    [self.dataDeclarationViews addObject:dataDeclarationView];
+}
+
 - (void)defineLayout {
+
+    [self.toolbar mas_updateConstraintsWithLeftMarginRelativeToSuperview];
+    [self.toolbar mas_updateConstraintsWithRightMarginRelativeToSuperview];
+    [self.toolbar mas_updateConstraintsWithTopMarginRelativeToSuperview];
+
+    [self.scrollView mas_updateConstraintsWithTopMarginRelativeTo:self.toolbar.mas_bottom];
+    [self.scrollView mas_updateConstraintsWithLeftMarginRelativeToSuperview];
+    [self.scrollView mas_updateConstraintsWithRightMarginRelativeToSuperview];
+    [self.scrollView mas_updateConstraintsWithBottomMarginRelativeToSuperview];
 
     [self.verticalLine mas_updateConstraintsWithLeftMarginRelativeToSuperview];
     [self.verticalLine mas_updateConstraintsWithTopMarginRelativeToSuperview];
@@ -50,8 +73,7 @@
         make.top.equalTo(self.verticalLine.mas_bottom);
         make.centerX.equalTo(self.verticalLine);
     }];
-    [self.addTopLevelDecButton mas_updateConstraintsWidthFromStylesheet];
-    [self.addTopLevelDecButton mas_updateConstraintsHeightFromStylesheet];
+    [self.addTopLevelDecButton mas_updateConstraintsWithBottomMarginRelativeToSuperview];
 
     [self.dataDeclarationViews enumerateObjectsUsingBlock:^(UIView *topLevelDec, NSUInteger idx, BOOL *stop) {
 
@@ -70,8 +92,9 @@
             }];
         }
 
+        [topLevelDec mas_updateConstraintsWithLeftMarginRelativeTo:self.verticalLine.mas_right];
         [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.verticalLine.mas_right).with.offset(6);
+            make.right.lessThanOrEqualTo(topLevelDec.superview);
         }];
     }];
 
@@ -80,17 +103,11 @@
         [constraint uninstall];
     }];
 
-    if(self.dataDeclarationViews.count == 0)
-    {
-
-    }
-    else
+    //If there is more than one top level declaration, attach the top of the add button to the bottom of the lowest
+    // data declaration. Remember the constraints so that they can be removed when the number of data decs change
+    if(self.dataDeclarationViews.count != 0)
     {
         NSMutableArray *constraints = [@[] mutableCopy];
-
-        UIView *highestDec = self.dataDeclarationViews[0];
-
-
 
         UIView *lowestConstructor = self.dataDeclarationViews[_dataDeclarationViews.count - 1];
         [constraints addObjectsFromArray:[self.addTopLevelDecButton mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -102,13 +119,14 @@
 
 }
 
-- (void) addDataDeclaration
-{
-    IDTDataDeclarationView *dataDeclarationView = [[IDTDataDeclarationView alloc] initAndLayout];
 
-    [self addSubview:dataDeclarationView];
-    [self.dataDeclarationViews addObject:dataDeclarationView];
+
+#pragma mark - UIToolbarDelegate
+
+- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
+    return UIBarPositionTopAttached;
 }
+
 
 #pragma mark - Accessors
 
@@ -124,13 +142,35 @@
 - (UIButton *)addTopLevelDecButton {
     if(!_addTopLevelDecButton)
     {
-        _addTopLevelDecButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [_addTopLevelDecButton setTitle:@"Add" forState:UIControlStateNormal];
+        _addTopLevelDecButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_addTopLevelDecButton setImage:[UIImage imageNamed:@"add_button"] forState:UIControlStateNormal];
         _addTopLevelDecButton.cas_styleClass = @"top-level-dec-add-button";
     }
 
     return _addTopLevelDecButton;
 }
+
+- (UIToolbar *)toolbar {
+    if(!_toolbar)
+    {
+        _toolbar = [[UIToolbar alloc] init];
+        _toolbar.delegate = self;
+        _toolbar.cas_styleClass = @"main-view-toolbar";
+    }
+
+    return _toolbar;
+}
+
+- (UIScrollView *)scrollView {
+    if(!_scrollView)
+    {
+        _scrollView = [[UIScrollView alloc] init];
+        _scrollView.cas_styleClass = @"main-view-scroll-view";
+    }
+
+    return _scrollView;
+}
+
 
 - (NSMutableArray *)dataDeclarationViews {
     if(!_dataDeclarationViews)
