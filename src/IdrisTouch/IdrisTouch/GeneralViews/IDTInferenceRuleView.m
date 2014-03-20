@@ -95,7 +95,7 @@
 - (IDTGroupInputView *)premisesInputGroup {
     if(!_premisesInputGroup)
     {
-        _premisesInputGroup = [[IDTGroupInputView alloc] initAndLayout];
+        _premisesInputGroup = [[IDTGroupInputView alloc] initAndLayoutWithSeparatorType:IDTGroupInputViewSeparatorLargeSpace];
         _premisesInputGroup.cas_styleClass = @"inference-rule-premises-input-group";
     }
 

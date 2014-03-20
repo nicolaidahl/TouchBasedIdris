@@ -108,7 +108,7 @@
     }
     else
     {
-        RACTupleUnpack(UIButton *lineActionButton, UIView *lowestLine) = self.lineActionLineTuples[_lineActionLineTuples.count - 1];
+        UIView *lowestLine = ((RACTuple*)self.lineActionLineTuples[_lineActionLineTuples.count - 1]).second;
 
         _constructorConstraints = [self.addLineButton mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(lowestLine.mas_bottom);
@@ -162,7 +162,7 @@
 - (IDTGroupInputView *)typeDeclaration {
     if(!_typeDeclaration)
     {
-        _typeDeclaration = [[IDTGroupInputView alloc] initAndLayout];
+        _typeDeclaration = [[IDTGroupInputView alloc] initAndLayoutWithSeparatorType:IDTGroupInputViewSeparatorArrow];
         _typeDeclaration.cas_styleClass = @"function-dec-type-dec";
 
     }

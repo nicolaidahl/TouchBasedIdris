@@ -7,14 +7,36 @@
 #import "IDTInputView.h"
 #import "IDTDashedTextField.h"
 
+
+
 @interface IDTGroupInputView ()
 
 @property (nonatomic, strong) NSMutableArray *inputViews;
+@property (nonatomic, strong) NSMutableArray *separatorViews;
 
 @end
 
 @implementation IDTGroupInputView {
     MASConstraint *_rightConstraint;
+}
+
+- (id)initAndLayout {
+    self = [super initAndLayout];
+    if (self) {
+        _inputViewSeparatorType = IDTGroupInputViewSeparatorSmallSpace;
+    }
+
+    return self;
+}
+
+
+- (id)initAndLayoutWithSeparatorType: (IDTGroupInputViewSeparatorType) separatorType {
+    self = [super initAndLayout];
+    if (self) {
+        _inputViewSeparatorType = separatorType;
+    }
+
+    return self;
 }
 
 
@@ -24,28 +46,40 @@
 
 }
 
+
+
 - (void)defineLayout {
 
     [self.inputViews enumerateObjectsUsingBlock:^(IDTInputView *inputView, NSUInteger idx, BOOL *stop) {
+        //Uninstall any right constraint added so far
+        [_rightConstraint uninstall];
+
+
         if (idx == 0)
             [inputView mas_updateConstraintsWithLeftMarginRelativeToSuperview];
         else {
             IDTInputView *leftNeighbor = self.inputViews[idx - 1];
-            [inputView mas_updateConstraintsWithLeftMarginRelativeTo:leftNeighbor.mas_right];
+            UIImageView *leftSeparatorNeighbor = self.separatorViews[idx - 1];
+
+            [leftSeparatorNeighbor mas_updateConstraintsWithLeftMarginRelativeTo:leftNeighbor.mas_right];
+            [inputView mas_updateConstraintsWithLeftMarginRelativeTo:leftSeparatorNeighbor.mas_right];
         }
 
-        //Uninstall any right constraint added so far
-        [_rightConstraint uninstall];
 
         if (idx == self.inputViews.count - 1)
             [inputView mas_updateConstraints:^(MASConstraintMaker *make) {
                 _rightConstraint = make.right.equalTo(inputView.superview);
             }];
 
+
         [inputView mas_updateConstraintsWithBottomMarginRelativeToSuperview];
         [inputView mas_updateConstraintsWithTopMarginRelativeToSuperview];
+    }];
 
-
+    [self.separatorViews enumerateObjectsUsingBlock:^(UIImageView *separatorView, NSUInteger idx, BOOL *stop) {
+        [separatorView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(separatorView.superview);
+        }];
     }];
 
 }
@@ -53,6 +87,8 @@
 
 - (void) addInputView
 {
+
+
     IDTInputView *iv = [[IDTInputView alloc] initAndLayout];
     [[iv.textField rac_textSignal] subscribeNext:^(NSString *text) {
         if (_inputViews.count > 0) {
@@ -70,6 +106,46 @@
 
     [self addSubview:iv];
     [self.inputViews addObject:iv];
+
+    if(_inputViews.count > 1)
+    {
+        UIView *separatorImageView;
+
+        switch (_inputViewSeparatorType)
+        {
+            case IDTGroupInputViewSeparatorSmallSpace:
+            {
+                separatorImageView = [[UIView alloc] init];
+                [separatorImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@2);
+                }];
+                break;
+            }
+            case IDTGroupInputViewSeparatorLargeSpace:
+            {
+                separatorImageView = [[UIView alloc] init];
+                [separatorImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@10);
+                }];
+                break;
+            }
+            case IDTGroupInputViewSeparatorArrow:
+            {
+                separatorImageView = [[UIImageView alloc] initWithImage:[UIImage
+                        imageNamed:@"type_arrow"]];
+                break;
+            }
+        }
+
+
+        separatorImageView.cas_styleClass = @"group-input-view-separator";
+        [self addSubview:separatorImageView];
+        [self.separatorViews addObject:separatorImageView];
+
+    }
+
+
+
 }
 
 
@@ -81,6 +157,15 @@
     }
 
     return _inputViews;
+}
+
+- (NSMutableArray *)separatorViews {
+    if(!_separatorViews)
+    {
+        _separatorViews = [@[] mutableCopy];
+    }
+
+    return _separatorViews;
 }
 
 

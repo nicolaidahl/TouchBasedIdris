@@ -4,6 +4,7 @@ $menlo-font-14 = Menlo-Bold 14;
 $general-marker-color = #4876FF;
 $general-red-color = #ff6666;
 $line-width = 3;
+$separator-margin = 5;
 
 /// MAIN VIEW
 
@@ -81,8 +82,8 @@ UILabel.data-dec-where-label {
 }
 
 ^UIView.group-input-view {
-    cas_margin-left 5;
-    cas_margin-right 5;
+    cas_margin-left $separator-margin;
+    cas_margin-right $separator-margin;
 }
 
 ^UITextField.input-group-dashed-text-field {
@@ -91,6 +92,10 @@ UILabel.data-dec-where-label {
 
     font: $menlo-font-14;
 
+}
+
+^UIImageView.group-input-view-separator {
+    cas_margin-left: $separator-margin;
 }
 
 UIView.inference-rule-separator-line {

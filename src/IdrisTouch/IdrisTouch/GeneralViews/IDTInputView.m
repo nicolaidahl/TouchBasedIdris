@@ -45,7 +45,7 @@
                                                 attributes:@{NSFontAttributeName:font}
                                                    context:nil];
 
-    CGSize size = CGSizeMake(MAX(textRect.size.width + 14, 40), textRect.size.height);
+    CGSize size = CGSizeMake(MAX(textRect.size.width + 16, 40), textRect.size.height);
 
 
     [_textField mas_updateConstraints:^(MASConstraintMaker *make) {
