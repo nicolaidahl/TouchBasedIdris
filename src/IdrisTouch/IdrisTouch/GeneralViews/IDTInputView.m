@@ -8,7 +8,7 @@
 
 @interface IDTInputView ()
 
-@property (nonatomic, strong) IDTDashedTextField *textField;
+
 
 @end
 
@@ -28,6 +28,8 @@
         make.edges.equalTo(self);
     }];
 
+    [self.textField mas_updateConstraintsHeightFromStylesheet];
+
     [self.textField.rac_textSignal subscribeNext:^(id x) {
         [self updateWidthConstraintForTextField];
     }];
@@ -38,12 +40,12 @@
 - (void) updateWidthConstraintForTextField {
     UIFont *font = [_textField font];
 
-    CGRect textRect = [_textField.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 44)
+    CGRect textRect = [_textField.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 60)
                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                 attributes:@{NSFontAttributeName:font}
                                                    context:nil];
 
-    CGSize size = CGSizeMake(MAX(textRect.size.width + 14, 100), textRect.size.height);
+    CGSize size = CGSizeMake(MAX(textRect.size.width + 14, 40), textRect.size.height);
 
 
     [_textField mas_updateConstraints:^(MASConstraintMaker *make) {

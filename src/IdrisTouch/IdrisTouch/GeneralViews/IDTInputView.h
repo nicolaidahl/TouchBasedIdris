@@ -6,6 +6,11 @@
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
 
+@class IDTDashedTextField;
+
 
 @interface IDTInputView : IDTAbstractView
+
+@property (nonatomic, strong) IDTDashedTextField *textField;
+
 @end

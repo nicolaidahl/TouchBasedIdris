@@ -5,6 +5,7 @@
 
 #import "IDTGroupInputView.h"
 #import "IDTInputView.h"
+#import "IDTDashedTextField.h"
 
 @interface IDTGroupInputView ()
 
@@ -13,15 +14,13 @@
 @end
 
 @implementation IDTGroupInputView {
-
+    MASConstraint *_rightConstraint;
 }
 
 
 - (void)addSubviews {
 
-    for (UITextField *field in self.inputViews) {
-        [self addSubview:field];
-    }
+    [self addInputView];
 
 }
 
@@ -31,12 +30,17 @@
         if (idx == 0)
             [inputView mas_updateConstraintsWithLeftMarginRelativeToSuperview];
         else {
-            UITextField *leftNeighbor = self.inputViews[idx - 1];
+            IDTInputView *leftNeighbor = self.inputViews[idx - 1];
             [inputView mas_updateConstraintsWithLeftMarginRelativeTo:leftNeighbor.mas_right];
         }
 
+        //Uninstall any right constraint added so far
+        [_rightConstraint uninstall];
+
         if (idx == self.inputViews.count - 1)
-            [inputView mas_updateConstraintsWithRightMarginRelativeToSuperview];
+            [inputView mas_updateConstraints:^(MASConstraintMaker *make) {
+                _rightConstraint = make.right.equalTo(inputView.superview);
+            }];
 
         [inputView mas_updateConstraintsWithBottomMarginRelativeToSuperview];
         [inputView mas_updateConstraintsWithTopMarginRelativeToSuperview];
@@ -47,20 +51,33 @@
 }
 
 
+- (void) addInputView
+{
+    IDTInputView *iv = [[IDTInputView alloc] initAndLayout];
+    [[iv.textField rac_textSignal] subscribeNext:^(NSString *text) {
+        if (_inputViews.count > 0) {
+            IDTInputView *lastInputView = ((IDTInputView*)_inputViews[_inputViews.count - 1]);
+            if (lastInputView.textField == iv.textField) {
+                if(![text isEqualToString:@""])
+                {
+                    [self addInputView];
+                    [self updateConstraints];
+                }
+            }
+        }
+    }];
+    iv.cas_styleClass = @"group-input-view";
+
+    [self addSubview:iv];
+    [self.inputViews addObject:iv];
+}
+
 
 
 - (NSMutableArray *)inputViews {
     if(!_inputViews)
     {
         _inputViews = [@[] mutableCopy];
-
-        for (int j = 0; j < 2; j++) {
-            IDTInputView *tf = [[IDTInputView alloc] initAndLayout];
-            tf.cas_styleClass = @"group-input-view";
-
-            [_inputViews addObject:tf];
-
-        }
     }
 
     return _inputViews;
