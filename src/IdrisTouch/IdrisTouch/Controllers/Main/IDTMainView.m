@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) NSMutableArray *topLevelDeclarationTuples;
-@property (nonatomic, strong) UIView *verticalLine;
+@property (nonatomic, strong) UIImageView *verticalLine;
 
 
 @end
@@ -38,8 +38,7 @@
     IDTDataDeclarationView *dataDeclarationView = [[IDTDataDeclarationView alloc] initAndLayout];
     dataDeclarationView.cas_styleClass = @"top-level-dec-data";
 
-    UIButton *lineActionButton = [self newLineActionButton];
-    [lineActionButton setImage:[UIImage imageNamed:@"line_action_button"] forState:UIControlStateNormal];
+    UIImageView *lineActionButton = [self newLineActionButton];
     [self.scrollView addSubview:lineActionButton];
 
     RACTuple *dataDeclarationTuple = RACTuplePack(lineActionButton, dataDeclarationView);
@@ -53,7 +52,7 @@
     IDTFunctionDeclarationView *funcDeclarationView = [[IDTFunctionDeclarationView alloc] initAndLayout];
     funcDeclarationView.cas_styleClass = @"top-level-dec-function";
 
-    UIButton *lineActionButton = [self newLineActionButton];
+    UIImageView *lineActionButton = [self newLineActionButton];
     [self.scrollView addSubview:lineActionButton];
 
     RACTuple *funcDeclarationTuple = RACTuplePack(lineActionButton, funcDeclarationView);
@@ -62,11 +61,94 @@
     [self.topLevelDeclarationTuples addObject:funcDeclarationTuple];
 }
 
-- (UIButton*) newLineActionButton
+- (UIImageView*) newLineActionButton
 {
-    UIButton *lineActionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [lineActionButton setImage:[UIImage imageNamed:@"line_action_button"] forState:UIControlStateNormal];
+    UIImageView *lineActionButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"line_action_button"]];
+    lineActionButton.userInteractionEnabled = YES; //VERY IMPORTANT
     return lineActionButton;
+}
+
+- (void) addPanGestureForTopDeclarationTuple: (RACTuple *) topLevelDeclarationTuple
+                             withTopNeighbor: (UIView*) topNeighbor
+                           andBottomNeighbor: (UIView*) bottomNeighbor
+{
+    RACTupleUnpack(UIImageView *lineActionButton, IDTAbstractTopLevelDeclarationView *view) = topLevelDeclarationTuple;
+
+    UIPanGestureRecognizer *panGestureRecognizer = [UIPanGestureRecognizer new];
+    [lineActionButton addGestureRecognizer:panGestureRecognizer];
+
+    RACSignal *gestureEndedSignal = [panGestureRecognizer.rac_gestureSignal map:^NSNumber *(UIGestureRecognizer
+    *gestureRecognizer) {
+        return @(gestureRecognizer.state == UIGestureRecognizerStateEnded);
+    }];
+
+    RACSignal *gesturePointSignal = [panGestureRecognizer.rac_gestureSignal map:^id(UIPanGestureRecognizer *gesture) {
+        return [NSValue valueWithCGPoint:[gesture translationInView:view.superview]];
+    }];
+
+    BOOL bottomNeighborIsAddButton = bottomNeighbor == self.addTopLevelDecButton;
+    BOOL topNeighborIsToolbar = topNeighbor == self.toolbar;
+
+    [gesturePointSignal subscribeNext:^(NSValue *value) {
+        CGPoint point = [value CGPointValue];
+        NSLog(@"%f", point.y);
+
+        if(self.topLevelDeclarationTuples.count > 1)
+        {
+
+            [view mas_updateConstraints:^(MASConstraintMaker *make) {
+                CGPoint p = point;
+
+                p.y = point.y + topLevelDecMargin;
+
+                if(bottomNeighborIsAddButton)
+                    p.y = MIN(topLevelDecMargin, point.y + topLevelDecMargin);
+
+                if(topNeighborIsToolbar)
+                    p.y = MAX(topLevelDecMargin, point.y + topLevelDecMargin);
+
+                make.top.equalTo(topNeighbor.mas_bottom).offset(p.y);
+            }];
+
+            [bottomNeighbor mas_updateConstraints:^(MASConstraintMaker *make) {
+                CGPoint p = point;
+
+                p.y = -point.y + topLevelDecMargin;
+
+                if(bottomNeighborIsAddButton)
+                    p.y = -MIN(0, point.y);
+
+                if(topNeighborIsToolbar)
+                    p.y = -MAX(0, point.y) + topLevelDecMargin;
+
+                make.top.equalTo(view.mas_bottom).offset(p.y);
+            }];
+
+        }
+
+
+    }];
+
+    [gestureEndedSignal subscribeNext:^(NSNumber *ended) {
+        if([ended boolValue])
+        {
+            [view mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(topNeighbor.mas_bottom).with.offset(topLevelDecMargin);
+            }];
+
+            [bottomNeighbor mas_updateConstraints:^(MASConstraintMaker *make) {
+                if(bottomNeighborIsAddButton)
+                    make.top.equalTo(view.mas_bottom);
+                else
+                    make.top.equalTo(view.mas_bottom).with.offset(topLevelDecMargin);
+            }];
+
+            [UIView animateWithDuration:0.3 animations:^{
+                [self layoutIfNeeded];
+            }];
+        }
+
+    }];
 }
 
 - (void)defineLayout {
@@ -92,7 +174,12 @@
 
     [self.topLevelDeclarationTuples enumerateObjectsUsingBlock:^(RACTuple *tuple, NSUInteger idx, BOOL *stop) {
 
-        RACTupleUnpack(UIButton *lineActionButton, IDTAbstractTopLevelDeclarationView *topLevelDec) = tuple;
+        RACTupleUnpack(UIImageView *lineActionButton, IDTAbstractTopLevelDeclarationView *topLevelDec) = tuple;
+
+        [lineActionButton.gestureRecognizers enumerateObjectsUsingBlock:^(UIGestureRecognizer *gestureRecognizer,
+                NSUInteger idx, BOOL *stop) {
+            [lineActionButton removeGestureRecognizer:gestureRecognizer];
+        }];
 
         UIView *viewToConnectTo = [topLevelDec viewThatConnectsThisToViewHierarchy];
         [lineActionButton mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -100,31 +187,40 @@
             make.centerY.equalTo(viewToConnectTo);
         }];
 
-        if (idx == 0) {
+        UIView *topNeighbor, *bottomNeighbor;
 
-            [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(self.verticalLine).with.offset(10);
-            }];
-        }
-        else {
-            UIView *topNeighbor = ((RACTuple*) _topLevelDeclarationTuples[idx - 1]).second;
-            [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(topNeighbor.mas_bottom).with.offset(10);
-            }];
-        }
+        if (idx == 0)
+            //It has to be the toolbar for the pan to work,
+            // as it just makes constraints to mas_bottom of top neighbor no matter what
+            topNeighbor = self.toolbar;
+        else
+            topNeighbor = ((RACTuple*) _topLevelDeclarationTuples[idx - 1]).second;
 
+        if((idx == 0 && _topLevelDeclarationTuples.count == 1) || _topLevelDeclarationTuples.count - 1 == idx)
+            bottomNeighbor = self.addTopLevelDecButton;
+        else
+            bottomNeighbor = ((RACTuple*) _topLevelDeclarationTuples[idx + 1]).second;
+
+        [self addPanGestureForTopDeclarationTuple:tuple withTopNeighbor:topNeighbor
+                                andBottomNeighbor:bottomNeighbor];
+
+        [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(topNeighbor.mas_bottom).with.offset(topLevelDecMargin);
+        }];
         [topLevelDec mas_updateConstraintsWithLeftMarginRelativeTo:self.verticalLine.mas_right];
         [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.lessThanOrEqualTo(topLevelDec.superview);
         }];
+
+
     }];
 
-
+    //Uninstall old bottom constraints
     [_topLevelDecConstraints enumerateObjectsUsingBlock:^(MASConstraint *constraint, NSUInteger idx, BOOL *stop) {
         [constraint uninstall];
     }];
 
-    //If there is more than one top level declaration, attach the top of the add button to the bottom of the lowest
+    //If there is more than zero top level declaration, attach the top of the add button to the bottom of the lowest
     // data declaration. Remember the constraints so that they can be removed when the number of data decs change
     if(self.topLevelDeclarationTuples.count != 0)
     {

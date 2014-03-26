@@ -9,6 +9,8 @@
 @class IDTInferenceRuleView;
 
 
+static const int topLevelDecMargin = 20;
+
 @interface IDTMainView : IDTAbstractView
 
 @property (nonatomic, strong) UIButton *addTopLevelDecButton;
