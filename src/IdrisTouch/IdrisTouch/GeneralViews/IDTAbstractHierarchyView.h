@@ -6,6 +6,10 @@
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
 
+typedef NS_ENUM(NSInteger, IDTHierarchyMoveDirection) {
+    IDTHierarchyMoveDirectionUp,
+    IDTHierarchyMoveDirectionDown
+};
 
 @interface IDTAbstractHierarchyView : IDTAbstractView
 

@@ -9,6 +9,7 @@
 @class IDTInferenceRuleView;
 
 
+
 static const int topLevelDecMargin = 20;
 
 @interface IDTMainView : IDTAbstractView
