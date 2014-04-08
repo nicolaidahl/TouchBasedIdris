@@ -1,2 +1,17 @@
 #OSX stuff
 .DS_Store
+
+#Haskell stuff
+dist
+log
+.ghci
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+.virtualenv
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.config
