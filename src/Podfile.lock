@@ -57,6 +57,7 @@ PODS:
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.2.4)
   - Reveal-iOS-SDK (1.0.3)
+  - TouchJSON (1.1)
 
 DEPENDENCIES:
   - Classy
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - Masonry
   - ReactiveCocoa (~> 2.2.0)
   - Reveal-iOS-SDK
+  - TouchJSON
 
 EXTERNAL SOURCES:
   dyci:
@@ -76,12 +78,13 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Classy: 558fdea4332e29c9c5a2c7a8687c385e11ae463b
   ClassyLiveLayout: 029fc037732107d2c051438046e79d751b483e59
-  DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
+  DCIntrospect: c5480ef97044ceec62936786a3c807dda58c6b5b
   dyci: a547f35263983aad987afa301ba0a10d2d160c51
   GCNetworkReachability: 42b752786acb7c8b58b83a07fed1f5fcfae8c2a6
   libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
   Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
   ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
-  Reveal-iOS-SDK: f2525cb560a564fdc086316e89ec45ced6977fd3
+  Reveal-iOS-SDK: 8e6a6f22a9520437e4a180fe1d4e99f43b75430e
+  TouchJSON: 9e53f4df141b7f972766292b00b46bccf29f179a
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

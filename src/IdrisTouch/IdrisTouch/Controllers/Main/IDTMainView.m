@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) NSMutableArray *topLevelDeclarationTuples;
-@property (nonatomic, strong) UIImageView *verticalLine;
+@property (nonatomic, strong) UIView *verticalLine;
 
 @property (nonatomic, strong) MASConstraint *bottomToLowestViewConstraint;
 @property (nonatomic, strong) NSMutableArray *topConstraints;
