@@ -3,10 +3,10 @@
 // Copyright (c) 2014 Nicolai Dahl. All rights reserved.
 //
 
-#import "IDTTopLevelFuncDec.h"
+#import "IDTConstantIntType.h"
 
 
-@implementation IDTTopLevelFuncDec {
+@implementation IDTConstantIntType {
 
 }
 @end

@@ -15,9 +15,12 @@
 @end
 
 
-static NSString *const endPoint = @"http://google.com";
+static NSString *const endPoint = @"http://localhost:8000/";
 static NSString *const IDTHTTPMethodPost = @"POST";
 static NSString *const IDTHTTPMethodGet = @"GET";
+
+static NSString *const IDTTestPath = @"test";
+static NSString *const IDTTypePath = @"type";
 
 
 @implementation IDTRequestDispatcher {
@@ -31,7 +34,8 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
-        [RACObserve(self, error) subscribeNext:^(NSError *error) {
+
+        [[RACObserve(self, error) ignore:nil] subscribeNext:^(NSError *error) {
             NSError *errorWithData = [self appendBody:request.HTTPBody toError:error];
             return [subscriber sendError:errorWithData];
         }];
@@ -67,6 +71,7 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
 }
 
 #pragma mark NSURLConnection Delegate Methods
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     // A response has been received, this is where we initialize the instance var you created
@@ -104,10 +109,11 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
 
 - (NSMutableURLRequest *) standardJSONURLGetRequest
 {
-    // Create the request.
-    NSMutableURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:endPoint]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", endPoint, IDTTestPath]];
 
-    // Specify that it will be a POST request
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
     request.HTTPMethod = IDTHTTPMethodGet;
 
     // This is how we set header fields

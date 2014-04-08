@@ -11,6 +11,8 @@
 #import "IDTMainViewController.h"
 #import "DCIntrospect.h"
 #import "CASUtilities.h"
+#import "IDTAPIClient.h"
+#import "IDTProgram.h"
 
 @implementation IDTAppDelegate
 
@@ -30,10 +32,26 @@ static NSString *const kNameOfStylesheetFile = @"Stylesheets/stylesheet.cas";
 
     self.window.backgroundColor = [UIColor whiteColor];
 
-
+    [self foolAroundWithAPI];
 
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)foolAroundWithAPI {
+    IDTAPIClient *client = [IDTAPIClient client];
+
+    IDTProgram *program = [[IDTProgram alloc] initWithName:@"test"];
+
+    RACSignal *signal = [client getEvaluationOfObjectHierarchy:program];
+
+    [signal subscribeNext:^(id x) {
+
+    } error:^(NSError *error) {
+
+    } completed:^{
+
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

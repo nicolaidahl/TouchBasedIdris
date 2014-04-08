@@ -3,10 +3,11 @@
 // Copyright (c) 2014 Nicolai Dahl. All rights reserved.
 //
 
-#import "IDTTopLevelDataDec.h"
+#import "IDTTopLevelFuncDec.h"
+#import "IDTExpression.h"
 
 
-@implementation IDTTopLevelDataDec {
+@implementation IDTTopLevelFuncDec {
 
 }
 @end

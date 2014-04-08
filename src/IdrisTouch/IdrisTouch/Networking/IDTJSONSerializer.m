@@ -15,6 +15,9 @@
     return [self new];
 }
 
+
+#pragma mark - Serialize
+
 - (NSData *) serializeObjectHierarchyToData: (id <IDTJSONSerializable>) object
 {
     NSDictionary *converted = [self serializeObjectHierarchy:object];
@@ -91,5 +94,10 @@
     return array;
 
 }
+
+
+#pragma mark - Deserialize
+
+
 
 @end

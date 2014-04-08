@@ -3,9 +3,10 @@
 // Copyright (c) 2014 Nicolai Dahl. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "IDTTopLevelDec.h"
+#import "IDTConstantInt.h"
 
 
-@interface IDTTopLevelDataDec : IDTTopLevelDec
+@implementation IDTConstantInt {
+
+}
 @end

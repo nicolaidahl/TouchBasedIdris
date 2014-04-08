@@ -6,7 +6,6 @@
 #import "IDTAPIClient.h"
 #import "IDTRequestDispatcher.h"
 #import "IDTProgram.h"
-#import "IDTJSONSerializer.h"
 
 
 @implementation IDTAPIClient {
@@ -14,7 +13,10 @@
 }
 
 
-
++ (instancetype) client
+{
+    return [self new];
+}
 
 - (RACSignal *) getEvaluationOfObjectHierarchy: (IDTProgram* ) program
 {
@@ -24,7 +26,7 @@
     NSData *jsonData = [[IDTJSONSerializer serializer] serializeObjectHierarchyToData:program];
 
     NSData *requestBodyData = jsonData;
-    request.HTTPBody = requestBodyData;
+    request.HTTPBody = nil;
 
     return [requestDispatcher dispatchRequest:request];
 }

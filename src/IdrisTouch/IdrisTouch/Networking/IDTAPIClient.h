@@ -9,5 +9,7 @@
 
 
 @interface IDTAPIClient : NSObject
++ (instancetype)client;
+
 - (RACSignal *)getEvaluationOfObjectHierarchy:(IDTProgram *)program;
 @end

@@ -6,6 +6,13 @@
 #import <Foundation/Foundation.h>
 #import "IDTTopLevelDec.h"
 
+@class IDTExpression;
+
 
 @interface IDTTopLevelFuncDec : IDTTopLevelDec
+
+@property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, strong) IDTExpression *type;
+@property (nonatomic, strong) NSArray *clauses;
+
 @end
