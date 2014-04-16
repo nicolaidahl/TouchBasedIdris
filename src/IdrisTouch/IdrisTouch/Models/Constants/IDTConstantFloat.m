@@ -9,4 +9,11 @@
 @implementation IDTConstantFloat {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIFloat",
+            @"contents": self.floatingPoint};
+}
+
+
 @end

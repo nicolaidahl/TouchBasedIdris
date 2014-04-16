@@ -23,9 +23,10 @@
 
 
 - (NSDictionary *)dictionaryRepresentation {
+    NSMutableDictionary *mutableDictionary = [@{@"lhs": self.lhs} mutableCopy];
+    !self.rhs ?: [mutableDictionary setObject:self.rhs forKey:@"rhs"];
 
-    return @{@"lhs": self.lhs,
-             @"rhs": self.rhs};
+    return mutableDictionary;
 
 }
 

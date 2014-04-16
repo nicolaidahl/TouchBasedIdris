@@ -7,7 +7,7 @@
 #import "IDTExpression.h"
 
 
-@interface IDTFunctionApplication : IDTExpression
+@interface IDTFunctionApplication : IDTExpression <IDTJSONSerializable>
 
 @property (nonatomic, strong) IDTExpression *function;
 @property (nonatomic, strong) NSArray *arguments;

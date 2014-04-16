@@ -20,15 +20,20 @@
 }
 
 
-- (NSMutableArray *)topLevelDecs {
-    return [@[] mutableCopy];
+- (NSMutableArray *)topLevelDec {
+    if(!_topLevelDec)
+    {
+        _topLevelDec = [@[] mutableCopy];
+    }
+
+    return _topLevelDec;
 }
 
 
 - (NSDictionary *)dictionaryRepresentation {
 
     return @{@"name": self.name,
-             @"topLevelDec": self.topLevelDecs};
+             @"topLevelDec": self.topLevelDec};
 
 }
 

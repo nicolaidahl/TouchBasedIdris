@@ -9,4 +9,10 @@
 @implementation IDTConstantInt {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIInt",
+            @"contents": self.integer};
+}
+
 @end

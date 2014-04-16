@@ -21,12 +21,12 @@
 - (RACSignal *) getEvaluationOfObjectHierarchy: (IDTProgram* ) program
 {
     IDTRequestDispatcher *requestDispatcher = [[IDTRequestDispatcher alloc] init];
-    NSMutableURLRequest *request = [requestDispatcher standardJSONURLGetRequest];
+    NSMutableURLRequest *request = [requestDispatcher standardJSONURLPostRequest];
 
     NSData *jsonData = [[IDTJSONSerializer serializer] serializeObjectHierarchyToData:program];
 
     NSData *requestBodyData = jsonData;
-    request.HTTPBody = nil;
+    request.HTTPBody = requestBodyData;
 
     return [requestDispatcher dispatchRequest:request];
 }

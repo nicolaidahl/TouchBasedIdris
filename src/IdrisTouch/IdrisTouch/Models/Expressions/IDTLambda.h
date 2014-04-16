@@ -7,7 +7,7 @@
 #import "IDTExpression.h"
 
 
-@interface IDTLambda : IDTExpression
+@interface IDTLambda : IDTExpression <IDTJSONSerializable>
 
 @property (nonatomic, strong) NSString *identifier;
 @property (nonatomic, strong) IDTExpression *expression;

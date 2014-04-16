@@ -9,4 +9,10 @@
 @implementation IDTConstantString {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIString",
+            @"contents": self.string};
+}
+
 @end

@@ -10,6 +10,7 @@ pod 'GCNetworkReachability'
 pod 'Classy'
 pod 'ClassyLiveLayout', :head
 pod 'TouchJSON'
+pod 'DCKeyValueObjectMapping'
 
 # Only for debug. Remove before shipping
 pod 'Reveal-iOS-SDK'

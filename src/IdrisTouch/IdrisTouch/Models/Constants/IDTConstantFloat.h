@@ -7,7 +7,7 @@
 #import "IDTConstant.h"
 
 
-@interface IDTConstantFloat : IDTConstant
+@interface IDTConstantFloat : IDTConstant <IDTJSONSerializable>
 
 @property (nonatomic, strong) NSNumber *floatingPoint;
 

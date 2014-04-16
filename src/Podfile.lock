@@ -4,6 +4,7 @@ PODS:
     - Classy
     - Masonry
   - DCIntrospect (0.0.2)
+  - DCKeyValueObjectMapping (1.4)
   - dyci (0.1.5.20140124):
     - dyci/Core
     - dyci/Helpers
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - Classy
   - ClassyLiveLayout (HEAD)
   - DCIntrospect
+  - DCKeyValueObjectMapping
   - dyci (from `https://github.com/DyCI/dyci-main.git`)
   - GCNetworkReachability
   - libextobjc (~> 0.4)
@@ -79,6 +81,7 @@ SPEC CHECKSUMS:
   Classy: 558fdea4332e29c9c5a2c7a8687c385e11ae463b
   ClassyLiveLayout: 029fc037732107d2c051438046e79d751b483e59
   DCIntrospect: c5480ef97044ceec62936786a3c807dda58c6b5b
+  DCKeyValueObjectMapping: 39adaf0a54ff6368a22d9221db60f0696d81ad7b
   dyci: a547f35263983aad987afa301ba0a10d2d160c51
   GCNetworkReachability: 42b752786acb7c8b58b83a07fed1f5fcfae8c2a6
   libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a

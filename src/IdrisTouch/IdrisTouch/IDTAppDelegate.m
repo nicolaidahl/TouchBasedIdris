@@ -13,6 +13,14 @@
 #import "CASUtilities.h"
 #import "IDTAPIClient.h"
 #import "IDTProgram.h"
+#import "IDTTopLevelDec.h"
+#import "IDTTopLevelDataDec.h"
+#import "IDTConstructor.h"
+#import "IDTTopLevelFuncDec.h"
+#import "IDTClause.h"
+#import "IDTConstantExpression.h"
+#import "IDTConstantTypeType.h"
+#import "IDTReference.h"
 
 @implementation IDTAppDelegate
 
@@ -43,10 +51,31 @@ static NSString *const kNameOfStylesheetFile = @"Stylesheets/stylesheet.cas";
 
     IDTProgram *program = [[IDTProgram alloc] initWithName:@"test"];
 
+    IDTTopLevelDataDec *topLevelDataDec = [[IDTTopLevelDataDec alloc] init];
+    topLevelDataDec.ident = @"Nat";
+    topLevelDataDec.titype = [[IDTConstantExpression alloc] initWithConstant:[[IDTConstantTypeType alloc] init]];
+
+    IDTConstructor *constructor = [[IDTConstructor alloc] init];
+    constructor.constructor = @"Z";
+    constructor.constructorType = [[IDTReference alloc] initWithVarName:@"Nat"];
+
+    topLevelDataDec.constructors = [@[constructor] mutableCopy];
+
+    IDTTopLevelFuncDec *funcDec = [[IDTTopLevelFuncDec alloc] init];
+    funcDec.ident = @"zip";
+    funcDec.titype = nil;
+    
+    IDTClause *clause = [[IDTClause alloc] init];
+
+    funcDec.clauses = [@[clause] mutableCopy];
+
+    program.topLevelDec = [@[topLevelDataDec] mutableCopy];
+
     RACSignal *signal = [client getEvaluationOfObjectHierarchy:program];
 
-    [signal subscribeNext:^(id x) {
-
+    [signal subscribeNext:^(NSDictionary *dictionary) {
+        IDTJSONSerializer *serializer = [IDTJSONSerializer serializer];
+        IDTProgram *program1 = [serializer deserializeToProgram:dictionary];
     } error:^(NSError *error) {
 
     } completed:^{

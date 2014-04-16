@@ -9,4 +9,10 @@
 @implementation IDTFunctionApplication {
 
 }
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIApp",
+             @"contents": @[self.function, self.arguments]};
+}
+
+
 @end

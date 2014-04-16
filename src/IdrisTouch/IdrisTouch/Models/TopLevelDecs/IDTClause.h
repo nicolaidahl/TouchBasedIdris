@@ -11,7 +11,7 @@
 
 @interface IDTClause : NSObject <IDTJSONSerializable>
 
-@property (nonatomic, strong) NSArray *lhs;
+@property (nonatomic, strong) NSMutableArray *lhs; //of expressions
 @property (nonatomic, strong) IDTExpression *rhs;
 
 @end

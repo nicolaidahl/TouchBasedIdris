@@ -7,5 +7,10 @@
 #import "IDTExpression.h"
 
 
-@interface IDTPi : IDTExpression
+@interface IDTPi : IDTExpression <IDTJSONSerializable>
+
+@property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, strong) IDTExpression *expr1;
+@property (nonatomic, strong) IDTExpression *expr2;
+
 @end

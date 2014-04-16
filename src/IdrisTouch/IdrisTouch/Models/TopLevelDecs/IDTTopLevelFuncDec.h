@@ -5,14 +5,15 @@
 
 #import <Foundation/Foundation.h>
 #import "IDTTopLevelDec.h"
+#import "IDTJSONSerializer.h"
 
 @class IDTExpression;
 
 
-@interface IDTTopLevelFuncDec : IDTTopLevelDec
+@interface IDTTopLevelFuncDec : IDTTopLevelDec <IDTJSONSerializable>
 
-@property (nonatomic, strong) NSString *identifier;
-@property (nonatomic, strong) IDTExpression *type;
-@property (nonatomic, strong) NSArray *clauses;
+@property (nonatomic, strong) NSString *ident;
+@property (nonatomic, strong) IDTExpression *titype;
+@property (nonatomic, strong) NSMutableArray *clauses;
 
 @end

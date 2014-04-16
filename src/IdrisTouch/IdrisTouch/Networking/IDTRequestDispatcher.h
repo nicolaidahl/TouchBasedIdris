@@ -12,4 +12,6 @@
 - (RACSignal *)dispatchRequest:(NSURLRequest *)request;
 
 - (NSMutableURLRequest *)standardJSONURLGetRequest;
+
+- (NSMutableURLRequest *)standardJSONURLPostRequest;
 @end

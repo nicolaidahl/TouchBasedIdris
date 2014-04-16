@@ -9,4 +9,10 @@
 @implementation IDTVariable {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIVar",
+            @"contents": self.variableName};
+}
+
 @end

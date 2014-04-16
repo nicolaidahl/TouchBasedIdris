@@ -10,7 +10,7 @@
 @interface IDTProgram : NSObject <IDTJSONSerializable>
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSMutableArray *topLevelDecs;
+@property (nonatomic, strong) NSMutableArray *topLevelDec;
 
 - (id)initWithName:(NSString *)name;
 @end

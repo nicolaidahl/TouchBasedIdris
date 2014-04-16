@@ -46,8 +46,20 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
             CJSONDeserializer *theDeserializer = [CJSONDeserializer deserializer];
             theDeserializer.nullObject = NULL;
             NSError *theError = nil;
+
             NSDictionary *theObject = [theDeserializer deserialize:theJSONData error:&theError];
-            [subscriber sendNext:theObject];
+
+            if(theError)
+            {
+                NSLog(@"%@", theError.userInfo);
+                self.error = theError;
+            }
+            else
+            {
+
+                [subscriber sendNext:theObject];
+            }
+
 
 
         }];
@@ -122,6 +134,20 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
     return request;
 }
 
+- (NSMutableURLRequest *) standardJSONURLPostRequest
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", endPoint, IDTTypePath]];
+
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
+    request.HTTPMethod = IDTHTTPMethodPost;
+
+    // This is how we set header fields
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+
+    return request;
+}
 
 
 @end

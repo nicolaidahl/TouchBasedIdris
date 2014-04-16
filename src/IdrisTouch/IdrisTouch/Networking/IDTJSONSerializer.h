@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class IDTProgram;
+
 @protocol IDTJSONSerializable
 
 - (NSDictionary *) dictionaryRepresentation;
@@ -15,4 +17,6 @@
 + (instancetype)serializer;
 
 - (NSData *)serializeObjectHierarchyToData:(id <IDTJSONSerializable>)object;
+
+- (IDTProgram *)deserializeToProgram:(NSDictionary *)dictionary;
 @end

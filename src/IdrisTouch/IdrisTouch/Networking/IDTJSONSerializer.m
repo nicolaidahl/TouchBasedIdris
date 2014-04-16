@@ -5,6 +5,13 @@
 
 #import "IDTJSONSerializer.h"
 #import "CJSONSerializer.h"
+#import "IDTProgram.h"
+#import "IDTTopLevelDec.h"
+#import "DCKeyValueObjectMapping.h"
+#import "IDTTopLevelDataDec.h"
+#import "IDTTopLevelFuncDec.h"
+#import "IDTConstructor.h"
+#import "IDTClause.h"
 
 
 @implementation IDTJSONSerializer {
@@ -22,6 +29,7 @@
 {
     NSDictionary *converted = [self serializeObjectHierarchy:object];
     NSError *error = NULL;
+
     NSData *jsonData = [[CJSONSerializer serializer] serializeObject:converted error:&error];
 
     return jsonData;
@@ -98,6 +106,66 @@
 
 #pragma mark - Deserialize
 
+- (IDTProgram *) deserializeToProgram: (NSDictionary *) dictionary
+{
+    IDTProgram *program = [[IDTProgram alloc] initWithName:dictionary[@"name"]];
 
+    for (NSDictionary *topLevelDec in dictionary[@"topLevelDec"]) {
+        [program.topLevelDec addObject:[self deserializeTopLevelDec:topLevelDec]];
+    }
+
+    return program;
+}
+
+- (IDTTopLevelDec*) deserializeTopLevelDec:(NSDictionary *)dictionary {
+
+    NSString *tag = dictionary[@"tag"];
+    if([tag isEqualToString:@"TIDataDec"])
+    {
+        IDTTopLevelDataDec *dataDec = [[IDTTopLevelDataDec alloc] init];
+        dataDec.constructors = [self deserializeConstructors: dictionary[@"constructors"]];
+
+        return dataDec;
+    }
+    else if([tag isEqualToString:@"TIFunctionDec"])
+    {
+        IDTTopLevelFuncDec *funcDec = [[IDTTopLevelFuncDec alloc] init];
+        funcDec.clauses = [self deserializeClauses:dictionary[@"clauses"]];
+        return funcDec;
+    }
+    else
+        return nil;
+
+}
+
+- (NSMutableArray *)deserializeConstructors:(NSArray *)constructors {
+
+    NSMutableArray *arr = [@[] mutableCopy];
+
+    for (NSDictionary *constructor in constructors) {
+        IDTConstructor *constructorObject = [[IDTConstructor alloc] init];
+        constructorObject.constructor = constructor[@"constructor"];
+        constructorObject.constructorType = nil;
+
+        [arr addObject:constructorObject];
+    }
+
+    return arr;
+}
+
+- (NSMutableArray *) deserializeClauses: (NSArray *) clauses {
+
+    NSMutableArray *arr = [@[] mutableCopy];
+
+    for (NSDictionary *clause in clauses) {
+        IDTClause *clauseObject = [[IDTClause alloc] init];
+        clauseObject.lhs = [@[] mutableCopy];
+        clauseObject.rhs = nil;
+
+        [arr addObject:clauseObject];
+    }
+
+    return arr;
+}
 
 @end

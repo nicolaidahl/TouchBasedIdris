@@ -7,7 +7,7 @@
 #import "IDTConstant.h"
 
 
-@interface IDTConstantInt : IDTConstant
+@interface IDTConstantInt : IDTConstant <IDTJSONSerializable>
 
 @property (nonatomic, strong) NSNumber *integer;
 

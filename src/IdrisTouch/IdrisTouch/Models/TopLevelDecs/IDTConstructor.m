@@ -4,6 +4,7 @@
 //
 
 #import "IDTConstructor.h"
+#import "IDTExpression.h"
 
 
 @implementation IDTConstructor {
@@ -11,6 +12,11 @@
 }
 
 
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"constructor": self.constructor,
+             @"constructorType": self.constructorType};
+
+}
 
 
 @end

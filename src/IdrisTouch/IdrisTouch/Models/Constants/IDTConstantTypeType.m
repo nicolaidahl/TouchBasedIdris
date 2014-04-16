@@ -9,4 +9,10 @@
 @implementation IDTConstantTypeType {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TITypeTy",
+            @"contents": @[]};
+}
+
 @end

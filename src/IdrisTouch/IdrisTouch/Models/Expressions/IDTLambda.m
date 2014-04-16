@@ -9,4 +9,10 @@
 @implementation IDTLambda {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TILam",
+            @"contents": @[self.identifier, self.expression]};
+}
+
 @end

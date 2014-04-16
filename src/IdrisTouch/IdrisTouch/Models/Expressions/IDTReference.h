@@ -7,8 +7,9 @@
 #import "IDTExpression.h"
 
 
-@interface IDTReference : IDTExpression
+@interface IDTReference : IDTExpression <IDTJSONSerializable>
 
 @property (nonatomic, strong) NSString *variableName;
 
+- (id)initWithVarName:(NSString *)varName;
 @end

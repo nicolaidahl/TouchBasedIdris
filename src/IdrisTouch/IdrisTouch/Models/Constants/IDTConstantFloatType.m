@@ -9,4 +9,10 @@
 @implementation IDTConstantFloatType {
 
 }
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIFloatTy",
+            @"contents": @[]};
+}
+
 @end

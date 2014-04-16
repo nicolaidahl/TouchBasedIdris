@@ -11,5 +11,20 @@
 
 }
 
+- (id)initWithConstant: (IDTConstant*) constant {
+    self = [super init];
+    if (self) {
+        self.constant = constant;
+    }
+
+    return self;
+}
+
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIConst",
+             @"contents": self.constant};
+}
+
 
 @end

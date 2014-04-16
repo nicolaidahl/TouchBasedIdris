@@ -9,4 +9,20 @@
 @implementation IDTReference {
 
 }
+
+- (id)initWithVarName: (NSString *) varName {
+    self = [super init];
+    if (self) {
+        self.variableName = varName;
+    }
+
+    return self;
+}
+
+
+- (NSDictionary *)dictionaryRepresentation {
+    return @{@"tag": @"TIRef",
+            @"contents": self.variableName};
+}
+
 @end

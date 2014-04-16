@@ -7,5 +7,5 @@
 #import "IDTConstant.h"
 
 
-@interface IDTConstantStringType : IDTConstant
+@interface IDTConstantStringType : IDTConstant <IDTJSONSerializable>
 @end

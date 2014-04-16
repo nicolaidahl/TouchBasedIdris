@@ -7,7 +7,7 @@
 #import "IDTConstant.h"
 
 
-@interface IDTConstantString : IDTConstant
+@interface IDTConstantString : IDTConstant <IDTJSONSerializable>
 
 @property (nonatomic, strong) NSString *string;
 

@@ -7,9 +7,13 @@
 #import "IDTTopLevelDec.h"
 #import "IDTJSONSerializer.h"
 
+@class IDTExpression;
+
 
 @interface IDTTopLevelDataDec : IDTTopLevelDec <IDTJSONSerializable>
 
+@property (nonatomic, strong) NSString *ident;
+@property (nonatomic, strong) IDTExpression *titype;
 @property (nonatomic, strong) NSMutableArray *constructors;
 
 @end

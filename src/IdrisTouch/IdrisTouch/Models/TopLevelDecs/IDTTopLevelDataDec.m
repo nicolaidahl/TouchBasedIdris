@@ -4,6 +4,7 @@
 //
 
 #import "IDTTopLevelDataDec.h"
+#import "IDTExpression.h"
 
 
 @implementation IDTTopLevelDataDec {
@@ -22,8 +23,12 @@
 
 - (NSDictionary *)dictionaryRepresentation {
 
-    return @{@"tag": @"TIDataDec",
-             @"constructors": self.constructors};
+    NSMutableDictionary *mutableDictionary = [@{@"tag": @"TIDataDec",
+                                                @"ident": self.ident,
+                                                @"constructors": self.constructors} mutableCopy];
+    !self.titype ?: [mutableDictionary setObject:self.titype forKey:@"titype"];
+
+    return mutableDictionary;
 
 }
 

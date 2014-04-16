@@ -9,8 +9,9 @@
 @class IDTConstant;
 
 
-@interface IDTConstantExpression : IDTExpression
+@interface IDTConstantExpression : IDTExpression <IDTJSONSerializable>
 
 @property (nonatomic, strong) IDTConstant *constant;
 
+- (id)initWithConstant:(IDTConstant *)constant;
 @end
