@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) NSNumber *integer;
 
+- (id)initWithInt:(NSNumber *)integer;
 @end

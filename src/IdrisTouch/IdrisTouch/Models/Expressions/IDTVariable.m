@@ -10,6 +10,16 @@
 
 }
 
+- (id)initWithName: (NSString*) variableName {
+    self = [super init];
+    if (self) {
+        self.variableName = variableName;
+    }
+
+    return self;
+}
+
+
 - (NSDictionary *)dictionaryRepresentation {
     return @{@"tag": @"TIVar",
             @"contents": self.variableName};

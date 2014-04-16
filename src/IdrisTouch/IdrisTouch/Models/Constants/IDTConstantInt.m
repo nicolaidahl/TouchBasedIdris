@@ -10,6 +10,16 @@
 
 }
 
+- (id)initWithInt: (NSNumber *) integer {
+    self = [super init];
+    if (self) {
+        self.integer = integer;
+    }
+
+    return self;
+}
+
+
 - (NSDictionary *)dictionaryRepresentation {
     return @{@"tag": @"TIInt",
             @"contents": self.integer};

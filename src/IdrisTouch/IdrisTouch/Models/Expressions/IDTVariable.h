@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) NSString *variableName;
 
+- (id)initWithName:(NSString *)variableName;
 @end

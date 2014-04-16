@@ -10,6 +10,16 @@
 
 }
 
+- (id)initWithString: (NSString *) string {
+    self = [super init];
+    if (self) {
+        self.string = string;
+    }
+
+    return self;
+}
+
+
 - (NSDictionary *)dictionaryRepresentation {
     return @{@"tag": @"TIString",
             @"contents": self.string};

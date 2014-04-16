@@ -40,7 +40,7 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
             return [subscriber sendError:errorWithData];
         }];
 
-        [RACObserve(self, responseData) subscribeNext:^(NSMutableData *data) {
+        [[RACObserve(self, responseData) ignore:nil] subscribeNext:^(NSMutableData *data) {
             NSData *theJSONData = data;
 
             CJSONDeserializer *theDeserializer = [CJSONDeserializer deserializer];
@@ -49,17 +49,14 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
 
             NSDictionary *theObject = [theDeserializer deserialize:theJSONData error:&theError];
 
-            if(theError)
-            {
+            if (theError) {
                 NSLog(@"%@", theError.userInfo);
                 self.error = theError;
             }
-            else
-            {
+            else {
 
                 [subscriber sendNext:theObject];
             }
-
 
 
         }];
@@ -90,7 +87,7 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
     // so that we can append data to it in the didReceiveData method
     // Furthermore, this method is called each time there is a redirect so reinitializing it
     // also serves to clear it
-    self.responseData = [[NSMutableData alloc] init];
+    self.responseData = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

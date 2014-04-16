@@ -10,6 +10,16 @@
 
 }
 
+- (id)initWithFloat: (NSNumber *)floatingPoint{
+    self = [super init];
+    if (self) {
+        self.floatingPoint = floatingPoint;
+    }
+
+    return self;
+}
+
+
 - (NSDictionary *)dictionaryRepresentation {
     return @{@"tag": @"TIFloat",
             @"contents": self.floatingPoint};

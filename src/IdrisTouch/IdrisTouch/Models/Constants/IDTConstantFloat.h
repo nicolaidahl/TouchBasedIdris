@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) NSNumber *floatingPoint;
 
+- (id)initWithFloat:(NSNumber *)floatingPoint;
 @end

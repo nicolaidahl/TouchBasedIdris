@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) NSString *string;
 
+- (id)initWithString:(NSString *)string;
 @end
