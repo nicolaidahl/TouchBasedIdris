@@ -8,7 +8,8 @@ import Snap.Core
 import Snap.Util.FileServe
 import Snap.Http.Server
 import Data.Aeson (decode, encode)
-import Data.ByteString.Internal (ByteString)
+import Data.ByteString (ByteString, append)
+import Data.ByteString.Lazy (toChunks)
 
 contentType :: ByteString 
 contentType = "application/json; charset=utf-8"
@@ -47,7 +48,14 @@ test = do
 typeHandler :: Snap ()
 typeHandler = do
   modifyResponse $ setHeader "Content-Type" contentType
-  astJSON <- readRequestBody 128
-  let ast = decode astJSON :: Maybe TIAbsSyntaxTree
-  case ast of Nothing -> writeBS "You Suck"
-              Just a  -> writeLBS $ encode a
+  astJSON <- readRequestBody 32768
+  let decodedAst = decode astJSON :: Maybe TIAbsSyntaxTree
+  case (decodedAst) of 
+    Nothing -> do
+      modifyResponse $ setResponseStatus 500 "Internal Server Error"
+      logError $ append "Error, couldn't deserialize: " $ head $ toChunks astJSON
+      writeBS $ "Error, couldn't deserialize"
+    Just ast -> do
+      let encodedAst = encode ast
+      logError $ head $ toChunks encodedAst
+      writeLBS encodedAst
