@@ -8,10 +8,13 @@ import Snap.Core
 import Snap.Util.FileServe
 import Snap.Http.Server
 import Data.Aeson (decode, encode)
-import Data.ByteString (ByteString, append)
-import Data.ByteString.Lazy (toChunks)
+import Data.ByteString as BS
+import Data.ByteString.Lazy as LBS
 
-contentType :: ByteString 
+lbs2BS :: LBS.ByteString -> BS.ByteString
+lbs2BS = BS.concat . LBS.toChunks
+
+contentType :: BS.ByteString 
 contentType = "application/json; charset=utf-8"
 
 main :: IO ()
@@ -53,9 +56,9 @@ typeHandler = do
   case (decodedAst) of 
     Nothing -> do
       modifyResponse $ setResponseStatus 500 "Internal Server Error"
-      logError $ append "Error, couldn't deserialize: " $ head $ toChunks astJSON
+      logError $ BS.append "Error, couldn't deserialize: " $ lbs2BS astJSON
       writeBS $ "Error, couldn't deserialize"
     Just ast -> do
       let encodedAst = encode ast
-      logError $ head $ toChunks encodedAst
+      logError $ BS.append "Deserialized: " $ lbs2BS encodedAst -- This probably shouldn't go in the error log
       writeLBS encodedAst
