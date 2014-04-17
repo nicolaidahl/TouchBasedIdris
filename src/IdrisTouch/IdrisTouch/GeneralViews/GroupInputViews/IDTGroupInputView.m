@@ -11,7 +11,6 @@
 
 @interface IDTGroupInputView ()
 
-@property (nonatomic, strong) NSMutableArray *inputViews;
 @property (nonatomic, strong) NSMutableArray *separatorViews;
 
 @end
@@ -29,11 +28,23 @@
     return self;
 }
 
+- (id)initWithExactNumberOfInputViews: (NSNumber *) exactNumberOfInputViews andSeparatorType:
+        (IDTGroupInputViewSeparatorType) separatorType {
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        _exactNumberOfInputViews = exactNumberOfInputViews;
+        _inputViewSeparatorType = separatorType;
+    }
+
+    return self;
+}
+
 
 - (id)initAndLayoutWithSeparatorType: (IDTGroupInputViewSeparatorType) separatorType {
     self = [super initAndLayout];
     if (self) {
         _inputViewSeparatorType = separatorType;
+
     }
 
     return self;
@@ -42,7 +53,14 @@
 
 - (void)addSubviews {
 
-    [self addInputView];
+    if(!_exactNumberOfInputViews)
+        [self addInputView];
+    else
+    {
+        for (int j = 0; j < [_exactNumberOfInputViews integerValue]; j++)
+            [self addInputView];
+    }
+
 
 }
 
@@ -94,7 +112,8 @@
         if (_inputViews.count > 0) {
             IDTInputView *lastInputView = ((IDTInputView*)_inputViews[_inputViews.count - 1]);
             if (lastInputView.textField == iv.textField) {
-                if(![text isEqualToString:@""])
+                if(![text isEqualToString:@""] && (!_exactNumberOfInputViews || _inputViews.count <
+                            [_exactNumberOfInputViews integerValue]))
                 {
                     [self addInputView];
                     [self updateConstraints];
@@ -133,6 +152,14 @@
             {
                 separatorImageView = [[UIImageView alloc] initWithImage:[UIImage
                         imageNamed:@"type_arrow"]];
+                break;
+            }
+            case IDTGroupInputViewSeparatorColon:
+            {
+                UILabel *label = [[UILabel alloc] init];
+                label.text = @" :";
+                label.cas_styleClass = @"group-input-view-separator-label";
+                separatorImageView = label;
                 break;
             }
         }

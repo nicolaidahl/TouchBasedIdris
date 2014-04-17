@@ -6,18 +6,18 @@
 #import "IDTDataDeclarationView.h"
 #import "IDTInferenceRuleView.h"
 #import "UIColor+CASAdditions.h"
+#import "IDTConstructor.h"
 
 @interface IDTDataDeclarationView ()
 
 @property (nonatomic, strong) UIView *connectingLine;
 @property (nonatomic, strong) UILabel *dataLabel;
-@property (nonatomic, strong) IDTInferenceRuleView *typeDeclaration;
 @property (nonatomic, strong) UILabel *whereLabel;
 @property (nonatomic, strong) UIView *verticalLine;
 @property (nonatomic, strong) NSMutableArray *constructors;
+
+
 @property (nonatomic, strong) UIButton *addConstructorButton;
-
-
 @end
 
 @implementation IDTDataDeclarationView {
@@ -132,6 +132,8 @@
     [self addSubview:newConstructor];
     [self.constructors addObject:newConstructor];
 
+    [self.addedNewConstructorCommand execute:newConstructor];
+
 }
 
 - (UIView *)viewThatConnectsThisToViewHierarchy {
@@ -210,6 +212,18 @@
     }
 
     return _addConstructorButton;
+}
+
+- (RACCommand *)addedNewConstructorCommand {
+    if(!_addedNewConstructorCommand)
+    {
+        _addedNewConstructorCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(IDTInferenceRuleView *constructor) {
+            return [RACSignal return:constructor];
+        }];
+
+    }
+
+    return _addedNewConstructorCommand;
 }
 
 

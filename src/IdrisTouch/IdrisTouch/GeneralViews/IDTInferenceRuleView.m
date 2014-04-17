@@ -7,13 +7,13 @@
 #import "IDTDashedTextField.h"
 #import "IDTGroupInputView.h"
 #import "IDTInputView.h"
+#import "IDTNameTypeGroupInputView.h"
+#import "IDTPremissGroupInputView.h"
 
 
 @interface IDTInferenceRuleView ()
 
-@property (nonatomic, strong) IDTGroupInputView *premisesInputGroup;
 @property (nonatomic, strong) UIView *separatorLine;
-@property (nonatomic, strong) IDTInputView *conclusionInputView;
 
 
 @end
@@ -24,7 +24,10 @@
 
 - (id)initAndLayout {
     self = [super initAndLayout];
+    if (self)
+    {
 
+    }
 
     return self;
 }
@@ -92,10 +95,10 @@
 
 
 
-- (IDTGroupInputView *)premisesInputGroup {
+- (IDTPremissGroupInputView *)premisesInputGroup {
     if(!_premisesInputGroup)
     {
-        _premisesInputGroup = [[IDTGroupInputView alloc] initAndLayoutWithSeparatorType:IDTGroupInputViewSeparatorLargeSpace];
+        _premisesInputGroup = [[IDTPremissGroupInputView alloc] initPremissGroupInputView];
         _premisesInputGroup.cas_styleClass = @"inference-rule-premises-input-group";
     }
 
@@ -103,10 +106,11 @@
 }
 
 
-- (IDTInputView *)conclusionInputView {
+
+- (IDTNameTypeGroupInputView *)conclusionInputView {
     if(!_conclusionInputView)
     {
-        _conclusionInputView = [[IDTInputView alloc] initAndLayout];
+        _conclusionInputView = [[IDTNameTypeGroupInputView alloc] initNameTypeGroupInputView];
         _conclusionInputView.cas_styleClass = @"inference-rule-conclusion";
     }
 

@@ -16,7 +16,7 @@ static const int topLevelDecMargin = 20;
 
 @property (nonatomic, strong) UIButton *addTopLevelDecButton;
 
-- (void)addDataDeclaration;
+- (RACTuple *)addDataDeclaration;
 
-- (void)addFunctionDeclaration;
+- (RACTuple *)addFunctionDeclaration;
 @end

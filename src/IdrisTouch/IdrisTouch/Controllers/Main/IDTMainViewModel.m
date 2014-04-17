@@ -4,6 +4,7 @@
 //
 
 #import "IDTMainViewModel.h"
+#import "IDTProgram.h"
 
 @interface IDTMainViewModel ()
 
@@ -24,5 +25,14 @@
 
     return _addTopLevelDecCommand;
 }
+
+- (IDTProgram *)program {
+
+    if(!_program) {
+        _program = [[IDTProgram alloc] initWithName:@"Idris Touch"];
+    }
+    return _program;
+}
+
 
 @end

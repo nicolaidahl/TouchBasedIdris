@@ -119,7 +119,7 @@
 
 }
 
-- (void) addDataDeclaration
+- (RACTuple *) addDataDeclaration
 {
     IDTDataDeclarationView *dataDeclarationView = [[IDTDataDeclarationView alloc] initAndLayout];
     dataDeclarationView.cas_styleClass = @"top-level-dec-data";
@@ -131,9 +131,11 @@
 
     [self.scrollView insertSubview:dataDeclarationView belowSubview:self.verticalLine];
     [self.topLevelDeclarationTuples addObject:dataDeclarationTuple];
+
+    return dataDeclarationTuple;
 }
 
-- (void) addFunctionDeclaration
+- (RACTuple *) addFunctionDeclaration
 {
     IDTFunctionDeclarationView *funcDeclarationView = [[IDTFunctionDeclarationView alloc] initAndLayout];
     funcDeclarationView.cas_styleClass = @"top-level-dec-function";
@@ -145,6 +147,8 @@
 
     [self.scrollView insertSubview:funcDeclarationView belowSubview:self.verticalLine];
     [self.topLevelDeclarationTuples addObject:funcDeclarationTuple];
+
+    return funcDeclarationTuple;
 }
 
 - (UIImageView*) newLineActionButton

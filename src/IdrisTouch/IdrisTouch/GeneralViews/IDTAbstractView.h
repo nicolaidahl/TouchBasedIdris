@@ -9,7 +9,7 @@
 @interface IDTAbstractView : UIView
 
 // The use of this constructor will automatically layout the view
-- (id) initAndLayout;
+- (id)initAndLayout;
 
 // If initAndLayout is not used as constructor the user should call this method for initial layout
 - (void) runInitialLayoutRoutine;

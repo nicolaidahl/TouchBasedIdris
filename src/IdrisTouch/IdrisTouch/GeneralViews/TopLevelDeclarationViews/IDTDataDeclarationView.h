@@ -7,7 +7,11 @@
 #import "IDTAbstractView.h"
 #import "IDTAbstractHierarchyView.h"
 #import "IDTAbstractTopLevelDeclarationView.h"
-
+#import "IDTInferenceRuleView.h"
 
 @interface IDTDataDeclarationView : IDTAbstractTopLevelDeclarationView
+
+@property (nonatomic, strong) RACCommand *addedNewConstructorCommand;
+
+@property (nonatomic, strong) IDTInferenceRuleView *typeDeclaration;
 @end

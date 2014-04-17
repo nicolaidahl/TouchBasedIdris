@@ -13,4 +13,5 @@
 @property (nonatomic, strong) IDTExpression *expr1;
 @property (nonatomic, strong) IDTExpression *expr2;
 
+- (id)initWithExpr1:(IDTExpression *)expr1 andExpr2:(IDTExpression *)expr2;
 @end

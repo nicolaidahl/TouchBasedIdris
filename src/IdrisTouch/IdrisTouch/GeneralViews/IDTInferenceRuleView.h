@@ -7,7 +7,13 @@
 #import "IDTAbstractView.h"
 #import "IDTAbstractHierarchyView.h"
 
+@class IDTNameTypeGroupInputView;
+@class IDTGroupInputView;
+@class IDTPremissGroupInputView;
+
 
 @interface IDTInferenceRuleView : IDTAbstractHierarchyView
 
+@property (nonatomic, strong) IDTNameTypeGroupInputView *conclusionInputView;
+@property (nonatomic, strong) IDTPremissGroupInputView *premisesInputGroup;
 @end

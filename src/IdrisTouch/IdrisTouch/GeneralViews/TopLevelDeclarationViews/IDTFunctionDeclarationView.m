@@ -13,7 +13,6 @@
 @property (nonatomic, strong) IDTGroupInputView *typeDeclaration;
 @property (nonatomic, strong) UIView *verticalLine;
 @property (nonatomic, strong) NSMutableArray *lineActionLineTuples;
-@property (nonatomic, strong) UIButton *addLineButton;
 
 @end
 

@@ -6,9 +6,13 @@
 #import <Foundation/Foundation.h>
 #import "IDTAbstractViewModel.h"
 
+@class IDTProgram;
+
 
 @interface IDTMainViewModel : IDTAbstractViewModel
 
 @property (nonatomic, strong) RACCommand *addTopLevelDecCommand;
+
+@property (nonatomic, strong) IDTProgram *program;
 
 @end

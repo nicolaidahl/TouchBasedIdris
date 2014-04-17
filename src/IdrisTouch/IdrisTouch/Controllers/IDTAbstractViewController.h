@@ -12,7 +12,7 @@
 @interface IDTAbstractViewController : UIViewController
 
 @property (nonatomic, readonly) IDTAbstractView *mainView;
-@property (nonatomic, strong) IDTAbstractViewModel *viewModel;
+@property (nonatomic, readonly) IDTAbstractViewModel *viewModel;
 
 
 @end

@@ -12,7 +12,7 @@
 
 }
 
-- (id) initAndLayout
+- (id)initAndLayout
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {

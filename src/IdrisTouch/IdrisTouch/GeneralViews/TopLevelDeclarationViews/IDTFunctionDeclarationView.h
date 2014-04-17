@@ -8,4 +8,5 @@
 
 
 @interface IDTFunctionDeclarationView : IDTAbstractTopLevelDeclarationView
+@property (nonatomic, strong) UIButton *addLineButton;
 @end

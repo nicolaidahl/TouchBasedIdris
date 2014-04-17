@@ -98,6 +98,10 @@ UILabel.data-dec-where-label {
     cas_margin-left: $separator-margin;
 }
 
+^UILabel.group-input-view-separator-label {
+    font: $menlo-font-14;
+}
+
 UIView.inference-rule-separator-line {
     cas_size-height $line-width;
     cas_margin-top 3;
