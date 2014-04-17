@@ -7,9 +7,8 @@
 #import "IDTGroupInputView.h"
 
 
-@interface IDTPremissGroupInputView : IDTGroupInputView
+@interface IDTClauseGroupInputView : IDTGroupInputView
 
-@property (nonatomic, strong) RACSignal *premissChangedSignal;
 
-- (id)initAndLayoutPremissGroupInputView;
+- (id)initAndLayoutWithLhsInputView:(IDTInputView *)lhs andRhsInputView:(IDTInputView *)rhs;
 @end

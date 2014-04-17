@@ -98,7 +98,7 @@
 - (IDTPremissGroupInputView *)premisesInputGroup {
     if(!_premisesInputGroup)
     {
-        _premisesInputGroup = [[IDTPremissGroupInputView alloc] initPremissGroupInputView];
+        _premisesInputGroup = [[IDTPremissGroupInputView alloc] initAndLayoutPremissGroupInputView];
         _premisesInputGroup.cas_styleClass = @"inference-rule-premises-input-group";
     }
 
@@ -110,7 +110,7 @@
 - (IDTNameTypeGroupInputView *)conclusionInputView {
     if(!_conclusionInputView)
     {
-        _conclusionInputView = [[IDTNameTypeGroupInputView alloc] initNameTypeGroupInputView];
+        _conclusionInputView = [[IDTNameTypeGroupInputView alloc] initAndLayoutNameTypeGroupInputView];
         _conclusionInputView.cas_styleClass = @"inference-rule-conclusion";
     }
 

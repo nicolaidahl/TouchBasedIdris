@@ -74,7 +74,7 @@ static NSString *const kTagName = @"tag";
         }
         else if([value isKindOfClass:[NSArray class]])
         {
-            NSArray *array = [((NSArray *) value) mutableCopy];
+            NSMutableArray *array = [((NSArray *) value) mutableCopy];
             dictionary[key] = [self serializeArray:array];
         }
         else if (!([value isKindOfClass:[NSNull class]] || [value isKindOfClass:[NSNumber class]] || [value
@@ -103,7 +103,7 @@ static NSString *const kTagName = @"tag";
         }
         else if([value isKindOfClass:[NSArray class]])
         {
-            NSArray *mutableArray = [((NSArray *) value) mutableCopy];
+            NSMutableArray *mutableArray = [((NSArray *) value) mutableCopy];
             array[idx] = [self serializeArray:mutableArray];
         }
         else if (!([value isKindOfClass:[NSNull class]] || [value isKindOfClass:[NSNumber class]] || [value

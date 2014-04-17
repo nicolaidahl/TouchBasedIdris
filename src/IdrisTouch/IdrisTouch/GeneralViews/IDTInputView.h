@@ -8,9 +8,18 @@
 
 @class IDTDashedTextField;
 
+typedef NS_ENUM(NSInteger, IDTInputViewBorderStyle)
+{
+    IDTInputBorderStyleNone = 0,
+    IDTInputBorderStyleSolid,
+    IDTInputBorderStyleDashed
+};
 
 @interface IDTInputView : IDTAbstractView
 
-@property (nonatomic, strong) IDTDashedTextField *textField;
+@property (nonatomic, strong) UITextField *textField;
 
+@property (nonatomic, assign) IDTInputViewBorderStyle borderStyle;
+
+- (id)initAndLayoutWithBorderStyle:(IDTInputViewBorderStyle)borderStyle;
 @end

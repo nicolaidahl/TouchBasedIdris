@@ -16,5 +16,5 @@
 @property (nonatomic, strong) RACSignal *nameTextSignal;
 @property (nonatomic, strong) RACSignal *typeTextSignal;
 
-- (id)initNameTypeGroupInputView;
+- (id)initAndLayoutNameTypeGroupInputView;
 @end

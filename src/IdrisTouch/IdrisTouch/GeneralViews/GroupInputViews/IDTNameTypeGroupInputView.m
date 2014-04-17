@@ -12,10 +12,10 @@
 
 }
 
-- (id)initNameTypeGroupInputView {
-    self = [super initWithExactNumberOfInputViews:@2 andSeparatorType:IDTGroupInputViewSeparatorColon];
+- (id)initAndLayoutNameTypeGroupInputView {
+    self = [super initAndLayoutWithExactNumberOfInputViews:@2 separatorType:IDTGroupInputViewSeparatorColon
+                                             andBoderStyle:IDTInputBorderStyleDashed];
     if (self) {
-        [self runInitialLayoutRoutine];
 
 
 

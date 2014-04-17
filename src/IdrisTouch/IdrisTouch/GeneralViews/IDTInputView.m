@@ -16,6 +16,16 @@
 
 }
 
+- (id)initAndLayoutWithBorderStyle: (IDTInputViewBorderStyle) borderStyle {
+    self = [super init];
+    if (self) {
+        _borderStyle = borderStyle;
+
+        [self runInitialLayoutRoutine];
+    }
+
+    return self;
+}
 
 
 - (void)addSubviews {
@@ -55,12 +65,51 @@
 
 }
 
-- (IDTDashedTextField *)textField {
+- (void)setBorderStyle:(IDTInputViewBorderStyle)borderStyle {
+    _borderStyle = borderStyle;
+
+    [self.textField removeFromSuperview];
+    self.textField = [self textFieldWithBorderStyle:borderStyle];
+}
+
+
+- (UITextField*) textFieldWithBorderStyle: (IDTInputViewBorderStyle) borderStyle
+{
+    UITextField *textField;
+
+    switch (borderStyle)
+    {
+        case IDTInputBorderStyleNone:
+        {
+            textField = [[UITextField alloc] init];
+            break;
+        }
+        case IDTInputBorderStyleDashed:
+        {
+            textField = [IDTDashedTextField new];
+            break;
+        }
+        case IDTInputBorderStyleSolid:
+        {
+            textField = [[UITextField alloc] init];
+            textField.layer.borderColor = [[UIColor blackColor] CGColor];
+            textField.layer.borderWidth = 2;
+            textField.layer.cornerRadius = 8.0;
+
+            break;
+        }
+    }
+
+    textField.cas_styleClass = @"input-group-text-field";
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+
+    return textField;
+}
+
+- (UITextField *)textField {
     if(!_textField)
     {
-        _textField = [IDTDashedTextField new];
-        _textField.cas_styleClass = @"input-group-dashed-text-field";
-        _textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textField = [self textFieldWithBorderStyle:_borderStyle];
     }
 
     return _textField;

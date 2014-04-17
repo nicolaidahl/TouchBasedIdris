@@ -32,7 +32,7 @@ NSString * const reactiveExtensionErrorBodyKey = @"request_error_body_key";
 
 - (RACSignal *)dispatchRequest:(NSURLRequest *)request {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
 
         [[RACObserve(self, error) ignore:nil] subscribeNext:^(NSError *error) {

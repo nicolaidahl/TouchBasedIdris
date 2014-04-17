@@ -5,27 +5,33 @@
 
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
+#import "IDTInputView.h"
 
 typedef NS_ENUM(NSInteger, IDTGroupInputViewSeparatorType)
 {
     IDTGroupInputViewSeparatorSmallSpace = 0,
     IDTGroupInputViewSeparatorLargeSpace,
     IDTGroupInputViewSeparatorArrow,
-    IDTGroupInputViewSeparatorColon
+    IDTGroupInputViewSeparatorColon,
+    IDTGroupInputViewSeparatorEqual
 };
 
 
-@interface IDTGroupInputView : IDTAbstractView
 
-@property(nonatomic, readonly) IDTGroupInputViewSeparatorType inputViewSeparatorType;
-@property(nonatomic, readonly) NSNumber *exactNumberOfInputViews;
+@interface IDTGroupInputView : IDTInputView
+
+@property(nonatomic, assign) IDTGroupInputViewSeparatorType inputViewSeparatorType;
+@property (nonatomic, assign) IDTInputViewBorderStyle borderStyle;
+@property(nonatomic, strong) NSNumber *exactNumberOfInputViews;
 
 @property (nonatomic, strong) NSMutableArray *inputViews;
 
+- (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews separatorType:
+        (IDTGroupInputViewSeparatorType)separatorType andBoderStyle: (IDTInputViewBorderStyle) borderStyle;
 
-- (id)initWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews andSeparatorType:(IDTGroupInputViewSeparatorType)separatorType;
+- (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews andSeparatorType:(IDTGroupInputViewSeparatorType)separatorType;
 
-- (id)initAndLayoutWithSeparatorType:(IDTGroupInputViewSeparatorType)separatorType;
+- (void)addInputView:(IDTInputView *)inputView;
 
 - (void)addInputView;
 @end

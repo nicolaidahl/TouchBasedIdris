@@ -13,8 +13,9 @@
 }
 
 //Do not rename to initAndLayout. Inifite loop happens
-- (id)initPremissGroupInputView {
-    self = [super initAndLayoutWithSeparatorType:IDTGroupInputViewSeparatorArrow];
+- (id)initAndLayoutPremissGroupInputView {
+    self = [super initAndLayoutWithExactNumberOfInputViews:nil separatorType:IDTGroupInputViewSeparatorArrow
+                                             andBoderStyle:IDTInputBorderStyleDashed];
     if (self) {
 
         self.premissChangedSignal = [self.inputViews.rac_sequence
@@ -23,7 +24,6 @@
                                                IDTInputView *value) {
             return [RACSignal merge:@[accumulator, value.textField.rac_textSignal]];
         }];
-
 
     }
 

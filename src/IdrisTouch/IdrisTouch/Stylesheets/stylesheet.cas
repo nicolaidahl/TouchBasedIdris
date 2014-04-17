@@ -86,7 +86,7 @@ UILabel.data-dec-where-label {
     cas_margin-right $separator-margin;
 }
 
-^UITextField.input-group-dashed-text-field {
+^UITextField.input-group-text-field {
     text-alignment: center;
     cas_size-height: $text-field-height;
 

@@ -5,6 +5,7 @@
 
 #import "IDTFunctionDeclarationView.h"
 #import "IDTGroupInputView.h"
+#import "IDTClauseGroupInputView.h"
 
 @interface IDTFunctionDeclarationView ()
 
@@ -118,14 +119,24 @@
 
 - (void) addFunctionLine {
 
-    IDTGroupInputView *newFunctionLine = [[IDTGroupInputView alloc] initAndLayout];
-    newFunctionLine.cas_styleClass = @"data-dec-constructor";
+    IDTGroupInputView *lhs = [[IDTGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
+                                                                                   separatorType:IDTGroupInputViewSeparatorSmallSpace
+                                                                                   andBoderStyle:IDTInputBorderStyleSolid];
+
+    IDTGroupInputView *rhs = [[IDTGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:@1
+                                                                                   separatorType:IDTGroupInputViewSeparatorSmallSpace
+                                                                                   andBoderStyle:IDTInputBorderStyleDashed];
+
+    IDTClauseGroupInputView *clauseGroupInputView = [[IDTClauseGroupInputView alloc]
+            initAndLayoutWithLhsInputView:lhs andRhsInputView:rhs];
+    clauseGroupInputView.cas_styleClass = @"data-dec-constructor";
+
 
     UIButton *lineActionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [lineActionButton setImage:[UIImage imageNamed:@"line_action_button"] forState:UIControlStateNormal];
 
-    [self addSubview:newFunctionLine];
-    [self.lineActionLineTuples addObject:RACTuplePack(lineActionButton, newFunctionLine)];
+    [self addSubview:clauseGroupInputView];
+    [self.lineActionLineTuples addObject:RACTuplePack(lineActionButton, clauseGroupInputView)];
 
 }
 
@@ -161,7 +172,9 @@
 - (IDTGroupInputView *)typeDeclaration {
     if(!_typeDeclaration)
     {
-        _typeDeclaration = [[IDTGroupInputView alloc] initAndLayoutWithSeparatorType:IDTGroupInputViewSeparatorArrow];
+        _typeDeclaration = [[IDTGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
+                                                                                 separatorType:IDTGroupInputViewSeparatorArrow
+                                                                                 andBoderStyle:IDTInputBorderStyleSolid];
         _typeDeclaration.cas_styleClass = @"function-dec-type-dec";
 
     }
