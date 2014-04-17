@@ -22,7 +22,8 @@ Executable ti
     snap-core                 >= 0.9   && < 0.11,
     snap-server               >= 0.9   && < 0.11,
     aeson                     >= 0.7.0.0,
-    idris                     >= 0.9.12
+    idris                     >= 0.9.12,
+    text                      >= 0.10
 
   if impl(ghc >= 6.12.0)
     ghc-options: -threaded -Wall -fwarn-tabs -funbox-strict-fields -O2

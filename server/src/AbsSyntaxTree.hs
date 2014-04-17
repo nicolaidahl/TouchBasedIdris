@@ -3,10 +3,11 @@ module AbsSyntaxTree where
 
 import GHC.Generics (Generic)
 import Data.Aeson (FromJSON, ToJSON)
+import Data.Text
 
 data TIAbsSyntaxTree =
   TIAbsSyntaxTree {
-    name :: String,
+    name :: Text,
     topLevelDec :: [TITopLevelDec]
   }
   deriving (Show, Generic)
@@ -16,12 +17,12 @@ instance ToJSON   TIAbsSyntaxTree
 
 data TITopLevelDec = 
   TIFunctionDec {
-    ident :: String,
+    ident :: Text,
     titype :: TIExpr,
     clauses :: [TIClause]
   } 
   | TIDataDec {
-    ident :: String,
+    ident :: Text,
     titype :: TIExpr,
     constructors :: [TIConstructor]
   }
@@ -42,7 +43,7 @@ instance ToJSON   TIClause
 
 data TIConstructor = 
   TIConstructor {
-    constructor :: String,
+    constructor :: Text,
     constructorType :: TIExpr
   }
   deriving (Show, Generic)
@@ -53,19 +54,19 @@ instance ToJSON   TIConstructor
 data TIExpr = 
     TIConst TIConst
   | TIApp TIExpr [TIExpr]
-  | TILam String TIExpr
-  | TIPi (Maybe String) TIExpr TIExpr
-  | TIVar String
-  | TIRef String
+  | TILam Text TIExpr
+  | TIPi (Maybe Text) TIExpr TIExpr
+  | TIVar Text
+  | TIRef Text
   deriving (Show, Generic)
 
 instance FromJSON TIExpr
 instance ToJSON   TIExpr
 
 data TIConst = 
-    TIString String
-  | TIInt Integer
-  | TIFloat Float
+    TIString Text
+  | TIInt Int
+  | TIFloat Double
   | TIStringTy
   | TIIntTy
   | TIFloatTy
