@@ -5,17 +5,13 @@
 
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
+#import "IDTInputView.h"
 
 @class IDTDashedTextField;
 
-typedef NS_ENUM(NSInteger, IDTInputViewBorderStyle)
-{
-    IDTInputBorderStyleNone = 0,
-    IDTInputBorderStyleSolid,
-    IDTInputBorderStyleDashed
-};
 
-@interface IDTInputView : IDTAbstractView
+
+@interface IDTTextFieldInputView : IDTInputView <IDTTextInputView>
 
 @property (nonatomic, strong) UITextField *textField;
 

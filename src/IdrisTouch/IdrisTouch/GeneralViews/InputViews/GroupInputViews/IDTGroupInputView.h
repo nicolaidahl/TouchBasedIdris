@@ -1,11 +1,12 @@
 //
-// Created by Nicolai Dahl on 14/03/14.
+// Created by Nicolai Dahl on 19/04/14.
 // Copyright (c) 2014 Nicolai Dahl. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "IDTAbstractView.h"
 #import "IDTInputView.h"
+
+@class IDTTextFieldInputView;
 
 typedef NS_ENUM(NSInteger, IDTGroupInputViewSeparatorType)
 {
@@ -17,21 +18,17 @@ typedef NS_ENUM(NSInteger, IDTGroupInputViewSeparatorType)
 };
 
 
-
 @interface IDTGroupInputView : IDTInputView
 
 @property(nonatomic, assign) IDTGroupInputViewSeparatorType inputViewSeparatorType;
-@property (nonatomic, assign) IDTInputViewBorderStyle borderStyle;
-@property(nonatomic, strong) NSNumber *exactNumberOfInputViews;
+@property(nonatomic, strong) NSNumber *exactNumberOfInputViews; //If nil -> infinite
 
 @property (nonatomic, strong) NSMutableArray *inputViews;
+@property (nonatomic, strong) NSMutableArray *separatorViews;
 
-- (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews separatorType:
-        (IDTGroupInputViewSeparatorType)separatorType andBoderStyle: (IDTInputViewBorderStyle) borderStyle;
-
-- (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews andSeparatorType:(IDTGroupInputViewSeparatorType)separatorType;
+- (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews andSeparatorType:
+        (IDTGroupInputViewSeparatorType)separatorType;
 
 - (void)addInputView:(IDTInputView *)inputView;
 
-- (void)addInputView;
 @end

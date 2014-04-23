@@ -4,14 +4,14 @@
 //
 
 #import "IDTFunctionDeclarationView.h"
-#import "IDTGroupInputView.h"
+#import "IDTTextFieldGroupInputView.h"
 #import "IDTClauseGroupInputView.h"
+#import "IDTMetaVariableInputView.h"
 
 @interface IDTFunctionDeclarationView ()
 
 @property (nonatomic, strong) UIView *connectingLine;
 @property (nonatomic, strong) UILabel *functionNameLabel;
-@property (nonatomic, strong) IDTGroupInputView *typeDeclaration;
 @property (nonatomic, strong) UIView *verticalLine;
 @property (nonatomic, strong) NSMutableArray *lineActionLineTuples;
 
@@ -93,6 +93,7 @@
         [functionLine mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(topNeighbor.mas_bottom).with.offset(10);
             make.left.equalTo(self.verticalLine.mas_right).with.offset(6);
+            make.right.lessThanOrEqualTo(functionLine.superview);
         }];
     }];
 
@@ -119,13 +120,11 @@
 
 - (void) addFunctionLine {
 
-    IDTGroupInputView *lhs = [[IDTGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
+    IDTTextFieldGroupInputView *lhs = [[IDTTextFieldGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
                                                                                    separatorType:IDTGroupInputViewSeparatorSmallSpace
                                                                                    andBoderStyle:IDTInputBorderStyleSolid];
 
-    IDTGroupInputView *rhs = [[IDTGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:@1
-                                                                                   separatorType:IDTGroupInputViewSeparatorSmallSpace
-                                                                                   andBoderStyle:IDTInputBorderStyleDashed];
+    IDTMetaVariableInputView *rhs = [[IDTMetaVariableInputView alloc] initAndLayout];
 
     IDTClauseGroupInputView *clauseGroupInputView = [[IDTClauseGroupInputView alloc]
             initAndLayoutWithLhsInputView:lhs andRhsInputView:rhs];
@@ -137,6 +136,8 @@
 
     [self addSubview:clauseGroupInputView];
     [self.lineActionLineTuples addObject:RACTuplePack(lineActionButton, clauseGroupInputView)];
+
+    [self.addedNewClauseCommand execute:clauseGroupInputView];
 
 }
 
@@ -169,10 +170,10 @@
     return _functionNameLabel;
 }
 
-- (IDTGroupInputView *)typeDeclaration {
+- (IDTTextFieldGroupInputView *)typeDeclaration {
     if(!_typeDeclaration)
     {
-        _typeDeclaration = [[IDTGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
+        _typeDeclaration = [[IDTTextFieldGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
                                                                                  separatorType:IDTGroupInputViewSeparatorArrow
                                                                                  andBoderStyle:IDTInputBorderStyleSolid];
         _typeDeclaration.cas_styleClass = @"function-dec-type-dec";
@@ -211,5 +212,19 @@
 
     return _addLineButton;
 }
+
+
+- (RACCommand *)addedNewClauseCommand {
+    if(!_addedNewClauseCommand)
+    {
+        _addedNewClauseCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(IDTClauseGroupInputView *clause) {
+            return [RACSignal return:clause];
+        }];
+
+    }
+
+    return _addedNewClauseCommand;
+}
+
 
 @end

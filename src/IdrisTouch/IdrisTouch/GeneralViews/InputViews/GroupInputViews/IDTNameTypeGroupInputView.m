@@ -4,7 +4,7 @@
 //
 
 #import "IDTNameTypeGroupInputView.h"
-#import "IDTInputView.h"
+#import "IDTTextFieldInputView.h"
 #import "IDTDashedTextField.h"
 
 
@@ -24,18 +24,18 @@
     return self;
 }
 
-- (IDTInputView *)typeInputView {
+- (IDTTextFieldInputView *)typeInputView {
     return self.inputViews[1];;
 }
 
-- (IDTInputView *)nameInputView {
+- (IDTTextFieldInputView *)nameInputView {
     return self.inputViews[0];
 }
 
 - (RACSignal *)nameTextSignal {
     if(!_nameTextSignal)
     {
-        IDTInputView *inputView = self.inputViews[0];
+        IDTTextFieldInputView *inputView = self.inputViews[0];
         _nameTextSignal = [inputView.textField rac_textSignal];
     }
 
@@ -45,7 +45,7 @@
 - (RACSignal *)typeTextSignal {
     if(!_typeTextSignal)
     {
-        IDTInputView *inputView = self.inputViews[1];
+        IDTTextFieldInputView *inputView = self.inputViews[1];
         _typeTextSignal = [inputView.textField rac_textSignal];
     }
 

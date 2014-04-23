@@ -3,16 +3,16 @@
 // Copyright (c) 2014 Nicolai Dahl. All rights reserved.
 //
 
-#import "IDTInputView.h"
+#import "IDTTextFieldInputView.h"
 #import "IDTDashedTextField.h"
 
-@interface IDTInputView ()
+@interface IDTTextFieldInputView ()
 
 
 
 @end
 
-@implementation IDTInputView {
+@implementation IDTTextFieldInputView {
 
 }
 

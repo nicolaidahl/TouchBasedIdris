@@ -4,20 +4,15 @@
 //
 
 #import "IDTClauseGroupInputView.h"
+#import "IDTMetaVariableInputView.h"
 
-
-@interface IDTClauseGroupInputView ()
-@property (nonatomic, strong) IDTInputView *lhs;
-@property (nonatomic, strong) IDTInputView *rhs;
-
-
-@end
 
 @implementation IDTClauseGroupInputView {
 
 }
 
-- (id)initAndLayoutWithLhsInputView: (IDTInputView *) lhs andRhsInputView: (IDTInputView *) rhs {
+- (id)initAndLayoutWithLhsInputView: (IDTTextFieldGroupInputView <IDTTextInputView> *) lhs andRhsInputView:
+        (IDTMetaVariableInputView *) rhs {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.exactNumberOfInputViews = @2;

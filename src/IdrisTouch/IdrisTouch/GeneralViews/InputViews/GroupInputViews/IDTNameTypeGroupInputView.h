@@ -4,14 +4,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IDTGroupInputView.h"
-#import "IDTInputView.h"
+#import "IDTTextFieldGroupInputView.h"
+#import "IDTTextFieldInputView.h"
 
 
-@interface IDTNameTypeGroupInputView : IDTGroupInputView
+@interface IDTNameTypeGroupInputView : IDTTextFieldGroupInputView
 
-@property (nonatomic, readonly) IDTInputView *nameInputView;
-@property (nonatomic, readonly) IDTInputView *typeInputView;
+@property (nonatomic, readonly) IDTTextFieldInputView *nameInputView;
+@property (nonatomic, readonly) IDTTextFieldInputView *typeInputView;
 
 @property (nonatomic, strong) RACSignal *nameTextSignal;
 @property (nonatomic, strong) RACSignal *typeTextSignal;

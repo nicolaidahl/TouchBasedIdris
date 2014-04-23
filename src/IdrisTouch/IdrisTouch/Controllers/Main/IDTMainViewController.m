@@ -17,14 +17,14 @@
 #import "IDTClause.h"
 #import "IDTConstantExpression.h"
 #import "IDTConstantString.h"
-#import "IDTInferenceRuleView.h"
 #import "IDTNameTypeGroupInputView.h"
 #import "IDTConstantTypeType.h"
-#import "IDTPremissGroupInputView.h"
+
 #import "IDTPi.h"
 #import "IDTReference.h"
-#import "IDTInputView.h"
-#import "IDTDashedTextField.h"
+#import "IDTClauseGroupInputView.h"
+#import "IDTMetaVariable.h"
+#import "IDTVariable.h"
 
 
 @interface IDTMainViewController ()
@@ -105,27 +105,12 @@
     RAC(dataDec, ident) = dataDecView.typeDeclaration.conclusionInputView.nameTextSignal;
 
     //The titype is bound to the premise -> conclusion
-    RAC(dataDec, titype) = [dataDecView.typeDeclaration.premisesInputGroup.premissChangedSignal map:^id(NSString
-    *text) {
-
-        NSArray *textValues = [[[dataDecView.typeDeclaration.premisesInputGroup.inputViews.rac_sequence map:^id(IDTInputView *
-        inputView) {
-            return inputView.textField.text;
-        }] filter:^BOOL(NSString *text) {
-            return ![text isEqualToString:@""];
-        }] array];
-
-        IDTExpression *expression =
-                [textValues.rac_sequence foldLeftWithStart:[[IDTConstantExpression alloc]
-                initWithConstant:[IDTConstantTypeType new]]
-                                                    reduce:^id(IDTPi *accumulator, NSString *rawString) {
-
-                                                        IDTReference *refExpr = [[IDTReference alloc] initWithVarName:rawString];
-                                                        return [[IDTPi alloc] initWithExpr1:refExpr andExpr2:accumulator];
-                                                    }];
-
-        return [RACSignal return:expression];
-    }];
+    IDTExpression *baseExpression = [[IDTConstantExpression alloc] initWithConstant:[IDTConstantTypeType new]];
+    RAC(dataDec, titype) = [self foldContentOfTextFieldGroupInputView:dataDecView.typeDeclaration.premisesInputGroup
+                                                   withBaseExpression:baseExpression
+                                                    andReductionBlock:[self piExpressionReductionBlock]
+                                                            fromSignalOfSignals:dataDecView.typeDeclaration
+                                                                    .premisesInputGroup.textChangedSignal];
 
     //We react to new constructors by binding the inputview to a constructor type
     [[[dataDecView.addedNewConstructorCommand executionSignals] flatten] subscribeNext:^(IDTInferenceRuleView
@@ -138,56 +123,105 @@
     }];
 }
 
+- (void) bindConstructor: (IDTConstructor *) constructor toInferenceRuleView: (IDTInferenceRuleView *) inferenceRuleView
+{
+    RAC(constructor, constructor) = inferenceRuleView.conclusionInputView.nameTextSignal;
+    //The titype is bound to the premise -> conclusion
+    IDTExpression *baseExpression = [[IDTReference alloc] initWithVarName:inferenceRuleView.conclusionInputView
+            .typeInputView.textField.text];
+    RAC(constructor, constructorType) = [self foldContentOfTextFieldGroupInputView:inferenceRuleView.premisesInputGroup
+                                                                withBaseExpression:baseExpression
+                                                                 andReductionBlock:[self piExpressionReductionBlock]
+                                                                         fromSignalOfSignals:inferenceRuleView
+                                                                                 .premisesInputGroup
+                                                                                 .textChangedSignal];
+
+    //inferenceRuleView.conclusionInputView.typeTextSignal; //TODO use this for the conclusion
+}
+
 - (void)bindFuncDec:(IDTTopLevelFuncDec *) funcDec toFuncDecView: (IDTFunctionDeclarationView *) funcDecView {
-    [[funcDecView.addLineButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    funcDec.ident = @"zip";
+    RAC(funcDec, titype) = [self foldContentOfTextFieldGroupInputView:funcDecView.typeDeclaration
+                                                   withBaseExpression:nil
+                                                    andReductionBlock:[self piExpressionReductionBlock]
+                                                  fromSignalOfSignals:funcDecView.typeDeclaration.textChangedSignal];
+
+    [[[funcDecView.addedNewClauseCommand executionSignals] flatten] subscribeNext:^(IDTClauseGroupInputView *clauseGroupInputView) {
         IDTClause *clause = [[IDTClause alloc] init];
-        clause.lhs = [@[] mutableCopy]; //TODO
-        clause.rhs = [[IDTConstantExpression alloc] initWithConstant:[[IDTConstantString alloc] initWithString:@""]];
-        //TODO
+
+        [self bindClause: clause toClauseGroupInputView:clauseGroupInputView];
 
         [funcDec.clauses addObject:clause];
     }];
 }
 
-- (void) bindConstructor: (IDTConstructor *) constructor toInferenceRuleView: (IDTInferenceRuleView *) inferenceRuleView
+
+
+
+- (void)bindClause:(IDTClause *)clause toClauseGroupInputView:(IDTClauseGroupInputView *)view {
+
+    id (^reductionBlock)(id, id) = ^id(NSMutableArray *accumulator, NSString *rawString) {
+        [accumulator addObject:[[IDTVariable alloc] initWithName:rawString]];
+        return accumulator;
+    };
+
+    RAC(clause,lhs) = [self foldContentOfTextFieldGroupInputView:view.lhs
+                                         withBaseExpression:nil
+                                          andReductionBlock:reductionBlock fromSignalOfSignals:view.lhs
+                    .textChangedSignal];
+    RAC(clause, rhs) = [RACSignal return:[IDTMetaVariable new]];
+
+}
+
+
+#pragma mark - Helper methods
+
+- (id (^)(id, id)) piExpressionReductionBlock
 {
-    RAC(constructor, constructor) = inferenceRuleView.conclusionInputView.nameTextSignal;
-    //The titype is bound to the premise -> conclusion
-    RAC(constructor, constructorType) = [inferenceRuleView.premisesInputGroup.premissChangedSignal map:^id (NSString
-    *text) {
+    return ^id(IDTPi *accumulator, NSString *rawString) {
 
-        NSArray *textValues = [[[inferenceRuleView.premisesInputGroup.inputViews.rac_sequence map:^id(IDTInputView *
-        inputView) {
-            return inputView.textField.text;
-        }] filter:^BOOL(NSString *text) {
-            return ![text isEqualToString:@""];
-        }] array];
-
-        IDTExpression *expression =
-                [textValues.rac_sequence foldLeftWithStart:[[IDTReference alloc] initWithVarName:inferenceRuleView.conclusionInputView
-                                .typeInputView.textField.text]
-                                                    reduce:^id(IDTPi *accumulator, NSString *rawString) {
-
-                                                        IDTReference *refExpr = [[IDTReference alloc] initWithVarName:rawString];
-                                                        return [[IDTPi alloc] initWithExpr1:refExpr andExpr2:accumulator];
-                                                    }];
-
-        return [RACSignal return:expression];
-    }];
-
-
-    //inferenceRuleView.conclusionInputView.typeTextSignal; //TODO use this for the conclusion
+        IDTReference *refExpr = [[IDTReference
+                alloc] initWithVarName:rawString];
+        return [[IDTPi alloc] initWithExpr1:refExpr
+                                   andExpr2:accumulator];
+    };
 }
 
-- (void)viewDidLoad {
+- (RACSignal *) foldContentOfTextFieldGroupInputView: (IDTTextFieldGroupInputView *) textGroupInputView
+                                  withBaseExpression: (IDTExpression*) baseExpression
+                                   andReductionBlock: (id (^)(id, id)) reductionBlock
+                                 fromSignalOfSignals: (RACSignal*) signalOfSignals
+{
 
 
+    return [[[signalOfSignals flatten] ignore:nil]
+            map:^id(NSString *text) {
 
-    [super viewDidLoad];
+                IDTExpression *be = baseExpression;
 
+                NSMutableArray *textValues = [[[[textGroupInputView.inputViews.rac_sequence map:^id(IDTTextFieldInputView *
+                inputView) {
+                    return inputView.textField.text;
+                }] filter:^BOOL(NSString *text) {
+                    return ![text isEqualToString:@""];
+                }] array] mutableCopy];
 
+                if(textValues.count > 0)
+                {
+                    if(!baseExpression)
+                    {
+                        be = [[IDTReference alloc] initWithVarName: textValues.lastObject];
+                        [textValues removeLastObject];
+                    }
+
+                    IDTExpression *expression = [textValues.rac_sequence foldLeftWithStart: be
+                                                                          reduce:reductionBlock];
+                    return [RACSignal return:expression];
+                }
+
+                return [RACSignal return:nil];
+            }];
 }
-
 
 
 

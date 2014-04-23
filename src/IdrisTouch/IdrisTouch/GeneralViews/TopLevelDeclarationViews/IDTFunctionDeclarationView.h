@@ -6,7 +6,13 @@
 #import <Foundation/Foundation.h>
 #import "IDTAbstractTopLevelDeclarationView.h"
 
+@class IDTTextFieldGroupInputView;
+
 
 @interface IDTFunctionDeclarationView : IDTAbstractTopLevelDeclarationView
 @property (nonatomic, strong) UIButton *addLineButton;
+
+@property (nonatomic, strong) RACCommand *addedNewClauseCommand;
+
+@property (nonatomic, strong) IDTTextFieldGroupInputView *typeDeclaration;
 @end

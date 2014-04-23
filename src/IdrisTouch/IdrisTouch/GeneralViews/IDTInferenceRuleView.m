@@ -5,10 +5,9 @@
 
 #import "IDTInferenceRuleView.h"
 #import "IDTDashedTextField.h"
-#import "IDTGroupInputView.h"
-#import "IDTInputView.h"
+#import "IDTTextFieldGroupInputView.h"
+#import "IDTTextFieldInputView.h"
 #import "IDTNameTypeGroupInputView.h"
-#import "IDTPremissGroupInputView.h"
 
 
 @interface IDTInferenceRuleView ()
@@ -95,10 +94,12 @@
 
 
 
-- (IDTPremissGroupInputView *)premisesInputGroup {
+- (IDTTextFieldGroupInputView *)premisesInputGroup {
     if(!_premisesInputGroup)
     {
-        _premisesInputGroup = [[IDTPremissGroupInputView alloc] initAndLayoutPremissGroupInputView];
+        _premisesInputGroup = [[IDTTextFieldGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
+                                                                                        separatorType:IDTGroupInputViewSeparatorArrow
+                                                                                        andBoderStyle:IDTInputBorderStyleDashed];
         _premisesInputGroup.cas_styleClass = @"inference-rule-premises-input-group";
     }
 
