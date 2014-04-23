@@ -1,5 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
-module AbsSyntaxTree where
+module TI.AbsSyntaxTree where
 
 import GHC.Generics (Generic)
 import Data.Aeson (FromJSON, ToJSON)
