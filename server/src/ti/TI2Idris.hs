@@ -46,7 +46,7 @@ tiExpr2PTerm (TIVar n)        = PPatvar defaultFC (UN n)
 tiExpr2PTerm (TIRef n)        = PRef defaultFC (UN n)
 
 pTerm2PArg :: PTerm -> PArg
-pTerm2PArg t = PExp 0 [] t
+pTerm2PArg t = PExp 0 [] (UN (pack "")) t
 
 tiConst2PConstant :: TIConst -> Const
 tiConst2PConstant (TIString s) = TT.Str $ unpack s

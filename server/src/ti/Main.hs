@@ -3,7 +3,8 @@ module TI.Main where
 
 import TI.AbsSyntaxTree
 import TI.TI2Idris
-import TI.Idris2TI
+--import TI.Idris2TI
+import TI.Evaluator
 
 import Control.Applicative
 import Snap.Core
