@@ -6,9 +6,15 @@
 #import "IDTGroupInputView.h"
 #import "IDTTextFieldInputView.h"
 
+@interface IDTGroupInputView ()
+
+
+
+@end
+
 
 @implementation IDTGroupInputView {
-
+    MASConstraint *_rightConstraint;
 }
 
 - (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews andSeparatorType:
@@ -24,6 +30,46 @@
     return self;
 }
 
+- (void)addSubviews {
+
+
+}
+
+- (void)defineLayout {
+
+    [self.inputViews enumerateObjectsUsingBlock:^(IDTTextFieldInputView *inputView, NSUInteger idx, BOOL *stop) {
+        //Uninstall any right constraint added so far
+        [_rightConstraint uninstall];
+
+
+        if (idx == 0)
+            [inputView mas_updateConstraintsWithLeftMarginRelativeToSuperview];
+        else {
+            IDTTextFieldInputView *leftNeighbor = self.inputViews[idx - 1];
+            UIImageView *leftSeparatorNeighbor = self.separatorViews[idx - 1];
+
+            [leftSeparatorNeighbor mas_updateConstraintsWithLeftMarginRelativeTo:leftNeighbor.mas_right];
+            [inputView mas_updateConstraintsWithLeftMarginRelativeTo:leftSeparatorNeighbor.mas_right];
+        }
+
+
+        if (idx == self.inputViews.count - 1)
+            [inputView mas_updateConstraints:^(MASConstraintMaker *make) {
+                _rightConstraint = make.right.equalTo(inputView.superview);
+            }];
+
+
+        [inputView mas_updateConstraintsWithBottomMarginRelativeToSuperview];
+        [inputView mas_updateConstraintsWithTopMarginRelativeToSuperview];
+    }];
+
+    [self.separatorViews enumerateObjectsUsingBlock:^(UIImageView *separatorView, NSUInteger idx, BOOL *stop) {
+        [separatorView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(separatorView.superview);
+        }];
+    }];
+
+}
 
 - (void) addInputView: (IDTInputView *) inputView
 {
@@ -36,7 +82,7 @@
     {
         UIView *separatorImageView;
 
-        switch (_inputViewSeparatorType)
+        switch (self.inputViewSeparatorType)
         {
             case IDTGroupInputViewSeparatorSmallSpace:
             {

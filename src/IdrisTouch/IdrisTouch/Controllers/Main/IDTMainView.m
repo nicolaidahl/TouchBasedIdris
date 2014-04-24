@@ -77,9 +77,8 @@
         UIView *topNeighbor, *bottomNeighbor;
 
         if (idx == 0)
-            //It has to be the toolbar for the pan to work,
-            // as it just makes constraints to mas_bottom of top neighbor no matter what
-            topNeighbor = self.toolbar;
+            //It has to be the scrollbar for scroll to work,
+            topNeighbor = self.scrollView;
         else
             topNeighbor = ((RACTuple*) _topLevelDeclarationTuples[idx - 1]).second;
 
@@ -92,7 +91,10 @@
                                 andBottomNeighbor:bottomNeighbor];
 
         [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
-            self.topConstraints[idx] = make.top.equalTo(topNeighbor.mas_bottom).with.offset(topLevelDecMargin);
+            if(topNeighbor == self.scrollView)
+                self.topConstraints[idx] = make.top.equalTo(topNeighbor).with.offset(topLevelDecMargin);
+            else
+                self.topConstraints[idx] = make.top.equalTo(topNeighbor.mas_bottom).with.offset(topLevelDecMargin);
         }];
         [topLevelDec mas_updateConstraintsWithLeftMarginRelativeTo:self.verticalLine.mas_right];
         [topLevelDec mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -112,8 +114,8 @@
     {
         IDTAbstractTopLevelDeclarationView *lowestConstructor = ((RACTuple*) self
                         .topLevelDeclarationTuples[_topLevelDeclarationTuples.count - 1]).second;
-        [self.addTopLevelDecButton mas_updateConstraints:^(MASConstraintMaker *make) {
-            _bottomToLowestViewConstraint = make.top.equalTo(lowestConstructor.mas_bottom);
+        [self.verticalLine mas_updateConstraints:^(MASConstraintMaker *make) {
+            _bottomToLowestViewConstraint = make.bottom.equalTo(lowestConstructor.mas_bottom);
         }];
     }
 
