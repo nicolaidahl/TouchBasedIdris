@@ -1,14 +1,14 @@
-all:    report.pdf
-report.pdf: report.tex report.bib sections/*.tex
-	pdflatex report
-	bibtex report
-	pdflatex report
-	pdflatex report
+all:    report
+report: Touch\ Based\ Idris.tex Bibliography.bib sections/*.tex
+	pdflatex Touch\ Based\ Idris
+	bibtex Touch\ Based\ Idris
+	pdflatex Touch\ Based\ Idris
+	pdflatex Touch\ Based\ Idris
 clean:
-	rm -f report.aux
-	rm -f report.bbl
-	rm -f report.blg
-	rm -f report.dvi
-	rm -f report.log
-	rm -f report.toc
-	rm -f report.pdf
+	rm -f Touch\ Based\ Idris.aux
+	rm -f Touch\ Based\ Idris.bbl
+	rm -f Touch\ Based\ Idris.blg
+	rm -f Touch\ Based\ Idris.dvi
+	rm -f Touch\ Based\ Idris.log
+	rm -f Touch\ Based\ Idris.toc
+	rm -f Touch\ Based\ Idris.pdf
