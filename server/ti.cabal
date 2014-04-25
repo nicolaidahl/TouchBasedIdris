@@ -12,7 +12,7 @@ Cabal-version:       >=1.2
 
 Executable ti
   hs-source-dirs: src
-  main-is: ti/Main.hs
+  main-is: Main.hs
 
   Build-depends:
     base                      >= 4     && < 5,
