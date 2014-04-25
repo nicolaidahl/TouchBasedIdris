@@ -111,7 +111,12 @@
         [_contextPopoverController dismissPopoverAnimated:YES];
         _contextPopoverController = nil;
 
-        [_mainView updateConstraints];
+        [self.mainView updateConstraints];
+
+        [UIView animateWithDuration:0.2 animations:^{
+            [self.mainView layoutIfNeeded];
+        }];
+
     }];
 
     return cvc;

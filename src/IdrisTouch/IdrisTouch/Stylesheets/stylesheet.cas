@@ -9,11 +9,12 @@ $separator-margin = 5;
 /// MAIN VIEW
 
 UIToolbar.main-view-toolbar {
-
+    margin-top: 20;
 }
 
 UIScrollView.main-view-scroll-view {
-
+    margin-bottom: 20;
+    clips-to-bounds: NO;
 }
 
 

@@ -30,11 +30,12 @@
 
 
 - (void)addSubviews {
-    [self addSubview:self.toolbar];
+
     [self addSubview:self.scrollView];
     [self.scrollView addSubview:self.verticalLine];
     [self.scrollView addSubview:self.addTopLevelDecButton];
 
+    [self addSubview:self.toolbar];
 }
 
 
@@ -355,6 +356,7 @@
     if(!_toolbar)
     {
         _toolbar = [[UIToolbar alloc] init];
+        _toolbar.opaque = YES;
         _toolbar.delegate = self;
         _toolbar.cas_styleClass = @"main-view-toolbar";
     }
