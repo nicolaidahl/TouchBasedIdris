@@ -27,7 +27,7 @@
 #import "IDTVariable.h"
 
 
-@interface IDTMainViewController ()
+@interface IDTMainViewController () <UIPopoverControllerDelegate>
 
 @property (nonatomic, readonly) IDTMainView *mainView;
 @property (nonatomic, readonly) IDTMainViewModel *viewModel;
@@ -47,23 +47,46 @@
 
         self.mainView.addTopLevelDecButton.rac_command = _viewModel.addTopLevelDecCommand;
         [[_viewModel.addTopLevelDecCommand.executionSignals flatten] subscribeNext:^(id x) {
-            [self showContextPickerFromView: _mainView.addTopLevelDecButton];
+
+            IDTContextViewController *cvc = [self configureContextPickerForTopDecs];
+            [self showContextPopoverFromViewController:cvc fromView: _mainView.addTopLevelDecButton];
         }];
     }
 
     return self;
 }
 
-- (void)showContextPickerFromView:(UIView *)view {
+- (void)showContextPopoverFromViewController: (IDTContextViewController*) cvc fromView:(UIView *)view {
 
-    IDTContextViewController *cvc = [[IDTContextViewController alloc] init];
+    [_contextPopoverController dismissPopoverAnimated:YES];
+    _contextPopoverController = nil;
+
+    _contextPopoverController = [[UIPopoverController alloc] initWithContentViewController:cvc];
+
+    CGRect convertedRect = [view convertRect:view.bounds toView:self.mainView];
+    [_contextPopoverController presentPopoverFromRect:convertedRect inView:self.mainView
+                             permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    _contextPopoverController.delegate = self;
+
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    _contextPopoverController = nil;
+}
+
+
+- (IDTContextViewController *) configureContextPickerForTopDecs
+{
+    IDTContextViewController *cvc = [[IDTContextViewController alloc] initWithOptions:@[@"data", @"function"]];
     [[cvc.selectionCommand.executionSignals flatten] subscribeNext:^(NSNumber *index) {
-        
+
         //Add data declaration
-        if([index isEqualToNumber:@0]) 
+        if([index isEqualToNumber:@0])
         {
             IDTDataDeclarationView *dataView = [_mainView
-                            addDataDeclaration].second;
+                    addDataDeclaration].second;
+
+            [self configureContextPickerForDataView:dataView];
 
             IDTTopLevelDataDec *dataDec = [[IDTTopLevelDataDec alloc] init];
             [self.viewModel.program.topLevelDec addObject:dataDec];
@@ -71,11 +94,11 @@
             [self bindDataDec:dataDec toDataDecView:dataView];
 
         }
-        //Add function declaration
+                //Add function declaration
         else if([index isEqualToNumber:@1])
         {
             IDTFunctionDeclarationView *funcView = [_mainView
-                            addFunctionDeclaration].second;
+                    addFunctionDeclaration].second;
 
             IDTTopLevelFuncDec *funcDec = [[IDTTopLevelFuncDec alloc] init];
             funcDec.ident = @"zip";
@@ -83,7 +106,7 @@
 
             [self bindFuncDec:funcDec toFuncDecView:funcView];
 
-        }    
+        }
 
         [_contextPopoverController dismissPopoverAnimated:YES];
         _contextPopoverController = nil;
@@ -91,14 +114,36 @@
         [_mainView updateConstraints];
     }];
 
-    _contextPopoverController = [[UIPopoverController alloc] initWithContentViewController:cvc];
-
-    CGRect convertedRect = [view convertRect:view.bounds toView:self.mainView];
-    [_contextPopoverController presentPopoverFromRect:convertedRect inView:self.mainView
-                             permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
-
+    return cvc;
 }
+
+- (IDTContextViewController *) configureContextPickerForDataView: (IDTDataDeclarationView *) dataView
+{
+    NSArray *options = @[@"Nat"];
+    IDTContextViewController *cvc = [[IDTContextViewController alloc] initWithOptions: options];
+
+    [[dataView.typeDeclaration.premisesInputGroup.textChangedSignal flatten] subscribeNext:^(IDTTextFieldInputView
+    *inputView) {
+
+        [[cvc.selectionCommand.executionSignals flatten] subscribeNext:^(NSNumber *selection) {
+            inputView.textField.text = options[(NSUInteger) [selection integerValue]];
+
+            [_contextPopoverController dismissPopoverAnimated:YES];
+            _contextPopoverController = nil;
+
+        }];
+
+        if(!_contextPopoverController && inputView)
+            [self showContextPopoverFromViewController:cvc fromView:inputView];
+
+
+    }];
+
+
+    return cvc;
+}
+
+#pragma mark - Bind views to AST
 
 - (void) bindDataDec: (IDTTopLevelDataDec *) dataDec toDataDecView: (IDTDataDeclarationView *) dataDecView
 {

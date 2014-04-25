@@ -9,6 +9,7 @@
 
 @interface IDTTextFieldGroupInputView ()
 
+@property (nonatomic, strong) RACSignal *textChangedSignal;
 
 @end
 
@@ -17,7 +18,7 @@
     IDTInputViewBorderStyle _borderStyle;
     IDTGroupInputViewSeparatorType _inputViewSeparatorType;
 
-    RACSubject *_textChangedSignal;
+    RACSubject *_textChangedSubject;
 
     NSNumber *_exactNumberOfInputViews;
 
@@ -63,23 +64,26 @@
 
     NSAssert([inputView isKindOfClass:[IDTTextFieldInputView class]], @"");
 
+
     [super addInputView:inputView];
 
     RACSignal *mergedTextSignal = [self.inputViews.rac_sequence
             foldLeftWithStart:[RACSignal return:nil]
                        reduce:^RACSignal *(RACSignal *accumulator,
                                IDTTextFieldInputView *value) {
-                           return [RACSignal merge:@[accumulator, value.textField.rac_textSignal]];
+                           return [RACSignal merge:@[accumulator, value.textChangedSignal]];
                        }];
 
-    [_textChangedSignal sendNext:mergedTextSignal];
+    [_textChangedSubject sendNext:mergedTextSignal];
+
 
 }
 
 
 - (void) addInputView
 {
-    IDTTextFieldInputView *iv = [[IDTTextFieldInputView alloc] initAndLayoutWithBorderStyle:_borderStyle];
+    IDTTextFieldInputView *iv = [[IDTTextFieldInputView alloc]
+            initAndLayoutWithBorderStyle:IDTInputBorderStyleSolidGray];
     [[iv.textField rac_textSignal] subscribeNext:^(NSString *text) {
         if (self.inputViews.count > 0) {
             IDTTextFieldInputView *lastInputView = ((IDTTextFieldInputView *)self.inputViews[self.inputViews.count -
@@ -88,6 +92,14 @@
                 if(![text isEqualToString:@""] && (!_exactNumberOfInputViews || self.inputViews.count <
                             [_exactNumberOfInputViews integerValue]))
                 {
+                    iv.borderStyle = _borderStyle;
+
+                    if(iv.index > 0)
+                    {
+                        UIView *separator = self.separatorViews[iv.index - 1];
+                        separator.alpha = 1.0;
+                    }
+
                     [self addInputView];
                     [self updateConstraints];
                 }
@@ -102,14 +114,32 @@
 
 }
 
+- (NSArray *) optionsForPopover {
+    return @[@"Nat", @"Vect n a"];
+}
 
 
+- (RACSignal *)textChangedSubject {
+    if(!_textChangedSubject)
+    {
 
+        _textChangedSubject = [RACSubject subject];
+    }
+
+    return _textChangedSubject;
+}
 
 - (RACSignal *)textChangedSignal {
     if(!_textChangedSignal)
     {
-        _textChangedSignal = [RACSubject subject];
+        RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(RACSignal *input) {
+            return [RACSignal return:input];
+        }];
+        [self.textChangedSubject subscribeNext:^(id x) {
+            [command execute:x];
+        }];
+
+        _textChangedSignal = [command.executionSignals flatten];
     }
 
     return _textChangedSignal;

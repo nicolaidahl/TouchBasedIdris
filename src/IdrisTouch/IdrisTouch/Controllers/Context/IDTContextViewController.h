@@ -13,4 +13,7 @@ static NSString *const cellIdentifier = @"context_cell_ident";
 
 @property (nonatomic, strong) RACCommand *selectionCommand;
 
+@property (nonatomic, strong) NSArray *options;
+
+- (id)initWithOptions:(NSArray *)options;
 @end

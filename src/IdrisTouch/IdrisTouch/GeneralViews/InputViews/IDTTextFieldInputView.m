@@ -9,7 +9,7 @@
 @interface IDTTextFieldInputView ()
 
 
-
+@property (nonatomic, strong) RACCommand *textChangedCommand;
 @end
 
 @implementation IDTTextFieldInputView {
@@ -68,30 +68,41 @@
 - (void)setBorderStyle:(IDTInputViewBorderStyle)borderStyle {
     _borderStyle = borderStyle;
 
-    [self.textField removeFromSuperview];
-    self.textField = [self textFieldWithBorderStyle:borderStyle];
+    [self setBorderStyle:borderStyle onTextField:self.textField];
 }
 
 
 - (UITextField*) textFieldWithBorderStyle: (IDTInputViewBorderStyle) borderStyle
 {
-    UITextField *textField;
+    UITextField *textField = [[UITextField alloc] init];
 
+    [self setBorderStyle:borderStyle onTextField:textField];
+
+    textField.cas_styleClass = @"input-group-text-field";
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+
+    return textField;
+}
+
+- (void) setBorderStyle: (IDTInputViewBorderStyle) borderStyle onTextField: (UITextField *) textField
+{
     switch (borderStyle)
     {
         case IDTInputBorderStyleNone:
         {
-            textField = [[UITextField alloc] init];
+            textField.layer.borderWidth = 0;
             break;
         }
-        case IDTInputBorderStyleDashed:
+        case IDTInputBorderStyleSolidGray:
         {
-            textField = [IDTDashedTextField new];
+            textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+            textField.layer.borderWidth = 2;
+            textField.layer.cornerRadius = 8.0;
+
             break;
         }
         case IDTInputBorderStyleSolid:
         {
-            textField = [[UITextField alloc] init];
             textField.layer.borderColor = [[UIColor blackColor] CGColor];
             textField.layer.borderWidth = 2;
             textField.layer.cornerRadius = 8.0;
@@ -99,12 +110,26 @@
             break;
         }
     }
-
-    textField.cas_styleClass = @"input-group-text-field";
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-
-    return textField;
 }
+
+- (RACSignal *)textChangedSignal {
+    return [self.textChangedCommand.executionSignals flatten];
+}
+
+- (RACCommand *)textChangedCommand {
+    if(!_textChangedCommand)
+    {
+        _textChangedCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal return:input];
+        }];
+        [self.textField.rac_textSignal subscribeNext:^(id x) {
+            [_textChangedCommand execute:self];
+        }];
+    }
+
+    return _textChangedCommand;
+}
+
 
 - (UITextField *)textField {
     if(!_textField)

@@ -10,7 +10,7 @@ typedef NS_ENUM(NSInteger, IDTInputViewBorderStyle)
 {
     IDTInputBorderStyleNone = 0,
     IDTInputBorderStyleSolid,
-    IDTInputBorderStyleDashed
+    IDTInputBorderStyleSolidGray
 };
 
 @protocol IDTTextInputView
@@ -21,4 +21,7 @@ typedef NS_ENUM(NSInteger, IDTInputViewBorderStyle)
 
 
 @interface IDTInputView : IDTAbstractView
+
+@property (nonatomic, assign) NSUInteger index;
+
 @end

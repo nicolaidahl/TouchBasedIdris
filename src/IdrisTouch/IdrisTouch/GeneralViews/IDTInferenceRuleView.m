@@ -99,7 +99,7 @@
     {
         _premisesInputGroup = [[IDTTextFieldGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
                                                                                         separatorType:IDTGroupInputViewSeparatorArrow
-                                                                                        andBoderStyle:IDTInputBorderStyleDashed];
+                                                                                        andBoderStyle:IDTInputBorderStyleSolid];
         _premisesInputGroup.cas_styleClass = @"inference-rule-premises-input-group";
     }
 

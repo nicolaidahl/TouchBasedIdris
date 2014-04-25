@@ -7,6 +7,7 @@
 #import "IDTTextFieldGroupInputView.h"
 #import "IDTClauseGroupInputView.h"
 #import "IDTMetaVariableInputView.h"
+#import "IDTClause.h"
 
 @interface IDTFunctionDeclarationView ()
 
@@ -26,7 +27,7 @@
     self = [super initAndLayout];
     if (self) {
         [[self.addLineButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self addFunctionLine];
+            [self addClauseView];
             [self updateConstraints];
         }];
     }
@@ -118,7 +119,7 @@
 
 }
 
-- (void) addFunctionLine {
+- (void) addClauseView {
 
     IDTTextFieldGroupInputView *lhs = [[IDTTextFieldGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
                                                                                    separatorType:IDTGroupInputViewSeparatorSmallSpace
@@ -141,6 +142,10 @@
 
 }
 
+- (void) addClauseViewFromClause: (IDTClause*) clause
+{
+
+}
 
 - (UIView *)viewThatConnectsThisToViewHierarchy {
     return self.connectingLine;

@@ -14,10 +14,11 @@
 
 - (id)initAndLayoutNameTypeGroupInputView {
     self = [super initAndLayoutWithExactNumberOfInputViews:@2 separatorType:IDTGroupInputViewSeparatorColon
-                                             andBoderStyle:IDTInputBorderStyleDashed];
+                                             andBoderStyle:IDTInputBorderStyleSolid];
     if (self) {
 
-
+        self.typeInputView.textField.placeholder = @"Type";
+        self.nameInputView.textField.placeholder = @"Identifier";
 
     }
 

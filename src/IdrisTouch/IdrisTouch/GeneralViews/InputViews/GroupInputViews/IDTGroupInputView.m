@@ -73,7 +73,7 @@
 
 - (void) addInputView: (IDTInputView *) inputView
 {
-
+    inputView.index = self.inputViews.count;
 
     [self addSubview:inputView];
     [self.inputViews addObject:inputView];
@@ -104,6 +104,7 @@
             {
                 separatorImageView = [[UIImageView alloc] initWithImage:[UIImage
                         imageNamed:@"type_arrow"]];
+                separatorImageView.alpha = 0.3;
                 break;
             }
             case IDTGroupInputViewSeparatorColon:

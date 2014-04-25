@@ -19,6 +19,18 @@
     IDTContextViewModel *_viewModel;
 }
 
+
+
+- (id)initWithOptions: (NSArray*) options {
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        self.options = options;
+    }
+
+    return self;
+}
+
+
 - (void)viewDidLoad {
     self.preferredContentSize = CGSizeMake(200, 120);
 
@@ -35,7 +47,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return self.options.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,10 +59,7 @@
         contextCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    if(indexPath.row == 0)
-        contextCell.textLabel.text = @"data";
-    else if(indexPath.row == 1)
-        contextCell.textLabel.text = @"function";
+    contextCell.textLabel.text = self.options[(NSUInteger) indexPath.row];
 
     return contextCell;
 }
@@ -61,7 +70,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.viewModel.selectionCommand execute:@(indexPath.row)];
 
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Accessors

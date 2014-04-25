@@ -20,5 +20,6 @@
 - (void)addInputView:(IDTInputView *)inputView;
 - (void)addInputView;
 
+- (NSArray*) optionsForPopover;
 
 @end
