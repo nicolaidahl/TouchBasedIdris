@@ -40,7 +40,11 @@
 
     [self.textField mas_updateConstraintsHeightFromStylesheet];
 
-    [self.textField.rac_textSignal subscribeNext:^(id x) {
+
+    [self.textChangedSignal subscribeNext:^(id x) {
+        if(![_textField.text isEqualToString: @""])
+            self.borderStyle = IDTInputBorderStyleSolid;
+
         [self updateWidthConstraintForTextField];
     }];
 
@@ -122,7 +126,11 @@
         _textChangedCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             return [RACSignal return:input];
         }];
-        [self.textField.rac_textSignal subscribeNext:^(id x) {
+
+        RACSignal *textPropertySignal = RACObserve(self.textField, text);
+        RACSignal *mergedSignal = [RACSignal merge:@[textPropertySignal, self.textField.rac_textSignal]];
+
+        [mergedSignal subscribeNext:^(id x) {
             [_textChangedCommand execute:self];
         }];
     }

@@ -121,9 +121,11 @@
 
 - (void) addClauseView {
 
-    IDTTextFieldGroupInputView *lhs = [[IDTTextFieldGroupInputView alloc] initAndLayoutWithExactNumberOfInputViews:nil
-                                                                                   separatorType:IDTGroupInputViewSeparatorSmallSpace
-                                                                                   andBoderStyle:IDTInputBorderStyleSolid];
+    IDTTextFieldGroupInputView *lhs = [[IDTTextFieldGroupInputView alloc]
+            initAndLayoutWithExactNumberOfInputViews:@(self.typeDeclaration.inputViews.count)
+                                       separatorType:IDTGroupInputViewSeparatorSmallSpace
+                                       andBoderStyle:IDTInputBorderStyleSolid];
+
 
     IDTMetaVariableInputView *rhs = [[IDTMetaVariableInputView alloc] initAndLayout];
 

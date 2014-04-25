@@ -67,14 +67,11 @@
 
     [super addInputView:inputView];
 
-    RACSignal *mergedTextSignal = [self.inputViews.rac_sequence
-            foldLeftWithStart:[RACSignal return:nil]
-                       reduce:^RACSignal *(RACSignal *accumulator,
-                               IDTTextFieldInputView *value) {
-                           return [RACSignal merge:@[accumulator, value.textChangedSignal]];
-                       }];
+    IDTInputView <IDTTextInputView> *textInputView = (IDTInputView<IDTTextInputView> *) inputView;
 
-    [_textChangedSubject sendNext:mergedTextSignal];
+    [textInputView.textChangedSignal subscribeNext:^(id x) {
+        [_textChangedSubject sendNext:textInputView];
+    }];
 
 
 }
@@ -84,16 +81,14 @@
 {
     IDTTextFieldInputView *iv = [[IDTTextFieldInputView alloc]
             initAndLayoutWithBorderStyle:IDTInputBorderStyleSolidGray];
-    [[iv.textField rac_textSignal] subscribeNext:^(NSString *text) {
+    [iv.textChangedSignal subscribeNext:^(IDTTextFieldInputView *inputView) {
         if (self.inputViews.count > 0) {
             IDTTextFieldInputView *lastInputView = ((IDTTextFieldInputView *)self.inputViews[self.inputViews.count -
                     1]);
             if (lastInputView.textField == iv.textField) {
-                if(![text isEqualToString:@""] && (!_exactNumberOfInputViews || self.inputViews.count <
-                            [_exactNumberOfInputViews integerValue]))
+                if(![inputView.textField.text isEqualToString:@""] && (!_exactNumberOfInputViews || self.inputViews
+                        .count < [_exactNumberOfInputViews integerValue]))
                 {
-                    iv.borderStyle = _borderStyle;
-
                     if(iv.index > 0)
                     {
                         UIView *separator = self.separatorViews[iv.index - 1];
@@ -114,9 +109,6 @@
 
 }
 
-- (NSArray *) optionsForPopover {
-    return @[@"Nat", @"Vect n a"];
-}
 
 
 - (RACSignal *)textChangedSubject {
@@ -139,7 +131,7 @@
             [command execute:x];
         }];
 
-        _textChangedSignal = [command.executionSignals flatten];
+        _textChangedSignal = command.executionSignals;
     }
 
     return _textChangedSignal;

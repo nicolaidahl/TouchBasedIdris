@@ -100,6 +100,8 @@
             IDTFunctionDeclarationView *funcView = [_mainView
                     addFunctionDeclaration].second;
 
+            [self configureContextPickerForFuncView:funcView];
+
             IDTTopLevelFuncDec *funcDec = [[IDTTopLevelFuncDec alloc] init];
             funcDec.ident = @"zip";
             [self.viewModel.program.topLevelDec addObject:funcDec];
@@ -122,13 +124,28 @@
     return cvc;
 }
 
-- (IDTContextViewController *) configureContextPickerForDataView: (IDTDataDeclarationView *) dataView
-{
-    NSArray *options = @[@"Nat"];
-    IDTContextViewController *cvc = [[IDTContextViewController alloc] initWithOptions: options];
+- (void)configureContextPickerForFuncView:(IDTFunctionDeclarationView *)funcView {
+    [self configureContextPickerForTextSignal:[funcView.typeDeclaration.textChangedSignal flatten]
+                         withSelectionOptions:@[@"Vect k a", @"Nat"]];
+}
 
-    [[dataView.typeDeclaration.premisesInputGroup.textChangedSignal flatten] subscribeNext:^(IDTTextFieldInputView
-    *inputView) {
+- (void) configureContextPickerForDataView: (IDTDataDeclarationView *) dataView
+{
+
+    [self configureContextPickerForTextSignal:[dataView.typeDeclaration.premisesInputGroup.textChangedSignal flatten]
+            withSelectionOptions:@[@"Nat"]];
+
+    [self configureContextPickerForTextSignal:dataView.typeDeclaration.conclusionInputView.typeInputView.textChangedSignal
+                         withSelectionOptions:@[@"Type"]];
+
+}
+
+- (void) configureContextPickerForTextSignal: (RACSignal*) signal withSelectionOptions:
+        (NSArray*) options
+{
+    IDTContextViewController *cvc = [[IDTContextViewController alloc] initWithOptions:options];
+
+    [signal subscribeNext:^(IDTTextFieldInputView *inputView) {
 
         [[cvc.selectionCommand.executionSignals flatten] subscribeNext:^(NSNumber *selection) {
             inputView.textField.text = options[(NSUInteger) [selection integerValue]];
@@ -138,14 +155,19 @@
 
         }];
 
-        if(!_contextPopoverController && inputView)
-            [self showContextPopoverFromViewController:cvc fromView:inputView];
 
+
+        if(!_contextPopoverController && inputView)
+        {
+            BOOL textFieldContainsOption = [options.rac_sequence any:^BOOL(NSString *value) {
+                return [value isEqualToString:inputView.textField.text];
+            }];
+
+            if(!textFieldContainsOption)
+                [self showContextPopoverFromViewController:cvc fromView:inputView];
+        }
 
     }];
-
-
-    return cvc;
 }
 
 #pragma mark - Bind views to AST
