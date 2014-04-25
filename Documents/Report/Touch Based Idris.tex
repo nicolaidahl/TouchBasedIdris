@@ -1,0 +1,39 @@
+\documentclass[oribibl]{llncs}
+\pagestyle{headings} %page numbers
+\usepackage{makeidx}  % allows for indexgeneration
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc} % Fixed missing font warning for \maketitle
+\usepackage{url}
+\usepackage{todonotes} % remove later - this is for TODO notes
+%\usepackage{amsmath,amssymb}  We don't use this?
+\usepackage{url}
+
+% \hypersetup{%
+%   citecolor=black
+% }
+
+\bibliographystyle{plain}
+
+\begin{document}
+\mainmatter{}
+\title{Touch Based, Visual Syntax for Idris}
+\author{Nicolai Dahl Blicher-Petersen \and Christian Harrington \\
+\email{\{ndbl, cnha\}@itu.dk}}
+\institute{IT University of Copenhagen, Rued Langgaards Vej 7, 2300 Copenhagen S, Denmark}
+
+\maketitle
+
+\begin{abstract}
+
+\keywords{Idris}
+\end{abstract}
+\input{sections/01.Introduction.tex}
+\input{sections/02.Background.tex}
+\input{sections/08.References.tex}
+\newpage
+\input{sections/09.Appendix.tex}
+
+\end{document}

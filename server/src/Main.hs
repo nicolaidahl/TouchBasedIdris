@@ -1,10 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
-module TI.Main where
+module Main where
 
 import TI.AbsSyntaxTree
 import TI.TI2Idris
---import TI.Idris2TI
-import TI.Evaluator
+import TI.Idris2TI
 
 import Control.Applicative
 import Snap.Core
@@ -15,6 +14,7 @@ import Data.Aeson (decode, encode)
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.Char8 as C8
 import qualified Data.ByteString.Lazy as LBS
+import qualified GHC.Int
 
 lbs2BS :: LBS.ByteString -> BS.ByteString
 lbs2BS = BS.concat . LBS.toChunks
@@ -22,6 +22,7 @@ lbs2BS = BS.concat . LBS.toChunks
 contentType :: BS.ByteString 
 contentType = "application/json; charset=utf-8"
 
+maxSize :: GHC.Int.Int64
 maxSize = 32768
 
 main :: IO ()
