@@ -25,6 +25,7 @@
 #import "IDTClauseGroupInputView.h"
 #import "IDTMetaVariable.h"
 #import "IDTVariable.h"
+#import "IDTMetaVariableInputView.h"
 
 
 @interface IDTMainViewController () <UIPopoverControllerDelegate>
@@ -125,19 +126,38 @@
 }
 
 - (void)configureContextPickerForFuncView:(IDTFunctionDeclarationView *)funcView {
-    [self configureContextPickerForTextSignal:[funcView.typeDeclaration.textChangedSignal flatten]
+    [self configureContextPickerForTextSignalOfSignals: funcView.typeDeclaration.textChangedSignal
                          withSelectionOptions:@[@"Vect k a", @"Nat"]];
 }
+
+
 
 - (void) configureContextPickerForDataView: (IDTDataDeclarationView *) dataView
 {
 
-    [self configureContextPickerForTextSignal:[dataView.typeDeclaration.premisesInputGroup.textChangedSignal flatten]
-            withSelectionOptions:@[@"Nat"]];
+    [self configureContextPickerForTextSignalOfSignals:dataView.typeDeclaration.premisesInputGroup.textChangedSignal
+            withSelectionOptions:@[@"Nat", @"Type"]];
+
 
     [self configureContextPickerForTextSignal:dataView.typeDeclaration.conclusionInputView.typeInputView.textChangedSignal
                          withSelectionOptions:@[@"Type"]];
 
+}
+
+- (void)configureContextPickerForConstructor:(IDTInferenceRuleView *)view {
+
+        [self configureContextPickerForTextSignalOfSignals:view.premisesInputGroup.textChangedSignal
+                             withSelectionOptions:@[@"Vect n a", @"Type", @"Nat"]];
+
+    [self configureContextPickerForTextSignal:view.conclusionInputView.typeInputView.textChangedSignal
+                         withSelectionOptions:@[@"Vect n a"]];
+}
+
+
+- (void)configureContextPickerForTextSignalOfSignals:(RACSignal *)signal withSelectionOptions:(NSArray *)options {
+    [signal subscribeNext:^(RACSignal *innerSignal) {
+        [self configureContextPickerForTextSignal:innerSignal withSelectionOptions:options];
+    }];
 }
 
 - (void) configureContextPickerForTextSignal: (RACSignal*) signal withSelectionOptions:
@@ -154,8 +174,6 @@
             _contextPopoverController = nil;
 
         }];
-
-
 
         if(!_contextPopoverController && inputView)
         {
@@ -191,9 +209,12 @@
 
         [dataDec.constructors addObject:constructor];
 
+        [self configureContextPickerForConstructor: constructorView];
+
         [self bindConstructor:constructor toInferenceRuleView:constructorView];
     }];
 }
+
 
 - (void) bindConstructor: (IDTConstructor *) constructor toInferenceRuleView: (IDTInferenceRuleView *) inferenceRuleView
 {
@@ -220,6 +241,67 @@
 
     [[[funcDecView.addedNewClauseCommand executionSignals] flatten] subscribeNext:^(IDTClauseGroupInputView *clauseGroupInputView) {
         IDTClause *clause = [[IDTClause alloc] init];
+
+        [[clauseGroupInputView.rhs.didPressMetaVariable.executionSignals flatten] subscribeNext:^(id x) {
+            if(clauseGroupInputView.lhs.inputViews.count >= 2)
+            {
+                IDTTextFieldInputView *first = clauseGroupInputView.lhs.inputViews[0];
+                IDTTextFieldInputView *second = clauseGroupInputView.lhs.inputViews[1];
+                if([first.textField.text isEqualToString:@"Nil"] && [second.textField.text isEqualToString:@"Nil"])
+                    [clauseGroupInputView.rhs.metavariableButton setTitle:@"Nil" forState:UIControlStateNormal];
+
+                if([first.textField.text isEqualToString:@"x :: xs"] && [second.textField.text isEqualToString:@"y :: "
+                        "ys"])
+                    [clauseGroupInputView.rhs.metavariableButton setTitle:@"(x, "
+                            "y) :: zip xs ys" forState:UIControlStateNormal];
+            }
+        }];
+
+        for (IDTTextFieldInputView *textFieldInputView in clauseGroupInputView.lhs.inputViews) {
+            [textFieldInputView.swipeDownSignal subscribeNext:^(id x) {
+                if([textFieldInputView.textField.text isEqualToString:@"xs"]){
+
+                    textFieldInputView.textField.text = @"Nil";
+
+                    if(funcDecView.clauses.count >= 2)
+                    {
+                        IDTClauseGroupInputView *clause = funcDecView.clauses[1];
+                        if(clause.lhs.inputViews.count > 0)
+                        {
+                            IDTTextFieldInputView *fieldInputView = clause.lhs.inputViews[0];
+                            fieldInputView.textField.text = @"x :: xs";
+                        }
+                    }
+                    else
+                    {
+                        [funcDecView addClauseViewWithTexts:@[@"x :: xs", @"ys"]];
+                    }
+
+                    [funcDecView updateConstraints];
+                }
+                else if ([textFieldInputView.textField.text isEqualToString:@"ys"])
+                {
+                    textFieldInputView.textField.text = @"Nil";
+
+                    if(funcDecView.clauses.count >= 2)
+                    {
+                        IDTClauseGroupInputView *clause = funcDecView.clauses[1];
+                        if(clause.lhs.inputViews.count > 1)
+                        {
+                            IDTTextFieldInputView *fieldInputView = clause.lhs.inputViews[1];
+                            fieldInputView.textField.text = @"y :: ys";
+                        }
+                    }
+                    else
+                    {
+                        [funcDecView addClauseViewWithTexts:@[@"xs", @"y :: ys"]];
+                    }
+
+                    [funcDecView updateConstraints];
+                }
+
+            }];
+        }
 
         [self bindClause: clause toClauseGroupInputView:clauseGroupInputView];
 

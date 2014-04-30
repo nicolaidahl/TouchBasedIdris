@@ -5,14 +5,18 @@
 
 #import "IDTMetaVariableInputView.h"
 
-@interface IDTMetaVariableInputView ()
-
-@property (nonatomic, strong) UIButton *metavariableButton;
-
-@end
-
 @implementation IDTMetaVariableInputView {
 
+}
+
+
+- (id)initAndLayout {
+    self = [super initAndLayout];
+    if (self) {
+        self.metavariableButton.rac_command = self.didPressMetaVariable;
+    }
+
+    return self;
 }
 
 
@@ -23,7 +27,7 @@
 - (void)defineLayout {
     [self.metavariableButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
-        make.width.equalTo(@(50));
+
     }];
 }
 
@@ -44,6 +48,7 @@
     {
         _metavariableButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_metavariableButton setTitle:@"???" forState:UIControlStateNormal];
+        _metavariableButton.titleLabel.font = [UIFont fontWithName:@"Menlo-Bold" size:14];
     }
 
     return _metavariableButton;

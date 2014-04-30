@@ -32,7 +32,7 @@
 
 
 - (void)viewDidLoad {
-    self.preferredContentSize = CGSizeMake(200, 120);
+    self.preferredContentSize = CGSizeMake(200, 140);
 
     _mainView.tableView.delegate = self;
     _mainView.tableView.dataSource = self;

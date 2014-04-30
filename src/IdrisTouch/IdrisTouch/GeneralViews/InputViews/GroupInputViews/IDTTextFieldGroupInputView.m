@@ -67,7 +67,7 @@
 
     [super addInputView:inputView];
 
-    IDTInputView <IDTTextInputView> *textInputView = (IDTInputView<IDTTextInputView> *) inputView;
+    IDTTextFieldInputView <IDTTextInputView> *textInputView = (IDTTextFieldInputView<IDTTextInputView> *) inputView;
 
     [textInputView.textChangedSignal subscribeNext:^(id x) {
         [_textChangedSubject sendNext:textInputView];

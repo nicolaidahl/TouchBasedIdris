@@ -5,6 +5,7 @@
 
 #import "IDTTextFieldInputView.h"
 #import "IDTDashedTextField.h"
+#import "IDTInsetsTextField.h"
 
 @interface IDTTextFieldInputView ()
 
@@ -22,6 +23,7 @@
         _borderStyle = borderStyle;
 
         [self runInitialLayoutRoutine];
+
     }
 
     return self;
@@ -59,7 +61,7 @@
                                                 attributes:@{NSFontAttributeName:font}
                                                    context:nil];
 
-    CGSize size = CGSizeMake(MAX(textRect.size.width + 16, 40), textRect.size.height);
+    CGSize size = CGSizeMake(MAX(textRect.size.width + 20, 30), textRect.size.height);
 
 
     [_textField mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -78,7 +80,7 @@
 
 - (UITextField*) textFieldWithBorderStyle: (IDTInputViewBorderStyle) borderStyle
 {
-    UITextField *textField = [[UITextField alloc] init];
+    UITextField *textField = [[IDTInsetsTextField alloc] init];
 
     [self setBorderStyle:borderStyle onTextField:textField];
 

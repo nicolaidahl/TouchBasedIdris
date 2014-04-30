@@ -11,4 +11,5 @@
 
 @property (nonatomic, strong) RACCommand *didPressMetaVariable;
 
+@property (nonatomic, strong) UIButton *metavariableButton;
 @end

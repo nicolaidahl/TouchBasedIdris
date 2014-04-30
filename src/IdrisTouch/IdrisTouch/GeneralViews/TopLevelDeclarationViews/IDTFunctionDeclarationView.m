@@ -27,7 +27,9 @@
     self = [super initAndLayout];
     if (self) {
         [[self.addLineButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self addClauseView];
+
+
+            [self addClauseViewWithTexts:@[@"xs", @"ys"]];
             [self updateConstraints];
         }];
     }
@@ -119,10 +121,37 @@
 
 }
 
-- (void) addClauseView {
+- (NSArray *)clauses {
+
+
+    return [self.lineActionLineTuples.rac_sequence map:^id(RACTuple *tuple) {
+        return tuple.second;
+    }].array;
+}
+
+- (void) addClauseViewWithTexts: (NSArray*) array
+{
+
+    IDTClauseGroupInputView *clauseGroupInputView = [self addClauseView];
+
+    int counter = 0;
+    for (IDTTextFieldInputView *fieldInputView in clauseGroupInputView.lhs.inputViews) {
+        if(array.count > counter)
+            fieldInputView.textField.text = array[(NSUInteger) counter];
+
+        counter ++;
+    }
+}
+
+- (IDTClauseGroupInputView *) addClauseView {
+
+    RACSequence *inputViewsWithContent = [self.typeDeclaration.inputViews.rac_sequence filter:^BOOL
+    (IDTTextFieldInputView *inputView) {
+        return ![inputView.textField.text isEqualToString:@""];
+    }];
 
     IDTTextFieldGroupInputView *lhs = [[IDTTextFieldGroupInputView alloc]
-            initAndLayoutWithExactNumberOfInputViews:@(self.typeDeclaration.inputViews.count)
+            initAndLayoutWithExactNumberOfInputViews:@(inputViewsWithContent.array.count - 1)
                                        separatorType:IDTGroupInputViewSeparatorSmallSpace
                                        andBoderStyle:IDTInputBorderStyleSolid];
 
@@ -142,12 +171,9 @@
 
     [self.addedNewClauseCommand execute:clauseGroupInputView];
 
+    return clauseGroupInputView;
 }
 
-- (void) addClauseViewFromClause: (IDTClause*) clause
-{
-
-}
 
 - (UIView *)viewThatConnectsThisToViewHierarchy {
     return self.connectingLine;

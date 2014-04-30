@@ -7,6 +7,7 @@
 #import "IDTAbstractTopLevelDeclarationView.h"
 
 @class IDTTextFieldGroupInputView;
+@class IDTClauseGroupInputView;
 
 
 @interface IDTFunctionDeclarationView : IDTAbstractTopLevelDeclarationView
@@ -15,4 +16,9 @@
 @property (nonatomic, strong) RACCommand *addedNewClauseCommand;
 
 @property (nonatomic, strong) IDTTextFieldGroupInputView *typeDeclaration;
+
+@property (nonatomic, strong) NSArray *clauses;
+
+- (void)addClauseViewWithTexts:(NSArray *)array;
+
 @end

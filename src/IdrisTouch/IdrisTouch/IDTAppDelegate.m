@@ -74,8 +74,8 @@ static NSString *const kNameOfStylesheetFile = @"Stylesheets/stylesheet.cas";
     RACSignal *signal = [client getEvaluationOfObjectHierarchy:program];
 
     [signal subscribeNext:^(NSDictionary *dictionary) {
-        IDTJSONSerializer *serializer = [IDTJSONSerializer serializer];
-        IDTProgram *program1 = [serializer deserializeToProgram:dictionary];
+        //IDTJSONSerializer *serializer = [IDTJSONSerializer serializer];
+        //IDTProgram *program1 = [serializer deserializeToProgram:dictionary];
     } error:^(NSError *error) {
 
     } completed:^{
