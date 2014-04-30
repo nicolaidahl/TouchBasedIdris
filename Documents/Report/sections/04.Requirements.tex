@@ -13,4 +13,7 @@ More non-functional
 How gestures should enhance the programming experience
 Gestures are hard to discover (ref), so there should be a way to use the interface without the advanced gestures
 
-\subsection{Scope}
+\subsection{Defining Scope}
+The aim of the project is to explore usability issues related to defining a standard data type with the touch-based interface as well as defining a function to manipulate this data type. We have chosen to focus on the canonical Vect data type, which is, as we explained in section\todo{insert ref}, often used as the basic example of how dependent types work. Furthermore we will be letting our usability test subjects define the zip function (also explained in section\todo{insert ref}). This function allows the testing of automatic initial clause creation, automatic case splitting, and rhs code inference.
+
+Any language features of Idris that are not directly needed to be able to test the usability of defining the above-mentioned top-level declarations will thus be omitted. This means we will only not handle language features such as dependent pairs, explicit types, with notation \todo{insert more?}.
