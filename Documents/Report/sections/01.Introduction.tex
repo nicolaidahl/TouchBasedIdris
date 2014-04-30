@@ -1,3 +1,25 @@
 %!TEX root = ../Touch Based Idris.tex
 \section{Introduction}
 \label{sec:Introduction}
+
+Currently, there is no widespread solution for graphical programming, although the field has been explored for half a century. In the last few years touch-based interfaces, in the form of smart phones and tablets, have proliferated. These devices often rely on virtual keyboards for text-input, which can be cumbersome to use, especially when programming. 
+
+Idris is “a general purpose functional language with dependent types”\,\cite{brady2013idris}. The expressive nature of the Idris type system makes advanced tool-support possible, such as automatically generating pattern matching on the different possible constructors for a term, or even filling out a term automatically. In these cases, the compiler will be able to fill in the code automatically when asked to. Idris has a strong core language that can be extended with a higher level syntax as long as it can be translated back to the core language.
+
+The goal of this project is to explore how best to present and interact with a graphical syntax on a touch based device, using the advanced tool support afforded by Idris to minimize the use of the virtual keyboard.
+
+To accomplish this, we will first study existing solutions for touch-based and graphical programming, and aim to identify and define their usability shortcomings by using existing usability theories. Secondly, we will classify these usability issues to provide an overview of successful approaches as well as pitfalls.
+
+With the knowledge we have gained from these activities, we will propose a new graphical high-level syntax for Idris, suitable for a touch interface. We will then implement a simple prototype application for iOS on the Apple iPad, allowing a user to manipulate this graphical syntax using gestures. We will also examine the practicalities of adding support for this high-level graphical syntax to the Idris compiler, so programs written in the graphical syntax can be executed, either on the iPad itself, or on a remote server.
+
+We will apply a heuristic evaluation with reference to the usability problems earlier graphical solutions have had. Finally, we will produce a plan for future empirical usability tests that will serve as basis for the continued development of the prototype.
+
+\subsection{Core questions}
+What can the programming language Idris bring to touch-based programming?
+  - How can a more visual representation of the language improve the usability of touch-based programming?
+  - How can the greater tool-support of Idris improve a touch-based interface?
+
+Why is visual programming not popular these days?
+Why is programming on touch devices not popular these days?
+Does a touch-based interface bring any benefits to general purpose programming?
+
