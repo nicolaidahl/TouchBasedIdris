@@ -7,7 +7,7 @@
 #import "IDTDashedTextField.h"
 #import "IDTInsetsTextField.h"
 
-@interface IDTTextFieldInputView ()
+@interface IDTTextFieldInputView () <UITextFieldDelegate>
 
 
 @property (nonatomic, strong) RACCommand *textChangedCommand;
@@ -21,6 +21,8 @@
     self = [super init];
     if (self) {
         _borderStyle = borderStyle;
+
+        self.textField.delegate = self;
 
         [self runInitialLayoutRoutine];
 
@@ -52,6 +54,11 @@
 
 
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    textField.text = textField.text;
+}
+
 
 - (void) updateWidthConstraintForTextField {
     UIFont *font = [_textField font];

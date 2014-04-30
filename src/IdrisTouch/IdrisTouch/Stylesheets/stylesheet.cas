@@ -29,7 +29,7 @@ UIScrollView.main-view-scroll-view {
 }
 
 ^UIButton.top-level-dec-add-button {
-
+    cas_margin-bottom: 1000;
 }
 
 ^UIView.top-level-dec-data {

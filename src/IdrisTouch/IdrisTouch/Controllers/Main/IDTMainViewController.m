@@ -39,6 +39,7 @@
     IDTMainViewModel *_viewModel;
     IDTMainView *_mainView;
     UIPopoverController *_contextPopoverController;
+    UIView *_inputViewShowingPopover;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -61,6 +62,8 @@
 
     [_contextPopoverController dismissPopoverAnimated:YES];
     _contextPopoverController = nil;
+
+    _inputViewShowingPopover = view;
 
     _contextPopoverController = [[UIPopoverController alloc] initWithContentViewController:cvc];
 
@@ -172,17 +175,27 @@
 
             [_contextPopoverController dismissPopoverAnimated:YES];
             _contextPopoverController = nil;
+            _inputViewShowingPopover = nil;
 
         }];
 
-        if(!_contextPopoverController && inputView)
+        if(inputView)
         {
             BOOL textFieldContainsOption = [options.rac_sequence any:^BOOL(NSString *value) {
                 return [value isEqualToString:inputView.textField.text];
             }];
 
-            if(!textFieldContainsOption)
+            if(_contextPopoverController && _inputViewShowingPopover != inputView)
+            {
+                [_contextPopoverController dismissPopoverAnimated:NO];
+                _contextPopoverController = nil;
+                _inputViewShowingPopover = nil;
+            }
+
+            if(!_contextPopoverController && !textFieldContainsOption)
                 [self showContextPopoverFromViewController:cvc fromView:inputView];
+
+                
         }
 
     }];

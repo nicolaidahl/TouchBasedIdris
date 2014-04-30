@@ -7,7 +7,7 @@
 #import "IDTTextFieldInputView.h"
 
 
-@interface IDTTextFieldGroupInputView ()
+@interface IDTTextFieldGroupInputView () <UITextFieldDelegate>
 
 @property (nonatomic, strong) RACSignal *textChangedSignal;
 
@@ -67,13 +67,6 @@
 
     [super addInputView:inputView];
 
-    IDTTextFieldInputView <IDTTextInputView> *textInputView = (IDTTextFieldInputView<IDTTextInputView> *) inputView;
-
-    [textInputView.textChangedSignal subscribeNext:^(id x) {
-        [_textChangedSubject sendNext:textInputView];
-    }];
-
-
 }
 
 
@@ -86,8 +79,7 @@
             IDTTextFieldInputView *lastInputView = ((IDTTextFieldInputView *)self.inputViews[self.inputViews.count -
                     1]);
             if (lastInputView.textField == iv.textField) {
-                if(![inputView.textField.text isEqualToString:@""] && (!_exactNumberOfInputViews || self.inputViews
-                        .count < [_exactNumberOfInputViews integerValue]))
+                if((!_exactNumberOfInputViews || self.inputViews.count < [_exactNumberOfInputViews integerValue]))
                 {
                     if(iv.index > 0)
                     {
@@ -96,11 +88,20 @@
                     }
 
                     [self addInputView];
+
+
                     [self updateConstraints];
                 }
             }
         }
     }];
+
+
+    [iv.textChangedSignal subscribeNext:^(id x) {
+        [_textChangedSubject sendNext:iv];
+    }];
+
+
     iv.cas_styleClass = @"group-input-view";
 
 
