@@ -2,6 +2,17 @@
 \section{Reflection}
 \label{sec:Reflection}
 
-Important notes on constraining factors
-  - We had the choice between working with the low level Idris abstract syntax or the high level one. We decided to translate the JSON coming from the network to and from the high level abstract syntax of Idris, as the alternative would require us to learn a great deal more about type theory. The trade off is that the high level syntax relies on multiple Haskell libraries for various parts of the implementation. This means that we’ve had to learn what all these dependencies meant without really getting any benefit from it. Example: CheapSkate
-  - Writing a JSON parser is a tedious task and one that should be left to standard or third party libraries. This was done on the Haskell side of the network implementation, but on the Objective-C side, we ran into an unexpected problem. The parser libraries available do not work well with 
+\subsection{Constraining factors}
+During this project we have encountered an incredibly high amount of unforeseen constraining factors. Some of the simplest things turned out to require demanding workarounds due to the strict rules of the iOS platform and the vast amount of technologies and languages that had to work in combination in the finished product.
+
+A good example of the unforeseen complexity of the simplest of components was writing a JSON parser on the client side. Most often this is a tedious task that can be left to standard or third party libraries, which was also the case on the server side in Haskell. A data definition with $n$ constructors in Haskell corresponds to one abstract class with $n$ concrete classes inheriting from the abstract class in Objective-C. It turns out that none of the top Objective-C JSON libraries had a good way of handling this abstraction, which forced us to spend valuable time extending a JSON library when we could have spent it on developing the UI further.
+
+Another element that turned out to be way more time consuming than initially planned was defining and laying out the user interface for the prototype. Early on we chose to use Apple's Autolayout technology in which you define the relations between UI components just as you would on a white board instead of calculating spacings and offsets on a pixel level. The idea is that you define your interface once for all screen sizes and interface orientations, but in our case Autolayout turned out to bring just as many problems as benefits to the table, and we found ourselves spending way too much time on debugging our custom interface.
+
+\subsection{A Different Approach}
+One of the underlying assumptions of this project is that it is not realistic to be able to program with the same speed and accuracy on a touch interface as you would with a normal keyboard. The most advanced touch-based editor is not nearly as powerful as the most advanced desktop editor/IDE. Keyboard-based editors have been developed for centuries whereas touch gesture-based editors have not been explored to the same extent. 
+
+In this project we have taken an existing textual programming language, originally intended for desktop programming and tested how far we were able to take it usability wise. The question we ask is if it is this is the right approach. Keyboard-based editors have been developed with textual programming languages in mind, so why not develop a touch-based editor with a touch-based language in mind? Such a language does not, to our knowledge, exist today. It would require developers to completely rethink the way they program and exclude any and all use of the virtual keyboard.
+
+Imagine a solution where the programmer would only use the fastest types of touch-gestures such as swipe, tap, and double-tap, where the hands would stay in the same positions to increase programming speed. Identifiers would be specified by using the built-in microphone. One should only support a very simple expression language to begin with and only try to support more complex constructs when this core had been tested to work as efficiently as keyboard-based programming.
+
