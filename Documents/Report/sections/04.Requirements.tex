@@ -1,5 +1,6 @@
 %!TEX root = ../Touch Based Idris.tex
 \section{Requirements}
+
 \label{sec:Requirements}
 Based on the initial analysis we will here present various sets of requirements for the new touch-based Idris syntax.
 
@@ -17,3 +18,26 @@ Gestures are hard to discover (ref), so there should be a way to use the interfa
 The aim of the project is to explore usability issues related to defining a standard data type with the touch-based interface as well as defining a function to manipulate this data type. We have chosen to focus on the canonical Vect data type, which is, as we explained in section\todo{insert ref}, often used as the basic example of how dependent types work. Furthermore we will be letting our usability test subjects define the zip function (also explained in section\todo{insert ref}). This function allows the testing of automatic initial clause creation, automatic case splitting, and rhs code inference.
 
 Any language features of Idris that are not directly needed to be able to test the usability of defining the above-mentioned top-level declarations will thus be omitted. This means we will only not handle language features such as dependent pairs, explicit types, with notation \todo{insert more?}.
+
+
+
+% Main points
+% A pure textual interface is not a good solution (such as CodeToGo). You have to optimize for touch
+% Ref: Nielsen - Mobile Usability p. 26, p. 41
+
+% The difference between touch and mouse. Impossible to say which one is better, so it’s important to design for both
+
+% Our mission is not to convert expert programmers from desktop to mobile. Mobile users are often in a hurry and programming is of an immersive nature
+% Ref: Nielsen - Mobile Usability p. 26
+
+% The touch keyboard is cumbersome to use
+% pp. 76
+% In VPls, it can be hard to distinguish between language and environment
+% Green, Petre
+
+% Low memorability with gestures (p 141)
+% It’s probably not a good idea for us to invent too many new gestures, as they are hard to discover and people don’t remember them
+% Alternatively gestures can be a power user functionality that makes it faster to work with the app. We should put in standard single tap ways of doing things in any case (p. 143)
+
+
+

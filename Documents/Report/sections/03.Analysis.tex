@@ -2,4 +2,30 @@
 \section{Analysis of Visual and Touch Based Solutions}
 \label{sec:Analysis}
 
+The amount of touch-based and/or visual programming languages and editors that have already been developed is quite large as can be seen from Eric Hosick's list.\,\cite{hosick2014} For this very reason it was important for us to define which types of existing solutions that are of interest to us.
+
+There has been plenty of research on how to make programming languages that are usable for non programmers\todo{Refs: Pane et al., A. Myers, Green}, but given the fact that the field of dependent types is still in its early development phase \todo{ref?}, we can limit our target group to expert programmers making introductory languages for novice developers irrelevant.
+
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+                      & \textbf{Description}                                                                                                            & \textbf{Touch-based}                            & \textbf{Visual syntax}                          & \textbf{\begin{tabular}[c]{@{}l@{}}Stuctured \\ editor\end{tabular}} \\ \hline
+\textbf{CodeToGo}     &                                                                                                                                 & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } &                                                 &                                                                      \\ \cline{1-1} \cline{3-5} 
+\textbf{Textastic}    & \multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Textual interface for general \\ purpose languages for use \\ on iPad\end{tabular}} & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } &                                                 &                                                                      \\ \hline
+\textbf{Epigram}      & \begin{tabular}[c]{@{}l@{}}Functional with Dependent \\ Types\end{tabular}                                                      &                                                 & \cellcolor[HTML]{6AA84F}                        &                                                                      \\ \hline
+\textbf{Raskell}      & Mobile Haskell                                                                                                                  & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } &                                                 &                                                                      \\ \hline
+\textbf{TouchDevelop} & \begin{tabular}[c]{@{}l@{}}Imperative language \\ running as a web app\end{tabular}                                             & \cellcolor[HTML]{6AA84F}                        &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
+\textbf{Lisping}      & Mobile Lisp                                                                                                                     & \cellcolor[HTML]{6AA84F}                        &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
+\textbf{Scratch}      & \begin{tabular}[c]{@{}l@{}}Beginner-friendly \\ programming by dragging \\ boxes\end{tabular}                                   &                                                 & \cellcolor[HTML]{274E13}{\color[HTML]{274E13} } & \cellcolor[HTML]{274E13}                                             \\ \hline
+\textbf{Eastwest}     & \begin{tabular}[c]{@{}l@{}}Functional programming \\ system with structured editor\end{tabular}                                 &                                                 &                                                 & \cellcolor[HTML]{274E13}                                             \\ \hline
+\textbf{IdrisTouch}   & Mobile Idris                                                                                                                    & \cellcolor[HTML]{38761D}                        & \cellcolor[HTML]{6AA84F}                        & \cellcolor[HTML]{38761D}                                             \\ \hline
+\end{tabular}
+\end{table}
+
 \todo{mention somewhere that we're trying to be better than other tablet based solutions and not textual editors in general}
