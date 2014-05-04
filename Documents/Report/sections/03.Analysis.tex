@@ -2,10 +2,34 @@
 \section{Analysis of Visual and Touch Based Solutions}
 \label{sec:Analysis}
 
+In this section, we evaluate a range of visual and/or touch based programming interfaces and languages. It is the goal of this phase to be able to compile a list of desirable and undesirable features for our IdrisTouch editor.
+
+\subsection{Investigation Scope}
 The amount of touch-based and/or visual programming languages and editors that have already been developed is quite large as can be seen from Eric Hosick's list.\,\cite{hosick2014} For this very reason it was important for us to define which types of existing solutions that are of interest to us.
 
-There has been plenty of research on how to make programming languages that are usable for non programmers\todo{Refs: Pane et al., A. Myers, Green}, but given the fact that the field of dependent types is still in its early development phase \todo{ref?}, we can limit our target group to expert programmers making introductory languages for novice developers irrelevant.
+As we’re designing a visual touch-based syntax for the programming language Idris, we can define our target group to users that are familiar with dependently typed languages. Plenty of experiments with visual languages for educational purposes have been conducted (see Scratch section) (Pane et al., A. Myers, Green), so we should only take more experienced programmers into consideration when designing the user experience.
 
+Domain specific languages: As Idris is general purpose we will not be investigating domain specific languages/platforms unless elements of their syntax or IDE has potential of working with general purpose languages.
+
+There are many visual workflow editors that basically use a collection of boxes and arrows to visualize state and actions. Author and Author (insert ref) argue that purely visual languages like these do not scale well. Our focus has thus moved away from purely visual workflow languages to languages that only partially rely on visual syntax.
+
+Still, with these limiting factors there are too many candidate solutions for us to analyze and evaluate them all. The following analysis consists of a selection of the available solutions that we found most relevant to our study and applies the heuristic evaluation technique by Nielsen\,\cite{nielsen1990heuristic}. Such an evaluation can give an idea of possible usability issues but I will not help discover them all. This suits our purpose, as it is our mission to get an overview of the major pitfalls as well as what generally works well when designing our solution. Furthermore, we are pursuing an entirely new type of touch-based, visual, and structured interface instead of bettering an existing one so analyzing a few existing solutions in depth does not make sense.
+
+\subsection{CodeToGo}
+CodeToGo claims to be the first app for iOS in which you can write and run code in your favorite language\todo{ref}. It is backed by the ideone.com website\todo{ref} that evaluates the code, when the user presses “Run”. The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
+
+The most severe usability problem for CodeToGo is the low degree to which the user is able to recover from errors. If you have a syntax error in your code you will get a standard console compile error from the ideone.com server. This error contains the line number where your program failed, but when you dismiss the error you will have to remember this line number and manually count your way down to the line where the mistake was, as the editor does not display line numbers\,\cite{nielsen1990heuristic}.
+
+The editor only has the aforementioned character selector as an accelerator for advanced users. Other than that there are no ways for users to improve when using the tool other than to learn to type faster on an iPad\,\cite{nielsen1990heuristic}.
+
+Nielsen \todo{year} recommends that you follow the iOS platform standards so that the user does not have to put too much effort into learning how to use each app in a special way. Nielsen also recommends having undo support. CodeToGo does have undo support and follows the standard way of iOS, which is to shake the device. One could argue that shaking their iPad is not the most elegant way of allowing programmers to undo their typing, so in this case following the standards is not necessarily the best way to go for a mobile programming interface.
+
+\subsubsection{Takeaways}
+\begin{enumerate}
+	\item Do not assume that a virtual keyboard is as usable as a physical one\,\cite{nielsen2013mobile}. The touch interface has potential if you design your user experience to take advantage of it, but if you chose to ignore its potential/limitations you will have lower usability.
+	\item You need accelerators for users to become faster and more comfortable with the interface. An accelerator could, for example, be auto completion and/or static checking.
+	\item Undo support is essential for usability\,\cite{nielsen1990heuristic}, but if shaking the device is the right input method is questionable.
+\end{enumerate}
 
 
 % Please add the following required packages to your document preamble:
@@ -15,17 +39,18 @@ There has been plenty of research on how to make programming languages that are 
 \begin{table}[h]
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-                      & \textbf{Description}                                                                                                            & \textbf{Touch-based}                            & \textbf{Visual syntax}                          & \textbf{\begin{tabular}[c]{@{}l@{}}Stuctured \\ editor\end{tabular}} \\ \hline
-\textbf{CodeToGo}     &                                                                                                                                 & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } &                                                 &                                                                      \\ \cline{1-1} \cline{3-5} 
-\textbf{Textastic}    & \multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Textual interface for general \\ purpose languages for use \\ on iPad\end{tabular}} & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } &                                                 &                                                                      \\ \hline
-\textbf{Epigram}      & \begin{tabular}[c]{@{}l@{}}Functional with Dependent \\ Types\end{tabular}                                                      &                                                 & \cellcolor[HTML]{6AA84F}                        &                                                                      \\ \hline
-\textbf{Raskell}      & Mobile Haskell                                                                                                                  & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } &                                                 &                                                                      \\ \hline
-\textbf{TouchDevelop} & \begin{tabular}[c]{@{}l@{}}Imperative language \\ running as a web app\end{tabular}                                             & \cellcolor[HTML]{6AA84F}                        &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
-\textbf{Lisping}      & Mobile Lisp                                                                                                                     & \cellcolor[HTML]{6AA84F}                        &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
-\textbf{Scratch}      & \begin{tabular}[c]{@{}l@{}}Beginner-friendly \\ programming by dragging \\ boxes\end{tabular}                                   &                                                 & \cellcolor[HTML]{274E13}{\color[HTML]{274E13} } & \cellcolor[HTML]{274E13}                                             \\ \hline
-\textbf{Eastwest}     & \begin{tabular}[c]{@{}l@{}}Functional programming \\ system with structured editor\end{tabular}                                 &                                                 &                                                 & \cellcolor[HTML]{274E13}                                             \\ \hline
-\textbf{IdrisTouch}   & Mobile Idris                                                                                                                    & \cellcolor[HTML]{38761D}                        & \cellcolor[HTML]{6AA84F}                        & \cellcolor[HTML]{38761D}                                             \\ \hline
+                      & \textbf{Description}                                                                                              & \textbf{Touch-based}                                              & \textbf{Visual syntax}                          & \textbf{\begin{tabular}[c]{@{}l@{}}Stuctured \\ editor\end{tabular}} \\ \hline
+\textbf{CodeToGo}     &                                                                                                                   & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                   &                                                 &                                                                      \\ \cline{1-1}
+\textbf{Textastic}    & \multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Textual iPad interface for \\ general purpose languages\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }} & \multirow{-2}{*}{}                              & \multirow{-2}{*}{}                                                   \\ \hline
+\textbf{Epigram}      & \begin{tabular}[c]{@{}l@{}}Functional with Dependent \\ Types\end{tabular}                                        &                                                                   & \cellcolor[HTML]{6AA84F}                        &                                                                      \\ \hline
+\textbf{Raskell}      & Mobile Haskell                                                                                                    & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                   &                                                 &                                                                      \\ \hline
+\textbf{TouchDevelop} & \begin{tabular}[c]{@{}l@{}}Imperative language \\ running as a web app\end{tabular}                               & \cellcolor[HTML]{6AA84F}                                          &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
+\textbf{Lisping}      & Mobile Lisp                                                                                                       & \cellcolor[HTML]{6AA84F}                                          &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
+\textbf{Scratch}      & \begin{tabular}[c]{@{}l@{}}Beginner-friendly \\ programming by dragging \\ boxes\end{tabular}                     &                                                                   & \cellcolor[HTML]{274E13}{\color[HTML]{274E13} } & \cellcolor[HTML]{274E13}                                             \\ \hline
+\textbf{Eastwest}     & \begin{tabular}[c]{@{}l@{}}Functional programming \\ system with structured editor\end{tabular}                   &                                                                   &                                                 & \cellcolor[HTML]{274E13}                                             \\ \hline
+\textbf{IdrisTouch}   & Mobile Idris                                                                                                      & \cellcolor[HTML]{38761D}                                          & \cellcolor[HTML]{6AA84F}                        & \cellcolor[HTML]{38761D}                                             \\ \hline
 \end{tabular}
 \end{table}
+
 
 \todo{mention somewhere that we're trying to be better than other tablet based solutions and not textual editors in general}
