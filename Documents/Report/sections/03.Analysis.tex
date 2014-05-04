@@ -31,6 +31,16 @@ Nielsen \todo{year} recommends that you follow the iOS platform standards so tha
 	\item Undo support is essential for usability\,\cite{nielsen1990heuristic}, but if shaking the device is the right input method is questionable.
 \end{enumerate}
 
+\subsection{Textastic}
+
+Like CodeToGo, Textastic aims to be a general purpose programming editor, and as such supports many popular programming languages. Unlike CodeToGo, however, it does not support any way to run your code (besides manually copying your program to a computer and running the code there). Textastic is interesting due to an interface component that is not seen in CodeToGo.
+
+Textastic uses a smart shortcut bar to allow quick access to commonly used characters, that would otherwise be hard to get to with the virtual keyboard.\todo{insert image} The biggest problem with Textastic is that you have no way of knowing whether your code will run or not.\todo{ref 10 heuristics. Specifically, user feedback} On a computer, this would not be as big of a problem, in fact many programming editors do not touch on the semantics of the language they are editing, instead they rely on other software to run the code. This is much harder on a device such as an iPad, where multitasking is not as prevalent. The text editing interface is very reminiscent of none-touch GUI text editors, such as TextMate or Sublime Text. 
+
+\begin{enumerate}
+	\item Even in our IdrisTouch interface there will be a need for inputting special characters, and the solution Textastic has come up with is the most intuitive we have seen.
+	\item It is not enough to have a good editing interface, if such a basic issue as running your code is unaddressed.
+\end{enumerate}
 
 \subsection{Existing Solutions Overview}
 Table \ref{table:existing_solutions_overview} gives an overview of the existing solutions and how we will be positioning our IdrisTouch solution compared to these. Our study indicates that touch gestures can be used as accelerators for super users, so we will have focus on implementing these where it makes sense. The strong type system of Idris allows us to make a more structured editor than most existing solutions. Lastly, it is our theory that we can represent Idris data types in a more visual way than what programmers are used to from the current concrete syntax.
