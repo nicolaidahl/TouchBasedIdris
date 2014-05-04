@@ -32,25 +32,41 @@ Nielsen \todo{year} recommends that you follow the iOS platform standards so tha
 \end{enumerate}
 
 
+\subsection{Existing Solutions Overview}
+Table \ref{table:existing_solutions_overview} gives an overview of the existing solutions and how we will be positioning our IdrisTouch solution compared to these. Our study indicates that touch gestures can be used as accelerators for super users, so we will have focus on implementing these where it makes sense. The strong type system of Idris allows us to make a more structured editor than most existing solutions. Lastly, it is our theory that we can represent Idris data types in a more visual way than what programmers are used to from the current concrete syntax.
+	
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[h]
-\begin{tabular}{|l|l|l|l|l|}
-\hline
-                      & \textbf{Description}                                                                                              & \textbf{Touch-based}                                              & \textbf{Visual syntax}                          & \textbf{\begin{tabular}[c]{@{}l@{}}Stuctured \\ editor\end{tabular}} \\ \hline
-\textbf{CodeToGo}     &                                                                                                                   & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                   &                                                 &                                                                      \\ \cline{1-1}
-\textbf{Textastic}    & \multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Textual iPad interface for \\ general purpose languages\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }} & \multirow{-2}{*}{}                              & \multirow{-2}{*}{}                                                   \\ \hline
-\textbf{Epigram}      & \begin{tabular}[c]{@{}l@{}}Functional with Dependent \\ Types\end{tabular}                                        &                                                                   & \cellcolor[HTML]{6AA84F}                        &                                                                      \\ \hline
-\textbf{Raskell}      & Mobile Haskell                                                                                                    & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                   &                                                 &                                                                      \\ \hline
-\textbf{TouchDevelop} & \begin{tabular}[c]{@{}l@{}}Imperative language \\ running as a web app\end{tabular}                               & \cellcolor[HTML]{6AA84F}                                          &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
-\textbf{Lisping}      & Mobile Lisp                                                                                                       & \cellcolor[HTML]{6AA84F}                                          &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
-\textbf{Scratch}      & \begin{tabular}[c]{@{}l@{}}Beginner-friendly \\ programming by dragging \\ boxes\end{tabular}                     &                                                                   & \cellcolor[HTML]{274E13}{\color[HTML]{274E13} } & \cellcolor[HTML]{274E13}                                             \\ \hline
-\textbf{Eastwest}     & \begin{tabular}[c]{@{}l@{}}Functional programming \\ system with structured editor\end{tabular}                   &                                                                   &                                                 & \cellcolor[HTML]{274E13}                                             \\ \hline
-\textbf{IdrisTouch}   & Mobile Idris                                                                                                      & \cellcolor[HTML]{38761D}                                          & \cellcolor[HTML]{6AA84F}                        & \cellcolor[HTML]{38761D}                                             \\ \hline
-\end{tabular}
+\begin{table}[ht]
+	\begin{tabular}{|l|l|l|l|l|}
+	\hline
+	                      & \textbf{Description}                                                                                              & \textbf{Touch-based}                                              & \textbf{Visual syntax}                          & \textbf{\begin{tabular}[c]{@{}l@{}}Stuctured \\ editor\end{tabular}} \\ \hline
+	\textbf{CodeToGo}     &                                                                                                                   & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                   &                                                 &                                                                      \\ \cline{1-1}
+	\textbf{Textastic}    & \multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Textual iPad interface for \\ general purpose languages\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }} & \multirow{-2}{*}{}                              & \multirow{-2}{*}{}                                                   \\ \hline
+	\textbf{Epigram}      & \begin{tabular}[c]{@{}l@{}}Functional with Dependent \\ Types\end{tabular}                                        &                                                                   & \cellcolor[HTML]{6AA84F}                        &                                                                      \\ \hline
+	\textbf{Raskell}      & Mobile Haskell                                                                                                    & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                   &                                                 &                                                                      \\ \hline
+	\textbf{TouchDevelop} & \begin{tabular}[c]{@{}l@{}}Imperative language \\ running as a web app\end{tabular}                               & \cellcolor[HTML]{6AA84F}                                          &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
+	\textbf{Lisping}      & Mobile Lisp                                                                                                       & \cellcolor[HTML]{6AA84F}                                          &                                                 & \cellcolor[HTML]{B6D7A8}                                             \\ \hline
+	\textbf{Scratch}      & \begin{tabular}[c]{@{}l@{}}Beginner-friendly \\ programming by dragging \\ boxes\end{tabular}                     &                                                                   & \cellcolor[HTML]{274E13}{\color[HTML]{274E13} } & \cellcolor[HTML]{274E13}                                             \\ \hline
+	\textbf{Eastwest}     & \begin{tabular}[c]{@{}l@{}}Functional programming \\ system with structured editor\end{tabular}                   &                                                                   &                                                 & \cellcolor[HTML]{274E13}                                             \\ \hline
+	\textbf{IdrisTouch}   & Mobile Idris                                                                                                      & \cellcolor[HTML]{38761D}                                          & \cellcolor[HTML]{6AA84F}                        & \cellcolor[HTML]{38761D}                                             \\ \hline
+	\end{tabular}
+
+	\caption {Existing solutions overview}
+	\label{table:existing_solutions_overview}
+
 \end{table}
 
+\subsection{Overall Takeaways}
+In this section we have analyzed a range of existing solutions and for each reached a list of takeaways that we will be using to form our requirements for the IdrisTouch app.
 
-\todo{mention somewhere that we're trying to be better than other tablet based solutions and not textual editors in general}
+
+
+
+
+
+
+
+
