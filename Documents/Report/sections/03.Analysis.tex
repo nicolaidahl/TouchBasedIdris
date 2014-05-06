@@ -95,11 +95,11 @@ While it has been impossible to get a version of Epigram working for any sort of
 
 There is a tendency for visual programming languages to be domain specific and such it is natural that a high-level syntax for a general purpose language like Idris is less visual. We will, however, investigate Epigram's way of defining and presenting data types.
 
-\subsection{Touch-based Programming Languages}
-
+\subsection{Touch-based Programming Environments}
+Now that we have established that an inherently visual representation of Idris is not the obvious choice for the iPad platform, we move on to analyzing touch-based solutions. The three editors in question all work on the iPad and have their own take on how a touch-based programming environment should work.
 
 \subsubsection{CodeToGo}
-CodeToGo claims to be the first app for iOS in which you can write and run code in your favorite language\todo{ref}. It is backed by the ideone.com website\todo{ref} that evaluates the code, when the user presses “Run”. The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
+CodeToGo claims to be the first app for iOS in which you can write and run code in your favorite language\,\cite{codetogo}. It is backed by the ideone.com website\cite{ideone} that evaluates the code, when the user presses ``Run''. The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
 
 The most severe usability problem for CodeToGo is the low degree to which the user is able to recover from errors. If you have a syntax error in your code you will get a standard console compile error from the ideone.com server. This error contains the line number where your program failed, but when you dismiss the error you will have to remember this line number and manually count your way down to the line where the mistake was, as the editor does not display line numbers\,\cite{nielsen1990heuristic}.
 
@@ -123,22 +123,29 @@ Textastic uses a smart shortcut bar to allow quick access to commonly used chara
 \paragraph{Takeaways}
 \begin{enumerate}
 	\item Even in our IdrisTouch interface there will be a need for inputting special characters, and the solution Textastic has come up with is the most intuitive we have seen.
-	\item It is not enough to have a good editing interface, if such a basic issue as running your code is unaddressed.
+	\item It is not enough to have a good editing interface of your final product, if such a basic issue as running your code is unaddressed.
 \end{enumerate}
-
 
 
 \subsubsection{Raskell}
 
 Raskell is a Haskell editor for the iPad. It is based on the Hugs implementation of Haskell 98, and includes the ability to interpret your programs locally. The text editor itself is inspired by Vi, featuring many of the same keyboard commands. When you have written your program, you can load it into the interpreter, which gives you a REPL, letting you test out your program. Raskell supports syntax highlighting for Haskell, and features most libraries for Hugs, but does not have auto completion.
 
-The text editing itself is fine, but a lack of autocomplete and snippets mean you will be using the virtual keyboard a lot. The error messages when running your code obscure the code, meaning you have to read and memorize the error before trying to fix it, although it also features inline error messages while programming. The REPL is extremely useful for trying out parts of your program 
+The text editing itself works well, but a lack of autocompletion and snippets mean you will be using the virtual keyboard to a large extent, which is generally a problem according to Nielsen\,\cite[pp. 76]{nielsen2013mobile}. 
 
-While otherwise a good experience, Raskell does nothing to reduce use of the virtual keyboard, which can be tedious to use for longer periods.
+Apart from this issue, the development flow is flexible and efficient. Especially compiler error are being handled in an elegant way letting the user recover from syntactical errors\,\cite{nielsen1990heuristic}. If a compile error occurs, the user is presented with a split-screen view showing the error and a line number. The REPL is also extremely useful for trying out parts of your program.
+
+Compared to CodeToGo, the Raskell development flow is quicker. This may be due to the local interpreter that evaluates your Haskell code as opposed to the network based approach CodeToGo takes. \todo{maybe insert something about the vim like keyboard?}
+
+\paragraph{Takeaways}
+\begin{enumerate}
+	\item If possible we should run Idris locally.
+	\item A solid way to recover from errors is essential to a good development experience.
+\end{enumerate}
 
 \paragraph{}
 
-Recap here what we like the most from the touch based
+For all of the three editors in this section there is one main problem: The heavy reliance on the virtual keyboard. Also, only using one type of touch-gesture (the single tap) seems like a wasted opportunity. The final major thing that is an issue for all of the above editors is the lack of auto completion and user accelerators in general.
 
 
 \subsection{Structured Programming Languages}
