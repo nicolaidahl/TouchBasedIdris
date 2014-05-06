@@ -149,78 +149,74 @@ For all of the three editors in this section there is one main problem: The heav
 
 
 \subsection{Structured Programming Languages}
-
-
+In this section we look at a less free text approach to programming that called structured programming. The user more or less directly manipulates the abstract syntax tree representing the given program.
 
 \subsubsection{Lisping}
 
-Using the Scheme dialect of LISP you can program and execute code right on your iPad with Lisping. The idea is to take advantage of the close proximity between the abstract syntax tree and source syntax of LISP to edit code in a structured way. So you are actually manipulating the abstract syntax tree almost directly instead of having to type in every single character of every single line. While other iPad solutions run code on an external server, Lisping runs locally using a Scheme interpreter written in C, called TinyScheme.
+Using the Scheme dialect of LISP you can program and execute code right on your iPad with Lisping. The idea is to take advantage of the close proximity between the abstract syntax tree and source syntax of LISP to edit code in a structured way. So you are actually manipulating the abstract syntax tree almost directly instead of having to type in every single character of every single line. While other iPad solutions run code on an external server, Lisping runs locally using a Scheme interpreter written in C, called TinyScheme. Lisping has been written with usability in mind\,\cite{lisping}: 
 
-Lisping has been written with usability in mind as it is stated on the website: 
+``Textviews and virtual keyboards aren't the only option for coding on iOS. Editing source code character by character is a concept wedded to the keyboard and it is not necessarily the best option for a device with no keyboard.''
 
-“Textviews and virtual keyboards aren't the only option for coding on iOS. Editing source code character by character is a concept wedded to the keyboard and it is not necessarily the best option for a device with no keyboard.” [http://slidetocode.com/lisping/]
+Lisping is actually also a touch-based programming editor with support for multiple types of gestures, but it is the fact that it is structured that makes it interesting to our study.
 
-We’re fairly experienced programmers with only little knowledge of the Scheme language and it’s syntax and we had a hard time using Lisping. The underlying TinyScheme interpreter most often gave us “Error Unknown” compiler messages even though we were writing examples straight from the Scheme website. Not being able to pinpoint what was syntactically wrong with the written code was a major issue.
+We're fairly experienced programmers with only little knowledge of the Scheme language and it's syntax, and we had a hard time understanding and using Lisping. The underlying TinyScheme interpreter most often gave us “Error Unknown” compiler messages even though we were writing examples straight from the Scheme website. Not being able to pinpoint what was syntactically wrong with the written code and recover from that error was a major problem, as stated by Nielsen's ninth heuristic\,\cite{nielsen1990heuristic}.
 
-The editor supports a range of touch gestures that are not immediately obvious to the user. You have to open the Lisping guide in the upper right corner and read through 6 pages of a pdf document to familiarize yourself with these gestures, which has low memorability.
+The editor supports a range of touch gestures that are not immediately obvious to the user. You have to open the Lisping guide in the upper right corner and read through 6 pages of a PDF document to familiarize yourself with these gestures. This is a memorability problem\,\cite{nielsen1990heuristic}.
 
-There are also several buttons on the bottom of the UI. These are all icons and except for the delete and edit ones, they have no standard meaning in iOS or are used differently from the standard meaning. The undo button is e.g. a backwards-pointing triangle which could be interpreted to mean “Back” in iOS. Given the fact that I have no chance of remembering all these non-standard icons, they clearly violate the “Recognition rather than recall” and “Consistency and standards” usability guidelines presented by Nielsen (year). 
+There are also several buttons on the bottom of the UI. These are all icons and except for the delete and edit ones, they have no standard meaning in iOS or are used differently from the standard meaning. The undo button is e.g. a backwards-pointing triangle which could be interpreted to mean “Back” in iOS. Given the fact that the user has no chance of remembering all these non-standard icons, they clearly violate the ``Recognition rather than recall'' and ``Consistency and standards'' usability guidelines\,\cite{nielsen1990heuristic}. 
 
-Furthermore, these icons are all located close to each other and a whole screen length away from where my attention is supposed to be when I’m programming - that is, on the code. All but two of the actions that these icons allow the user to do can be done with various gestures performed on the source code, which is a failed attempt on providing accelerators for the expert user.
+Furthermore, these icons are all located close to each other and a whole screen length away from where the user's attention is supposed to be when programming - that is, on the code. All but two of the actions that these icons allow the user to do can be done with various gestures performed on the source code. We see this as a failed attempt on providing accelerators for the expert user.
 
-The problem with these gestures is that they are uncomfortable. To select an expression to edit or run in the REPL, the user must “reverse pinch” the text. This is a non-standard way of highlighting text in iOS and it feels very awkward and unresponsive not to mention that it gets painful to do after you’ve done it 3-4 times. The font size of the code should also be larger, as it is difficult to hit the intended buttons.
+The problem with these gestures is that they are uncomfortable and cumbersome to use. To select an expression to edit or run in the REPL, the user must ``reverse pinch'' the text. This is a non-standard way of highlighting text in iOS and it feels very awkward and unresponsive not to mention that it gets painful to do after three to four times. The font size of the code should also be larger, as it is difficult to hit the intended buttons.
 
-The final usability problem we discovered with Lisping was the amount of + buttons inlined in the code. These buttons are supposed to indicate that an expression can be added there, but all they really do is make the code harder to read. 
+The final usability problem we discovered with Lisping was the amount of [+] buttons inlined in the code. These buttons are supposed to indicate that an expression can be added there, but what they also do is make the code much harder to read. 
 
 \paragraph{Takeaways}
 \begin{enumerate}
 	\item The error messages from the compiler/interpreter should indicate where in the code the syntax errors have occurred. Simply presenting “Unknown Error” is frustrating for the user.
-	\item It should not be necessary to add a pdf documents with instructions to how the gestures and buttons work. It should be immediately recognized by the user because it is all presented according to the platform standards. Don’t get “too creative” with gestures and button icons.
-	\item Littering a structured editor with + (add) buttons, to indicate that expressions can be added at these positions, is not a good idea if you want a proper overview. While a good alternative for this solution is hard to come up with we should try to design a different way.
+	\item It should not be necessary to add a PDF documents with instructions to how the gestures and buttons work. It should be immediately recognized by the user because it is all presented according to the platform standards. This serves as a reminder that the overuse of clever gestures harms the user experience.
+	\item Littering a structured editor with [+] (add) buttons, to indicate that expressions can be added at these positions, is not a good idea. While a good alternative for this solution is hard to come up with we should try to design a different way.
 \end{enumerate}
 
 
 
 \subsubsection{Eastwest}
-Even though Eastwest is basically an experiment we find it very interesting. It is a structured editor for a functional language that allows the user to “fill in holes” i.e. fulfill goals of a program from a context. The context appears right under the goal and thus works as a well-placed autocompletion tool. We have been unable to complete a usability test of Eastwest, as we were unable to install it on our computers. Several videos are available, though, and it is interesting to see how functional data types are being defined and functions are being built in a structured way.
+Even though Eastwest is basically an experiment we find it very interesting. It is a structured editor for a functional language that allows the user to ``fill in holes'' i.e. fulfill goals of a program from a context. The context appears right under the goal and thus works as a well-placed auto completion tool. We have been unable to complete a heuristics evaluation of Eastwest, as we were unable to install it on our computers. Several videos are available, though, and it is interesting to see how functional data types are being defined and functions are being built in a structured way. \todo{insert reference}
 
 \paragraph{Takeaways}
 \begin{enumerate}
 	\item Having a context close to the goal makes for quick and easy access. The better that context is at guessing the right thing for the goal, the faster the tool will seem.
-	\item Functional languages seem to work well in a structured editor.
+	\item In general, functional languages seem to work well in a structured editor.\todo{do we mean strongly/statically typed languages?}
 \end{enumerate}
 
 
 \subsubsection{TouchDevelop}
 
-TouchDevelop allows developers to make touch and accelerometer enabled games for any device with a web browser by providing a web app. It is generally meant as a way of getting young people interested in programming, and the language has been specially designed for this purpose and works hand in hand with the development platform to provide a good experience for touch devices.
+TouchDevelop allows developers to make touch and accelerometer enabled games for any device with a web browser by providing a web app. It is generally meant as a way of getting youngsters interested in programming, and the language has been specially designed for this purpose and works hand in hand with the development platform to provide a good experience for touch devices.\todo{insert ref for touchdev}
 
-TouchDevelop is not general purpose but focuses on creating simple 2D games. This means that the user gets a lot of standard game concepts built into whatever program he’s writing. This is evident from the context that is being updated as you type in the bottom of the screen. This basically means that you rarely have to type characters into the editor as you don’t have to define new methods (actions). Variable names are automatically generated at the push of a button.
+TouchDevelop is not general purpose but focuses on creating simple 2D games. This means that the user gets a lot of standard game concepts built into whatever program he's writing. This is evident from the context that is being updated as you type in the bottom of the screen. This basically means that you rarely have to type characters into the editor as you don't have to define new methods (actions). Variable names are automatically generated at the push of a button.
 
-The first thing you notice as an experienced programmer is how the TouchDevelop language looks like modern imperative languages like C\# and Java, and this recognizability enabled me to get started with the platform right away. To educate new users there is a long tutorial that guides you through your first game. This tutorial makes the language seem very structured but in fact it is as easy to make syntactical error as in any other imperative language.
+The first thing you notice as an experienced programmer is how the TouchDevelop language looks like modern imperative languages like C\# and Java, and this recognizability enabled us to get started with the platform right away. To educate new users there is a long tutorial that guides you through your first game. This tutorial makes the language seem very structured but in fact it is as easy to make syntactical error as in any other imperative language. We have placed TouchDevelop in this section of structured editors even though it should only be categorized as semi-structured.
 
 Even though TouchDevelop works on all touch devices that has a web browser it is not really optimized for other gestures than the standard single tap gesture that works on all platforms.
 
-To fit more code on the screen and create a better overview, TouchDevelop uses a rather small font for the code you write. When you tap the line of code you wish to edit, that statement is enlarged and you can relatively easily move the cursor around. Additionally, buttons appear to insert new lines above and below the selected segment. This design is minimalistic and controls only show up when you need them.
+To fit more code on the screen and create a better overview, TouchDevelop uses a rather small font for the code you write. When you tap the line of code you wish to edit, that statement is enlarged and you can relatively easily move the cursor around. Additionally, buttons appear to insert new lines above and below the selected segment. This design is minimalistic and controls only show up when you need them\,\cite{nielsen1990heuristic}.
 
-The context that is presented to the user to select method calls and objects from is convenient when it presents you with just what you needed, but in most cases you find yourself struggling to find just that. This is due to the nature of object oriented systems. When filling out a “hole” in the program the type system cannot narrow down the possibilities, as any object could potentially allow the user to create the right type. This seems to be a problem for us as novice users, as the vast number of elements in the context at any given time slows down the speed of which we’re programming.
+The context that is presented to the user to select method calls and objects from is convenient when it presents you with just what you needed, but in most cases you find yourself struggling to find just that. This is due to the nature of object oriented languages. When filling out a hole in the program, the type system cannot narrow down the possibilities, as any object could potentially allow the user to create the right type according to the compiler. This seems to be a problem for us as novice users, as the vast number of elements in the context at any given time slows down our programming speed.
 
-The “feel” of TouchDevelop suffers from the fact that it is a web app written with no specific system in mind. The biggest annoyance is when you want to move around the cursor. This is clumsy on the iPad and often requires that you use buttons.
+The feel of TouchDevelop suffers from the fact that it is a web app written with no specific system in mind. The biggest annoyance is when you want to move around the cursor. This is clumsy on the iPad and often requires that you use buttons.
 
 \paragraph{Takeaways}
 \begin{enumerate}
-	\item To have a contextual overview can speed up the tasks.
-	\item 
+	\item To have a contextual overview can speed up the tasks of programming just as we saw with Eastwest.
+	\item The type system of the TouchDevelop object oriented programming language is not ideal if you want to expose a context for the user to pick from. The type system simply can't narrow down the possibilities efficiently.
+	\item Using a smaller font for code that is not in focus is a clever way to create a better overview for the user.
+	\item There is a clear difference between the feel of a web app like TouchDevelop and a native app like Lisping.
 \end{enumerate}
-
-The type system of an object oriented programming language is not ideal if you want to expose a context for the user to pick from. The type system simply can’t narrow down the possibilities efficiently.
-Using a smaller font for code that is not in focus is a clever way to create a better overview for the user.
-If you want a nice native “feel” to an app, you should write it specifically for one platform.
 
 \paragraph{}
 
-Briefly tell why Idris is good for the structured approach
-
+The more structured the touch-based editor is, the more well-functioning auto completion seems to be. As we have learned, it is paramount to have as little use of the virtual keyboard as possible and adopting the structured approach together with the strong type system of Idris should be able to give us just that.
 
 \subsection{Existing Solutions Overview}
 Table \ref{table:existing_solutions_overview} gives an overview of the existing solutions and how we will be positioning our IdrisTouch solution compared to these. Our study indicates that touch gestures can be used as accelerators for super users, so we will have focus on implementing these where it makes sense. The strong type system of Idris allows us to make a more structured editor than most existing solutions. Lastly, it is our theory that we can represent Idris data types in a more visual way than what programmers are used to from the current concrete syntax.
