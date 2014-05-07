@@ -2,16 +2,26 @@
 \section{Architecture}
 \label{sec:Architecture}
 
-We decided to write our program for the Apple iPad, as it is the most prolific
+We decided to write our app for the Apple iPad, as it is the most prolific
 tablet today. We also want to be able to use the various interactive features
 available in the Emacs mode for Idris\todo{Ref to requirement}, such as case
-splitting and auto completion. This means we need to communicate with the Idris
-interpreter. The Emacs mode simply communicates with the Idris interpreter over
-a socket. In this way the Emacs mode can interact with Idris, which can access
-files on disk. As porting Idris to iOS is far beyond the scope of this project,
-we chose to let the Idris interpreter run on a host computer, with a thin 
-client running on the iPad, and a server program facilitating communication 
-between the client and Idris.
+splitting and auto completion. One way to achieve this would be to implement
+the required functionality directly in our app. But there is a much easier way.
+The Emacs mode simply communicates with the Idris interpreter over a socket. 
+In this way the Emacs mode can support advanced features that require an
+understanding of the underlying semantics of a piece of code, while letting
+Idris do all the hard work. We would like to use the same mechanism, but there
+are some obstacles. First, we would have to compile Idris for iOS, and make 
+sure it works. The Glasgow Haskell Compiler \emph{does} support 
+cross-compiling for iOS\todo{Ref}, but the process is not very mature, and
+getting Idris (and all of its dependencies) to run on iOS represents an 
+unknown amount of work. Second, Apple has very strict rules for interpreting
+code on iOS\@. This might make it very difficult to get the app distributed on
+the App Store, the only official way to publicly distribute iOS apps.
+
+Because of these factors, we decided to let the Idris interpreter run on a 
+host computer, with a thin client running on the iPad, and a server program 
+facilitating communication between the client and Idris.
 
 \subsection{Abstract Syntax}
 \label{subsec:AbstractSyntax}
