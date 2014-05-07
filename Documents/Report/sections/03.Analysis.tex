@@ -1,7 +1,7 @@
 %!TEX root = ../Touch Based Idris.tex
 \section{Analysis of Visual and Touch Based Solutions}
 \label{sec:Analysis}
-
+\todo{insert screenshots of more or less all the solutions}
 In this section, we evaluate a range of visual and/or touch based programming interfaces and languages. It is the goal of this phase to be able to compile a list of desirable and undesirable features for our IdrisTouch editor.
 
 \subsection{Investigation Scope}
@@ -95,7 +95,10 @@ While it has been impossible to get a version of Epigram working for any sort of
 
 There is a tendency for visual programming languages to be domain specific and such it is natural that a high-level syntax for a general purpose language like Idris is less visual. We will, however, investigate Epigram's way of defining and presenting data types.
 
-\subsection{Touch-based Programming Environments}
+
+
+\subsection{Touch-based Editors}
+\label{subsec:TouchBasedEditors}
 Now that we have established that an inherently visual representation of Idris is not the obvious choice for the iPad platform, we move on to analyzing touch-based solutions. The three editors in question all work on the iPad and have their own take on how a touch-based programming environment should work.
 
 \subsubsection{CodeToGo}
@@ -148,8 +151,8 @@ Compared to CodeToGo, the Raskell development flow is quicker. This may be due t
 For all of the three editors in this section there is one main problem: The heavy reliance on the virtual keyboard. Also, only using one type of touch-gesture (the single tap) seems like a wasted opportunity. The final major thing that is an issue for all of the above editors is the lack of auto completion and user accelerators in general.
 
 
-\subsection{Structured Programming Languages}
-In this section we look at a less free text approach to programming that called structured programming. The user more or less directly manipulates the abstract syntax tree representing the given program.
+\subsection{Structured, Touch-Based Editors}
+In this section we look at an approach called structured editor that is different from the previously mentioned editors in that the editors are cognizant of the underlying structure of the program, the abstract syntax tree (AST). The user more or less directly manipulates this AST, which is representing the given program.
 
 \subsubsection{Lisping}
 
@@ -244,9 +247,22 @@ Table \ref{table:existing_solutions_overview} gives an overview of the existing 
 	\label{table:existing_solutions_overview}
 
 \end{table}
+\todo{insert labview in the table}
 
 \subsection{Overall Takeaways}
-In this section we have analyzed a range of existing solutions and for each reached a list of takeaways that we will be using to form our requirements for the IdrisTouch app.
+In this section we have analyzed a range of existing solutions and for each reached a list of takeaways that we'll be using to form our requirements for the IdrisTouch app.
+
+We learned that visual elements can help structure a programming language and its environment, but that the most successful VPLs so far have been domain specific. Idris is a general purpose language so it will be a challenge to incorporate simple visual elements to enhance the user experience.
+
+The current state of the art touch-based iPad apps either only use the single tap gesture, thus wasting a golden opportunity, or use several gestures without concern for the usability of them. The issue seems to be that they're all essentially manipulating text and that the standard text input UI elements on the iPad already support several gestures. If the app tries to incorporate too many gestures to manipulate the structure of these text fields there may be conflicts. Finding a solution to this problem is another major challenge.
+
+Finally, we discussed a few structured editors where two of them support functional languages. Having the editor be cognizant of the underlying structure of the program seems to lessen the amount of typing the user has to perform on the virtual keyboard. Furthermore, the stronger the type system is and the purer the underlying language, the less the programmer has to type, as type inference becomes more possible. The IdrisTouch editor should be structured for these reasons.
+
+
+
+
+
+
 
 
 
