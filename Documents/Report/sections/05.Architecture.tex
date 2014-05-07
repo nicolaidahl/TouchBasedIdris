@@ -1,9 +1,0 @@
-%!TEX root = ../Touch Based Idris.tex
-\section{Architecture}
-\label{sec:Architecture}
-
-
-
-Important notes on constraining factors
-  - We had the choice between working with the low level Idris abstract syntax or the high level one. We decided to translate the JSON coming from the network to and from the high level abstract syntax of Idris, as the alternative would require us to learn a great deal more about type theory. The trade off is that the high level syntax relies on multiple Haskell libraries for various parts of the implementation. This means that we’ve had to learn what all these dependencies meant without really getting any benefit from it. Example: CheapSkate
-

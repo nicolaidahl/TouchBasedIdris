@@ -6,7 +6,7 @@ In many programming languages, such as Java or Haskell, a type can depend on ano
 
 \subsection{Idris}
 \label{subsec:Idris}
-Idris is a dependently typed programming language, initially developed by Edwin Brady~\cite{Idris}. The syntax is heavily inspired by Haskell. Let us start by looking at a simple example. In Figure \ref{fig:nat}, a data type representing the natural numbers is defined. It consists of two constructs \texttt{Z}, representing zero, and \texttt{S~n}, representing the successor of the natural number \texttt{n}.
+Idris is a dependently typed programming language, initially developed by Edwin Brady~\cite{Idris}. The syntax is heavily inspired by Haskell. Let us start by looking at a simple example. In Figure~\ref{fig:nat}, a data type representing the natural numbers is defined. It consists of two constructs \texttt{Z}, representing zero, and \texttt{S~n}, representing the successor of the natural number \texttt{n}.
 
 \begin{figure}
 \begin{alltt}
@@ -18,7 +18,7 @@ data Nat : Type where
 \label{fig:nat}
 \end{figure}
 
-The definition for \texttt{Nat} looks very similar to how it would look in Haskell. Let us move to a slightly more complex example, where we make use of dependent types. In Figure \ref{fig:vect}, the dependent vector, \texttt{Vect: Nat $\to$ Type $\to$ Type} is defined. This type takes two arguments: a \texttt{Nat}, \texttt{n}, describing the length of the vector, and a \texttt{Type}, \texttt{a}, specifying the type of the elements it contains.
+The definition for \texttt{Nat} looks similar to how it would look in Haskell. Let us move to a slightly more complex example, where we make use of dependent types. In Figure~\ref{fig:vect}, the dependent vector, \texttt{Vect: Nat $\to$ Type $\to$ Type} is defined. This type takes two arguments: a \texttt{Nat}, \texttt{n}, describing the length of the vector, and a \texttt{Type}, \texttt{a}, specifying the type of the elements it contains.
 
 \begin{figure}
 \begin{alltt}
@@ -32,7 +32,7 @@ data Vect : Nat \(\to\) Type \(\to\) Type where
 
 The first construct, \texttt{Nil}, tells us that the empty vector always has a length of \texttt{Z}, or zero. The second constructor, \texttt{(::)} or cons, takes a new element of type \texttt{a}, and prepends it to a vector holding elements of type \texttt{a}. The length of the resulting vector is increased by one compared to the previous vector. We say the vector is parameterized by the type \texttt{a}, as it is the same in both constructors. However, the length of the list, specified by the natural number \texttt{n}, is different in each constructor, so we say the vectors is a family of data types \texttt{indexed} by the natural numbers.
 
-But why record the length of the vector in its type? How does this help us? A simple example of how this can be useful can be seen in the \texttt{zip} function, shown in Figure \ref{fig:zip}.
+But why record the length of the vector in its type? How does this help us? A simple example of how this can be useful can be seen in the \texttt{zip} function, shown in Figure~\ref{fig:zip}.
 
 \begin{figure}
 \begin{alltt}
@@ -44,7 +44,7 @@ zip (x :: xs) (y :: ys) = (x, y) :: zip xs ys
 \label{fig:zip}
 \end{figure}
 
-The \texttt{zip} function takes two arguments. Each argument is a vector of the same length \texttt{n}. \texttt{n}, \texttt{a}, and \texttt{b} are inferred implicitly from their context. These arguments could also be explicitly declared as implicit by surrounding them with curly braces: \texttt{\{n:~Nat\}~$\to$ \{a:~Type\}~$\to$ \{b:~Type\}~$\to$ Vect~n~a~$\to$ Vect~n~b~$\to$ Vect~n~(a,b)} The function zips these two vectors together, producing a vector of the same length, containing tuples \texttt{(a, b)} of the values from the input vectors. If one tries to compile a program that attempts to zip two vectors of different lengths, the type checker will report it as an error, as opposed to failing at runtime. Notice how it is unnecessary to match on the cases where one vector has elements while the other is empty. This situation is impossible, due to the types. In fact, matching on this case is ill-typed, as \texttt{Z} and \texttt{S~n} cannot unify.\todo{Should we mention dependent pairs and the with-rule, when we don't support them?} For our final example, let us look at the \texttt{filter} function in Figure \ref{fig:filter}.
+The \texttt{zip} function takes two arguments. Each argument is a vector of the same length \texttt{n}. \texttt{n}, \texttt{a}, and \texttt{b} are inferred implicitly from their context. These arguments could also be explicitly declared as implicit by surrounding them with curly braces: \texttt{\{n:~Nat\}~$\to$ \{a:~Type\}~$\to$ \{b:~Type\}~$\to$ Vect~n~a~$\to$ Vect~n~b~$\to$ Vect~n~(a,b)} The function zips these two vectors together, producing a vector of the same length, containing tuples \texttt{(a, b)} of the values from the input vectors. If one tries to compile a program that attempts to zip two vectors of different lengths, the type checker will report it as an error, as opposed to failing at runtime. Notice how it is unnecessary to match on the cases where one vector has elements while the other is empty. This situation is impossible, due to the types. In fact, matching on this case is ill-typed, as \texttt{Z} and \texttt{S~n} cannot unify.\todo{Should we mention dependent pairs and the with-rule, when we don't support them?} For our final example, let us look at the \texttt{filter} function in Figure\ref{fig:filter}.
 
 \begin{figure}
 \begin{alltt}
