@@ -21,7 +21,7 @@ The thoroughness of our analyses also depend on something as practical as whethe
 We will be investigating two Visual Programming Language (VPL) as well as Epigrams hybrid approach in this section.
 
 \subsubsection{Labview}
-
+\label{subsub:Labview}
 Labview is a development environment featuring the VPL, G, which is designed for dataflow programming and uses the popular ``boxes and wires'' abstraction, with boxes performing various functions, and wires leading data between the boxes. Labview also lets users combine simple widgets to build GUI programs, using the G language for logic. It is widely used in the scientific community, especially to work with data collected from sensors.
 
 Labview is often referenced in the literature of VPLs \todo{insert a couple of references}, so even though it is domain specific we find it interesting as a starting point for our investigation.
@@ -39,6 +39,7 @@ It is interesting how Green and Petre \todo{(ref)} give Labview an overall posit
 
 
 \subsubsection{Scratch}
+\label{subsub:Scratch}
 Scratch is a visual programming language designed to be easy for beginners to use, facilitating the development of simple audio/visual programs. It is implemented as a web app, and features built-in tutorials, tips and help.
 The language is built around a scene containing sprites. A scene can have multiple sprites, and each sprite can be governed by multiple scripts written in the Scratch visual language. The language itself consists of blocks of different shapes, colors and sizes. Scratch does not use the dataflow paradigm, as Labview does. Instead, one programs by snapping blocks together. The blocks have different shapes, and only complementing shapes can be put together (think of puzzle pieces). Color is used to describe different types of blocks.
 
@@ -82,6 +83,7 @@ Scratch makes no or very little use of the principles of Dual Coding and Graphic
 \end{enumerate}
 
 \subsubsection{Epigram}
+\label{subsub:Epigram}
 The Epigram language is a functional and dependently typed language made by Conor McBride, which aimed to let the programmer create compiler certified proofs using intuitionistic logic. It is not really a visual programming language, but it has been put in this category as the syntax of the data type specification is interesting. In Epigram, defining data is done in a more visual way than newer dependently typed programs. This is done by imitating the standard form for writing inference rules. The definition of e.g. a data type is split into three lines and its 2D syntax almost resembles ASCII art. 
 
 While it has been impossible to get a version of Epigram working for any sort of test we are interested in how this way of expressing data types could benefit the user in a more structured editor that does not require the user to maintain ASCII art but still displays the program in a more visual way.
@@ -93,7 +95,11 @@ While it has been impossible to get a version of Epigram working for any sort of
 
 \paragraph{}
 
-There is a tendency for visual programming languages to be domain specific and such it is natural that a high-level syntax for a general purpose language like Idris is less visual. We will, however, investigate Epigram's way of defining and presenting data types.
+There is a tendency for visual programming languages to be domain specific and
+as such it is natural that a high-level syntax for a general purpose language
+like Idris is less visual. We will, however, investigate Epigram's way of
+defining and presenting data types as well as investigate how to use visual
+elements for communicating program structure.
 
 
 
@@ -102,6 +108,7 @@ There is a tendency for visual programming languages to be domain specific and s
 Now that we have established that an inherently visual representation of Idris is not the obvious choice for the iPad platform, we move on to analyzing touch-based solutions. The three editors in question all work on the iPad and have their own take on how a touch-based programming environment should work.
 
 \subsubsection{CodeToGo}
+\label{subsub:CodeToGo}
 CodeToGo claims to be the first app for iOS in which you can write and run code in your favorite language\,\cite{codetogo}. It is backed by the ideone.com website\cite{ideone} that evaluates the code, when the user presses ``Run''. The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
 
 The most severe usability problem for CodeToGo is the low degree to which the user is able to recover from errors. If you have a syntax error in your code you will get a standard console compile error from the ideone.com server. This error contains the line number where your program failed, but when you dismiss the error you will have to remember this line number and manually count your way down to the line where the mistake was, as the editor does not display line numbers\,\cite{nielsen1990heuristic}.
@@ -118,7 +125,7 @@ Nielsen \todo{year} recommends that you follow the iOS platform standards so tha
 \end{enumerate}
 
 \subsubsection{Textastic}
-
+\label{subsub:Textastic}
 Like CodeToGo, Textastic aims to be a general purpose programming editor, and as such supports many popular programming languages. Unlike CodeToGo, however, it does not support any way to run your code (besides manually copying your program to a computer and running the code there). Textastic is interesting due to an interface component that is not seen in CodeToGo.
 
 Textastic uses a smart shortcut bar to allow quick access to commonly used characters, that would otherwise be hard to get to with the virtual keyboard.\todo{insert image} The biggest problem with Textastic is that you have no way of knowing whether your code will run or not.\todo{ref 10 heuristics. Specifically, user feedback} On a computer, this would not be as big of a problem, in fact many programming editors do not touch on the semantics of the language they are editing, instead they rely on other software to run the code. This is much harder on a device such as an iPad, where multitasking is not as prevalent. The text editing interface is very reminiscent of none-touch GUI text editors, such as TextMate or Sublime Text. 
@@ -131,7 +138,7 @@ Textastic uses a smart shortcut bar to allow quick access to commonly used chara
 
 
 \subsubsection{Raskell}
-
+\label{subsub:Raskell}
 Raskell is a Haskell editor for the iPad. It is based on the Hugs implementation of Haskell 98, and includes the ability to interpret your programs locally. The text editor itself is inspired by Vi, featuring many of the same keyboard commands. When you have written your program, you can load it into the interpreter, which gives you a REPL, letting you test out your program. Raskell supports syntax highlighting for Haskell, and features most libraries for Hugs, but does not have auto completion.
 
 The text editing itself works well, but a lack of autocompletion and snippets mean you will be using the virtual keyboard to a large extent, which is generally a problem according to Nielsen\,\cite[pp. 76]{nielsen2013mobile}. 
@@ -142,8 +149,8 @@ Compared to CodeToGo, the Raskell development flow is quicker. This may be due t
 
 \paragraph{Takeaways}
 \begin{enumerate}
-	\item If possible we should run Idris locally.
-	\item A solid way to recover from errors is essential to a good development experience.
+	\item It is ideal to evaluate code locally as opposed to using a remote server.
+	\item A solid way to recover from syntax errors is essential to a good development experience.
 \end{enumerate}
 
 \paragraph{}
@@ -155,7 +162,7 @@ For all of the three editors in this section there is one main problem: The heav
 In this section we look at an approach called structured editor that is different from the previously mentioned editors in that the editors are cognizant of the underlying structure of the program, the abstract syntax tree (AST). The user more or less directly manipulates this AST, which is representing the given program.
 
 \subsubsection{Lisping}
-
+\label{subsub:Lisping}
 Using the Scheme dialect of LISP you can program and execute code right on your iPad with Lisping. The idea is to take advantage of the close proximity between the abstract syntax tree and source syntax of LISP to edit code in a structured way. So you are actually manipulating the abstract syntax tree almost directly instead of having to type in every single character of every single line. While other iPad solutions run code on an external server, Lisping runs locally using a Scheme interpreter written in C, called TinyScheme. Lisping has been written with usability in mind\,\cite{lisping}: 
 
 ``Textviews and virtual keyboards aren't the only option for coding on iOS. Editing source code character by character is a concept wedded to the keyboard and it is not necessarily the best option for a device with no keyboard.''
@@ -164,7 +171,7 @@ Lisping is actually also a touch-based programming editor with support for multi
 
 We're fairly experienced programmers with only little knowledge of the Scheme language and it's syntax, and we had a hard time understanding and using Lisping. The underlying TinyScheme interpreter most often gave us “Error Unknown” compiler messages even though we were writing examples straight from the Scheme website. Not being able to pinpoint what was syntactically wrong with the written code and recover from that error was a major problem, as stated by Nielsen's ninth heuristic\,\cite{nielsen1990heuristic}.
 
-The editor supports a range of touch gestures that are not immediately obvious to the user. You have to open the Lisping guide in the upper right corner and read through 6 pages of a PDF document to familiarize yourself with these gestures. This is a memorability problem\,\cite{nielsen1990heuristic}.
+The editor supports a range of touch gestures that are not immediately obvious to the user. Low memorability is generally a problem with touch gestures as described by Nielsen \cite[p. 141]{nielsen2013mobile}. In Lisping, you have to open the Lisping guide in the upper right corner and read through 6 pages of a PDF document to familiarize yourself with these gestures. This is a memorability problem\,\cite{nielsen1990heuristic}.
 
 There are also several buttons on the bottom of the UI. These are all icons and except for the delete and edit ones, they have no standard meaning in iOS or are used differently from the standard meaning. The undo button is e.g. a backwards-pointing triangle which could be interpreted to mean “Back” in iOS. Given the fact that the user has no chance of remembering all these non-standard icons, they clearly violate the ``Recognition rather than recall'' and ``Consistency and standards'' usability guidelines\,\cite{nielsen1990heuristic}. 
 
@@ -184,6 +191,7 @@ The final usability problem we discovered with Lisping was the amount of [+] but
 
 
 \subsubsection{Eastwest}
+\label{subsub:Eastwest}
 Even though Eastwest is basically an experiment we find it very interesting. It is a structured editor for a functional language that allows the user to ``fill in holes'' i.e. fulfill goals of a program from a context. The context appears right under the goal and thus works as a well-placed auto completion tool. We have been unable to complete a heuristics evaluation of Eastwest, as we were unable to install it on our computers. Several videos are available, though, and it is interesting to see how functional data types are being defined and functions are being built in a structured way. \todo{insert reference}
 
 \paragraph{Takeaways}
@@ -194,7 +202,7 @@ Even though Eastwest is basically an experiment we find it very interesting. It 
 
 
 \subsubsection{TouchDevelop}
-
+\label{subsub:TouchDevelop}
 TouchDevelop allows developers to make touch and accelerometer enabled games for any device with a web browser by providing a web app. It is generally meant as a way of getting youngsters interested in programming, and the language has been specially designed for this purpose and works hand in hand with the development platform to provide a good experience for touch devices.\todo{insert ref for touchdev}
 
 TouchDevelop is not general purpose but focuses on creating simple 2D games. This means that the user gets a lot of standard game concepts built into whatever program he's writing. This is evident from the context that is being updated as you type in the bottom of the screen. This basically means that you rarely have to type characters into the editor as you don't have to define new methods (actions). Variable names are automatically generated at the push of a button.
