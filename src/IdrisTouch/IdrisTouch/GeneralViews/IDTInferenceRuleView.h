@@ -11,7 +11,7 @@
 @class IDTTextFieldGroupInputView;
 
 
-@interface IDTInferenceRuleView : IDTAbstractHierarchyView
+@interface IDTInferenceRuleView : IDTAbstractView
 
 @property (nonatomic, strong) IDTNameTypeGroupInputView *conclusionInputView;
 @property (nonatomic, strong) IDTTextFieldGroupInputView *premisesInputGroup;

@@ -7,7 +7,7 @@
 #import "IDTTextFieldInputView.h"
 
 
-@interface IDTMetaVariableInputView : IDTInputView
+@interface IDTMetaVariableInputView : IDTAbstractInputView
 
 @property (nonatomic, strong) RACCommand *didPressMetaVariable;
 

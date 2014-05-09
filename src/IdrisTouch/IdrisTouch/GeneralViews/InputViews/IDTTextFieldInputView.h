@@ -5,13 +5,13 @@
 
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
-#import "IDTInputView.h"
+#import "IDTAbstractInputView.h"
 
 @class IDTDashedTextField;
 
 
 
-@interface IDTTextFieldInputView : IDTInputView <IDTTextInputView>
+@interface IDTTextFieldInputView : IDTAbstractInputView <IDTTextInputView>
 
 @property (nonatomic, strong) UITextField *textField;
 

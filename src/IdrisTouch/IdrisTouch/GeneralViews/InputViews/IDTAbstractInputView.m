@@ -3,10 +3,10 @@
 // Copyright (c) 2014 Nicolai Dahl. All rights reserved.
 //
 
-#import "IDTInputView.h"
+#import "IDTAbstractInputView.h"
 
 
-@implementation IDTInputView {
+@implementation IDTAbstractInputView {
 
 }
 
@@ -20,7 +20,7 @@
 //        UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:nil action:nil];
 //        [recognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
         [self addGestureRecognizer:recognizer];
-        self.swipeDownSignal = [recognizer rac_gestureSignal];
+        self.doubleTapSignal = [recognizer rac_gestureSignal];
     }
 
     return self;

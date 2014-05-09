@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IDTInputView.h"
+#import "IDTAbstractInputView.h"
 
 @class IDTTextFieldInputView;
 
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, IDTGroupInputViewSeparatorType)
 };
 
 
-@interface IDTGroupInputView : IDTInputView
+@interface IDTGroupInputView : IDTAbstractInputView
 
 @property(nonatomic, assign) IDTGroupInputViewSeparatorType inputViewSeparatorType;
 @property(nonatomic, strong) NSNumber *exactNumberOfInputViews; //If nil -> infinite
@@ -29,6 +29,6 @@ typedef NS_ENUM(NSInteger, IDTGroupInputViewSeparatorType)
 - (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews andSeparatorType:
         (IDTGroupInputViewSeparatorType)separatorType;
 
-- (void)addInputView:(IDTInputView *)inputView;
+- (void)addInputView:(IDTAbstractInputView *)inputView;
 
 @end

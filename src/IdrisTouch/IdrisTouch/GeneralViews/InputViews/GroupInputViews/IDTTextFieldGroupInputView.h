@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import "IDTAbstractView.h"
-#import "IDTInputView.h"
+#import "IDTAbstractInputView.h"
 #import "IDTGroupInputView.h"
 
 
@@ -17,7 +17,7 @@
 
 - (id)initAndLayoutWithExactNumberOfInputViews:(NSNumber *)exactNumberOfInputViews separatorType:(IDTGroupInputViewSeparatorType)separatorType andBoderStyle:(IDTInputViewBorderStyle)borderStyle;
 
-- (void)addInputView:(IDTInputView *)inputView;
+- (void)addInputView:(IDTAbstractInputView *)inputView;
 - (void)addInputView;
 
 @end

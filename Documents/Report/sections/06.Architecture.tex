@@ -13,8 +13,11 @@ we chose to let the Idris interpreter run on a host computer, with a thin
 client running on the iPad, and a server program facilitating communication 
 between the client and Idris.
 
-\subsection{Client}
-\todo{Mention the client's AST}
+\subsection{Abstract Syntax}
+\label{subsec:AbstractSyntax}
+\todo{Give the abstract syntax we've been working with}
+
+
 
 \subsection{Communication}
 There are two layers of communication in this setup: one between the client and
@@ -52,3 +55,54 @@ transformations to and from the Idris high level syntax, and performs the
 actual operations, such as case splitting.
 
 \todo{Insert diagram showing overall architecture}
+
+\subsection{Client}
+The iPad client is, of course, written in Objective-C as is the standard. The
+software architecture is based on the Model View ViewModel (MVVM) design 
+pattern\todo{ref}, which is an extension of the popular Model View Controller 
+(MVC) pattern. MVVM nicely separates business logic from the view-related
+display logic, and the latter is stored in the ViewModel object to unclutter 
+the controller object, which in turn only contains business logic.
+
+The model hierarchy resembles the abstract syntax from Section \ref{subsec:AbstractSyntax},
+where the type constructors are represented as abstract classes on the client
+and the specific constructors, concrete classes. Note that abstract classes in
+Objective-C are only abstract by convention, as the language does not directly
+support this feature.
+
+Figure \ref{fig:clientViewArchitecture} shows a simplified class diagram of the
+client. It shows the interface classes of the project to give an idea of
+the resemblance to the abstract syntax. As with the abstract syntax there are
+two ``levels'' of views --- top level and input level. The MainView holds a
+number of top level declarations, that each hold a number of input views. The
+InferenceRuleView is used by the DataDeclarationView only.
+
+A GroupInputView contains one or more AbstractInputViews. This way of building
+the interface makes it easy to wire input views to the underlying model object
+hierarchy, as it is the same type of nesting we have with terms.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/client_side_class_diagram.pdf}
+	\caption{A subset of the client-side diagram showing how the view hierarchy
+	almost mirrors the Abstract Syntax tree.}
+	\label{fig:clientViewArchitecture}
+\end{figure}
+
+To handle asynchronous network calls as well as input from the user we have
+used the ReactiveCocoa (RAC) Framework\todo{ref}, which is an Objective-C framework for
+Functional Reactive Programming\todo{ref}. In RAC almost everything is a
+signal. Signals follow the Future/Promise design pattern and provide an
+efficient way of handling future events.
+
+
+
+
+
+
+
+
+
+
+
+

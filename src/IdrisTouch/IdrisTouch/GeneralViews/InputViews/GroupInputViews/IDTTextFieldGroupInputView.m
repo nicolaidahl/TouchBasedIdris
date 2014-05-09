@@ -59,7 +59,7 @@
 
 
 
-- (void)addInputView:(IDTInputView *)inputView {
+- (void)addInputView:(IDTAbstractInputView *)inputView {
 
 
     NSAssert([inputView isKindOfClass:[IDTTextFieldInputView class]], @"");

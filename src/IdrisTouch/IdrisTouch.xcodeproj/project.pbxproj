@@ -31,7 +31,7 @@
 		6B19D8338E51F68886E4B919 /* IDTFunctionApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19D7E8A1038D65463E7074 /* IDTFunctionApplication.m */; };
 		6B19D87E2744B686295486EF /* IDTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19D32A84C7E66D475CD408 /* IDTMainViewController.m */; };
 		6B19D8D06A81983E9C0F5BF5 /* IDTVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19DE622632CCAAFEF8947F /* IDTVariable.m */; };
-		6B19D9267B00F6CACE4F3E83 /* IDTInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19D6FDFC2E44A465531A60 /* IDTInputView.m */; };
+		6B19D9267B00F6CACE4F3E83 /* IDTAbstractInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19D6FDFC2E44A465531A60 /* IDTAbstractInputView.m */; };
 		6B19D94DA8F2BEF9B323F902 /* IDTDataDeclarationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19DC06596EB24CF5314E74 /* IDTDataDeclarationView.m */; };
 		6B19D95BB463382A537E64E3 /* IDTNameTypeGroupInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19D3537633D4A454661439 /* IDTNameTypeGroupInputView.m */; };
 		6B19D9C4F830EB7EDB3B3921 /* IDTConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B19D6C43B12B0F668318D89 /* IDTConstant.m */; };
@@ -128,7 +128,7 @@
 		6B19D6C43B12B0F668318D89 /* IDTConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTConstant.m; sourceTree = "<group>"; };
 		6B19D6C6D310B0A1CF36E327 /* IDTInsetsTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTInsetsTextField.h; sourceTree = "<group>"; };
 		6B19D6EBEFB66BA7261E1E78 /* IDTAbstractTopLevelDeclarationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTAbstractTopLevelDeclarationView.h; sourceTree = "<group>"; };
-		6B19D6FDFC2E44A465531A60 /* IDTInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTInputView.m; sourceTree = "<group>"; };
+		6B19D6FDFC2E44A465531A60 /* IDTAbstractInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTAbstractInputView.m; sourceTree = "<group>"; };
 		6B19D75C26DFD8814C2FEE79 /* IDTMetaVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTMetaVariable.m; sourceTree = "<group>"; };
 		6B19D7A2B0E6E09BD909AE52 /* IDTReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTReference.m; sourceTree = "<group>"; };
 		6B19D7D15363B8128535BFF6 /* IDTVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTVariable.h; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		6B19DE77E2C103C328A51070 /* IDTContextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTContextViewController.h; sourceTree = "<group>"; };
 		6B19DE8EA960B414F6D8BF3E /* IDTConstantString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTConstantString.m; sourceTree = "<group>"; };
 		6B19DECED5A9A75E21575A09 /* IDTMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTMainView.h; sourceTree = "<group>"; };
-		6B19DF07AABF85C30FE9A264 /* IDTInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTInputView.h; sourceTree = "<group>"; };
+		6B19DF07AABF85C30FE9A264 /* IDTAbstractInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTAbstractInputView.h; sourceTree = "<group>"; };
 		6B19DF1EEC9B01EF43794EF5 /* IDTMainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDTMainViewModel.m; sourceTree = "<group>"; };
 		6B19DF3DAD3EA0FFD0E76A30 /* IDTClause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTClause.h; sourceTree = "<group>"; };
 		6B19DF98A2E1C013B41AF83B /* IDTConstantInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDTConstantInt.h; sourceTree = "<group>"; };
@@ -431,8 +431,8 @@
 				6B19DB2862BF63DE1F6ADF08 /* IDTTextFieldInputView.m */,
 				6B19D3A7CF8DEDEF0CF821F6 /* IDTMetaVariableInputView.m */,
 				6B19DD51919CE77D6712AC6A /* IDTMetaVariableInputView.h */,
-				6B19D6FDFC2E44A465531A60 /* IDTInputView.m */,
-				6B19DF07AABF85C30FE9A264 /* IDTInputView.h */,
+				6B19D6FDFC2E44A465531A60 /* IDTAbstractInputView.m */,
+				6B19DF07AABF85C30FE9A264 /* IDTAbstractInputView.h */,
 			);
 			path = InputViews;
 			sourceTree = "<group>";
@@ -720,7 +720,7 @@
 				6B19D2A78881BBF5572B5EF2 /* IDTClauseGroupInputView.m in Sources */,
 				6B19DBDA373C25E28862690D /* IDTTextFieldInputView.m in Sources */,
 				6B19DED0C5C6850B3D7AB3AF /* IDTMetaVariableInputView.m in Sources */,
-				6B19D9267B00F6CACE4F3E83 /* IDTInputView.m in Sources */,
+				6B19D9267B00F6CACE4F3E83 /* IDTAbstractInputView.m in Sources */,
 				6B19D265E7F77F112D4ECBA1 /* IDTGroupInputView.m in Sources */,
 				6B19DB9ECDF00B9747B25AE4 /* IDTMetaVariable.m in Sources */,
 				6B19D2E6D3160E54CB462E06 /* IDTDashedTextField.m in Sources */,

@@ -71,7 +71,7 @@
 
 }
 
-- (void) addInputView: (IDTInputView *) inputView
+- (void) addInputView: (IDTAbstractInputView *) inputView
 {
     inputView.index = self.inputViews.count;
 

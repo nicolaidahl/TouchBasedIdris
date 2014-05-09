@@ -20,9 +20,9 @@ typedef NS_ENUM(NSInteger, IDTInputViewBorderStyle)
 @end
 
 
-@interface IDTInputView : IDTAbstractView
+@interface IDTAbstractInputView : IDTAbstractView
 
-@property (nonatomic, strong) RACSignal *swipeDownSignal;
+@property (nonatomic, strong) RACSignal *doubleTapSignal;
 
 @property (nonatomic, assign) NSUInteger index;
 

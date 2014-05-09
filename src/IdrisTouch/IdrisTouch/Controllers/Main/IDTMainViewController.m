@@ -271,42 +271,35 @@
         }];
 
         for (IDTTextFieldInputView *textFieldInputView in clauseGroupInputView.lhs.inputViews) {
-            [textFieldInputView.swipeDownSignal subscribeNext:^(id x) {
-                if([textFieldInputView.textField.text isEqualToString:@"xs"]){
+            [textFieldInputView.doubleTapSignal subscribeNext:^(id x) {
+                if ([textFieldInputView.textField.text isEqualToString:@"xs"]) {
 
                     textFieldInputView.textField.text = @"Nil";
 
-                    if(funcDecView.clauses.count >= 2)
-                    {
+                    if (funcDecView.clauses.count >= 2) {
                         IDTClauseGroupInputView *clause = funcDecView.clauses[1];
-                        if(clause.lhs.inputViews.count > 0)
-                        {
+                        if (clause.lhs.inputViews.count > 0) {
                             IDTTextFieldInputView *fieldInputView = clause.lhs.inputViews[0];
                             fieldInputView.textField.text = @"x :: xs";
                         }
                     }
-                    else
-                    {
+                    else {
                         [funcDecView addClauseViewWithTexts:@[@"x :: xs", @"ys"]];
                     }
 
                     [funcDecView updateConstraints];
                 }
-                else if ([textFieldInputView.textField.text isEqualToString:@"ys"])
-                {
+                else if ([textFieldInputView.textField.text isEqualToString:@"ys"]) {
                     textFieldInputView.textField.text = @"Nil";
 
-                    if(funcDecView.clauses.count >= 2)
-                    {
+                    if (funcDecView.clauses.count >= 2) {
                         IDTClauseGroupInputView *clause = funcDecView.clauses[1];
-                        if(clause.lhs.inputViews.count > 1)
-                        {
+                        if (clause.lhs.inputViews.count > 1) {
                             IDTTextFieldInputView *fieldInputView = clause.lhs.inputViews[1];
                             fieldInputView.textField.text = @"y :: ys";
                         }
                     }
-                    else
-                    {
+                    else {
                         [funcDecView addClauseViewWithTexts:@[@"xs", @"y :: ys"]];
                     }
 

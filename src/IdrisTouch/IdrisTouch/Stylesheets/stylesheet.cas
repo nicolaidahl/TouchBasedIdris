@@ -82,7 +82,7 @@ UILabel.data-dec-where-label {
     cas_size-height: $text-field-height;
 }
 
-^IDTInputView.group-input-view {
+^IDTAbstractInputView.group-input-view {
     cas_margin-left $separator-margin;
     cas_margin-right $separator-margin;
 }
