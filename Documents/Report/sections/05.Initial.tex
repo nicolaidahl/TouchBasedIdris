@@ -13,3 +13,114 @@
 % makes it faster to work with the app. We should put in standard single tap
 % ways of doing things in any case (p. 143)
 
+\subsection{Usability Test}
+\label{sec:UsabilityTest}
+With a design in hand, it was to test it. The purpose of this test was to get
+an initial idea of how our ideas worked before spending time implementing it.
+We created paper cutouts based on our mock-ups to represent the different
+elements of the interface, with a test facilitator manipulating the cutouts to
+emulate an interactive environment. See Appendix \todo{Ref} for the full notes
+from the test.
+
+\subsubsection{Participants}
+As it is beyond the scope of this project to teach new users about dependent
+types, our test participants needed experience with a programming language
+featuring dependent types, ideally Idris, prior to our test. This obviously
+severely limited the number of readily available candidates. Because we wanted
+to conduct later tests with subjects without knowledge of earlier iterations of
+the design, we limited ourselves to two test subjects for this first test. An
+overview of the test subjects can be see in Table \ref{table:first_test_subjects}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l | p{5cm} | p{5cm} |}
+\hline
+Subject & Age & Occupation & Experience \\ \hline
+\#1 & 24 & Masters student at IT-University studying programming languages & 6 months experience with Idris, several years of experience with functional languages in general \\ \hline
+\#2 & 27 & Masters student at IT-University studying programming languages & 6 months experience with Idris, several years of experience with functional languages in general \\ \hline
+\end{tabular}
+\caption {Test subjects}
+\label{table:first_test_subjects}
+\end{table}
+
+\subsubsection{Session Details}
+The test was conducting in a meeting room at the IT University, with three
+people present: The test subject, the test facilitator, and a note taker. The
+tests were recorded. First, the test subjects were told about the project in
+general. They were then told of the overall structure of the test: They would
+be given two tasks, with three steps each. Each step would be explained when
+they reached. They were asked to think aloud during the test, and were told to
+ask if they felt they had been stuck for a long time. Periodically, we would
+ask questions about what they were thinking.
+
+\subsubsection{Tasks}
+The two tasks they were asked to complete are listed in Figure \ref{figure:first_tasks}.
+It should be noted that since the test was concerning the interface itself, and
+not programming in Idris, the test subjects had access to the definitions for \texttt{Vect} and \texttt{zip} textual Idris. See Section \ref{subsec:Idris}
+for more on \texttt{Vect} and \texttt{zip}.
+
+\begin{figure}
+\centering
+\begin{itemize}
+	\item \textbf{Task 1}: Define a data declaration for the vector type.
+	\begin{itemize}
+		\item \texttt{T1.1}: Specify an identifier for the type (\texttt{Vect}), along with its type (\texttt{Nat -> Type -> Type})
+		\item \texttt{T1.2}: Specify the Nil constructor (\texttt{Nil: Vect z a})
+		\item \texttt{T1.3}: Specify the Cons constructor (\texttt{(::): a -> Vect k a -> Vect (S k) a})
+	\end{itemize}
+	\item \textbf{Task 2}: Define the zip function for vector type.
+	\begin{itemize}
+		\item \texttt{T2.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
+		\item \texttt{T2.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
+		\item \texttt{T2.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
+	\end{itemize}
+\end{itemize}
+\caption{Tasks for the first usability. The text in parentheses are what we considered the correct answer, and was not given to the test subjects.}
+\label{figure:first_tasks}
+\end{figure}
+
+\subsubsection{Issues}
+\label{sec:first_issues}
+As was expected, several issues were encountered. It was quickly apparent that
+the data declarations were the most problematic aspect of the design, and that
+we would need to revisit their design. Task 2 on the other hand went quite
+smoothly in comparison, and both subjects were impressed by the degree to
+which Idris could save them from typing. We have listed the issues we
+encountered below. \\ \\
+\textbf{I1: Data declarations}.
+The main issues our test subjects experienced had to do with the data
+declarations. While both subjects had seen this way of writing types
+before, it was not immediately clear to them how they should be filled out.
+They did eventually get through it, but they required a great deal of help
+from the test facilitator. Especially step T1.1 was difficult.\\ \\
+\textbf{I2: Suggestions for parameterized types}.
+When filling in a type, a popover with suggestions appear. In our mock-up,
+these suggestions were always correct. But both subjects wondered how one would
+fill in types that take multiple parameters. \\ \\
+\textbf{I3: Gesture overload}
+Both subjects wondered how to differentiate gestures for editing versus
+gestures for case splitting or autocompletion. For example, double tapping on
+text already has an action associated with it. \\ \\
+\textbf{I4: Managing contexts}
+After having finished step T1.3, both subjects had trouble leaving the editing
+context. Only after a great deal of experimentation did they manage to leave
+it.
+
+\subsubsection{Recommendations}
+\label{sec:first_recommendations}
+Since issue I1 was by far the most problematic issue we discovered, we have
+focused on mitigating it in our recommendations. The basic strategy is to make
+it easier to understand through examples and help in the interface. If the
+changes listed below are not enough, it might be necessary to completely
+redesign the data declarations, perhaps by modeling them more closely after how
+they look in textual Idris.
+
+\begin{itemize}
+	\item \textbf{Re1} (I1): In the text field for inputting the name and type for Data, insert an initial colon (``\texttt{:}''), separating the identifier from the type. This might make it easier to see what goes where.
+	\item \textbf{Re2} (I1): Have initial hint text in text input fields, in a light color, which disappears when the fields gain focus. E.g. in the text field for the identifier, it could say ``Identifier'' or ``Name'', while the input field for the type can say ``Type''.
+	\item \textbf{Re3} (I1): Differentiate borders around text fields more, to make it clear which fields have been filled, which must be filled, and which might be filled.
+	\item \textbf{Re4} (I1): Show the definition for \texttt{Nat} to begin with, so the user can see an example.
+	\item \textbf{Re5} (I2): Do not try to fill parameters for types, as we cannot know what they will be. Instead, just leave blank spaces so the user can fill them in.
+	\item \textbf{Re6} (I3): To avoid conflict between editing and case splitting/autocompleting, implement a new gesture for ``auto'', perhaps swiping down on a term.
+	\item \textbf{Re7} (I4): To avoid problems switching between contexts, we can remove the different contexts. This removes complexity from the interface, although it might make it harder to get a good overview of your program, as less can fit on a single screen.
+\end{itemize}
