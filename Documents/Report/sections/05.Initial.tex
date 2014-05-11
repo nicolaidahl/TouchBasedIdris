@@ -40,25 +40,50 @@ describing this feature. Nielsen and Budiu \cite[p 143]{nielsen2013mobile} recom
 that you build this sort of redundancy into your app.
 
 \subsection{Function Declarations}
-For function declarations we had to support 
+For function declarations we had to support fast declaration of the function
+type, initial pattern match creation, case splitting, and automatic
+metavariable solving.
 
-Initial pattern declaration
-Case split
-Code inference
+To be able to declare function types quickly it was paramount that the
+interface intelligently presented you with terms that you might have use of.
+When a text field takes focus, a context popover with possible terms for that position
+appears right next to the field. The user only has to move the finger a few
+centimeters to auto complete the field. The usability of this feature depends
+on how fast and how well the contextual suggestions can be provided, and if the
+user is looking for a term that is not on the top of the list, there will be a
+need to start typing in the term manually until the term list in the context
+eventually guesses which term is needed.
 
+We did not want to clutter the interface with [+] buttons like Lisping does, so
+one of the early problems that we needed to solve was to elegantly indicate
+where new terms could be added. We came up with the solution seen in Figure
+\todo{ref}. When the user starts typing in the rightmost empty text field,
+a new text field pops up to indicate that further terms can be added to the
+type declaration.
+
+\missingfigure{}
+
+Pressing the plus button will add a function clause with an initial pattern
+match and name there pattern variables intelligently. Double tapping a pattern
+variable will perform a case split if possible. The use of this gesture is also
+a non-standard one, and a tip will have to appear one of the first times case
+splitting is possible to teach the user that double tapping is possible.
+
+Finally, metavariables,
+expressed as three questions marks, can be tapped for automatic metavariable
+solving. There should be clear feedback to the user regardless of the outcome
+of this action.
 
 \subsection{Data Declarations}
+Early on we chose to represent data declarations in the same way as Epigram.
+There is a potential readability benefit when using a more visual
+representation of this type of top-level declaration that we wished to explore
+with our usability tests.
 
+The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
+The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity
+in the rest of the UI.
 
-Contexten
-
-
-
-% Mention somewhere: Low memorability with gestures (p 141) It’s probably not a good idea for us to
-% invent too many new gestures, as they are hard to discover and people don’t
-% remember them Alternatively gestures can be a power user functionality that
-% makes it faster to work with the app. We should put in standard single tap
-% ways of doing things in any case (p. 143)
 
 \subsection{Usability Test}
 \label{sec:UsabilityTest}
