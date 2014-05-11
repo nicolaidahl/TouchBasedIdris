@@ -2,8 +2,55 @@
 \section{Initial Design}
 \label{sec:InitialDesign}
 
+In this section we describe our initial design. It was created based on the
+findings described in Section \ref{sec:Analysis} and the requirements derived
+from these in Section \ref{sec:GoalsAndRequirements}. It mostly focuses on the
+flow with which the user creates a program and not so much how he/she would
+edit it afterwards.
+
+\subsection{Overall Structure}
+For our initial design we wanted to create a semi-structured editor that let
+the user specify data declarations and functions in a structured but free-text way. The idea was that we would have a certain structure of text fields that
+combined would amount to data and function declarations --- much like Lisping.
+
+We adapted the way TouchDevelop manages focus. When a top-level declaration is
+being edited it should have a special editable appearance that takes up more
+space compared to declarations that are not in focus. This extra space ensures
+that the the elements of the declaration in focus are big enough to be easily
+tappable. Apple recommends that tappable elements are at least 44 points high/wide\todo{ref}, so that has been our scale measure.
+
+We wanted to use visual elements to indicate program structure like we saw
+Labview do, but as Idris is a general purpose language, the visual elements
+also have to be more general. We ended up with a design that indicates a clear
+hierarchy between elements, which can be seen on Figure \todo{ref}.
+
+\missingfigure{}
+
+At the bottom of every construct, there is a round add button from which the user can add new constructs. These will be added to the bottom. The round handle buttons connecting each construct to the higher-level vertical line
+can be used for various code management purposes. For example, it should be
+possible to rearrange declarations/clauses/constructors by dragging these
+handles. 
+
+Now, if the user, for example, wishes to add a new top-level declaration somewhere in the middle of the program, the obvious way would be to use the add button and move the newly created declaration manually. We have, however, designed a faster way. Reverse-pinching two adjacent handles will create a new
+declaration between the two existing ones thus eliminating the  need for rearranging declarations. This is a good example of how to use gestures as accelerators for advanced users.
+The reverse-pinching gestures is not immediately discoverable (as is the
+problem with advanced gestures \cite[p 141]{nielsen2013mobile}, but power-users will seek faster
+ways to complete their tasks and naturally stumble upon documentation
+describing this feature. Nielsen and Budiu \cite[p 143]{nielsen2013mobile} recommend
+that you build this sort of redundancy into your app.
+
+\subsection{Function Declarations}
+For function declarations we had to support 
+
+Initial pattern declaration
+Case split
+Code inference
 
 
+\subsection{Data Declarations}
+
+
+Contexten
 
 
 
