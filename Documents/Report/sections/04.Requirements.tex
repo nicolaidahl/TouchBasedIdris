@@ -7,8 +7,7 @@ solutions and not textual editors in general}
 \subsection{Goals} The overall goal of this project is to investigate how the
 features of the dependently typed language, Idris, can improve the touch-based
 programming experience. It is important to underline that the editor we will be
-proposing should not be evaluated with reference to state of the art keyboard-
-based programming editors. It is not the goal to revolutionize the way we as
+proposing should not be evaluated with reference to state of the art keyboard-based programming editors. It is not the goal to revolutionize the way we as
 humans program in general. The use case for programming on a touch device will most likely be a
 mobile one as it is with most use cases for the i-devices \cite[p. 26]{nielsen2013mobile}.
 
@@ -28,7 +27,7 @@ The high-level goals of the project are:
 
 \subsection{Usability Requirements} 
 In Section \ref{sec:Evaluation} we will evaluate our prototype user interface with reference to Nielsen's 10 Usability
-Guidelines\,\cite{nielsen1990heuristic}, and it is an obvious overall usability
+Guidelines\,\cite{nielsen1990heuristic}, and it is an overall usability
 requirement that the interface adheres to these. Furthermore, we will have focus on a range of
 usability requirements. The interface should:
 
@@ -62,7 +61,8 @@ More specifically the solution must:
 	Emacs mode \cite{Idris:EmacsMode}
 	\item \textbf{F-4} Allow the user to define basic data types like Vect.
 	\item \textbf{F-5} Allow the user to define basic functions like the zip function.
-	\item \textbf{F-6} Entail a way to actually run the Idris code.
+	\item \textbf{F-6} Entail a way to actually run the Idris code. \todo{Do we
+	phrase this more vaguely?}
 \end{itemize}
 
 The design of the interface should:
@@ -79,6 +79,8 @@ The design of the interface should:
 	in Section \ref{subsub:TouchDevelop}.
 \end{itemize}
 
+\todo{Aren't we missing a functional requirement for having a Special
+characters keyboard?}
 
 \subsection{Defining Scope} 
 The primary goal for the first prototype of IdrisTouch is to test and explore
