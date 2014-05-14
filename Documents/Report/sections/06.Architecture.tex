@@ -32,7 +32,7 @@ facilitating communication between the client and Idris.
 \subsection{Communication}
 There are two layers of communication in this setup: one between the client and
 the server, and one between the server and Idris. Several different strategies
-exists for each layer. 
+exist for each layer. 
 
 \subsubsection{Server -- Idris}
 The Emacs mode for Idris communicates to the Idris slave via an s-expression
@@ -60,7 +60,7 @@ serialize the client AST to JSON\@.
 The architecture of the server is very simple, and consists of two main 
 layers. The outer layers uses the Snap Framework\todo{Ref} to implement the 
 web-services. This layer also handles marshaling to and from JSON\@, which is 
-implemented using the Aeson library. The inner layer handles the 
+implemented using the Aeson library\todo{ref}. The inner layer handles the 
 transformations to and from the Idris high level syntax, and performs the 
 actual operations, such as case splitting.
 
@@ -81,7 +81,7 @@ Objective-C are only abstract by convention, as the language does not directly
 support this feature.
 
 Figure \ref{fig:clientViewArchitecture} shows a simplified class diagram of the
-client. It shows the interface classes of the project to give an idea of
+client. It shows the UI classes of the project to give an idea of
 the resemblance to the abstract syntax. As with the abstract syntax there are
 two ``levels'' of views --- top level and input level. The MainView holds a
 number of top level declarations, that each hold a number of input views. The
@@ -89,7 +89,8 @@ InferenceRuleView is used by the DataDeclarationView only.
 
 A GroupInputView contains one or more AbstractInputViews. This way of building
 the interface makes it easy to wire input views to the underlying model object
-hierarchy, as it is the same type of nesting we have with terms.
+hierarchy, as it is the same type of nesting we have with terms. \todo{Explain
+what the group input view is and how it can be customized}
 
 \begin{figure}
 	\centering

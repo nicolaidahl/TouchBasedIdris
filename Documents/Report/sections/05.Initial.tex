@@ -5,11 +5,11 @@
 In this section we describe our initial design. It was created based on the
 findings described in Section \ref{sec:Analysis} and the requirements derived
 from these in Section \ref{sec:GoalsAndRequirements}. It mostly focuses on the
-flow with which the user creates a program and not so much how he/she would
+flow with which the user creates a program and not so much how the user would
 edit it afterwards.
 
 \subsection{Overall Structure}
-For our initial design we wanted to create a semi-structured editor that let
+For our initial design we wanted to create a semi-structured editor that lets
 the user specify data declarations and functions in a structured but free-text way. The idea was that we would have a certain structure of text fields that
 combined would amount to data and function declarations --- much like Lisping.
 
@@ -28,7 +28,7 @@ hierarchy between elements, which can be seen on Figure \todo{ref}.
 
 At the bottom of every construct, there is a round add button from which the user can add new constructs. These will be added to the bottom. The round handle buttons connecting each construct to the higher-level vertical line
 can be used for various code management purposes. For example, it should be
-possible to rearrange declarations/clauses/constructors by dragging these
+possible to rearrange declarations, clauses, and constructors by dragging these
 handles. 
 
 Now, if the user, for example, wishes to add a new top-level declaration somewhere in the middle of the program, the obvious way would be to use the add button and move the newly created declaration manually. We have, however, designed a faster way. Reverse-pinching two adjacent handles will create a new
@@ -64,7 +64,7 @@ type declaration.
 \missingfigure{}
 
 Pressing the plus button will add a function clause with an initial pattern
-match and name there pattern variables intelligently. Double tapping a pattern
+match and name their pattern variables intelligently. Double tapping a pattern
 variable will perform a case split if possible. The use of this gesture is also
 a non-standard one, and a tip will have to appear one of the first times case
 splitting is possible to teach the user that double tapping is possible.
@@ -81,6 +81,7 @@ representation of this type of top-level declaration that we wished to explore
 with our usability tests.
 
 The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
+\todo{mention recognition rather than recall}
 The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity
 in the rest of the UI.
 
@@ -93,6 +94,9 @@ We created paper cutouts based on our mock-ups to represent the different
 elements of the interface, with a test facilitator manipulating the cutouts to
 emulate an interactive environment. See Appendix \todo{Ref} for the full notes
 from the test.
+\todo{reference the book that I referenced in my usability plan (methodology) /N}
+\todo{Kan vi gøre usability lyd-filerne tilgængelige, så vi kan referere til
+dem?}
 
 \subsubsection{Participants}
 As it is beyond the scope of this project to teach new users about dependent
@@ -116,12 +120,12 @@ Subject & Age & Occupation & Experience \\ \hline
 \end{table}
 
 \subsubsection{Session Details}
-The test was conducting in a meeting room at the IT University, with three
+The test was conducted in a meeting room at the IT University, with three
 people present: The test subject, the test facilitator, and a note taker. The
 tests were recorded. First, the test subjects were told about the project in
 general. They were then told of the overall structure of the test: They would
 be given two tasks, with three steps each. Each step would be explained when
-they reached. They were asked to think aloud during the test, and were told to
+they reached it. They were asked to think aloud during the test, and were told to
 ask if they felt they had been stuck for a long time. Periodically, we would
 ask questions about what they were thinking.
 
@@ -151,6 +155,8 @@ for more on \texttt{Vect} and \texttt{zip}.
 \label{figure:first_tasks}
 \end{figure}
 
+\todo{Er det bare mig eller ser fonten anderledes ud i den her liste?}
+
 \subsubsection{Issues}
 \label{sec:first_issues}
 As was expected, several issues were encountered. It was quickly apparent that
@@ -172,11 +178,13 @@ fill in types that take multiple parameters. \\ \\
 \textbf{I3: Gesture overload}
 Both subjects wondered how to differentiate gestures for editing versus
 gestures for case splitting or autocompletion. For example, double tapping on
-text already has an action associated with it. \\ \\
+text already has an action associated with it. \\ \\ \todo{Det mindes jeg ikke det her}
 \textbf{I4: Managing contexts}
 After having finished step T1.3, both subjects had trouble leaving the editing
 context. Only after a great deal of experimentation did they manage to leave
 it.
+
+\todo{Et af de større problemer jeg husker er undo/redo knapperne}
 
 \subsubsection{Recommendations}
 \label{sec:first_recommendations}
@@ -194,5 +202,9 @@ they look in textual Idris.
 	\item \textbf{Re4} (I1): Show the definition for \texttt{Nat} to begin with, so the user can see an example.
 	\item \textbf{Re5} (I2): Do not try to fill parameters for types, as we cannot know what they will be. Instead, just leave blank spaces so the user can fill them in.
 	\item \textbf{Re6} (I3): To avoid conflict between editing and case splitting/autocompleting, implement a new gesture for ``auto'', perhaps swiping down on a term.
+	
 	\item \textbf{Re7} (I4): To avoid problems switching between contexts, we can remove the different contexts. This removes complexity from the interface, although it might make it harder to get a good overview of your program, as less can fit on a single screen.
 \end{itemize}
+
+
+\todo{section conclusion}
