@@ -1,3 +1,137 @@
 %!TEX root = ../Touch Based Idris.tex
 \section{Implementation}
 \label{sec:Implementation}
+
+\subsection{Second Usability Test}
+\label{sec:SecondUsabilityTest}
+The greatest change in the second usability test was the fact that it was
+performed on an actual iPad, using a prototype interface. \todo{Write more
+intro}
+
+\subsubsection{Participants}
+For our second usability test, we used two subjects from the first test,
+subject \#1 and \#2. Their input was interesting, as they already had some
+experience with the ideas in our representation from the mock-up test.
+Hopefully this would let them focus more on the interactions with interface,
+and less on learning a new way of presenting data. Subjects \#3 and \#4 had
+never seen the interface before, and as such represented totally new users.
+Their feedback was also very useful, as this iteration tried to make the first
+time experience less frustrating.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l | p{5cm} | p{5cm} |}
+\hline
+Subject & Age & Occupation & Experience \\ \hline
+\#1 & 24 & Masters student at IT-University studying programming languages & 6 months experience with Idris, several years of experience with functional languages in general \\ \hline
+\#2 & 27 & Masters student at IT-University studying programming languages & 6 months experience with Idris, several years of experience with functional languages in general \\ \hline
+\#3 & 27 & Masters student at IT-University studying programming languages & Very little experience with Idris. 1 year experience with Coq. Several years of experience with functional languages in general \\ \hline
+\#4 & 23 & Masters student at IT-University studying programming languages & 6 months experience with Idris. Several years of experience with functional languages in general \\ \hline
+\end{tabular}
+\caption {Test subjects}
+\label{table:second_test_subjects}
+\end{table}
+
+\subsubsection{Session Details}
+Like the first test, this test was conducted in a meeting room at the IT
+University, with three people present: The test subject, the test facilitator,
+and a note taker. The tests were recorded. This time the test consisted of four
+tasks, with the first task designed to get the subjects acquainted with the
+data declarations. The next two tasks were identical to the first test, the
+definition of the \texttt{Vect} data type and the \texttt{zip} function for
+\texttt{Vect}. The final task concerned the manipulation of order of
+declarations in the program they defined. As the app was still at prototype
+stage, several bugs occurred during the subjects' use of the app. In these
+cases the nature of the bug was quickly explained, and the facilitator
+explained how to work around the issue.
+
+\subsubsection{Tasks}
+The four tasks they were asked to complete are listed in 
+Figure~\ref{figure:second_tasks}.
+As in the first test, the test subjects had access to the definitions for
+\texttt{Vect} and \texttt{zip} textual Idris. See Section~\ref{subsec:Idris}
+for more on \texttt{Vect} and \texttt{zip}.
+
+\begin{figure}
+\centering
+\begin{itemize}
+	\item \textbf{Task 1}: The user is shown the \texttt{Nat} and \texttt{Fin} data declaration in the program.
+	\begin{itemize}
+		\item \texttt{T1.1}: Describe the \texttt{Nat} type.
+		\item \texttt{T2.2}: Describe the \texttt{Fin} type.
+	\end{itemize}
+	\item \textbf{Task 2}: Define a data declaration for the vector type.
+	\begin{itemize}
+		\item \texttt{T2.1}: Specify an identifier for the type (\texttt{Vect}), along with its type (\texttt{Nat -> Type -> Type})
+		\item \texttt{T2.2}: Specify the Nil constructor (\texttt{Nil: Vect z a})
+		\item \texttt{T2.3}: Specify the Cons constructor (\texttt{(::): a -> Vect k a -> Vect (S k) a})
+	\end{itemize}
+	\item \textbf{Task 3}: Define the zip function for vector type.
+	\begin{itemize}
+		\item \texttt{T3.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
+		\item \texttt{T3.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
+		\item \texttt{T3.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
+	\end{itemize}
+	\item \textbf{Task 4}
+	\begin{itemize}
+		\item \texttt{T4.1}: Move the \texttt{Vect} declaration up below \texttt{Nat}.
+	\end{itemize}
+\end{itemize}
+\caption{Tasks for the second usability test. The text in parentheses are what we considered the correct answer, and was not given to the test subjects.}
+\label{figure:second_tasks}
+\end{figure}
+
+\subsubsection{Issues}
+\label{sec:second_issues}
+\todo{Write intro}
+\\ \\
+\textbf{I1: Too Many many input fields}.
+All the users reported that all the grey, unfilled input fields were confusing.
+\todo{Insert screenshot}
+\\ \\
+\textbf{I2: Writing data declaration}
+Everyone was able to decipher the data declarations almost immediately, but
+all but one had trouble writing the \texttt{Vect} data declaration. Especially
+the distinction between the premise area and the conclusion area seemed
+problematic
+\\ \\
+\textbf{I3: Arrows in data confusing}
+The use of arrows in the premise area is confusing, as it implies a function.
+\\ \\
+\textbf{I4: Suggestions for parameterized types}
+This issue persists from the original design. The subjects found it irritating
+that after choosing a suggestion, they would have to manually change the
+parameters using the standard iOS text editing facilities. Multiple subjects
+mentioned that it broke their flow.
+\\ \\
+\textbf{I5: Lack of auto-closing parentheses and quotation marks}
+Users found it irritating that they had to manually pair symbols such as
+parentheses.
+\\ \\
+\textbf{I6: Common symbols inaccessible}
+Many symbols that are common in programming are hard to find in the iOS virtual
+keyboard.
+\\ \\
+\textbf{I7: Poor flow between input fields}
+To move from one input field to the next, the subjects must manually tap each
+input field. This broke the subjects flow.
+\\ \\
+\textbf{I8: Program can look cluttered}
+After finishing all the tasks, the subject's program started to look cluttered.
+\todo{Insert screenshot}
+\\ \\
+\textbf{I9: Few definitions visible}
+Related to Issue I8, definitions are quite large, so only a few are visible at
+any time. This can make it hard for the subject to get an overview of their
+work.
+\\ \\
+\textbf{I10: Unclear how to specify implicits and identifiers for arguments}
+Some parts of the syntax have not been determined. Some of the subjects
+wondered how one would make an argument implicit.
+
+\subsubsection{Recommendations}
+\label{sec:second_recommendations}
+\todo{Write intro}
+\begin{itemize}
+	\item \textbf{Re1} (I1): 
+\end{itemize}
