@@ -11,19 +11,19 @@ mock-up phase.
 	\centering
 		\includegraphics[width=110mm]{diagrams/ipad_interface.PNG}
 	\caption{The initial iPad interface.}
-	\label{fig:initialiPadInterface}
+\label{fig:initialiPadInterface}
 \end{figure}
 
 \begin{figure}
 	\centering
 		\includegraphics[width=70mm]{diagrams/data_declaration.png}
 	\caption{A data declaration before the user has filled out anything.}
-	\label{fig:data_declaration}
+\label{fig:data_declaration}
 \end{figure}
 
 To produce this prototype we had to follow the usability recommendations of
-Section \ref{sec:first_recommendations}	while still keeping the goals and requirements of
-Section \ref{sec:GoalsAndRequirements} in mind. Figure \ref{fig:initialiPadInterface}
+Section~\ref{sec:first_recommendations}	while still keeping the goals and requirements of
+Section~\ref{sec:GoalsAndRequirements} in mind. Figure~\ref{fig:initialiPadInterface}
 shows an example data type as well as the zip function defined in the visual,
 high-level syntax. It is evident that this is still a prototype, but the reader
 should be able to get an idea of how it works.
@@ -33,12 +33,12 @@ TouchDevelop-like focus shifting, where different top-level elements would be
 in focus at different times. In this prototype all elements are in focus all
 the time.
 
-The data declarations (see Figure \ref{fig:data_declaration}) were kept the same as in the mock-up except for the
+The data declarations (see Figure~\ref{fig:data_declaration}) were kept the same as in the mock-up except for the
 placeholder text and colon indicating the separation between the identifier and
 type.
 
 This prototype consists of a lot of custom elements, and the way that they work
-together has been challenging to implement. Figure \ref{fig:clientViewArchitecture} shows a simplified class diagram of the
+together has been challenging to implement. Figure~\ref{fig:clientViewArchitecture} shows a simplified class diagram of the
 client. It shows the UI classes of the project to give an idea of
 the resemblance to the abstract syntax. As with the abstract syntax there are
 two ``levels'' of views --- top level and input level. The MainView holds a
@@ -55,14 +55,15 @@ what the group input view is and how it can be customized}
 		\includegraphics[width=110mm]{diagrams/client_side_class_diagram.pdf}
 	\caption{A subset of the client-side diagram showing how the view hierarchy
 	almost mirrors the Abstract Syntax tree.}
-	\label{fig:clientViewArchitecture}
+\label{fig:clientViewArchitecture}
 \end{figure}
 
 \subsection{Second Usability Iteration}
 \label{sec:SecondUsabilityTest}
 The greatest change in the second usability test was the fact that it was
-performed on an actual iPad, using a prototype interface. \todo{Write more
-intro}
+performed on an actual iPad, using a prototype interface. The full report is
+included in Appendix \todo{insert ref}. As in the first test, S2.4 refers to
+the fourth point in the test summary for subject 2.
 
 \subsubsection{Participants}
 For our second usability test, we used two subjects from the first test,
@@ -84,7 +85,7 @@ Subject & Age & Occupation & Experience \\ \hline
 \#3 & 27 & Masters student at IT-University studying programming languages & Very little experience with Idris. 1 year experience with Coq. Several years of experience with functional languages in general \\ \hline
 \#4 & 23 & Masters student at IT-University studying programming languages & 6 months experience with Idris. Several years of experience with functional languages in general \\ \hline
 \end{tabular}
-\caption {Test subjects}
+\caption{Test subjects}
 \label{table:second_test_subjects}
 \end{table}
 
@@ -113,24 +114,24 @@ for more on \texttt{Vect} and \texttt{zip}.
 \begin{itemize}
 	\item \textbf{Task 1}: The user is shown the \texttt{Nat} and \texttt{Fin} data declaration in the program.
 	\begin{itemize}
-		\item \texttt{T1.1}: Describe the \texttt{Nat} type.
-		\item \texttt{T2.2}: Describe the \texttt{Fin} type.
+		\item \textbf{T1.1}: Describe the \texttt{Nat} type.
+		\item \textbf{T2.2}: Describe the \texttt{Fin} type.
 	\end{itemize}
 	\item \textbf{Task 2}: Define a data declaration for the vector type.
 	\begin{itemize}
-		\item \texttt{T2.1}: Specify an identifier for the type (\texttt{Vect}), along with its type (\texttt{Nat -> Type -> Type})
-		\item \texttt{T2.2}: Specify the Nil constructor (\texttt{Nil: Vect z a})
-		\item \texttt{T2.3}: Specify the Cons constructor (\texttt{(::): a -> Vect k a -> Vect (S k) a})
+		\item \textbf{T2.1}: Specify an identifier for the type (\texttt{Vect}), along with its type (\texttt{Nat -> Type -> Type})
+		\item \textbf{T2.2}: Specify the Nil constructor (\texttt{Nil: Vect z a})
+		\item \textbf{T2.3}: Specify the Cons constructor (\texttt{(::): a -> Vect k a -> Vect (S k) a})
 	\end{itemize}
 	\item \textbf{Task 3}: Define the zip function for vector type.
 	\begin{itemize}
-		\item \texttt{T3.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
-		\item \texttt{T3.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
-		\item \texttt{T3.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
+		\item \textbf{T3.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
+		\item \textbf{T3.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
+		\item \textbf{T3.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
 	\end{itemize}
 	\item \textbf{Task 4}
 	\begin{itemize}
-		\item \texttt{T4.1}: Move the \texttt{Vect} declaration up below \texttt{Nat}.
+		\item \textbf{T4.1}: Move the \texttt{Vect} declaration up below \texttt{Nat}.
 	\end{itemize}
 \end{itemize}
 \caption{Tasks for the second usability test. The text in parentheses are what we considered the correct answer, and was not given to the test subjects.}
@@ -147,39 +148,41 @@ are not listed below, as they are not inherent to the design, but rather
 results of the prototypical nature of the app.
 \\ \\
 \textbf{I1: Too many input fields}.
-All the users reported that all the grey, unfilled input fields were confusing.
+Most of the users reported that all the grey, unfilled input fields were
+confusing. (S1.20, S2.2, S3.29b)
 \todo{Insert screenshot}
 \\ \\
 \textbf{I2: Writing data declaration}
 Everyone was able to decipher the data declarations almost immediately, but
 all but one had trouble writing the \texttt{Vect} data declaration. Especially
 the distinction between the premise area and the conclusion area seemed
-problematic
+problematic. (S1.1--1, S3.11--18, S4.3--7)
 \\ \\
 \textbf{I3: Arrows in data confusing}
-The use of arrows in the premise area is confusing, as it implies a function.
+The use of arrows in the premise area is confusing, as it implies a function. 
+(S4.4)
 \\ \\
 \textbf{I4: Suggestions for parameterized types}
 This issue persists from the original design. The subjects found it irritating
 that after choosing a suggestion, they would have to manually change the
 parameters using the standard iOS text editing facilities. Multiple subjects
-mentioned that it broke their flow.
+mentioned that it broke their flow. (S1.10, S2.7, S3.15)
 \\ \\
 \textbf{I5: Lack of auto-closing parentheses and quotation marks}
-Users found it irritating that they had to manually pair symbols such as
-parentheses.
+We observed that users spent too much time navigating the virtual keyboards to
+close pairs of symbols, when this can be done automatically.
 \\ \\
 \textbf{I6: Common symbols inaccessible}
-Many symbols that are common in programming are hard to find in the iOS virtual
-keyboard.
+In a similar vein, we noticed that some symbols commonly used when programming,
+e.g. ``<'', took too long to find in the virtual keyboard.
 \\ \\
 \textbf{I7: Poor flow between input fields}
 To move from one input field to the next, the subjects must manually tap each
-input field. This broke the subjects flow.
+input field. This broke the subjects flow. (S1.21, S3.30c)
 \\ \\
 \textbf{I8: Program can look cluttered}
 After finishing all the tasks, the subject's program started to look cluttered.
-\todo{Insert screenshot}
+\todo{Insert screenshot} (S3.29a)
 \\ \\
 \textbf{I9: Few definitions visible}
 Related to Issue I8, definitions are quite large, so only a few are visible at
@@ -188,7 +191,7 @@ work.
 \\ \\
 \textbf{I10: Unclear how to specify implicits and identifiers for arguments}
 Some parts of the syntax have not been determined. Some of the subjects
-wondered how one would make an argument implicit.
+wondered how one would make an argument implicit. (S1.9, S4.13)
 
 \subsubsection{Recommendations}
 \label{sec:second_recommendations}

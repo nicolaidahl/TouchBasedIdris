@@ -3,8 +3,8 @@
 \label{sec:InitialDesign}
 
 In this section we describe our initial design. It was created based on the
-findings described in Section \ref{sec:Analysis} and the requirements derived
-from these in Section \ref{sec:GoalsAndRequirements}. It mostly focuses on the
+findings described in Section~\ref{sec:Analysis} and the requirements derived
+from these in Section~\ref{sec:GoalsAndRequirements}. It mostly focuses on the
 flow with which the user creates a program and not so much how the user would
 edit it afterwards.
 
@@ -34,9 +34,9 @@ handles.
 Now, if the user, for example, wishes to add a new top-level declaration somewhere in the middle of the program, the obvious way would be to use the add button and move the newly created declaration manually. We have, however, designed a faster way. Reverse-pinching two adjacent handles will create a new
 declaration between the two existing ones thus eliminating the  need for rearranging declarations. This is a good example of how to use gestures as accelerators for advanced users.
 The reverse-pinching gestures is not immediately discoverable (as is the
-problem with advanced gestures \cite[p 141]{nielsen2013mobile}, but power-users will seek faster
+problem with advanced gestures\,\cite[p 141]{nielsen2013mobile}), but power-users will seek faster
 ways to complete their tasks and naturally stumble upon documentation
-describing this feature. Nielsen and Budiu \cite[p 143]{nielsen2013mobile} recommend
+describing this feature. Nielsen and Budiu\,\cite[p 143]{nielsen2013mobile} recommend
 that you build this sort of redundancy into your app.
 
 \subsection{Function Declarations}
@@ -83,20 +83,20 @@ with our usability tests.
 The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
 \todo{mention recognition rather than recall}
 The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity
-in the rest of the UI.
+in the rest of the UI\@.
 
 
 \subsection{Usability Test}
 \label{sec:UsabilityTest}
-With a design in hand, it was to test it. The purpose of this test was to get
-an initial idea of how our ideas worked before spending time implementing it.
-We created paper cutouts based on our mock-ups to represent the different
+With a design in hand, it was time to test it. The purpose of this test was to
+get an initial idea of how our ideas worked before spending time implementing
+it. We created paper cutouts based on our mock-ups to represent the different
 elements of the interface, with a test facilitator manipulating the cutouts to
-emulate an interactive environment. See Appendix \todo{Ref} for the full notes
-from the test.
+emulate an interactive environment. See Appendix \todo{Ref} for the full report
+from the test. The report includes a timestamped summary of the test, which we
+will sometimes refer to in the following manner: S1.1, which refers to the
+first point in the summary for subject 1.
 \todo{reference the book that I referenced in my usability plan (methodology) /N}
-\todo{Kan vi gøre usability lyd-filerne tilgængelige, så vi kan referere til
-dem?}
 
 \subsubsection{Participants}
 As it is beyond the scope of this project to teach new users about dependent
@@ -105,7 +105,7 @@ featuring dependent types, ideally Idris, prior to our test. This obviously
 severely limited the number of readily available candidates. Because we wanted
 to conduct later tests with subjects without knowledge of earlier iterations of
 the design, we limited ourselves to two test subjects for this first test. An
-overview of the test subjects can be see in Table \ref{table:first_test_subjects}.
+overview of the test subjects can be see in Table~\ref{table:first_test_subjects}.
 
 \begin{table}[h]
 \centering
@@ -115,7 +115,7 @@ Subject & Age & Occupation & Experience \\ \hline
 \#1 & 24 & Masters student at IT-University studying programming languages & 6 months experience with Idris, several years of experience with functional languages in general \\ \hline
 \#2 & 27 & Masters student at IT-University studying programming languages & 6 months experience with Idris, several years of experience with functional languages in general \\ \hline
 \end{tabular}
-\caption {Test subjects}
+\caption{Test subjects}
 \label{table:first_test_subjects}
 \end{table}
 
@@ -130,9 +130,9 @@ ask if they felt they had been stuck for a long time. Periodically, we would
 ask questions about what they were thinking.
 
 \subsubsection{Tasks}
-The two tasks they were asked to complete are listed in Figure \ref{figure:first_tasks}.
+The two tasks they were asked to complete are listed in Figure~\ref{figure:first_tasks}.
 It should be noted that since the test was concerning the interface itself, and
-not programming in Idris, the test subjects had access to the definitions for \texttt{Vect} and \texttt{zip} textual Idris. See Section \ref{subsec:Idris}
+not programming in Idris, the test subjects had access to the definitions for \texttt{Vect} and \texttt{zip} textual Idris. See Section~\ref{subsec:Idris}
 for more on \texttt{Vect} and \texttt{zip}.
 
 \begin{figure}
@@ -140,22 +140,20 @@ for more on \texttt{Vect} and \texttt{zip}.
 \begin{itemize}
 	\item \textbf{Task 1}: Define a data declaration for the vector type.
 	\begin{itemize}
-		\item \texttt{T1.1}: Specify an identifier for the type (\texttt{Vect}), along with its type (\texttt{Nat -> Type -> Type})
-		\item \texttt{T1.2}: Specify the Nil constructor (\texttt{Nil: Vect z a})
-		\item \texttt{T1.3}: Specify the Cons constructor (\texttt{(::): a -> Vect k a -> Vect (S k) a})
+		\item \textbf{T1.1}: Specify an identifier for the type (\texttt{Vect}), along with its type (\texttt{Nat -> Type -> Type})
+		\item \textbf{T1.2}: Specify the Nil constructor (\texttt{Nil: Vect z a})
+		\item \textbf{T1.3}: Specify the Cons constructor (\texttt{(::): a -> Vect k a -> Vect (S k) a})
 	\end{itemize}
 	\item \textbf{Task 2}: Define the zip function for vector type.
 	\begin{itemize}
-		\item \texttt{T2.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
-		\item \texttt{T2.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
-		\item \texttt{T2.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
+		\item \textbf{T2.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
+		\item \textbf{T2.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
+		\item \textbf{T2.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
 	\end{itemize}
 \end{itemize}
 \caption{Tasks for the first usability. The text in parentheses are what we considered the correct answer, and was not given to the test subjects.}
 \label{figure:first_tasks}
 \end{figure}
-
-\todo{Er det bare mig eller ser fonten anderledes ud i den her liste?}
 
 \subsubsection{Issues}
 \label{sec:first_issues}
@@ -170,21 +168,20 @@ The main issues our test subjects experienced had to do with the data
 declarations. While both subjects had seen this way of writing types
 before, it was not immediately clear to them how they should be filled out.
 They did eventually get through it, but they required a great deal of help
-from the test facilitator. Especially step T1.1 was difficult.\\ \\
+from the test facilitator. Especially step T1.1 was difficult. (S1.1--8, S2.4, S2.9--15)\\ \\
 \textbf{I2: Suggestions for parameterized types}.
 When filling in a type, a popover with suggestions appear. In our mock-up,
 these suggestions were always correct. But both subjects wondered how one would
-fill in types that take multiple parameters. \\ \\
+fill in types that take multiple parameters. (S2.29) \\ \\
 \textbf{I3: Gesture overload}
-Both subjects wondered how to differentiate gestures for editing versus
+One subject wondered how to differentiate gestures for editing versus
 gestures for case splitting or autocompletion. For example, double tapping on
-text already has an action associated with it. \\ \\ \todo{Det mindes jeg ikke det her}
+text already has an action associated with it. (S2.34) \\ \\
 \textbf{I4: Managing contexts}
 After having finished step T1.3, both subjects had trouble leaving the editing
 context. Only after a great deal of experimentation did they manage to leave
-it.
-
-\todo{Et af de større problemer jeg husker er undo/redo knapperne}
+it. Both subjects tried to use the undo and redo buttons to change contexts.
+(S1.10--13, S2.21--23)
 
 \subsubsection{Recommendations}
 \label{sec:first_recommendations}
