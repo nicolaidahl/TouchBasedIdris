@@ -2,7 +2,63 @@
 \section{Implementation}
 \label{sec:Implementation}
 
-\subsection{Second Usability Test}
+Having the architecture marked down, we could focus on another iteration of
+usability testing. It was the goal to create a prototype running on the iPad,
+ready for usability testing with a bigger group of participants than in the
+mock-up phase.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/ipad_interface.PNG}
+	\caption{The initial iPad interface.}
+	\label{fig:initialiPadInterface}
+\end{figure}
+
+\begin{figure}
+	\centering
+		\includegraphics[width=70mm]{diagrams/data_declaration.png}
+	\caption{A data declaration before the user has filled out anything.}
+	\label{fig:data_declaration}
+\end{figure}
+
+To produce this prototype we had to follow the usability recommendations of
+Section \ref{sec:first_recommendations}	while still keeping the goals and requirements of
+Section \ref{sec:GoalsAndRequirements} in mind. Figure \ref{fig:initialiPadInterface}
+shows an example data type as well as the zip function defined in the visual,
+high-level syntax. It is evident that this is still a prototype, but the reader
+should be able to get an idea of how it works.
+
+One of the things that were not implemented in the initial prototype was the
+TouchDevelop-like focus shifting, where different top-level elements would be
+in focus at different times. In this prototype all elements are in focus all
+the time.
+
+The data declarations (see Figure \ref{fig:data_declaration}) were kept the same as in the mock-up except for the
+placeholder text and colon indicating the separation between the identifier and
+type.
+
+This prototype consists of a lot of custom elements, and the way that they work
+together has been challenging to implement. Figure \ref{fig:clientViewArchitecture} shows a simplified class diagram of the
+client. It shows the UI classes of the project to give an idea of
+the resemblance to the abstract syntax. As with the abstract syntax there are
+two ``levels'' of views --- top level and input level. The MainView holds a
+number of top level declarations, that each hold a number of input views. The
+InferenceRuleView is used by the DataDeclarationView only.
+
+A GroupInputView contains one or more AbstractInputViews. This way of building
+the interface makes it easy to wire input views to the underlying model object
+hierarchy, as it is the same type of nesting we have with terms. \todo{Explain
+what the group input view is and how it can be customized}
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/client_side_class_diagram.pdf}
+	\caption{A subset of the client-side diagram showing how the view hierarchy
+	almost mirrors the Abstract Syntax tree.}
+	\label{fig:clientViewArchitecture}
+\end{figure}
+
+\subsection{Second Usability Iteration}
 \label{sec:SecondUsabilityTest}
 The greatest change in the second usability test was the fact that it was
 performed on an actual iPad, using a prototype interface. \todo{Write more
