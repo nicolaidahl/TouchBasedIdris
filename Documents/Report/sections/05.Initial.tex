@@ -1,96 +1,99 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{Initial Design}
+\section{First Design Iteration}
 \label{sec:InitialDesign}
 
-In this section we describe our initial design. It was created based on the
-findings described in Section~\ref{sec:Analysis} and the requirements derived
-from these in Section~\ref{sec:GoalsAndRequirements}. It mostly focuses on the
-flow with which the user creates a program and not so much how the user would
-edit it afterwards.
+In this section we describe our initial design. 
+We designed it based on the findings described in Section~\ref{sec:Analysis} and the requirements derived from these in Section~\ref{sec:GoalsAndRequirements}.
+This initial design focuses on the flow of creating function and data declarations. A later iteration (see Section~\ref{sec:Implementation}\todo{Is this ref right?}) will address editing and deleting declarations more throughly.
 
 \subsection{Overall Structure}
-For our initial design we wanted to create a semi-structured editor that lets
-the user specify data declarations and functions in a structured but free-text way. The idea was that we would have a certain structure of text fields that
-combined would amount to data and function declarations --- much like Lisping.
+For our initial design we wanted to create a semi-structured editor that lets the user specify data declarations and functions in a structured way, but allows the user to enter free-form text in expressions.
+We realized this through a hierarchy of text input fields, that together would make up a data or function definition, somewhat inspired by the structured editing of Lisping.
+We also wanted to use visual elements to indicate program structure like we saw in Labview, but as Idris is a general purpose language, the visual elements also have to be more general.
+We chose this structured approach as it helps fulfill the following goals and requirements:
+\begin{itemize}
+	\item \textbf{G-3}: By lifting elements that would otherwise be text into the UI itself, we can avoid using the keyboard in many situations.
+	\item \textbf{U-1}: The structure of the program can become part of the UI as well. 
+	This means we can use special visual cues to differentiate different elements of a program. 
+\end{itemize}
 
-We adapted the way TouchDevelop manages focus. When a top-level declaration is
-being edited it should have a special editable appearance that takes up more
-space compared to declarations that are not in focus. This extra space ensures
-that the the elements of the declaration in focus are big enough to be easily
-tappable. Apple recommends that tappable elements are at least 44 points high/wide\todo{ref}, so that has been our scale measure.
+% So far: G-3, U-1
 
-We wanted to use visual elements to indicate program structure like we saw
-Labview do, but as Idris is a general purpose language, the visual elements
-also have to be more general. We ended up with a design that indicates a clear
-hierarchy between elements, which can be seen on Figure \todo{ref}.
+One of our takeaways from Lisping was to avoid littering the program text itself with UI elements.
+To help manage this, we adapted the way TouchDevelop manages focus.
+When editing a top-level declaration, it should have a special appearance that takes up more space compared to declarations that are not in focus.
+This extra space ensures that the elements of the declaration in focus are big enough to be easily tappable. 
+Apple recommends that tappable elements are at least 44 points high/wide\todo{ref}, so that has been our scale measure.
+At the same time, we can hide unnecessary UI in the declarations that the user is not editing, decreasing clutter.
+This focus mode helps the design live up to the following requirements:
+\begin{itemize}
+	\item \textbf{U-1} and \textbf{U-3}: By minimizing declarations not currently being edited, we improve the scalability of the language, as more of a program can be seen at once, thus providing a better overview.
+	\item \textbf{U-6}: Lowers clutter, as UI elements for editing only need to be shown for the declaration currently in focus.
+	\item \textbf{F-9}: This directly fulfills this requirement.
+\end{itemize}
+
+Based on these decisions, we ended up with a design that indicates a clear hierarchy between elements, shown in Figure \todo{ref}.
 
 \missingfigure{}
 
-At the bottom of every construct, there is a round add button from which the user can add new constructs. These will be added to the bottom. The round handle buttons connecting each construct to the higher-level vertical line
-can be used for various code management purposes. For example, it should be
-possible to rearrange declarations, clauses, and constructors by dragging these
-handles. 
+At the bottom of every construct, there is a round add button from which the user can add new constructs. These are added to the bottom. 
+The round handle buttons connecting each construct to the higher-level vertical line can be used for various code management purposes. 
+For example, it is possible to rearrange declarations, clauses, and constructors by dragging these handles. 
 
-Now, if the user, for example, wishes to add a new top-level declaration somewhere in the middle of the program, the obvious way would be to use the add button and move the newly created declaration manually. We have, however, designed a faster way. Reverse-pinching two adjacent handles will create a new
-declaration between the two existing ones thus eliminating the  need for rearranging declarations. This is a good example of how to use gestures as accelerators for advanced users.
-The reverse-pinching gestures is not immediately discoverable (as is the
-problem with advanced gestures\,\cite[p 141]{nielsen2013mobile}), but power-users will seek faster
-ways to complete their tasks and naturally stumble upon documentation
-describing this feature. Nielsen and Budiu\,\cite[p 143]{nielsen2013mobile} recommend
-that you build this sort of redundancy into your app.
+Now, if the user wishes to add a new top-level declaration somewhere in the middle of the program, the obvious way would be to use the add button and move the newly created declaration manually. We have, however, designed a faster way.
+Reverse-pinching two adjacent handles will create a new declaration between the two existing ones, eliminating the need for rearranging declarations. 
+This is a good example of how to use gestures as accelerators for advanced users, and helps us fulfill \textbf{U-4}.
+The reverse-pinching gestures is not immediately discoverable (as is the problem with advanced gestures\,\cite[p 141]{nielsen2013mobile}), but power-users will seek faster ways to complete their tasks, for example by reading the accompanying documentation. 
+Nielsen and Budiu\,\cite[p 143]{nielsen2013mobile} recommend that you build this sort of redundancy into your app. 
+Undo and support is implemented as two buttons in the toolbar.
+This covers the overall structure of a program in this design. Now we will look at the specifics of declaring functions and data.
+
+% So far: G-3, U-1, U-3, U-4, U-6, F-8, F-9
 
 \subsection{Function Declarations}
-For function declarations we had to support fast declaration of the function
-type, initial pattern match creation, case splitting, and automatic
-metavariable solving.
+For function declarations we wanted to provide an intuitive flow, using Idris to automate as many steps as possible. 
+This meant we had to incorporate initial pattern match creation, case splitting, and automatic metavariable solving into the declaration process.
 
-To be able to declare function types quickly it was paramount that the
-interface intelligently presented you with terms that you might have use of.
-When a text field takes focus, a context popover with possible terms for that position
-appears right next to the field. The user only has to move the finger a few
-centimeters to auto complete the field. The usability of this feature depends
-on how fast and how well the contextual suggestions can be provided, and if the
-user is looking for a term that is not on the top of the list, there will be a
-need to start typing in the term manually until the term list in the context
-eventually guesses which term is needed.
+To be able to declare function types quickly, it was paramount that the interface intelligently presented you with terms that you might have use of.
+When a text field takes focus, a context popover with possible terms for that position appears right next to the field. 
+The user then only has to move the finger a few centimeters to auto complete the field. 
+The usability of this feature depends on how fast and how well the contextual suggestions can be provided.
+If the user is looking for a term that is not on the top of the list, it will be necessary to start typing the term manually, until the term list in the context eventually guesses which term is needed. This addresses both \textbf{G-1} and \textbf{G-2}, as well as \textbf{F-7}
 
-We did not want to clutter the interface with [+] buttons like Lisping does, so
-one of the early problems that we needed to solve was to elegantly indicate
-where new terms could be added. We came up with the solution seen in Figure
-\todo{ref}. When the user starts typing in the rightmost empty text field,
-a new text field pops up to indicate that further terms can be added to the
-type declaration.
+% So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-7, F-8, F-9
+
+We did not want to clutter the interface with [+] buttons like Lisping does, so one of the early problems that we needed to solve was to elegantly indicate where new terms could be added.
+We came up with the solution seen in Figure \todo{ref}.
+When the user starts typing in the rightmost empty text field, a new text field pops up to indicate that further terms can be added to the type declaration. This is in compliance with \textbf{U-6}.
 
 \missingfigure{}
 
-Pressing the plus button will add a function clause with an initial pattern
-match and name their pattern variables intelligently. Double tapping a pattern
-variable will perform a case split if possible. The use of this gesture is also
-a non-standard one, and a tip will have to appear one of the first times case
-splitting is possible to teach the user that double tapping is possible.
+Pressing the plus button on a function with no clauses will add a clause with an initial pattern, with the pattern variables named intelligently. 
+Double tapping a pattern variable will perform a case split if possible. 
+The use of this gesture is also a non-standard one, and a tip will have to appear one of the first times case splitting is possible.
 
-Finally, metavariables,
-expressed as three questions marks, can be tapped for automatic metavariable
-solving. There should be clear feedback to the user regardless of the outcome
-of this action.
+Finally, metavariables, expressed as three questions marks, can be tapped for automatic metavariable solving. 
+There should be clear feedback to the user regardless of the outcome of this action.
+
+Together these features leverage the tool support afforded by Idris to fulfill \textbf{F-1}, \textbf{F-2}, \textbf{F-3}, as well as partially fulfilling \textbf{F-5}. To fully fulfill \textbf{F-5}, we must also support deleting functions, as well as cases. This will be addressed in Section~\todo{Ref}.
+
+% So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-1, F-2, F-3, F-7, F-8, F-9
 
 \subsection{Data Declarations}
-Early on we chose to represent data declarations in the same way as Epigram.
-There is a potential readability benefit when using a more visual
-representation of this type of top-level declaration that we wished to explore
-with our usability tests.
-
+Instead of staying visually close to textual Idris, as we had done with function declarations, we decided to try an alternate approach, inspired by Epigram.
+This resulted in a more visual way of representing data definitions, where a data definition looks less like a function, and more like a logical inference rule.
+Any parameters for the type are written as premises, with the type being the conclusion.
+Constructors are written in the same manner, with arguments as premises, and the constructed type as the conclusion,
+Our hope was that this way of declaring data would be more visually appealing, while still enabling a smooth work flow, in accordance with \textbf{U-1}.
 The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
 \todo{mention recognition rather than recall}
-The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity
-in the rest of the UI\@.
-
+The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity in the rest of the UI\@.
 
 \subsection{Usability Test}
 \label{sec:UsabilityTest}
 With a design in hand, it was time to test it. The purpose of this test was to
 get an initial idea of how our ideas worked before spending time implementing
-it. We created paper cutouts based on our mock-ups to represent the different
+them. We created paper cutouts based on our mock-ups to represent the different
 elements of the interface, with a test facilitator manipulating the cutouts to
 emulate an interactive environment. See Appendix \todo{Ref} for the full report
 from the test. The report includes a timestamped summary of the test, which we
@@ -127,7 +130,7 @@ general. They were then told of the overall structure of the test: They would
 be given two tasks, with three steps each. Each step would be explained when
 they reached it. They were asked to think aloud during the test, and were told to
 ask if they felt they had been stuck for a long time. Periodically, we would
-ask questions about what they were thinking.
+ask questions about what they were thinking. At the end of the test, they were asked for general feedback on the test.
 
 \subsubsection{Tasks}
 The two tasks they were asked to complete are listed in Figure~\ref{figure:first_tasks}.
@@ -199,9 +202,22 @@ they look in textual Idris.
 	\item \textbf{Re4} (I1): Show the definition for \texttt{Nat} to begin with, so the user can see an example.
 	\item \textbf{Re5} (I2): Do not try to fill parameters for types, as we cannot know what they will be. Instead, just leave blank spaces so the user can fill them in.
 	\item \textbf{Re6} (I3): To avoid conflict between editing and case splitting/autocompleting, implement a new gesture for ``auto'', perhaps swiping down on a term.
-	
-	\item \textbf{Re7} (I4): To avoid problems switching between contexts, we can remove the different contexts. This removes complexity from the interface, although it might make it harder to get a good overview of your program, as less can fit on a single screen.
+	\item \textbf{Re7} (I4): Implement a button or other UI element that designates the declaration is done. This could be in the form of a check mark, or some other symbol.
 \end{itemize}
 
+% So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-1, F-2, F-3, F-7, F-8, F-9
 
-\todo{section conclusion}
+\subsection{Design Evaluation}
+While this initial design meets many of the requirements from Section~\ref{sec:GoalsAndRequirements}, there are still issues to resolve.
+Specifically, the following requirements are not fully addressed:
+\begin{itemize}
+	\item \textbf{U-5}: This requires some way to communicate with Idris. The backend required to do this will be covered in Section~\ref{sec:Architecture}, while the design considerations will be covered in Section\todo{Ref}.
+	\item \textbf{F-4} and \textbf{F-5}: We have described how to create functions and data declarations, and how one can add and edit clauses and constructors. However, we still need to devise a way to delete these constructs. This will be covered in Section\todo{Ref}.
+	\item \textbf{F-6}: This will be addresed in the next section.
+	\item \textbf{F-10}: This will be addressed in Section\todo{Ref}.
+\end{itemize}
+
+Beyond these requirements, the greatest remaining challenge is the data declaration syntax, which we will try to improve in the next design iteration, described in Section~\ref{sec:Implementation}.
+We have learned a great deal from this initial design, based on mock-ups and paper cutouts, but for our next iteration, we want to produce a simple prototype app.
+Actually implementing our next design will surely uncover many problems not discovered in our mock-ups.
+But before we can do this, we need to lay some technical groundwork, which is desicribed in the next section.
