@@ -5,7 +5,7 @@
 With an architecture in hand, it was time for the next design iteration.
 As we mentioned in Section~\ref{subsec:first_design_evaluation}, several requirements and issues were still to resolved, and we felt the biggest remaining issue was the data declaration syntax.
 It was the goal to create a prototype running on the iPad, ready for usability testing with a larger group of participants than in the mock-up phase.
-Unfortunately, technical issues arose when implementing the many custom UI elements for the iPad prototype, which meant we had to be less ambitious with regards to design changes from the first iteration.
+Unfortunately, technical issues arose when implementing the many custom UI elements for the iPad prototype, which meant we had to be significantly less ambitious with regards to design changes from the first iteration.
 
 \subsection{Data Declarations}
 \label{subsec:second_data_declarations}
@@ -25,11 +25,8 @@ All these changes can be seen in Figure~\ref{fig:data_declaration}.
 
 \subsection{Other Changes}
 \label{subsec:other_changes}
-One of the things that was not implemented in the initial prototype was the
-TouchDevelop-like focus shifting, where different top-level elements would be
-in focus at different times. In this prototype all elements are in focus all
-the time.
-
+Due to delays caused by the technical issues mentioned above, very few other changes, besides small tweaks, made it into this iteration.
+In fact, one feature that was present in the original design did not make it into the prototype app, the TouchDevelop-like focus shifting, where different top-level elements would be in focus at different times. In this prototype all elements are in focus all the time. This goes against \textbf{U-6} and \textbf{F-9}. 
 The final design can be seen in Figure~\ref{fig:initialiPadInterface}.
 
 \begin{figure}
@@ -182,19 +179,26 @@ addressed.\todo{Ref to section with more reflection}
 
 \begin{itemize}
     \item \textbf{Re8} (I5): Differentiate input fields to a greater degree. Perhaps outline required input fields in red, to differentiate them from other input fields.
-    \item \textbf{Re9} (I5): Do not show input fields for declarations that don’t have focus.
+    \item \textbf{Re9} (I5): Do not show input fields for declarations that do not have focus.
     \item \textbf{Re10} (I5): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
     \item \textbf{Re11} (I7): Use semicolons instead of arrows.
-    \item \textbf{Re12} (I8): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own autosuggestions. Make sure theres a good flow between these fields.
+    \item \textbf{Re12} (I8): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own suggestions. Make sure there is a good flow between these fields.
     \item \textbf{Re13} (I9): Automatically close pairs of symbols.
-    \item \textbf{Re14} (I10): Include a (customizable) shortcut bar for symbols.
+    \item \textbf{Re14} (I10): Include a shortcut bar for symbols.
     \item \textbf{Re15} (I11): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.
     \item \textbf{Re16} (I12): Include more spacing between fields.
     \item \textbf{Re17} (I13): Include a cheat sheet on the right hand side, showing constructors and types for functions.
     \item \textbf{Re18}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
 \end{itemize}
 
-\todo{sub section conclusion}
+\subsection{Design Evaluation}
+\label{second_design_evaluation}
+Unfortunately there were several recommendations from the first iteration that did not make it into this design. 
+The missing functionality mentioned in Section~\ref{subsec:first_design_evaluation} also did not make it into this version.
+While it is regrettable that we did not have a chance to test our recommendations or new features, the mere fact that we tested our design on an iPad led to a wealth of new insight.
+We discovered many issues with the existing design that were only apparent when the design was put to use on a device. 
+The final unmet usability requirement, to do with error handling (\textbf{U-6}), along with the functional requirements concerned with editing declarations (\textbf{F-4}, \textbf{F-5}) and quickly accessing special characters (\textbf{F-10}) will be addressed in the final design, presented in Section~\todo{ref}. 
+This final design will also explore the recommendations from the first iteration (see Section~\ref{sec:first_recommendations}) that were not explored here, and experiment with a new way of declaring data.
 
 \subsection{New Design}
 
