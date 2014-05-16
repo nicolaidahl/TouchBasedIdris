@@ -1,18 +1,20 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{Implementation}
+\section{Second Design Iteration}
 \label{sec:Implementation}
 
-Having the architecture marked down, we could focus on another iteration of
-usability testing. It was the goal to create a prototype running on the iPad,
-ready for usability testing with a bigger group of participants than in the
-mock-up phase.
+With an architecture in hand, it was time for the next design iteration.
+As we mentioned in Section~\ref{subsec:first_design_evaluation}, several requirements and issues were still to resolved, and we felt the biggest remaining issue was the data declaration syntax.
+It was the goal to create a prototype running on the iPad, ready for usability testing with a larger group of participants than in the mock-up phase.
+Unfortunately, technical issues arose when implementing the many custom UI elements for the iPad prototype, which meant we had to be less ambitious with regards to design changes from the first iteration.
 
-\begin{figure}
-	\centering
-		\includegraphics[width=110mm]{diagrams/ipad_interface.PNG}
-	\caption{The initial iPad interface.}
-\label{fig:initialiPadInterface}
-\end{figure}
+\subsection{Data Declarations}
+\label{subsec:second_data_declarations}
+Our first priority was to improve the data declarations from our initial design. 
+We followed \textbf{Re1} by splitting the name for the data and its type into two text fields, with a colon separating them. 
+We also followed \textbf{Re2} by including text hints as to what should be in a text field.
+These hints disappear as soon as the field gains focus.
+The outlines around input fields were also changed to differentiate between fields that had been filled out, and fields that were yet to be filled out, as stated in \textbf{Re3}.
+All these changes can be seen in Figure~\ref{fig:data_declaration}.
 
 \begin{figure}
 	\centering
@@ -21,41 +23,20 @@ mock-up phase.
 \label{fig:data_declaration}
 \end{figure}
 
-To produce this prototype we had to follow the usability recommendations of
-Section~\ref{sec:first_recommendations}	while still keeping the goals and requirements of
-Section~\ref{sec:GoalsAndRequirements} in mind. Figure~\ref{fig:initialiPadInterface}
-shows an example data type as well as the zip function defined in the visual,
-high-level syntax. It is evident that this is still a prototype, but the reader
-should be able to get an idea of how it works.
-
-One of the things that were not implemented in the initial prototype was the
+\subsection{Other Changes}
+\label{subsec:other_changes}
+One of the things that was not implemented in the initial prototype was the
 TouchDevelop-like focus shifting, where different top-level elements would be
 in focus at different times. In this prototype all elements are in focus all
 the time.
 
-The data declarations (see Figure~\ref{fig:data_declaration}) were kept the same as in the mock-up except for the
-placeholder text and colon indicating the separation between the identifier and
-type.
-
-This prototype consists of a lot of custom elements, and the way that they work
-together has been challenging to implement. Figure~\ref{fig:clientViewArchitecture} shows a simplified class diagram of the
-client. It shows the UI classes of the project to give an idea of
-the resemblance to the abstract syntax. As with the abstract syntax there are
-two ``levels'' of views --- top level and input level. The MainView holds a
-number of top level declarations, that each hold a number of input views. The
-InferenceRuleView is used by the DataDeclarationView only.
-
-A GroupInputView contains one or more AbstractInputViews. This way of building
-the interface makes it easy to wire input views to the underlying model object
-hierarchy, as it is the same type of nesting we have with terms. \todo{Explain
-what the group input view is and how it can be customized}
+The final design can be seen in Figure~\ref{fig:initialiPadInterface}.
 
 \begin{figure}
 	\centering
-		\includegraphics[width=110mm]{diagrams/client_side_class_diagram.pdf}
-	\caption{A subset of the client-side diagram showing how the view hierarchy
-	almost mirrors the Abstract Syntax tree.}
-\label{fig:clientViewArchitecture}
+		\includegraphics[width=110mm]{diagrams/ipad_interface.PNG}
+	\caption{The initial iPad interface.}
+\label{fig:initialiPadInterface}
 \end{figure}
 
 \subsection{Second Usability Iteration}
@@ -94,7 +75,7 @@ Like the first test, this test was conducted in a meeting room at the IT
 University, with three people present: The test subject, the test facilitator,
 and a note taker. The tests were recorded. This time the test consisted of four
 tasks, with the first task designed to get the subjects acquainted with the
-data declarations. The next two tasks were identical to the first test, the
+data declarations, as per \textbf{Re4}. The next two tasks were identical to the first test, the
 definition of the \texttt{Vect} data type and the \texttt{zip} function for
 \texttt{Vect}. The final task concerned the manipulation of order of
 declarations in the program they defined. As the app was still at prototype
@@ -147,49 +128,49 @@ have now been identified. During the test, several bugs were encountered. These
 are not listed below, as they are not inherent to the design, but rather
 results of the prototypical nature of the app.
 \\ \\
-\textbf{I1: Too many input fields}.
+\textbf{I5: Too many input fields}.
 Most of the users reported that all the grey, unfilled input fields were
 confusing. (S1.20, S2.2, S3.29b)
 \todo{Insert screenshot}
 \\ \\
-\textbf{I2: Writing data declaration}
+\textbf{I6: Writing data declaration}
 Everyone was able to decipher the data declarations almost immediately, but
 all but one had trouble writing the \texttt{Vect} data declaration. Especially
 the distinction between the premise area and the conclusion area seemed
 problematic. (S1.1--1, S3.11--18, S4.3--7)
 \\ \\
-\textbf{I3: Arrows in data confusing}
+\textbf{I7: Arrows in data confusing}
 The use of arrows in the premise area is confusing, as it implies a function. 
 (S4.4)
 \\ \\
-\textbf{I4: Suggestions for parameterized types}
+\textbf{I8: Suggestions for parameterized types}
 This issue persists from the original design. The subjects found it irritating
 that after choosing a suggestion, they would have to manually change the
 parameters using the standard iOS text editing facilities. Multiple subjects
 mentioned that it broke their flow. (S1.10, S2.7, S3.15)
 \\ \\
-\textbf{I5: Lack of auto-closing parentheses and quotation marks}
+\textbf{I9: Lack of auto-closing parentheses and quotation marks}
 We observed that users spent too much time navigating the virtual keyboards to
 close pairs of symbols, when this can be done automatically.
 \\ \\
-\textbf{I6: Common symbols inaccessible}
+\textbf{I10: Common symbols inaccessible}
 In a similar vein, we noticed that some symbols commonly used when programming,
 e.g. ``<'', took too long to find in the virtual keyboard.
 \\ \\
-\textbf{I7: Poor flow between input fields}
+\textbf{I11: Poor flow between input fields}
 To move from one input field to the next, the subjects must manually tap each
 input field. This broke the subjects flow. (S1.21, S3.30c)
 \\ \\
-\textbf{I8: Program can look cluttered}
+\textbf{I12: Program can look cluttered}
 After finishing all the tasks, the subject's program started to look cluttered.
 \todo{Insert screenshot} (S3.29a)
 \\ \\
-\textbf{I9: Few definitions visible}
-Related to Issue I8, definitions are quite large, so only a few are visible at
+\textbf{I13: Few definitions visible}
+Related to Issue I12, definitions are quite large, so only a few are visible at
 any time. This can make it hard for the subject to get an overview of their
 work.
 \\ \\
-\textbf{I10: Unclear how to specify implicits and identifiers for arguments}
+\textbf{I14: Unclear how to specify implicits and identifiers for arguments}
 Some parts of the syntax have not been determined. Some of the subjects
 wondered how one would make an argument implicit. (S1.9, S4.13)
 
@@ -200,17 +181,17 @@ recommendations serve more as a reflection over how these issues might be
 addressed.\todo{Ref to section with more reflection}
 
 \begin{itemize}
-    \item \textbf{Re1} (I1): Differentiate input fields to a greater degree. Perhaps outline required input fields in red, to differentiate them from other input fields.
-    \item \textbf{Re2} (I1): Do not show input fields for declarations that don’t have focus.
-    \item \textbf{Re3} (I1): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
-    \item \textbf{Re4} (I3): Use semicolons instead of arrows.
-    \item \textbf{Re5} (I4): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own autosuggestions. Make sure theres a good flow between these fields.
-    \item \textbf{Re6} (I5): Automatically close pairs of symbols.
-    \item \textbf{Re7} (I6): Include a (customizable) shortcut bar for symbols.
-    \item \textbf{Re8} (I7): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.
-    \item \textbf{Re9} (I8): Include more spacing between fields.
-    \item \textbf{Re10} (I9): Include a cheat sheet on the right hand side, showing constructors and types for functions.
-    \item \textbf{Re11}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
+    \item \textbf{Re8} (I5): Differentiate input fields to a greater degree. Perhaps outline required input fields in red, to differentiate them from other input fields.
+    \item \textbf{Re9} (I5): Do not show input fields for declarations that don’t have focus.
+    \item \textbf{Re10} (I5): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
+    \item \textbf{Re11} (I7): Use semicolons instead of arrows.
+    \item \textbf{Re12} (I8): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own autosuggestions. Make sure theres a good flow between these fields.
+    \item \textbf{Re13} (I9): Automatically close pairs of symbols.
+    \item \textbf{Re14} (I10): Include a (customizable) shortcut bar for symbols.
+    \item \textbf{Re15} (I11): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.
+    \item \textbf{Re16} (I12): Include more spacing between fields.
+    \item \textbf{Re17} (I13): Include a cheat sheet on the right hand side, showing constructors and types for functions.
+    \item \textbf{Re18}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
 \end{itemize}
 
 \todo{sub section conclusion}
