@@ -1,105 +1,58 @@
 %!TEX root = ../Touch Based Idris.tex 
 \section{Goals and Requirements}
 \label{sec:GoalsAndRequirements}
-\todo{mention somewhere that we're trying to be better than other tablet based
-solutions and not textual editors in general}
 
-\subsection{Goals} The overall goal of this project is to investigate how the
-features of the dependently typed language, Idris, can improve the touch-based
-programming experience. It is important to underline that the editor we will be
-proposing should not be evaluated with reference to state of the art keyboard-based programming editors. It is not the goal to revolutionize the way we as
-humans program in general. The use case for programming on a touch device will most likely be a
-mobile one as it is with most use cases for the i-devices \cite[p. 26]{nielsen2013mobile}.
+\subsection{Goals}
+The overall goal of this project is to investigate how the features of the dependently typed language, Idris, can improve the touch-based programming experience. 
+It is important to underline that the design we will propose is meant to compete with other touch-based editor designs, and not with traditional keyboard based editors.
+In other words, we are not trying to revolutionize the way we program, instead we are trying to improve the programming experience when using a touch device.
+The use case for programming on a touch device will most likely be a mobile one as it is with most use cases for touch devices\,\cite[p. 26]{nielsen2013mobile}.
 
 The high-level goals of the project are:
 
 \begin{itemize} 
-	\item \textbf{G-1} To produce a programming editor that leverages
-	Idris to provide a usable solution for the touch-based iPad device.
-	\item \textbf{G-2} The edit-compile-test cycle should be as fast as state of the art iPad 
-	programming editors.
-	\item \textbf{G-3} Minimize the use of the virtual keyboard\cite[pp. 76]{nielsen2013mobile} and
-	ideally only make use of it when inputting identifiers or auto completing terms.
-	\item \textbf{G-4} The solution should strive to be eligible for submission to the Apple App Store.
-	\item \textbf{G-5} The user interface must take advantage of the platform it is running on. 
-	Otherwise it is pointless to have a native app, and one should consider making a web app.
+	\item \textbf{G-1} To design a programming editor that leverages Idris to provide a usable solution for the touch-based iPad device.
+	\item \textbf{G-2} The edit-compile-test cycle should be as fast as state of the art iPad programming editors.
+	\item \textbf{G-3} Minimize the use of the virtual keyboard\,\cite[pp. 76]{nielsen2013mobile} and ideally only make use of it when inputting identifiers or auto completing terms.
+	\item \textbf{G-4} The solution should strive to be eligible for submission to the Apple App Store. 
 \end{itemize}
 
 \subsection{Usability Requirements} 
-In Section \ref{sec:Evaluation} we will evaluate our prototype user interface with reference to Nielsen's 10 Usability
-Guidelines\,\cite{nielsen1990heuristic}, and it is an overall usability
-requirement that the interface adheres to these. Furthermore, we will have focus on a range of
-usability requirements. The interface should:
+In Section~\ref{sec:Evaluation} we will evaluate our prototype user interface with reference to Nielsen's 10 Usability Guidelines\,\cite{nielsen1990heuristic}, and it is an overall usability requirement that the interface adheres to these. 
+Furthermore, we will focus on a range of usability requirements. 
+The interface should:
 
 \begin{itemize}     
-	\item \textbf{U-1} Make use of visual elements such as shape, color and connecting lines to communicate program structure
-	(G-1).
-	\item \textbf{U-2} Make use of touch gestures only when it can improve usability
-	(G-1, G-5).
-	\item \textbf{U-3} Avoid the pitfall of many visual languages\cite{green1992visual} and ensure 
-	that the program structure, however visual, approximately scales to the same degree as state of 
-	the art touch-based editors 
-	(G-1, G-5).
-	\item \textbf{U-4} Implement accelerators for use by the expert user but invisible for the novice
-	user\,\cite{nielsen1990heuristic}, preferably by use of simple touch gestures
-	(G-1, G-2, G-3, G-5).
-	\item \textbf{U-5} Allow the user to recover from syntactical as well as logical errors in a fast
-	manner (G-2).
-	\item \textbf{U-6} Have a clear indication of where the user can add and edit terms without these
-	indications cluttering the interface (see Section \ref{subsub:Lisping}) (G-1).
+	\item \textbf{U-1} Clearly communicate program structure. One way to accomplish this it through the use of visual elements such as shape, color and connecting lines. (G-1).
+	\item \textbf{U-2} Make use of touch gestures only when it can improve usability. (G-1).
+	\item \textbf{U-3} Avoid the pitfall of some visual languages\,\cite{green1992visual} and ensure that the program structure, however visual, approximately scales to the same degree as state of the art touch-based editors. (G-1).
+	\item \textbf{U-4} Implement accelerators for use by the expert user but invisible for the novice user\,\cite{nielsen1990heuristic}, preferably by use of simple touch gestures. (G-1, G-2, G-3).
+	\item \textbf{U-5} Allow the user to recover from syntactical as well as logical errors in a fast manner. (G-2).
+	\item \textbf{U-6} Have a clear indication of where the user can add and edit terms without these indications cluttering the interface (see Section~\ref{subsub:Lisping}). (G-1).
 \end{itemize}
-
 
 \subsection{Functional Requirements} 
 \label{subsec:FunctionalRequirements} 
-More specifically the solution must:
+Besides the usability requirements listed above, the design must also enable several functional requirements. Specifically the design must:
 
 \begin{itemize}
-	\item \textbf{F-1} Include initial pattern match creation like the Idris 
-	Emacs mode \cite{Idris:EmacsMode} (G-1, G-2, G-3).
-	\item \textbf{F-2} Include case splitting of pattern variables like the Emacs mode \cite{Idris:EmacsMode} (G-1, G-2, G-3).
-	\item \textbf{F-3} Include a way to let the compiler automatically solve a metavariable like the
-	Emacs mode \cite{Idris:EmacsMode} (G-1, G-2, G-3).
-	\item \textbf{F-4} Allow the user to define basic data types like Vect (G-1).
-	\item \textbf{F-5} Allow the user to define basic functions like the zip function
-	(G-1).
-	\item \textbf{F-6} Comply with the Apple App Store Review Guidelines\,\cite{AppStoreGuidelines}
-	(G-4)
+	\item \textbf{F-1} Support initial pattern match creation like the Idris Emacs mode\,\cite{Idris:EmacsMode}. (G-1, G-2, G-3).
+	\item \textbf{F-2} Support case splitting of pattern variables like the Emacs mode\,\cite{Idris:EmacsMode}. (G-1, G-2, G-3).
+	\item \textbf{F-3} Support a way to let Idris automatically solve a metavariable like the Emacs mode\,\cite{Idris:EmacsMode}. (G-1, G-2, G-3).
+	\item \textbf{F-4} Allow the user to add, remove, and edit basic data types like Vect. (G-1).
+	\item \textbf{F-5} Allow the user to add, remove, and edit basic functions like the zip function. (G-1).
+	\item \textbf{F-6} Comply with the Apple App Store Review Guidelines\,\cite{AppStoreGuidelines}. (G-4).
+	\item \textbf{F-7} Include an overview of the possible language constructs that are	applicable in the current context, inspired by TouchDevelop (see Section~\ref{subsub:TouchDevelop}), Lisping (see Section~\ref{subsub:Lisping}), and Eastwest (see Section~\ref{subsub:Eastwest}). (G-1, G-2, G-3).
+	\item \textbf{F-8} Provide better undo support than simply shaking the device (see Section~\ref{subsub:CodeToGo}). (G-2).
+	\item \textbf{F-9} Collapse or minimize top level declarations not currently in focus. This is inspired by TouchDevelop	(see Section~\ref{subsub:TouchDevelop}). (G-2, U-3).
+	\item \textbf{F-11} Allow for a faster way of accessing special characters (see Section~\ref{subsub:Textastic}). (G-2).
 \end{itemize}
-
-The design of the interface should:
-
-\begin{itemize}     
-	\item \textbf{F-7} Include an overview of the possible language constructs that are
-	applicable in the current context inspired by TouchDevelop (\ref{subsub:TouchDevelop}), Lisping
-	(\ref{subsub:Lisping}), and Eastwest (\ref{subsub:Eastwest}) (G-1, G-2, G-3).
-	\item \textbf{F-8} Have a logics-inspired standard form of declaring data types as done by Epigram
-	(\ref{subsub:Epigram}) (G-1, G-5).
-	\item \textbf{F-9} Provide better undo support than simply shaking the device (see Section
-	\ref{subsub:CodeToGo}) (G-2).
-	\item \textbf{F-10} Collapse or minimize top level declarations not currently in focus. This is inspired by TouchDevelop
-	in Section \ref{subsub:TouchDevelop} (G-2, U-3).
-	\item \textbf{F-11} A faster way of accessing the special characters that can be used 
-	to define operators in Idris (see Section \ref{subsub:Textastic}) (G-2).
-\end{itemize}
-
-\todo{Aren't we missing a functional requirement for having a Special
-characters keyboard?}
 
 \subsection{Defining Scope} 
-The primary goal for the first prototype of IdrisTouch is to test and explore
+The primary goal for the first prototype of the design is to test and explore
 issues related to defining simple data types and functions with the touch-based interface. 
-We have chosen to focus on the definition and manipulation of the canonical Vect data type, which is, as we explained in
-section\todo{insert ref}, often used as the basic example of how dependent types
-work. Specifically, we will let our usability test subjects define the Vect data type and zip
-function (also explained in section\todo{insert ref}). The zip function allows the
-testing of automatic initial clause creation, automatic case splitting, and metavariable solving.
+We have chosen to focus on the definition and manipulation of the canonical \texttt{Vect} data type, which is, as we explained in section\todo{insert ref}, often used as the basic example of how dependent types work.
+Specifically, we will let our usability test subjects define the \texttt{Vect} data type and \texttt{zip} function (also explained in section\todo{insert ref}).
+The \texttt{zip} function allows the testing of automatic initial clause creation, automatic case splitting, and metavariable solving.
 
-Any language features of Idris that are not directly needed to be able to test
-the usability of defining the above-mentioned top-level declarations will thus
-be omitted. This means we will only not handle language features such as
-dependent pairs, explicit types, with notation \todo{insert more?}.
-
-
-
-
+Any language features of Idris that are not directly needed to be able to test the usability of defining the above-mentioned top-level declarations will thus be omitted. This means we will only not handle language features such as dependent pairs, explicit types, with notation \todo{insert more?}.
