@@ -118,7 +118,7 @@ for more on \texttt{Vect} and \texttt{zip}.
 
 \subsubsection{Issues}
 \label{sec:second_issues}
-Many new issues were discovered in this usability test. This is not
+We discovered many new issues in this usability test, which is not
 surprising. In the first test, the facilitator took over the iPad's role, by
 manipulating the mockups. This masked many flow and ease of use issues, which
 have now been identified. During the test, several bugs were encountered. These
@@ -127,7 +127,8 @@ results of the prototypical nature of the app.
 \\ \\
 \textbf{I5: Too many input fields}.
 Most of the users reported that all the grey, unfilled input fields were
-confusing. (S1.20, S2.2, S3.29b)
+confusing. 
+This will hopefully be partially solved by the focusing system. (S1.20, S2.2, S3.29b)
 \todo{Insert screenshot}
 \\ \\
 \textbf{I6: Writing data declaration}
@@ -160,6 +161,7 @@ input field. This broke the subjects flow. (S1.21, S3.30c)
 \\ \\
 \textbf{I12: Program can look cluttered}
 After finishing all the tasks, the subject's program started to look cluttered.
+This should also be alleviated by the focus system.
 \todo{Insert screenshot} (S3.29a)
 \\ \\
 \textbf{I13: Few definitions visible}
@@ -173,22 +175,20 @@ wondered how one would make an argument implicit. (S1.9, S4.13)
 
 \subsubsection{Recommendations}
 \label{sec:second_recommendations}
-As this represents the final iteration during this project, these
-recommendations serve more as a reflection over how these issues might be
-addressed.\todo{Ref to section with more reflection}
+As we did not have time to implement all the recommendations from our first iteration, they still apply to this iteration, even though they are not listed again here.
+Some issues (such as I5) are partially due to the fact the prototype was missing certain features, such as the focus system.
+We have not added recommendations for these issues if we believe the not yet implemented features will improve them.
 
 \begin{itemize}
-    \item \textbf{Re8} (I5): Differentiate input fields to a greater degree. Perhaps outline required input fields in red, to differentiate them from other input fields.
-    \item \textbf{Re9} (I5): Do not show input fields for declarations that do not have focus.
-    \item \textbf{Re10} (I5): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
-    \item \textbf{Re11} (I7): Use semicolons instead of arrows.
-    \item \textbf{Re12} (I8): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own suggestions. Make sure there is a good flow between these fields.
-    \item \textbf{Re13} (I9): Automatically close pairs of symbols.
-    \item \textbf{Re14} (I10): Include a shortcut bar for symbols.
-    \item \textbf{Re15} (I11): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.
-    \item \textbf{Re16} (I12): Include more spacing between fields.
-    \item \textbf{Re17} (I13): Include a cheat sheet on the right hand side, showing constructors and types for functions.
-    \item \textbf{Re18}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
+    \item \textbf{Re8} (I5): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
+    \item \textbf{Re9} (I7): Use semicolons instead of arrows in the premise area of data declarations.
+    \item \textbf{Re10} (I8): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own suggestions. Make sure there is a good flow between these fields.
+    \item \textbf{Re11} (I9): Automatically close pairs of symbols.
+    \item \textbf{Re12} (I10): Include a shortcut bar for symbols.
+    \item \textbf{Re13} (I11): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.
+    \item \textbf{Re14} (I12): Include more spacing between fields.
+    \item \textbf{Re15} (I13): Include a cheat sheet of some kind, showing constructors and types for functions.
+    \item \textbf{Re16}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
 \end{itemize}
 
 \subsection{Design Evaluation}
@@ -199,17 +199,3 @@ While it is regrettable that we did not have a chance to test our recommendation
 We discovered many issues with the existing design that were only apparent when the design was put to use on a device. 
 The final unmet usability requirement, to do with error handling (\textbf{U-6}), along with the functional requirements concerned with editing declarations (\textbf{F-4}, \textbf{F-5}) and quickly accessing special characters (\textbf{F-10}) will be addressed in the final design, presented in Section~\todo{ref}. 
 This final design will also explore the recommendations from the first iteration (see Section~\ref{sec:first_recommendations}) that were not explored here, and experiment with a new way of declaring data.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
