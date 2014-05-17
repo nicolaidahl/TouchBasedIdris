@@ -75,3 +75,31 @@ One of the interesting features of languages with dependent types is that the ad
 The Idris mode for Emacs lets the user interact with their program in a number of interesting ways.
 For example, the user can ask Emacs to create an initial pattern match for a function, case split a pattern variable, or solve a meta variable.
 In the Emacs mode, all these actions are activated trough keyboard shortcuts.
+
+Sometimes when writing a function, one might not know right away what should be on the right hand side of a clause.
+In these cases, a metavariable can be helpful. A metavariable starts with a question mark, for example \texttt{?head\_rhs} as can be seen in Figure~\ref{fig:incomplete_head}.
+In this example, the only part written by the user is the function identifier and type (\texttt{head : Vect (S n) a -> a}).
+The first clause was created using the initial clause command (\texttt{C-c C-s}).
+
+\begin{figure}
+\begin{alltt}
+head : Vect (S n) a -> a
+head xs = ?head_rhs
+\end{alltt}
+\caption{Incomplete head function for vectors in Idris.}
+\label{fig:incomplete_head}
+\end{figure}
+
+\begin{figure}
+\begin{alltt}
+head : Vect (S n) a -> a
+head (x :: xs) = x
+\end{alltt}
+\caption{Head function for vectors in Idris. Notice there is only one case, as the vector must have a length of at least one to have a head.}
+\label{fig:head}
+\end{figure}
+
+To finish the function definition, the user can move the cursor to \texttt{xs}, and hit \texttt{C-c C-s} to case split the \texttt{xs} pattern variable, and then move the cursor to \texttt{?head\_rhs} and hit \texttt{C-c C-a} to try to solve the metavariable.
+In this case, the definition seen in Figure~\ref{fig:head} is produced.
+While this was a very simple example, all of \texttt{zip} and most of \texttt{filter} can be written in this way.
+It should be apparent that this is extremely powerful, and can save the user many keystrokes.
