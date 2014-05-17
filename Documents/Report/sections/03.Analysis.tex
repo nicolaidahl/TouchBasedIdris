@@ -153,7 +153,14 @@ Now that we have established that an inherently visual representation of Idris i
 
 \subsubsection{CodeToGo}
 \label{subsub:CodeToGo}
-CodeToGo claims to be the first app for iOS in which you can write and run code in your favorite language\,\cite{codetogo}. It is backed by the ideone.com website\cite{ideone} that remotely evaluates the code, when the user presses ``Run''. The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
+CodeToGo claims to be the first app for iOS in which you can write and run code in your favorite language\,\cite{codetogo}. It is backed by the ideone.com website\cite{ideone} that remotely evaluates the code, when the user presses ``Run'' (See Figure \ref{fig:CodeToGo_screenshot}. The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=80mm]{diagrams/CodeToGo_screenshot.PNG}
+	\caption{The upper right corner of an example Scala program in CodeToGo.}
+\label{fig:CodeToGo_screenshot}
+\end{figure}
 
 The most severe usability problem for CodeToGo is the low degree to which the user is able to recover from errors. If you have a syntax error in your code you will get a standard console compile error from the ideone.com server. This error contains the line number where your program failed, but when you dismiss the error you will have to remember this line number and manually count your way down to the line where the mistake was, as the editor does not display line numbers\,\cite{nielsen1990heuristic}.
 
@@ -174,7 +181,14 @@ Nielsen \todo{year} recommends that you follow the iOS platform standards so tha
 \label{subsub:Textastic}
 Like CodeToGo, Textastic aims to be a general purpose programming editor, and as such supports many popular programming languages. Unlike CodeToGo, however, it does not support any way to run your code (besides manually copying your program to a computer and running the code there). Textastic is interesting due to an interface component that is not seen in CodeToGo.
 
-Textastic uses a smart shortcut bar to allow quick access to commonly used characters, that would otherwise be hard to get to with the virtual keyboard.\todo{insert image} The biggest problem with Textastic is that you have no way of knowing whether your code will run or not.\todo{ref 10 heuristics. Specifically, user feedback} On a computer, this would not be as big of a problem, in fact many programming editors do not touch on the semantics of the language they are editing, instead they rely on other software to run the code. This is much harder on a device such as an iPad, where multitasking is not as prevalent. The text editing interface is very reminiscent of none-touch GUI text editors, such as TextMate or Sublime Text. 
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/textastic_keyboard_screenshot.png}
+	\caption{The Textastic keyboard with special characters easily accessible.}
+\label{fig:textastic_keyboard_screenshot}
+\end{figure}
+
+Textastic uses a smart shortcut bar that can be seen in Figure \ref{fig:textastic_keyboard_screenshot}. This bar allows quick access to commonly used characters, that would otherwise be hard to get to with the virtual keyboard. To select a special character you tap and hold your finger on the specific button and swipe towards the character that is needed. The biggest problem with Textastic is that you have no way of knowing whether your code will run or not.\todo{ref 10 heuristics. Specifically, user feedback} On a computer, this would not be as big of a problem, in fact many programming editors do not touch on the semantics of the language they are editing, instead they rely on other software to run the code. This is much harder on a device such as an iPad, where multitasking is not as prevalent. The text editing interface is very reminiscent of none-touch GUI text editors, such as TextMate or Sublime Text. 
 
 \paragraph{Takeaways}
 \begin{enumerate}
@@ -185,9 +199,17 @@ Textastic uses a smart shortcut bar to allow quick access to commonly used chara
 
 \subsubsection{Raskell}
 \label{subsub:Raskell}
-Raskell is a Haskell editor for the iPad. It is based on the Hugs implementation of Haskell 98, and includes the ability to interpret your programs locally. The text editor itself is inspired by Vi, featuring many of the same keyboard commands. When you have written your program, you can load it into the interpreter, which gives you a REPL, letting you test out your program. Raskell supports syntax highlighting for Haskell, and features most libraries for Hugs, but does not have auto completion.
+Raskell is a Haskell editor for the iPad and a part of the UI can be see in Figure \ref{fig:Raskell_screenshot}. It is based on the Hugs implementation of Haskell 98, and includes the ability to interpret your programs locally. The text editor itself is inspired by Vi, featuring many of the same keyboard commands. When you have written your program, you can load it into the interpreter, which gives you a REPL, letting you test out your program. Raskell supports syntax highlighting for Haskell, and features most libraries for Hugs, but does not have auto completion.
 
-The text editing itself works well, but a lack of autocompletion and snippets mean you will be using the virtual keyboard to a large extent, which is generally a problem according to Nielsen\,\cite[pp. 76]{nielsen2013mobile}. 
+The text editing itself works well, but a lack of auto completion and snippets mean you will be using the virtual keyboard to a large extent, which is generally a problem according to Nielsen\,\cite[pp. 76]{nielsen2013mobile}. 
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/Raskell_screenshot.png}
+	\caption{The top of the Raskell environment with code editing to the right and a REPL to the
+	left.}
+\label{fig:Raskell_screenshot}
+\end{figure}
 
 Apart from this issue, the development flow is flexible and efficient. Especially compiler errors are being handled in an elegant way letting the user recover from syntactical errors\,\cite{nielsen1990heuristic}. If a compile error occurs, the user is presented with a split-screen view showing the error and a line number. The REPL is also extremely useful for trying out parts of your program.
 
@@ -217,21 +239,30 @@ Using the Scheme dialect of LISP you can program and execute code right on your 
 
 ``Textviews and virtual keyboards aren't the only option for coding on iOS. Editing source code character by character is a concept wedded to the keyboard and it is not necessarily the best option for a device with no keyboard.''
 
-Lisping is actually also a touch-based programming editor with support for multiple types of gestures, but it is the fact that it is structured that makes it interesting to our study.
+Lisping is also a touch-based programming editor with support for multiple types of gestures, but it is the fact that it is structured that makes it interesting to our study.
 
 We are fairly experienced programmers with only little knowledge of the Scheme language and it's syntax, and we had a hard time understanding and using Lisping. The underlying TinyScheme interpreter most often gave us “Error Unknown” compiler messages even though we were writing examples straight from the Scheme website. Not being able to pinpoint what was syntactically wrong with the written code and recover from that error was a major problem, as stated by Nielsen's ninth heuristic\,\cite{nielsen1990heuristic}.
 
 The editor supports a range of touch gestures that are not immediately obvious to the user. Low memorability is generally a problem with touch gestures as described by Nielsen \cite[p. 141]{nielsen2013mobile}. In Lisping, you have to open the Lisping guide in the upper right corner and read through 6 pages of a PDF document to familiarize yourself with these gestures. This is a memorability problem\,\cite{nielsen1990heuristic}.
 
-There are also several buttons on the bottom of the UI. These are all icons and except for the delete and edit ones, they have no standard meaning in iOS or are used differently from the standard meaning. The undo button is e.g. a backwards-pointing triangle which could be interpreted to mean “Back” in iOS. Given the fact that the user has no chance of remembering all these non-standard icons, they clearly violate the ``Recognition rather than recall'' and ``Consistency and standards'' usability guidelines\,\cite{nielsen1990heuristic}. 
+As can be seen in Figure \ref{fig:Lisping_screenshot}, there are also several buttons on the bottom of the UI. These are all icons and except for the delete and edit ones, they have no standard meaning in iOS or are used differently from the standard meaning. The undo button is e.g. a backwards-pointing triangle which could be interpreted to mean “Back” in iOS. Given the fact that the user has no chance of remembering all these non-standard icons, they clearly violate the ``Recognition rather than recall'' and ``Consistency and standards'' usability guidelines\,\cite{nielsen1990heuristic}. 
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/Lisping_screenshot.png}
+	\caption{A cropped screenshot of the Lisping interface, where the bottom
+	toolbar consists of a range of non-standard icons and the program is filled
+	with [+] buttons}
+\label{fig:Lisping_screenshot}
+\end{figure}
 
 Furthermore, these icons are all located close to each other and a whole screen length away from where the user's attention is supposed to be when programming --- that is, on the code. All but two of the actions that these icons allow the user to do can be done with various gestures performed on the source code. We see this as a failed attempt on providing accelerators for the expert user.
 
 The problem with these gestures is that they are uncomfortable and cumbersome to use. To select an expression to edit or run in the REPL, the user must ``reverse pinch'' the text. This is a non-standard way of highlighting text in iOS and it feels very awkward and unresponsive not to mention that it gets painful to do after three to four times. It is even straining to perform normal tap gestures due to the small size of all the expressions of the editor.
 
-The final usability problem we discovered with Lisping was the amount of [+] buttons inlined in the code. These buttons are supposed to indicate that an expression can be added there, but what they also do is make the code much harder to read. 
-
-\missingfigure{Figure that demonstrates [+] litter}
+The final usability problem we discovered with Lisping was the amount of [+] buttons inlined in the code. These buttons are supposed to indicate that an expression can be added there, but what they also do is make the code much harder to read.
+In Figure \ref{fig:Lisping_screenshot} we have a fairly simple program with
+only three [+] buttons. This becomes more severe when the program grows.
 
 \paragraph{Takeaways}
 \begin{enumerate}
@@ -239,8 +270,6 @@ The final usability problem we discovered with Lisping was the amount of [+] but
 	\item It should not be necessary to add a PDF documents with instructions to how the gestures and buttons work. It should be immediately recognized by the user because it is all presented according to the platform standards. This serves as a reminder that the overuse of clever gestures harms the user experience.
 	\item Littering a structured editor with [+] (add) buttons, to indicate that expressions can be added at these positions, is not a good idea. While a good alternative for this solution is hard to come up with we should try to design a different way.
 \end{enumerate}
-
-
 
 \subsubsection{Eastwest}
 \label{subsub:Eastwest}
@@ -259,6 +288,16 @@ Even though Eastwest is basically an experiment, we find it very interesting. It
 TouchDevelop allows developers to make touch and accelerometer enabled games for any device with a web browser by providing a web app. It is generally meant as a way of getting youngsters interested in programming, and the language has been specially designed for this purpose and works hand in hand with the development platform to provide a good experience for touch devices.\todo{insert ref for touchdev}
 
 TouchDevelop is not general purpose but focuses on creating simple 2D games. This means that the user gets a lot of standard game concepts built into whatever program he's writing. This is evident from the context that is being updated as you type in the bottom of the screen. This basically means that you rarely have to type characters into the editor as you don't have to define new methods (actions). Variable names are automatically generated at the push of a button.
+Figure \ref{fig:TouchDevelop_screenshot} shows a sample program drawing a
+turtle and a simple triangle pattern.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=80mm]{diagrams/TouchDevelop_screenshot.png}
+	\caption{A screenshot of the Turtle Triangle Spiral sample from
+	TouchDevelop\,\cite{TouchDevelop:TurtleTriangleSpiral}}
+\label{fig:TouchDevelop_screenshot}
+\end{figure}
 
 The first thing you notice as an experienced programmer is how the TouchDevelop language looks like modern imperative languages like C\# and Java, and this recognizability enabled us to get started with the platform right away. To educate new users there is a long tutorial that guides you through your first game. This tutorial makes the language seem very structured but in fact it is as easy to make syntactical error as in any other imperative language. We have placed TouchDevelop in this section of structured editors even though it should only be categorized as semi-structured.
 \todo{should it?}
