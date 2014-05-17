@@ -38,6 +38,15 @@ reference it randomly in the text}
 \subsubsection{Labview}
 \label{subsub:Labview}
 Labview is a development environment featuring the VPL, G, which is designed for dataflow programming and uses the popular ``boxes and wires'' abstraction, with boxes performing various functions, and wires leading data between the boxes. Labview also lets users combine simple widgets to build GUI programs, using the G language for logic. It is widely used in the scientific community, especially to work with data collected from sensors.
+Figure \ref{fig:LabViewGettingStarted} shows a simple example of calculating a
+triangle's area.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/LabView_screenshot.png}
+	\caption{A simple LabView program from the tutorial\,\cite{LabView:GettingStarted}}
+\label{fig:LabViewGettingStarted}
+\end{figure}
 
 Labview is often referenced in the literature of VPLs \todo{insert a couple of references}, so even though it is domain specific we find it interesting as a starting point for our investigation.
 
@@ -56,7 +65,15 @@ It is interesting how Green and Petre \todo{(ref)} give Labview an overall posit
 \subsubsection{Scratch}
 \label{subsub:Scratch}
 Scratch is a visual programming language designed to be easy for beginners to use, facilitating the development of simple audio/visual programs. It is implemented as a web app, and features built-in tutorials, tips and help.
-The language is built around a scene containing sprites. A scene can have multiple sprites, and each sprite can be governed by multiple scripts written in the Scratch visual language. The language itself consists of blocks of different shapes, colors and sizes. Scratch does not use the dataflow paradigm, as Labview does. Instead, one programs by snapping blocks together. The blocks have different shapes, and only complementing shapes can be put together (think of puzzle pieces). Color is used to describe different types of blocks.
+The language is built around a scene containing sprites. A scene can have multiple sprites, and each sprite can be governed by multiple scripts written in the Scratch visual language. The language itself consists of blocks of different shapes, colors and sizes. Scratch does not use the dataflow paradigm, as Labview does. Instead, one programs by snapping blocks together. As can be seen from Figure \ref{fig:ScratchProgram}, the blocks have different shapes, and only complementing shapes can be put together. Color is used to describe different types of blocks.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=60mm]{diagrams/ScratchProgram.png}
+	\caption{A simple Scratch program that moves and spins the sprite if the space
+	button is pressed.}
+\label{fig:ScratchProgram}
+\end{figure}
 
 The user interface itself is a bit cluttered, and it is not immediately clear how the three main areas (scene, sprites, and scripts) interact. Once this has been discovered, however, it is reasonably easy to use. 
 \todo{This paragraph needs to be more academic}
@@ -102,7 +119,16 @@ Scratch makes no or very little use of the principles of Dual Coding and Graphic
 
 \subsubsection{Epigram}
 \label{subsub:Epigram}
-The Epigram language is a functional and dependently typed language made by Conor McBride, which aimed to let the programmer create compiler certified proofs using intuitionistic logic. It is not really a visual programming language, but it has been put in this category due to its 2D syntax. Especially the syntax of the data type specification is interesting. In Epigram, defining data is done in a more visual way than newer dependently typed programs. This is done by imitating the standard form for writing inference rules. The definition of e.g. a data type is split into three lines and its 2D syntax almost resembles ASCII art. 
+The Epigram \,\cite{mcbride2005epigram} language is a functional and dependently typed language made by Conor McBride, which aimed to let the programmer create compiler certified proofs using intuitionistic logic. It is not really a visual programming language, but it has been put in this category due to its 2D syntax. Especially the syntax of the data type specification is interesting. In Epigram, defining data is done in a more visual way than newer dependently typed programs. This is done by imitating the standard form for writing inference rules. As can be seen in Figure \ref{fig:epigram_data}, the definition of e.g. a data type is split into three lines and its 2D syntax almost resembles ASCII art. 
+
+\begin{figure}[htbp]
+	\centering
+	
+	\lstinputlisting[firstnumber=1
+	,basicstyle=\ttfamily\scriptsize]{diagrams/epigram_data}
+	\caption{The natural numbers defined in Epigram}
+	\label{fig:epigram_data}
+\end{figure}
 
 While it has been impossible to get a version of Epigram working for any sort of test we are interested in how this way of expressing data types could benefit the user in a more structured editor that does not require the user to maintain ASCII art but still displays the program in a more visual way.
 
