@@ -68,8 +68,10 @@ filter p (x::xs) with (filter p xs)
 
 The \texttt{filter} function uses two constructs that we have not seen so far, dependent pairs and the with rule. Dependent pairs let us specify a type that is dependent on another value. In \texttt{filter}, we do not know beforehand what length the resulting vector will have, so instead we return a dependent pair, where the first element is the length, and the second element is a \texttt{Vect} of that length. Not knowing the length is also a problem in the cons case of \texttt{filter}. If the head of the \texttt{Vect} passes the predicate \texttt{p}, we want to cons the tail of the \texttt{Vect} onto the head. But since we do not know what the length of \texttt{filter p xs} is beforehand (as it depends on how many elements passes the predicate \texttt{p}), we cannot construct the type for the resulting vector. But by using the \texttt{with} keyword, we can pattern match on the result of \texttt{filter p xs}. We know the length of \texttt{tail}, since we have filtered it already, so we can construct the resulting \texttt{Vect} without any problems. The underscores (eg. \texttt{(\_ ** tail)}) tell Idris to infer the value.
 
-
 \todo{Need some sort of section conclusion}
 
 \subsection{Idris Emacs Mode}
-\todo{Write about what is possible in the Emacs mode}
+One of the interesting features of languages with dependent types is that the additional information provided by the type information can lead to increased tool support.
+The Idris mode for Emacs lets the user interact with their program in a number of interesting ways.
+For example, the user can ask Emacs to create an initial pattern match for a function, case split a pattern variable, or solve a meta variable.
+In the Emacs mode, all these actions are activated trough keyboard shortcuts.
