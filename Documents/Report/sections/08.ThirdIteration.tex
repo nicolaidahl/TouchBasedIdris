@@ -147,15 +147,15 @@ a question mark like in Figure \ref{fig:case_splitting} then a single tap will
 tell the compiler to try and automatically solve the meta variable. Double
 tapping it will as always make the term toggle to edit mode.
 
-
-
 \subsection{Error Handling}
-
-
-
-
-
-
+So far our usability tests have not focused on error handling at all, but in
+this iteration it is time to begin focusing on this important part of the
+edit-compile-test cycle. As we mentioned earlier in this section, we will allow
+the user to edit terms in free text but constantly have a contextual overview available.
+We propose that errors are indicated by a red background on the term that we
+are either unable to parse or that the static checker deems faulty. Tapping on
+this term will bring up the context popover that will indicate the error.
+This design is a proposal and should be thoroughly tested.
 
 \subsection{Next Usability Iteration}
 With this new design we feel that the user interface has reached a maturity
