@@ -1,5 +1,9 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{New Design}
+\section{Third Usability Iteration}
+In this section we first describe our latest design with reference to the
+recommendations from earlier sections. Then we discuss how the next iteration
+of usability testing should be carried out.
+
 We have thought long and hard about the consequences of making our editor more
 structured. On one hand there would be a lower risk of the programmer making  syntax errors, but on the other hand there would not be as much freedom to approach
 the programming task in the way the individual prefers.
@@ -38,16 +42,16 @@ gesture to activate the edit mode removes all of the gesture overloads we have
 had so far. Now we can have dragging, flicking and holding touch-gestures
 without any conflicts. More on the new set of gestures in Section \ref{subsec:new_design_data_dec} and \ref{subsec:new_design_function_dec}.
 
-\subsection{Data Declarations}
-\label{subsec:new_design_data_dec}
+\subsection{Managing Program Structure}
 Figure \ref{fig:new_design_nothing_in_focus} shows two top-level declarations
 where none of them are in focus. In this state the programmer can get a clear
-overview of the program with our any clutter. Notice the new (old) way of
-declaring data that now resembles the textual Idris syntax. Tapping anywhere on
+overview of the program without any clutter. Tapping anywhere on e.g.
 the data declaration takes the user to the state seen in Figure \ref{fig:new_design_data_in_focus},
 where the elements of the declaration are bigger and easier to tap. The check mark button
 removes focus from the current declaration and should help mitigate Re7 by
-giving the user a clear way to indicate the he is done with editing. 
+giving the user a clear way to indicate that he is done with editing. Tapping
+other top-level declarations will switch the current editable declaration to
+non-editable and switch the tapped top-level declaration to editable.
 
 \begin{figure}
 	\centering
@@ -64,12 +68,47 @@ giving the user a clear way to indicate the he is done with editing.
 \label{fig:new_design_data_in_focus}
 \end{figure}
 
-The grayed out arrow buttons indicate that a new term can be added. When no
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/new_function_reverse_pinch.pdf}
+	\caption{When reverse pinching two adjacent handles for top-level
+	declarations, a new top-level declaration appears between the old ones.}
+\label{fig:new_function_reverse_pinch}
+\end{figure}
+
+We have decided to keep our original design for creating new top-level
+declarations. Either, the programmer can use the [+] button at the bottom of
+the program, or he can reverse-pinch two adjacent top-level declarations to
+create a new one between them. This also works for creating constructors
+between existing constructors in data declarations.
+
+Now that the representation of a term is no longer overloaded with conflicting
+gestures, we can incorporate drag-to-rearrange. Figure \ref{fig:design_drag_to_garbage}
+shows an example of this behavior. When the user begins to drag a term, it pop
+out of its current position, and can be rearranged with other terms on the same
+line. Also, while the user is dragging the term, a trash icon appears in the
+upper right corner of the screen, to indicate that it can be deleted. Experienced users can flick the term towards the trash icon, whereas novice users will just drag it nicely
+the first couple of times.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/design_drag_to_garbage.pdf}
+	\caption{When reverse pinching two adjacent handles for top-level
+	declarations, a new top-level declaration appears between the old ones.}
+\label{fig:design_drag_to_garbage}
+\end{figure}
+
+\subsection{Data Declarations}
+\label{subsec:new_design_data_dec}
+We now incorporate a new (old) way of
+declaring data, and it now resembles the textual Idris syntax. 
+
+Looking at Figure \ref{subsec:new_design_data_dec}, the grayed out arrow buttons indicate that a new term can be added. When no
 keyboard is present on the screen this is the only way to add new terms, but if
 the keyboard is present, which means that a term is being edited, another term
 can be added by using the similar arrow button found in the upper right corner
 of the keyboard (see Figure \ref{fig:design_keyboard}). This keyboard has a
-Texstastic-inpired way of inputting all of the special characters allowed in
+Texstastic-inspired way of inputting all of the special characters allowed in
 Idris. This design solves requirement F-10.
 
 \begin{figure}
@@ -80,6 +119,8 @@ Idris. This design solves requirement F-10.
 	terms.}
 \label{fig:design_keyboard}
 \end{figure}
+
+
 
 \subsection{Function Declarations}
 \label{subsec:new_design_function_dec}
@@ -105,6 +146,8 @@ Meta variable solving is managed in an even simpler way. If a term starts with
 a question mark like in Figure \ref{fig:case_splitting} then a single tap will
 tell the compiler to try and automatically solve the meta variable. Double
 tapping it will as always make the term toggle to edit mode.
+
+
 
 \subsection{Error Handling}
 
