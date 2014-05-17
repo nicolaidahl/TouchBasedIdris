@@ -267,54 +267,55 @@ Table \ref{table:existing_solutions_overview} gives an overview of the existing 
 
 
 \begin{table}[ht]
-	\begin{tabular}{|l|l|l|l|l|}
-	\hline
-		& \textbf{Description}
-		& \textbf{Touch-based}                                              
-		& \textbf{Visual syntax}                          
-		& \textbf{\begin{tabular}[c]{@{}l@{}}Stuctured \\ editor\end{tabular}} 
-	\\ \hline		
-    	\textbf{Labview}      & 
-			Visual data flow programming & & \cellcolor[HTML]{38761D} &
-	\\ \hline
-		\textbf{Scratch}      & 
-			\begin{tabular}[c]{@{}l@{}}Beginner-friendly \\ programming by dragging \\ boxes
-			\end{tabular}     & & \cellcolor[HTML]{274E13}{\color[HTML]{274E13} } & \cellcolor[HTML]{274E13}
-	\\ \hline
-		\textbf{Epigram}      & 
-			\begin{tabular}[c]{@{}l@{}}Functional with Dependent \\ Types\end{tabular} & & \cellcolor[HTML]{6AA84F} &
-	\\ \hline
-		\textbf{CodeToGo} & & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                  & & \\ \cline{1-1}
-		\textbf{Textastic}  & \multirow{-2}{*}{
-		\begin{tabular}[c]{@{}l@{}}Textual iPad interface for \\ general purpose languages
-		\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }} & \multirow{-2}{*}{}                              & \multirow{-2}{*}{}                                                   
-	\\ \hline
-		\textbf{Raskell}      & 
-			Mobile Haskell & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } & &                                                               
-	\\ \hline
-		\textbf{Lisping}      & 
-			Mobile Lisp & \cellcolor[HTML]{6AA84F} & & \cellcolor[HTML]{B6D7A8}
-	
-	\\ \hline
-		\textbf{Eastwest}     & 
-			\begin{tabular}[c]{@{}l@{}}Functional programming \\ system with structured editor
-			\end{tabular}	  & & & \cellcolor[HTML]{274E13}
-    \\ \hline	
-		\textbf{TouchDevelop} & 
-			\begin{tabular}[c]{@{}l@{}}Imperative language \\ running as a web app
-			\end{tabular} & \cellcolor[HTML]{6AA84F} & & \cellcolor[HTML]{B6D7A8} 
-	\\ \hline
-		\textbf{IdrisTouch}   & 
-			Mobile Idris      & \cellcolor[HTML]{38761D} & \cellcolor[HTML]{6AA84F}           & \cellcolor[HTML]{38761D} 
-	\\ \hline
-	\end{tabular}
+	\centering
+	{\renewcommand{\arraystretch}{2}%
+		\begin{tabularx}{370pt}{|c|X|c|c|c|}
+		\hline
+			& \textbf{Description}
+			& \textbf{Touch-based}                                              
+			& \textbf{Visual syntax}                          
+			& \textbf{Stuctured editor} 
+		\\ \hline		
+	    	\textbf{Labview}      & 
+				Visual data flow programming & & \cellcolor[HTML]{38761D} &
+		\\ \hline
+			\textbf{Scratch}      & 
+				Beginner-friendly programming by dragging boxes
+				  & & \cellcolor[HTML]{274E13} & \cellcolor[HTML]{274E13}
+		\\ \hline
+			\textbf{Epigram}      & 
+				Functional with Dependent Types & & \cellcolor[HTML]{6AA84F} &
+		\\ \hline
+			\textbf{CodeToGo} & & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }                  & & \\ \cline{1-1}
+			\textbf{Textastic}  & \multirow{-2}{*}{
+			Textual iPad env.
+			} & \multirow{-2}{*}{\cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} }} & \multirow{-2}{*}{}                              & \multirow{-2}{*}{}                                                   
+		\\ \hline
+			\textbf{Raskell}      & 
+				Mobile Haskell & \cellcolor[HTML]{B6D7A8}{\color[HTML]{9AFF99} } & &                                                               
+		\\ \hline
+			\textbf{Lisping}      & 
+				Mobile Lisp & \cellcolor[HTML]{6AA84F} & & \cellcolor[HTML]{B6D7A8}
+		
+		\\ \hline
+			\textbf{Eastwest}     & 
+				Functional programming system with structured editor
+				 & & & \cellcolor[HTML]{274E13}
+	    \\ \hline	
+			\textbf{TouchDevelop} & 
+				Imperative language running as a web app
+				 & \cellcolor[HTML]{6AA84F} & & \cellcolor[HTML]{B6D7A8} 
+		\\ \hline
+			\textbf{IdrisTouch}   & 
+				Mobile Idris      & \cellcolor[HTML]{38761D} & \cellcolor[HTML]{6AA84F}           & \cellcolor[HTML]{38761D} 
+		\\ \hline
+		\end{tabularx}
+	}
 
 	\caption {Existing solutions overview}
 	\label{table:existing_solutions_overview}
 
 \end{table}
-\todo{insert labview in the table}
-\todo{The table looks ridiculous}
 
 \subsection{Overall Takeaways}
 In this section we have analyzed a range of existing solutions and for each reached a list of takeaways that we'll be using to form our requirements for the IdrisTouch app.
