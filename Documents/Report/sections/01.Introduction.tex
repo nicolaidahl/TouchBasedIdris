@@ -1,34 +1,22 @@
 %!TEX root = ../Touch Based Idris.tex
 \chapter{Introduction}
 \label{sec:Introduction}
+In the last few years touch-based interfaces, in the form of smart phones and tablets, have proliferated. These devices often rely on virtual keyboards for text-input, which can be cumbersome to use.
+This is especially an issue when programming, as this is a task traditionally performed with a physical keyboard and mouse.
+To our best knowledge, no widespread solution for programming on a touch-based interface exists.
 
-Currently, there is no widespread visual programming solution, although the field has been explored for half a century. In the last few years touch-based interfaces, in the form of smart phones and tablets, have proliferated. These devices often rely on virtual keyboards for text-input, which can be cumbersome to use, especially when programming. 
+Idris is ``a general purpose functional language with dependent types''\,\cite{brady2013idris}. The expressive nature of the Idris type system makes advanced tool-support possible, such as automatically generating pattern matching on the different possible constructors for a term, or even filling out a term automatically.
 
-Idris is ``a general purpose functional language with dependent types''\,\cite{brady2013idris}. The expressive nature of the Idris type system makes advanced tool-support possible, such as automatically generating pattern matching on the different possible constructors for a term, or even filling out a term automatically. In these cases, the compiler will be able to fill in the code automatically when asked to. Idris has a strong core language that can be extended with a higher level syntax as long as it can be translated back to the core language.
+The goal of this project is to develop a design for a touch-based programming editor, that leverages Idris to improve the programming experience compared to existing solutions, e.g.\ by minimizing use of the virtual keyboard.
+The design will target the Apple iPad, as it is the most prolific tablet computer available today.
 
-The goal of this project is to explore how best to present and interact with a visual syntax on a touch-based device, using the advanced tool support afforded by Idris to minimize the use of the virtual keyboard.
+To accomplish this, we will first study existing solutions for touch-based programming, together with other programming paradigms that might improve usability for a touch-based design.
+We aim to identify and define their usability shortcomings by using existing usability theories.
 
-To accomplish this, we will first study existing solutions for touch-based and graphical programming, and aim to identify and define their usability shortcomings by using existing usability theories. Secondly, we will classify these usability issues to provide an overview of successful approaches as well as pitfalls. 
-\todo{Is classify the right word here? Are we promising too much?}
-
-With the knowledge we have gained from these activities, we will present a set of requirements for our solutions and propose a new visual, high-level syntax for Idris that adheres to these. We will then iteratively usability test and develop a simple prototype application for iOS on the Apple iPad, allowing a user to manipulate this visual syntax using touch gestures. We will also examine the practicalities of adding support for this high-level graphical syntax to the Idris compiler, so programs written in the graphical syntax can be executed.
-
-To evaluate our solution, we will perform a heuristic evaluation with reference to our requirements. Finally, we will produce a plan for future empirical usability tests that will serve as basis for the further development of the prototype.
-
+With the knowledge we have gained from these activities, we will present a set of goals and requirements for our design.
+Based on these, we will present a series of design iterations, with changes rooted in usability tests and usability theory.
+To further our understanding of the usability implications of our design, a prototype application will be developed.
+The last design we present will serve as a base for future development.
 
 \section{Overview}
-Section \ref{sec:DependentTypes} gives an overview of Idris and some of its
-most relevant language features. Section \ref{sec:Analysis} analyses a
-wide range of existing visual, touch-based, or structured languages and Section
-\ref{sec:GoalsAndRequirements} leverages this analysis to present a list of
-goals and requirements for our solution design. The initial design together with the first usability
-iteration is presented in Section \ref{sec:InitialDesign}. Section \ref{sec:Architecture}
-supplies a discussion of our software architecture and forms the basis for the
-implementation section (\ref{sec:Implementation}), where our prototype is
-described together with a second usability iteration. Finally, Section \ref{sec:Evaluation}
-evaluates our prototype and provides a road map for further development, Section \ref{sec:Reflection} reflects
-upon our process, and Section \ref{sec:Conclusion} concludes the report.
-
-
-
-
+\todo{Write overview}
