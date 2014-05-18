@@ -1,11 +1,11 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{Third Design Iteration}
+\chapter{Third Design Iteration}
 \label{sec:third_design_iteration}
 In this, the third and final, iteration of our design, we present some major changes to how data declarations are represented.
 We also reevaluate the way text input is handled, as the previous iterations were mainly concerned with how declarations are created, and not with how they are changed or removed.
 Unlike the two prior iterations of the design, this version has not been through a usability test, although an initial plan for one is included in Section~\ref{subsec:third_usability_test}.
 
-\subsection{New Input model}
+\section{New Input model}
 % Re5/10, Re6, Re15, Re16
 \label{subsec:new_input_model}
 As the two first design iterations did not go into much detail on how text input was handled, we discovered several issues regarding text input, especially when editing existing text.
@@ -41,7 +41,7 @@ Populating the context popover would require a feature not currently available i
 For the popover to work, we would have to be able to ask Idris for all constructors and functions that have some specific type, for example \texttt{Nat -> String}.
 We believe this to be a feasible extension to Idris. 
 
-\subsection{Managing Program Structure}
+\section{Managing Program Structure}
 \label{subsec:managing_program_structure}
 % F4, F5, Re7, Re13, Re14
 Figure~\ref{fig:new_data_declaration} shows two top-level declarations
@@ -89,7 +89,7 @@ Clauses in functions and constructors for data can also be deleted in this way, 
 \label{fig:design_drag_to_garbage}
 \end{figure}
 
-\subsection{Data Declarations}
+\section{Data Declarations}
 \label{subsec:new_design_data_dec}
 Due to the many issues uncovered concerning the Epigram-inspired data declarations (described in \textbf{I1}, \textbf{I6} in Section~\ref{sec:first_issues} and Section~\ref{sec:second_issues}, respectively), and our failure to improve the situation substantially, we decided to try a more traditional approach to data declarations.
 
@@ -104,7 +104,7 @@ The new data declaration is shown in Figure~\ref{fig:new_data_declaration}.
 It is very reminiscent of how data is declared in textual Idris, and in other functional programming languages.
 It is our hope that this design will make it easier to read and write data declarations for users not familiar with the interface. This change obviates \textbf{Re8} and \textbf{Re9}, and potentially solves \textbf{I1} and \textbf{I6}.
 
-\subsection{Function Declarations}
+\section{Function Declarations}
 \label{subsec:new_design_function_dec}
 The function declarations work much the same way as the data declarations
 except for the extra support for initial pattern match creation, case splitting
@@ -128,7 +128,7 @@ a question mark like in Figure~\ref{fig:case_splitting} then a single tap will
 tell the compiler to try and automatically solve the meta variable. Double
 tapping it will as always make the term toggle to edit mode.
 
-\subsection{Virtual Keyboard}
+\section{Virtual Keyboard}
 %F-10
 \label{subsec:virtual_keyboard}
 We have also extended the virtual keyboard with a shortcut bar, inspired by the one in Textastic, as can be seen in Figure~\ref{fig:design_keyboard}.
@@ -145,7 +145,7 @@ This design solves requirement \textbf{F-10}.
 \label{fig:design_keyboard}
 \end{figure}
 
-\subsection{Error Handling}
+\section{Error Handling}
 % U-5
 \label{subsec:error_handling}
 So far our usability tests have not focused on error handling at all, but in this iteration it is time to begin focusing on this important part of the edit-compile-test cycle.
@@ -158,7 +158,7 @@ It should be noted that the error reporting can only be as good as the error mes
 If Idris can not identify the exact placement of the error, it might be necessary to mark a larger area as erroneous, and let the user find the exact problem by reading the error message.
 This feature solves \textbf{U-5}.
 
-\subsection{Third Usability Iteration}
+\section{Third Usability Iteration}
 \todo{Rename all usability sections to "Number Usability Test"}
 \label{subsec:third_usability_test}
 With this new design we feel that the user interface has reached a maturity

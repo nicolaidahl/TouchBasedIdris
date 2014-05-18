@@ -1,10 +1,10 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{Dependent Types}
+\chapter{Dependent Types}
 \label{sec:DependentTypes}
 In many programming languages, such as Java or Haskell, a type can depend on another type, such as \texttt{ArrayList<A>} in Java, or \texttt{[a]} in Haskell. By suppling a concrete type, we can say that a collection only holds this specific type of values, e.g. \texttt{ArrayList<String>} or \texttt{[String]}. But in a programming language with dependent types, it is possible to go further. With dependent types, a type can be dependent on \emph{values} as well as types\todo{Maybe say that values and types are the same in Idris?}. This allows for increased expressiveness in the type system, which can be used for ensuring correctness, conducting proofs, and improving tool support. For this project, it is the last point we will focus on. Dependent types have been implemented in several programming languages, such as Coq\todo{Ref}, Agda\todo{Ref}, and Idris, the latter being the topic of the next
 section.
 
-\subsection{Idris}
+\section{Idris}
 \label{subsec:Idris}
 Idris is a dependently typed programming language, initially developed by Edwin Brady~\cite{Idris}. The syntax is heavily inspired by Haskell. Let us start by looking at a simple example. In Figure~\ref{fig:nat}, a data type representing the natural numbers is defined. It consists of two constructs \texttt{Z}, representing zero, and \texttt{S~n}, representing the successor of the natural number \texttt{n}.
 
@@ -70,7 +70,7 @@ The \texttt{filter} function uses two constructs that we have not seen so far, d
 
 \todo{Need some sort of section conclusion}
 
-\subsection{Idris Emacs Mode}
+\section{Idris Emacs Mode}
 One of the interesting features of languages with dependent types is that the additional information provided by the type information can lead to increased tool support.
 The Idris mode for Emacs lets the user interact with their program in a number of interesting ways.
 For example, the user can ask Emacs to create an initial pattern match for a function, case split a pattern variable, or solve a meta variable.

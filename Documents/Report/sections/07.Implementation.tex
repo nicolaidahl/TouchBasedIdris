@@ -1,5 +1,5 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{Second Design Iteration}
+\chapter{Second Design Iteration}
 \label{sec:Implementation}
 
 With an architecture in hand, it was time for the next design iteration.
@@ -7,7 +7,7 @@ As we mentioned in Section~\ref{subsec:first_design_evaluation}, several require
 It was the goal to create a prototype running on the iPad, ready for usability testing with a larger group of participants than in the mock-up phase.
 Unfortunately, technical issues arose when implementing the many custom UI elements for the iPad prototype, which meant we had to be significantly less ambitious with regards to design changes from the first iteration.
 
-\subsection{Data Declarations}
+\section{Data Declarations}
 \label{subsec:second_data_declarations}
 Our first priority was to improve the data declarations from our initial design. 
 We followed \textbf{Re1} by splitting the name for the data and its type into two text fields, with a colon separating them. 
@@ -23,7 +23,7 @@ All these changes can be seen in Figure~\ref{fig:data_declaration}.
 \label{fig:data_declaration}
 \end{figure}
 
-\subsection{Other Changes}
+\section{Other Changes}
 \label{subsec:other_changes}
 Due to delays caused by the technical issues mentioned above, very few other changes, besides small tweaks, made it into this iteration.
 In fact, one feature that was present in the original design did not make it into the prototype app, the TouchDevelop-like focus shifting, where different top-level elements would be in focus at different times. In this prototype all elements are in focus all the time. This goes against \textbf{U-6} and \textbf{F-9}. 
@@ -36,14 +36,14 @@ The final design can be seen in Figure~\ref{fig:initialiPadInterface}.
 \label{fig:initialiPadInterface}
 \end{figure}
 
-\subsection{Second Usability Iteration}
+\section{Second Usability Iteration}
 \label{sec:SecondUsabilityTest}
 The greatest change in the second usability test was the fact that it was
 performed on an actual iPad, using a prototype interface. The full report is
 included in Appendix \todo{insert ref}. As in the first test, S2.4 refers to
 the fourth point in the test summary for subject 2.
 
-\subsubsection{Participants}
+\subsection{Participants}
 For our second usability test, we used two subjects from the first test,
 subject \#1 and \#2. Their input was interesting, as they already had some
 experience with the ideas in our representation from the mock-up test.
@@ -67,7 +67,7 @@ Subject & Age & Occupation & Experience \\ \hline
 \label{table:second_test_subjects}
 \end{table}
 
-\subsubsection{Session Details}
+\subsection{Session Details}
 Like the first test, this test was conducted in a meeting room at the IT
 University, with three people present: The test subject, the test facilitator,
 and a note taker. The tests were recorded. This time the test consisted of four
@@ -80,7 +80,7 @@ stage, several bugs occurred during the subjects' use of the app. In these
 cases the nature of the bug was quickly explained, and the facilitator
 explained how to work around the issue.
 
-\subsubsection{Tasks}
+\subsection{Tasks}
 The four tasks they were asked to complete are listed in 
 Figure~\ref{figure:second_tasks}.
 As in the first test, the test subjects had access to the definitions for
@@ -116,7 +116,7 @@ for more on \texttt{Vect} and \texttt{zip}.
 \label{figure:second_tasks}
 \end{figure}
 
-\subsubsection{Issues}
+\subsection{Issues}
 \label{sec:second_issues}
 We discovered many new issues in this usability test, which is not
 surprising. In the first test, the facilitator took over the iPad's role, by
@@ -173,7 +173,7 @@ work.
 Some parts of the syntax have not been determined. Some of the subjects
 wondered how one would make an argument implicit. (S1.9, S4.13)
 
-\subsubsection{Recommendations}
+\subsection{Recommendations}
 \label{sec:second_recommendations}
 As we did not have time to implement all the recommendations from our first iteration, they still apply to this iteration, even though they are not listed again here.
 Some issues (such as I5) are partially due to the fact the prototype was missing certain features, such as the focus system.
@@ -191,7 +191,7 @@ We have not added recommendations for these issues if we believe the not yet imp
     \item \textbf{Re16}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
 \end{itemize}
 
-\subsection{Design Evaluation}
+\section{Design Evaluation}
 \label{second_design_evaluation}
 Unfortunately there were several recommendations from the first iteration that did not make it into this design. 
 The missing functionality mentioned in Section~\ref{subsec:first_design_evaluation} also did not make it into this version.

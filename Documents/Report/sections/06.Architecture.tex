@@ -1,5 +1,5 @@
 %!TEX root = ../Touch Based Idris.tex 
-\section{Architecture}
+\chapter{Architecture}
 \label{sec:Architecture}
 
 We decided to write our app for the Apple iPad, as it is the most prolific
@@ -23,18 +23,18 @@ Because of these factors, we decided to let the Idris interpreter run on a
 host computer, with a thin client running on the iPad, and a server program 
 facilitating communication between the client and Idris.
 
-\subsection{Abstract Syntax}
+\section{Abstract Syntax}
 \label{subsec:AbstractSyntax}
 \todo{Give the abstract syntax we've been working with}
 
 
 
-\subsection{Communication}
+\section{Communication}
 There are two layers of communication in this setup: one between the client and
 the server, and one between the server and Idris. Several different strategies
 exist for each layer. 
 
-\subsubsection{Server -- Idris}
+\subsection{Server -- Idris}
 The Emacs mode for Idris communicates to the Idris slave via an s-expression
 based protocol\todo{Ref}. This can be avoided by writing the server program in
 Haskell, and using Idris as a library instead. This way we can call the
@@ -50,13 +50,13 @@ we chose this solution, as it seemed cleaner, although it meant learning much
 about how Idris is implemented in Haskell.
 \todo{Insert diagram showing the two possibilities}
 
-\subsubsection{Server -- Client}
+\subsection{Server -- Client}
 This layer is somewhat less difficult. The server exposes a simple RESTful API 
 over HTTP\@. This makes it easy for the client and server to communicate across
 different networks. When transferring a program from client to server, we
 serialize the client AST to JSON\@.
 
-\subsection{Server}
+\section{Server}
 The architecture of the server is very simple, and consists of two main 
 layers. The outer layers uses the Snap Framework\todo{Ref} to implement the 
 web-services. This layer also handles marshaling to and from JSON\@, which is 
@@ -66,7 +66,7 @@ actual operations, such as case splitting.
 
 \todo{Insert diagram showing overall architecture}
 
-\subsection{Client}
+\section{Client}
 The iPad client is, of course, written in Objective-C as is the standard. The
 software architecture is based on the Model View ViewModel (MVVM) design 
 pattern\todo{ref}, which is an extension of the popular Model View Controller 
