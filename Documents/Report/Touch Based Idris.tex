@@ -1,4 +1,4 @@
-\documentclass[oribibl]{llncs}
+\documentclass[a4paper,11pt]{report}
 \pagestyle{headings} %page numbers
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage[utf8]{inputenc}
@@ -15,7 +15,7 @@
 \usepackage{alltt}
 \usepackage{tabularx}
 \usepackage{listings}
-
+\usepackage{fullpage}
 
 % \hypersetup{%
 %   citecolor=black
@@ -23,14 +23,44 @@
 
 \bibliographystyle{plain}
 
+
 \begin{document}
-\mainmatter{}
+%\mainmatter{}
 \title{Touch Based, Visual Syntax for Idris}
 \author{Nicolai Dahl Blicher-Petersen \and Christian Harrington \\
 \email{\{ndbl, cnha\}@itu.dk}}
-\institute{IT University of Copenhagen, Rued Langgaards Vej 7, 2300 Copenhagen S, Denmark}
+%\institute{IT University of Copenhagen, Rued Langgaards Vej 7, 2300 Copenhagen S, Denmark}
 
-\maketitle
+%\maketitle
+
+% generates the title page
+\begin{titlepage}
+\ \\
+\vspace{3cm}
+\begin{center}
+{\huge\sffamily
+Touch Based, Visual Syntax for Idris
+\\}\bigskip
+{\large\sffamily
+May 21, 2014
+\\}
+{\sffamily Spring Semester, 2014}
+\end{center}
+\vspace{3cm}
+\large
+\begin{center}
+\begin{tabular}{r@{  }l}
+\emph{\sffamily Authors:} & \textsf{Nicolai Dahl Blicher-Petersen, ndbl@itu.dk, 27-08-89}\\
+ & \textsf{Christian Harrington, cnha@itu.dk, 05-06-89}\\
+\emph{\sffamily Supervisors:} & \textsf{Peter Sestoft} \\
+ & \textsf{David Raymond Christiansen}
+\end{tabular}
+\end{center}
+\vfill
+\includegraphics[width=4cm]{ITU_logo_ENG_horisontal}
+\end{titlepage}
+
+\pagenumbering{roman}
 
 \begin{abstract}
 In dependently typed programming languages, the type system can help provide powerful tool support, allowing for a faster and more
@@ -49,8 +79,17 @@ future work on the editor.
 
 \todo{Insert what we conclude}
 
-\keywords{VPL, Idris, Structured Editor, Usability}
+% insert the table of contents
+\tableofcontents
+
+\listoffigures
+
+%\keywords{VPL, Idris, Structured Editor, Usability}
 \end{abstract}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
 \input{sections/01.Introduction.tex}
 \input{sections/02.Background.tex}
 \input{sections/03.Analysis.tex}
