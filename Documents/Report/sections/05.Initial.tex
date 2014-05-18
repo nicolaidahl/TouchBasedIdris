@@ -32,9 +32,16 @@ This focus mode helps the design live up to the following requirements:
 	\item \textbf{F-9}: This directly fulfills this requirement.
 \end{itemize}
 
-Based on these decisions, we ended up with a design that indicates a clear hierarchy between elements, shown in Figure \todo{ref}.
+Based on these decisions, we ended up with a design that indicates a clear hierarchy between elements, shown in Figure
+\ref{fig:initial_mockup_design}.
 
-\missingfigure{}
+\begin{figure}
+	\centering
+		\includegraphics[width=90mm]{diagrams/initial_mockup_design.pdf}
+	\caption{Mock-up of a more visual way of representing data types and functions
+	in a clear hierarchy.}
+\label{fig:initial_mockup_design}
+\end{figure}
 
 At the bottom of every construct, there is a round add button from which the user can add new constructs. These are added to the bottom. 
 The round handle buttons connecting each construct to the higher-level vertical line can be used for various code management purposes. 
@@ -63,10 +70,16 @@ If the user is looking for a term that is not on the top of the list, it will be
 % So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-7, F-8, F-9
 
 We did not want to clutter the interface with [+] buttons like Lisping does, so one of the early problems that we needed to solve was to elegantly indicate where new terms could be added.
-We came up with the solution seen in Figure \todo{ref}.
+We came up with the solution seen in Figure \ref{fig:initial_function_editing_design}.
 When the user starts typing in the rightmost empty text field, a new text field pops up to indicate that further terms can be added to the type declaration. This is in compliance with \textbf{U-6}.
 
-\missingfigure{}
+\begin{figure}
+	\centering
+		\includegraphics[width=110mm]{diagrams/initial_function_editing_design.pdf}
+	\caption{Mock-up of a function in edit mode. Notice the indication that expressions can be
+	added at the rightmost end of each line.}
+\label{fig:initial_function_editing_design}
+\end{figure}
 
 Pressing the plus button on a function with no clauses will add a clause with an initial pattern, with the pattern variables named intelligently. 
 Double tapping a pattern variable will perform a case split if possible. 
@@ -88,6 +101,14 @@ Our hope was that this way of declaring data would be more visually appealing, w
 The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
 \todo{mention recognition rather than recall}
 The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity in the rest of the UI\@.
+
+\begin{figure}
+	\centering
+		\includegraphics[width=80mm]{diagrams/initial_data_declaration_design.pdf}
+	\caption{Mock-up of a data declaration design in edit mode. The syntax
+	resembles the 2D Epigram syntax}
+\label{fig:initial_data_declaration_design}
+\end{figure}
 
 \section{Usability Test}
 \label{sec:UsabilityTest}
