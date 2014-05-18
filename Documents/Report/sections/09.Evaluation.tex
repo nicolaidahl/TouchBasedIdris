@@ -47,7 +47,17 @@ design}
 \end{itemize}
 
 \section{Goals}
-Our goal was to design an editor that leverages Idris to provide a usable solution for touch based editing, which delivers a fast edit-compile-test cycle, with minimal use of the virtual keyboard, while remaining eligible for the Apple App Store.
-We believe our solution lives up to this, with one major caveat. Many of the requirements, and thus the goals, were only met during the third and final iteration.
-Since this iteration was not tested with users, we can only guess at how effective they are.
-Despite this, we are convinced that with further iterations and more usability tests, our design could result in a product that is better suited for touch-based programming than existing solutions.
+Our goal was to design an editor that leverages Idris to provide a usable solution for touch based editing, which delivers a competitive edit-compile-test cycle, with minimal use of the virtual keyboard, while remaining eligible for the Apple App Store.
+We believe our latest design will make the fulfillment of these goals possible. 
+Since the latest design was not tested with users, we can only guess at how effective
+it would be at fulfilling G-2 and G-3. The edit-compile-test cycle has potential to be a lot faster than existing solutions due to the minimal reliance
+on the virtual keyboard and the heavy reliance on auto completion. On the other
+hand we have not yet tested this flow due to technical reasons, and we do have
+a longer compiler response time, as the compiler runs on a remote server
+instead of locally on the device. It is our hope that the advanced auto
+completion feature will make up for the limitations of the distributed
+architecture. This architecture was necessary to fulfill G-4.
+
+We are convinced that with further iterations and more usability tests, our design could result in a product that is better suited for touch-based programming than existing
+solutions. \todo{maybe mention that it will take many hours to complete this
+project and to get those results}
