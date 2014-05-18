@@ -1,21 +1,27 @@
 %!TEX root = ../Touch Based Idris.tex
 \section{Evaluation}
 \label{sec:Evaluation}
+In this section we will evaluate our final design against the goals and requirements listed in Section~\ref{sec:GoalsAndRequirements}.
 
+\subsection{Requirements}
+\begin{itemize}
+	\item \textbf{U-1}: We believe program structure is clearly communicated trough the data and function declarations described in Section~\ref{sec:third_design_iteration}.
+	\item \textbf{U-2}: We use few, non overlapping touch gestures to accomplish specific goals, and thus believe we meet this requirement.
+	\item \textbf{U-3}: By keeping the function and data declarations simple and readable, and handling program management for the user, we meet this requirement.
+	\item \textbf{U-4}: We include several accelerators, such as reverse-pinch to create new declarations, that do not impede the novice user, and thus meet this requirement.
+	\item \textbf{U-5}: Syntactical errors are prevented through the use of structured editing, and semantic errors are handled in a simple way, showing the user where the error is directly in the program.
+	\item \textbf{U-6}: By only showing input areas when the current declaration is being edited, we keep clutter to a minimum, while still making it clear where the user can make changes.
+	\item \textbf{F-1}: Initial pattern matching is supported, and described in Section~\ref{subsec:new_design_function_dec}.
+	\item \textbf{F-2}: Case splitting of pattern variables is supported, and described in Section~\ref{subsec:new_design_function_dec}.
+	\item \textbf{F-3}: Automatic metavariable solving is supported, and described in Section~\ref{subsec:new_design_function_dec}.
+	\item \textbf{F-4}: The user can add, delete, and edit data declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_data_dec}.
+	\item \textbf{F-5}: The user can add, delete, and edit function declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_function_dec}.
+	\item \textbf{F-6}: By letting the Idris compiler run on a host computer (see Section~\ref{sec:Architecture}), we believe we do not break any App Store guidelines. However, in the end this is up to the App Store review team, and we cannot know without actually submitting an app.
+	\item \textbf{F-7}: The user can get an overview of what is available through the context popover, described in Section~\ref{subsec:new_input_model}.
+	\item \textbf{F-8}: Undo support is provided by buttons in the interface, which we believe improves the undo-experience considerably.
+	\item \textbf{F-9}: This requirement is met through the focus system described in Section\todo{ref}.
+	\item \textbf{F-10}: This requirement is met by the virtual keyboard described in Section~\ref{subsec:virtual_keyboard}.
+\end{itemize}
 
-
-\subsection{Core Questions}
-In this project we set out with two core questions:
-
-\begin{enumerate}
-	\item How can a more visual representation of the language improve the usability of touch-based programming?
-	\item How can the greater tool-support of Idris improve touch-based programming?
-\end{enumerate}
-
-Even though we have come closer to an answer to these questions, there is still
-a long way to go before one can jump to conclusions. We do, however, have an
-initial indication that our program structure is easily readable but that the
-way we present data declarations is not the most ideal for programmers with
-only little experience in dependently typed programs\,\todo{ref to section}. On the other hand, we
-have 
+\subsection{Goals}
 

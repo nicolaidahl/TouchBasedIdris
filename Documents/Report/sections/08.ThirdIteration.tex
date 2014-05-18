@@ -1,8 +1,9 @@
 %!TEX root = ../Touch Based Idris.tex
 \section{Third Design Iteration}
+\label{sec:third_design_iteration}
 In this, the third and final, iteration of our design, we present some major changes to how data declarations are represented.
 We also reevaluate the way text input is handled, as the previous iterations were mainly concerned with how declarations are created, and not with how they are changed or removed.
-Unlike the two prior iterations of the design, this version has not been through a usability test, although a plan for one is included in Section~\ref{third_usability_test}.
+Unlike the two prior iterations of the design, this version has not been through a usability test, although an initial plan for one is included in Section~\ref{subsec:third_usability_test}.
 
 \subsection{New Input model}
 % Re5/10, Re6, Re15, Re16
@@ -16,7 +17,7 @@ For example, if the user wants to case split a pattern variable, the user must d
 Besides these overloading issues, working with plain text on a touch interface is problematic in general, and it is hard to avoid using the virtual keyboard for many operations.
 
 One possible solution would be a more structured approach to text input, as in EastWest (see Section~\ref{subsub:Eastwest}).
-This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, negating \textbf{Re6}.
+This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, negating \textbf{Re6}, and helping fulfill \textbf{U-6}.
 This could be implemented by limiting all text entry to what we call the context popover, shown in Figure~\ref{fig:new_design_popover}.
 The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also fulfills \textbf{Re15} by providing the user with an overview of what is available.
 
@@ -41,6 +42,7 @@ For the popover to work, we would have to be able to ask Idris for all construct
 We believe this to be a feasible extension to Idris. 
 
 \subsection{Managing Program Structure}
+\label{subsec:managing_program_structure}
 % F4, F5, Re7, Re13, Re14
 Figure~\ref{fig:new_data_declaration} shows two top-level declarations
 where none of them are in focus. 
@@ -144,7 +146,7 @@ This design solves requirement \textbf{F-10}.
 \end{figure}
 
 \subsection{Error Handling}
-% U-6
+% U-5
 \label{subsec:error_handling}
 So far our usability tests have not focused on error handling at all, but in this iteration it is time to begin focusing on this important part of the edit-compile-test cycle.
 We propose that errors are indicated by a red background on the term that contains an error. 
@@ -152,7 +154,9 @@ Tapping on this term will bring up the context popover that will indicate the er
 For example, say the user has written the term \texttt{foo (bar a b) 2}.
 Somewhere else, \texttt{foo} is redefined so the second argument is no longer needed.
 In this case, the \texttt{2} would be highlighted in red, and the user can then flick it to the trash, as described above.
-This feature solves \textbf{U-6}.
+It should be noted that the error reporting can only be as good as the error messages are in Idris.
+If Idris can not identify the exact placement of the error, it might be necessary to mark a larger area as erroneous, and let the user find the exact problem by reading the error message.
+This feature solves \textbf{U-5}.
 
 \subsection{Third Usability Iteration}
 \todo{Rename all usability sections to "Number Usability Test"}
