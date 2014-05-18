@@ -1,25 +1,24 @@
 %!TEX root = ../Touch Based Idris.tex
-\section{Third Usability Iteration}
-In this section we first describe our latest design with reference to the
-recommendations from earlier sections. Then we discuss how the next iteration
-of usability testing should be carried out.
+\section{Third Design Iteration}
+In this, the third and final, iteration of our design, we present some major changes to how data declarations are represented.
+We also reevaluate the way text input is handled, as the previous iterations were mainly concerned with how declarations are created, and not with how they are changed or removed.
+Unlike the two prior iterations of the design, this version has not been through a usability test, although a plan for one is included in Section~\ref{third_usability_test}.
 
-We have thought long and hard about the consequences of making our editor more
-structured. On one hand there would be a lower risk of the programmer making  syntax errors, but on the other hand there would not be as much freedom to approach
-the programming task in the way the individual prefers.
+\subsection{New Input model}
+% Re5/10, Re6, Re15, Re16
+\label{subsec:new_input_model}
+As the two first design iterations did not go into much detail on how text input was handled, we discovered several issues regarding text input, especially when editing existing text.
+Because of these issues, we decided to reevaluate how input is handled.
 
-We have seen how the heavy overload of touch-gestures in the Lisping editor makes it hard to use
-the interface. So far, in the IdrisTouch editor, we seem to have the same
-problem. If the user wants to case split a term, double tapping it is required,
-but that gesture is actually already in use by the text field that shows the
-term. The result of the double tap is both case splitting the term and marking
-its text.
+The text fields of the first and second design are not structured at all, they are simply plain text fields, using the standard text input gestures and customs.
+This gave rise to overloading of gestures, as was also the case in the Lisping editor (see Section~\ref{subsub:Lisping}).
+For example, if the user wants to case split a pattern variable, the user must double tap it, but that gesture is already in use by the text field, as seen in \textbf{I3}.
+Besides these overloading issues, working with plain text on a touch interface is problematic in general, and it is hard to avoid using the virtual keyboard for many operations.
 
-One tempting solution would be to make the editor much more structured and only
-have one text field in the whole interface. This text field would be placed in
-the context popover and only allow the user to search the current context. The only way to add terms to the editor would be to choose a term in the list of applicable terms in the context popover (See Figure \ref{fig:new_design_popover}). This
-would ensure that we could incorporate all the touch gestures we needed for
-manipulating the program structure. No conflicts with text fields would occur.
+One possible solution would be a more structured approach to text input, as in EastWest (see Section~\ref{subsub:Eastwest}).
+This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, negating \textbf{Re6}.
+This could be implemented by limiting all text entry to what we call the context popover, shown in Figure~\ref{fig:new_design_popover}.
+The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also fulfills \textbf{Re15} by providing the user with an overview of what is available.
 
 \begin{figure}
 	\centering
@@ -29,36 +28,26 @@ manipulating the program structure. No conflicts with text fields would occur.
 \label{fig:new_design_popover}
 \end{figure}
 
-The problem with this approach is the lack of flexibility for the programmer.
-Strictly structured editors dictate a certain way of programming. The solution
-that we found appropriate, was to move towards a somewhat more structured editor that holds program structure but lets the user edit code in free text, like TouchDevelop. We allow programmers
-to build their program in a structured way by searching for terms in the
-content popover, but editing terms is also allowed in free text.
+In this design, writing a program would consist of filing a series of holes for terms by choosing applicable functions and constructors from the popover, and only using the virtual keyboard for writing constants, variable names, or searching.
+Once a term has been filled, it can be dragged around, and gestures can be used to manipulate it without clashing with text input gestures.
+To edit a term, the user can double tap it to bring up the context popover, with any new choices replacing the old choice.
+This design means there would be no risk of the user making syntax errors, but on the other hand there would be less freedom to approach the programming task in the way the user prefers, which will be addresed in Section~\todo{Ref}.
 
-This means that terms can have two states. Either they are being edited or they are not. Entering the edit mode is done by double tapping the term and has the effect of making the UI element showing the element into a regular text field. This means that we will have to find another touch-gesture for case-splitting and meta variable solving
-that have used double tap so far. Reserving
-the double tap
-gesture to activate the edit mode removes all of the gesture overloads we have
-had so far. Now we can have dragging, flicking and holding touch-gestures
-without any conflicts. More on the new set of gestures in Section \ref{subsec:new_design_data_dec} and \ref{subsec:new_design_function_dec}.
+The content of the context popover can be sorted by both the frequency of use of a specific item, as well as locality, such that functions defined in the same file are given precedence over library functions.
+Getting this heuristic right would require testing with users.
+
+Populating the context popover would require a feature not currently available in the Idris slave mode: searching by type.
+For the popover to work, we would have to be able to ask Idris for all constructors and functions that have some specific type, for example \texttt{Nat -> String}.
+We believe this to be a feasible extension to Idris. 
 
 \subsection{Managing Program Structure}
-Figure \ref{fig:new_design_nothing_in_focus} shows two top-level declarations
-where none of them are in focus. In this state the programmer can get a clear
-overview of the program without any clutter. Tapping anywhere on e.g.
-the data declaration takes the user to the state seen in Figure \ref{fig:new_design_data_in_focus},
-where the elements of the declaration are bigger and easier to tap. The check mark button
-removes focus from the current declaration and should help mitigate Re7 by
-giving the user a clear way to indicate that he is done with editing. Tapping
-other top-level declarations will switch the current editable declaration to
-non-editable and switch the tapped top-level declaration to editable.
-
-\begin{figure}
-	\centering
-		\includegraphics[width=100mm]{diagrams/final_design_nothing_in_focus.pdf}
-	\caption{The new design with no particular declarations in focus}
-\label{fig:new_design_nothing_in_focus}
-\end{figure}
+% F4, F5, Re7, Re13, Re14
+Figure~\ref{fig:new_data_declaration} shows two top-level declarations
+where none of them are in focus. 
+In this state the programmer can get a clear overview of the program without any clutter. 
+Tapping anywhere on a declaration takes the user to the state seen in Figure~\ref{fig:new_design_data_in_focus}, where the elements of the declaration are bigger and easier to tap.
+The check mark button removes focus from the current declaration and should help mitigate \textbf{I4} by giving the user a clear way to indicate that he is done with editing, following \textbf{Re7}.
+Tapping other top-level declarations will switch the current editable declaration to non-editable and switch the tapped top-level declaration to editable.
 
 \begin{figure}
 	\centering
@@ -83,12 +72,12 @@ create a new one between them. This also works for creating constructors
 between existing constructors in data declarations.
 
 Now that the representation of a term is no longer overloaded with conflicting
-gestures, we can incorporate drag-to-rearrange. Figure \ref{fig:design_drag_to_garbage}
-shows an example of this behavior. When the user begins to drag a term, it pop
+gestures, we can incorporate drag-to-rearrange. Figure\ref{fig:design_drag_to_garbage}
+shows an example of this behavior. When the user begins to drag a term, it pops
 out of its current position, and can be rearranged with other terms on the same
 line. Also, while the user is dragging the term, a trash icon appears in the
-upper right corner of the screen, to indicate that it can be deleted. Experienced users can flick the term towards the trash icon, whereas novice users will just drag it nicely
-the first couple of times.
+upper right corner of the screen, to indicate that it can be deleted. Experienced users can flick the term towards the trash icon, whereas novice users will just drag it.
+Clauses in functions and constructors for data can also be deleted in this way, thus fulfilling \textbf{F-4} and \textbf{F-5}.
 
 \begin{figure}
 	\centering
@@ -100,27 +89,18 @@ the first couple of times.
 
 \subsection{Data Declarations}
 \label{subsec:new_design_data_dec}
-We now incorporate a new (old) way of
-declaring data, and it now resembles the textual Idris syntax. 
-
-Looking at Figure \ref{subsec:new_design_data_dec}, the grayed out arrow buttons indicate that a new term can be added. When no
-keyboard is present on the screen this is the only way to add new terms, but if
-the keyboard is present, which means that a term is being edited, another term
-can be added by using the similar arrow button found in the upper right corner
-of the keyboard (see Figure \ref{fig:design_keyboard}). This keyboard has a
-Texstastic-inspired way of inputting all of the special characters allowed in
-Idris. This design solves requirement F-10.
+Due to the many issues uncovered concerning the Epigram-inspired data declarations (described in \textbf{I1}, \textbf{I6} in Section~\ref{sec:first_issues} and Section~\ref{sec:second_issues}, respectively), and our failure to improve the situation substantially, we decided to try a more traditional approach to data declarations.
 
 \begin{figure}
 	\centering
-		\includegraphics[width=115mm]{diagrams/design_keyboard.pdf}
-	\caption{The Textastic-inspired keyboard with the special characters that
-	Idris allows for operator definition. The right-most arrow button creates new
-	terms.}
-\label{fig:design_keyboard}
+		\includegraphics[width=100mm]{diagrams/final_design_nothing_in_focus.pdf}
+	\caption{The new data declaration, along with the familiar function declaration.}
+\label{fig:new_data_declaration}
 \end{figure}
 
-
+The new data declaration is shown in Figure~\ref{fig:new_data_declaration}.
+It is very reminiscent of how data is declared in textual Idris, and in other functional programming languages.
+It is our hope that this design will make it easier to read and write data declarations for users not familiar with the interface. This change obviates \textbf{Re8} and \textbf{Re9}, and potentially solves \textbf{I1} and \textbf{I6}.
 
 \subsection{Function Declarations}
 \label{subsec:new_design_function_dec}
@@ -131,8 +111,7 @@ and meta variable solving.
 The initial pattern match creation is still done by pressing the [+] button to
 add a new clause. Case splitting can no longer be done by double tapping a
 term, as this would toggle it to edit mode. Instead, the user drags the term
-down and a new clause appears like it can be seen in Figure
-\ref{fig:case_splitting}.
+down and a new clause appears like it can be seen in Figure~\ref{fig:case_splitting}.
 
 \begin{figure}
 	\centering
@@ -143,21 +122,41 @@ down and a new clause appears like it can be seen in Figure
 \end{figure}
 
 Meta variable solving is managed in an even simpler way. If a term starts with
-a question mark like in Figure \ref{fig:case_splitting} then a single tap will
+a question mark like in Figure~\ref{fig:case_splitting} then a single tap will
 tell the compiler to try and automatically solve the meta variable. Double
 tapping it will as always make the term toggle to edit mode.
 
-\subsection{Error Handling}
-So far our usability tests have not focused on error handling at all, but in
-this iteration it is time to begin focusing on this important part of the
-edit-compile-test cycle. As we mentioned earlier in this section, we will allow
-the user to edit terms in free text but constantly have a contextual overview available.
-We propose that errors are indicated by a red background on the term that we
-are either unable to parse or that the static checker deems faulty. Tapping on
-this term will bring up the context popover that will indicate the error.
-This design is a proposal and should be thoroughly tested.
+\subsection{Virtual Keyboard}
+%F-10
+\label{subsec:virtual_keyboard}
+We have also extended the virtual keyboard with a shortcut bar, inspired by the one in Textastic, as can be seen in Figure~\ref{fig:design_keyboard}.
+Each button in the bar can hold several symbols.
+To select a specific symbol, the user first touches the button, then swipes in the direction of the desired symbol, and lets go.
+For example, to select the plus symbol, the user would touch the leftmost button in the bar, then swipe left.
+The bar also features a button to the far right that lets the user add a new argument when specifying types. 
+This design solves requirement \textbf{F-10}. 
 
-\subsection{Next Usability Iteration}
+\begin{figure}
+	\centering
+		\includegraphics[width=115mm]{diagrams/design_keyboard.pdf}
+	\caption{The Textastic-inspired keyboard with common symbols.}
+\label{fig:design_keyboard}
+\end{figure}
+
+\subsection{Error Handling}
+% U-6
+\label{subsec:error_handling}
+So far our usability tests have not focused on error handling at all, but in this iteration it is time to begin focusing on this important part of the edit-compile-test cycle.
+We propose that errors are indicated by a red background on the term that contains an error. 
+Tapping on this term will bring up the context popover that will indicate the error.
+For example, say the user has written the term \texttt{foo (bar a b) 2}.
+Somewhere else, \texttt{foo} is redefined so the second argument is no longer needed.
+In this case, the \texttt{2} would be highlighted in red, and the user can then flick it to the trash, as described above.
+This feature solves \textbf{U-6}.
+
+\subsection{Third Usability Iteration}
+\todo{Rename all usability sections to "Number Usability Test"}
+\label{subsec:third_usability_test}
 With this new design we feel that the user interface has reached a maturity
 level where it is important to focus on the server-side for a while. In the
 next usability test, the solution's edit-compile-test cycle should be tested to
@@ -184,7 +183,3 @@ What we specifically wish to test in this next usability test is:
 
 It does not make sense to draw up an exact usability test plan like the ones we have made in previous usability
 at this point. We would need to have a working version of the solution before a precise test plan can be made. Also, the few points listed above could easily amount to more than 10 tasks, which is more than can be completed in an hour with a participant. For this reason we would have to prioritize the focus of the test, and that can only be done when we have the new solution in our hands and decide what features we are most confident about. 
-
-
-
-
