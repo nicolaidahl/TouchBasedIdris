@@ -85,7 +85,7 @@ In these cases, a metavariable can be helpful. A metavariable starts with a ques
 In this example, the only part written by the user is the function identifier and type (\texttt{head : Vect (S n) a -> a}).
 The first clause was created using the initial clause command (\texttt{C-c C-s}).
 
-\begin{figure}
+\begin{figure}[ht]
 \begin{alltt}
 head : Vect (S n) a -> a
 head xs = ?head_rhs
@@ -94,7 +94,7 @@ head xs = ?head_rhs
 \label{fig:incomplete_head}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
 \begin{alltt}
 head : Vect (S n) a -> a
 head (x :: xs) = x
@@ -116,7 +116,7 @@ To get a better understanding of the world of visual programming languages (VPLs
 have also studied two specific frameworks that we do not list as a
 prerequisite. The first is ``The Physics of Notations'' by Moody\,\cite{Moody:2009:NTS:1687047.1687149},
 which provides a list of guidelines for evaluating VPLs. The other is ``Usability Analysis of Visual Programming Environments''
-by Green & Petre\,\cite{Green96usabilityanalysis} that proposes a discussion
+by Green \& Petre\,\cite{Green96usabilityanalysis} that proposes a discussion
 tool, called Cognitive Dimensions Framework, for evaluating VPLs from a less
 detail-oriented perspective. Evaluating VPLs systematically with these frameworks is very time-consuming, so we have
 only used them to gain basic understanding of the field.
