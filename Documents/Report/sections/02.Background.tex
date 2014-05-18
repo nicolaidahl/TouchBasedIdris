@@ -1,10 +1,12 @@
 %!TEX root = ../Touch Based Idris.tex
-\chapter{Dependent Types}
-\label{sec:DependentTypes}
-In many programming languages, such as Java or Haskell, a type can depend on another type, such as \texttt{ArrayList<A>} in Java, or \texttt{[a]} in Haskell. By suppling a concrete type, we can say that a collection only holds this specific type of values, e.g. \texttt{ArrayList<String>} or \texttt{[String]}. But in a programming language with dependent types, it is possible to go further. With dependent types, a type can be dependent on \emph{values} as well as types\todo{Maybe say that values and types are the same in Idris?}. This allows for increased expressiveness in the type system, which can be used for ensuring correctness, conducting proofs, and improving tool support. For this project, it is the last point we will focus on. Dependent types have been implemented in several programming languages, such as Coq\todo{Ref}, Agda\todo{Ref}, and Idris, the latter being the topic of the next
-section.
+\chapter{Background}
 
-\section{Idris}
+\section{Dependent Types}
+\label{sec:DependentTypes}
+In many programming languages, such as Java or Haskell, a type can depend on another type, such as \texttt{ArrayList<A>} in Java, or \texttt{[a]} in Haskell. By suppling a concrete type, we can say that a collection only holds this specific type of values, e.g. \texttt{ArrayList<String>} or \texttt{[String]}. But in a programming language with dependent types, it is possible to go further. With dependent types, a type can be dependent on \emph{values} as well as types. This allows for increased expressiveness in the type system, which can be used for ensuring correctness, conducting proofs, and improving tool support. In this project we focus on the latter. Dependent types have been implemented in several programming languages, such as Coq\cite{Coq}, Agda\cite{Agda}, and
+Idris\,\cite{Idris}.
+
+\subsection{Idris}
 \label{subsec:Idris}
 Idris is a dependently typed programming language, initially developed by Edwin Brady~\cite{Idris}. The syntax is heavily inspired by Haskell. Let us start by looking at a simple example. In Figure~\ref{fig:nat}, a data type representing the natural numbers is defined. It consists of two constructs \texttt{Z}, representing zero, and \texttt{S~n}, representing the successor of the natural number \texttt{n}.
 
@@ -14,11 +16,11 @@ data Nat : Type where
   Z : Nat
   S : Nat \(\to\) Nat
 \end{alltt}
-\caption{The natural number data type.}
+\caption{The natural number data type defined in Idris.}
 \label{fig:nat}
 \end{figure}
 
-The definition for \texttt{Nat} looks similar to how it would look in Haskell. Let us move to a slightly more complex example, where we make use of dependent types. In Figure~\ref{fig:vect}, the dependent vector, \texttt{Vect: Nat $\to$ Type $\to$ Type} is defined. This type takes two arguments: a \texttt{Nat}, \texttt{n}, describing the length of the vector, and a \texttt{Type}, \texttt{a}, specifying the type of the elements it contains.
+The definition for \texttt{Nat} looks similar to how it would look in Haskell. Let us move to a slightly more complex example, where we make use of dependent types. In Figure~\ref{fig:vect}, the dependent vector, \texttt{Vect: Nat $\to$ Type $\to$ Type} is defined. This type takes two arguments: a \texttt{Nat}, \texttt{n}, describing the length of the vector, and a type, \texttt{a}, specifying the type of the elements it contains.
 
 \begin{figure}
 \begin{alltt}
@@ -26,7 +28,7 @@ data Vect : Nat \(\to\) Type \(\to\) Type where
   Nil  : Vect Z a
   (::) : a \(\to\) Vect k a \(\to\) Vect (S k) a
 \end{alltt}
-\caption{The vector data type.}
+\caption{The vector data type defined in Idris}
 \label{fig:vect}
 \end{figure}
 
@@ -44,33 +46,35 @@ zip (x :: xs) (y :: ys) = (x, y) :: zip xs ys
 \label{fig:zip}
 \end{figure}
 
-The \texttt{zip} function takes two arguments. Each argument is a vector of the same length \texttt{n}. \texttt{n}, \texttt{a}, and \texttt{b} are inferred implicitly from their context. These arguments could also be explicitly declared as implicit by surrounding them with curly braces:
+The \texttt{zip} function takes two arguments. Each argument is a vector of the same length \texttt{n}. The arguments, \texttt{n}, \texttt{a}, and \texttt{b} are inferred implicitly from their context. They could also be explicitly declared as implicit by surrounding them with curly braces
+(Figure \ref{fig:zip_implicit_args}).
 
 \begin{figure}
-\begin{alltt}
-zip : \{n: Nat\} \(\to\) \{a: Type\} \(\to\) \{b: Type\} \(\to\) Vect n a \(\to\) Vect n b \(\to\) Vect n (a, b)
-\end{alltt}
+	\begin{alltt}
+	zip : \{n: Nat\} \(\to\) \{a: Type\} \(\to\) \{b: Type\} \(\to\) 
+	      Vect n a \(\to\) Vect n b \(\to\) Vect n (a, b)
+	\end{alltt}
+\caption{The type definition of \texttt{zip} for \texttt{Vect} written in Idris}
+\label{fig:zip_implicit_args}
 \end{figure}
 
-The function zips these two vectors together, producing a vector of the same length, containing tuples \texttt{(a, b)} of the values from the input vectors. If one tries to compile a program that attempts to zip two vectors of different lengths, the type checker will report it as an error, as opposed to failing at runtime. Notice how it is unnecessary to match on the cases where one vector has elements while the other is empty. This situation is impossible, due to the types. In fact, matching on this case is ill-typed, as \texttt{Z} and \texttt{S~n} cannot unify.\todo{Should we mention dependent pairs and the with-rule, when we don't support them?} For our final example, let us look at the \texttt{filter} function in Figure \ref{fig:filter}.
+The function zips these two vectors together, producing a vector of the same length, containing tuples \texttt{(a, b)} of the values from the input vectors. If one tries to compile a program that attempts to zip two vectors of different lengths, the type checker will report it as an error, as opposed to failing at runtime. Notice how it is unnecessary to match on the cases where one vector has elements while the other is empty. This situation is impossible, due to the types. In fact, matching on this case is ill-typed, as \texttt{Z} and \texttt{S~n} cannot unify. For our final example, let us look at the \texttt{filter} function in Figure \ref{fig:filter}.
 
 \begin{figure}
 \begin{alltt}
 filter : (a \(\to\) Bool) \(\to\) Vect n a \(\to\) (p ** Vect p a)
-filter p [] = (_ ** [])
+filter p [] = (Z ** [])
 filter p (x::xs) with (filter p xs)
-  | (_ ** tail) =
-    if p x then (_ ** x::tail) else (_ ** tail)
+  | (n ** tail) =
+    if p x then ((S n) ** x::tail) else (n ** tail)
 \end{alltt}
 \caption{Filter function for vectors in Idris.}
 \label{fig:filter}
 \end{figure}
 
-The \texttt{filter} function uses two constructs that we have not seen so far, dependent pairs and the with rule. Dependent pairs let us specify a type that is dependent on another value. In \texttt{filter}, we do not know beforehand what length the resulting vector will have, so instead we return a dependent pair, where the first element is the length, and the second element is a \texttt{Vect} of that length. Not knowing the length is also a problem in the cons case of \texttt{filter}. If the head of the \texttt{Vect} passes the predicate \texttt{p}, we want to cons the tail of the \texttt{Vect} onto the head. But since we do not know what the length of \texttt{filter p xs} is beforehand (as it depends on how many elements passes the predicate \texttt{p}), we cannot construct the type for the resulting vector. But by using the \texttt{with} keyword, we can pattern match on the result of \texttt{filter p xs}. We know the length of \texttt{tail}, since we have filtered it already, so we can construct the resulting \texttt{Vect} without any problems. The underscores (eg. \texttt{(\_ ** tail)}) tell Idris to infer the value.
+The \texttt{filter} function uses two constructs that we have not seen so far, dependent pairs and the with rule. Dependent pairs let us specify a type that is dependent on another value. In \texttt{filter}, we do not know beforehand what length the resulting vector will have, so instead we return a dependent pair, where the first element is the length, and the second element is a \texttt{Vect} of that length. Not knowing the length is also a problem in the cons case of \texttt{filter}. If the head of the \texttt{Vect} passes the predicate \texttt{p}, we want to cons the tail of the \texttt{Vect} onto the head. But since we do not know what the length of \texttt{filter p xs} is beforehand (as it depends on how many elements passes the predicate \texttt{p}), we cannot construct the type for the resulting vector. But by using the \texttt{with} keyword, we can pattern match on the result of \texttt{filter p xs}. We know the length of \texttt{tail}, since we have filtered it already, so we can construct the resulting \texttt{Vect} without any problems.
 
-\todo{Need some sort of section conclusion}
-
-\section{Idris Emacs Mode}
+\subsection{Idris Emacs Mode}
 One of the interesting features of languages with dependent types is that the additional information provided by the type information can lead to increased tool support.
 The Idris mode for Emacs lets the user interact with their program in a number of interesting ways.
 For example, the user can ask Emacs to create an initial pattern match for a function, case split a pattern variable, or solve a meta variable.
@@ -103,3 +107,21 @@ To finish the function definition, the user can move the cursor to \texttt{xs}, 
 In this case, the definition seen in Figure~\ref{fig:head} is produced.
 While this was a very simple example, all of \texttt{zip} and most of \texttt{filter} can be written in this way.
 It should be apparent that this is extremely powerful, and can save the user many keystrokes.
+
+\section{Usability}
+A prerequisite of all the following chapters is the understanding of Nielsen's
+10 usability heuristics for user interface design\,\cite{nielsen1990heuristic}.
+We will, for example, be using these guidelines extensively in our analysis chapter.
+To get a better understanding of the world of visual programming languages (VPLs), we
+have also studied two specific frameworks that we do not list as a
+prerequisite. The first is ``The Physics of Notations'' by Moody\,\cite{Moody:2009:NTS:1687047.1687149},
+which provides a list of guidelines for evaluating VPLs. The other is ``Usability Analysis of Visual Programming Environments''
+by Green & Petre\,\cite{Green96usabilityanalysis} that proposes a discussion
+tool, called Cognitive Dimensions Framework, for evaluating VPLs from a less
+detail-oriented perspective. Evaluating VPLs systematically with these frameworks is very time-consuming, so we have
+only used them to gain basic understanding of the field.
+
+
+
+
+
