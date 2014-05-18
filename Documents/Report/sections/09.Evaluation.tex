@@ -2,25 +2,48 @@
 \chapter{Evaluation}
 \label{sec:Evaluation}
 In this section we will evaluate our final design against the goals and requirements listed in Section~\ref{sec:GoalsAndRequirements}.
+Fulfilling the functional requirements and usability requirements is a
+prerequisite to fulfilling our goals, so we will evaluate those first.
 
 \section{Requirements}
 \begin{itemize}
-	\item \textbf{U-1}: We believe program structure is clearly communicated trough the data and function declarations described in Section~\ref{sec:third_design_iteration}.
-	\item \textbf{U-2}: We use few, non overlapping touch gestures to accomplish specific goals, and thus believe we meet this requirement.
-	\item \textbf{U-3}: By keeping the function and data declarations simple and readable, and handling program management for the user, we meet this requirement.
-	\item \textbf{U-4}: We include several accelerators, such as reverse-pinch to create new declarations, that do not impede the novice user, and thus meet this requirement.
-	\item \textbf{U-5}: Syntactical errors are prevented through the use of structured editing, and semantic errors are handled in a simple way, showing the user where the error is directly in the program.
-	\item \textbf{U-6}: By only showing input areas when the current declaration is being edited, we keep clutter to a minimum, while still making it clear where the user can make changes.
-	\item \textbf{F-1}: Initial pattern matching is supported, and described in Section~\ref{subsec:new_design_function_dec}.
-	\item \textbf{F-2}: Case splitting of pattern variables is supported, and described in Section~\ref{subsec:new_design_function_dec}.
-	\item \textbf{F-3}: Automatic metavariable solving is supported, and described in Section~\ref{subsec:new_design_function_dec}.
-	\item \textbf{F-4}: The user can add, delete, and edit data declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_data_dec}.
-	\item \textbf{F-5}: The user can add, delete, and edit function declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_function_dec}.
-	\item \textbf{F-6}: By letting the Idris compiler run on a host computer (see Section~\ref{sec:Architecture}), we believe we do not break any App Store guidelines. However, in the end this is up to the App Store review team, and we cannot know without actually submitting an app.
-	\item \textbf{F-7}: The user can get an overview of what is available through the context popover, described in Section~\ref{subsec:new_input_model}.
-	\item \textbf{F-8}: Undo support is provided by buttons in the interface, which we believe improves the undo-experience considerably.
-	\item \textbf{F-9}: This requirement is met through the focus system described in Section\todo{ref}.
-	\item \textbf{F-10}: This requirement is met by the virtual keyboard described in Section~\ref{subsec:virtual_keyboard}.
+
+\item \textbf{U-1}: Program structure is clearly communicated trough the data and function declarations described in Section~\ref{sec:third_design_iteration}.
+Only one of four test participants of the second usability iteration had minor
+issues figuring out the program structure (Appendix \ref{chap:SecondUsabilityTest},
+S1.1-3, S2.1-3, S3.1-7, S4.1-2).
+\item \textbf{U-2}: We use few, non overlapping touch gestures to accomplish specific goals,
+but it should be usability tested as described in Section \ref{subsec:third_usability_test}.
+We are confident that our combination of touch gestures will work better than
+what we achieved in the initial iPad prototype.
+\item \textbf{U-3}: By explicitly giving focus to one top-level declaration at
+a time we can ensure that the visual representation of the program scales just
+as well as a purely textual program would. Top-level declarations not in focus
+will not take up more screen real-estate than in a free-text editor. This
+behavior is described in Section \ref{subsec:managing_program_structure} and
+should be usability tested in the third usability iteration.
+\item \textbf{U-4}: We include several accelerators, such as reverse-pinch to create new declarations, that do not impede the novice user, and thus meet this requirement.
+Another feature worth mentioning is the auto completion feature of the editor,
+which should speed up the user's programming speed considerable making for a
+faster edit-compile-test cycle.
+\item \textbf{U-5}: Syntactical errors are prevented through the use of structured editing, and semantic errors are handled in a simple way, showing the user where the error is directly in the program.
+This was described in Section\,\ref{subsec:error_handling}.
+\item \textbf{U-6}: By only showing input areas when the current declaration is being edited, we keep clutter to a minimum, while still making it clear where the user can make changes.
+\todo{reference difference between Lisping figure, iPad prototype figure with a
+lot of grayed out holes, and the new design that does better than both of these}
+\item \textbf{F-1}, \textbf{F-2}, \textbf{F-3}: Initial pattern matching, case splitting of pattern variables, and automatic metavariable solving is supported, and described in Section~\ref{subsec:new_design_function_dec}.
+\item \textbf{F-4}, \textbf{F-5}: The user can add, delete, and edit data declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_data_dec}
+and function declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_function_dec}.
+\item \textbf{F-6}: By letting the Idris compiler run on a host computer (see Section~\ref{sec:Architecture}), we believe we do not break any App Store guidelines. However, in the end this is up to the App Store review team, and we cannot know without actually submitting an app.
+\item \textbf{F-7}: The user can get an overview of what is available through the context popover, described in Section~\ref{subsec:new_input_model}
+and depicted in Figure \ref{fig:new_design_popover}.
+\item \textbf{F-8}: Undo support is provided by buttons in the interface, which we believe improves the undo-experience considerably
+compared to shaking the device.\todo{Double check that we describe this in our
+design}
+\item \textbf{F-9}: This requirement is met through the focus system described in Section
+\ref{subsec:managing_program_structure}.
+\item \textbf{F-10}: This requirement is met by the context-dependent virtual keyboard described in Section~\ref{subsec:virtual_keyboard}.
+
 \end{itemize}
 
 \section{Goals}
