@@ -3,9 +3,9 @@
 \label{sec:third_design_iteration}
 In this, the third and final, iteration of our design, we present some major changes to how data declarations are represented.
 We also reevaluate the way text input is handled, as the previous iterations were mainly concerned with how declarations are created, and not with how they are changed or removed.
-Unlike the two prior iterations of the design, this version has not been through a usability test, although an initial plan for one is included in Section~\ref{subsec:third_usability_test}.
+Unlike the two prior iterations of the design, this version has not been through a usability test, although the outline of a plan for one is included in Section~\ref{subsec:third_usability_test}.
 
-\section{New Input model}
+\section{New Input Model}
 % Re5/10, Re6, Re15, Re16
 \label{subsec:new_input_model}
 As the two first design iterations did not go into much detail on how text input was handled, we discovered several issues regarding text input, especially when editing existing text.
@@ -16,8 +16,8 @@ This gave rise to overloading of gestures, as was also the case in the Lisping e
 For example, if the user wants to case split a pattern variable, the user must double tap it, but that gesture is already in use by the text field, as seen in \textbf{I3}.
 Besides these overloading issues, working with plain text on a touch interface is problematic in general, and it is hard to avoid using the virtual keyboard for many operations.
 
-One possible solution would be a more structured approach to text input, as in EastWest (see Section~\ref{subsub:Eastwest}).
-This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, negating \textbf{Re6}, and helping fulfill \textbf{U-6}.
+One possible solution would be a more structured approach to text input, as in Eastwest (see Section~\ref{subsub:Eastwest}).
+This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, which negates \textbf{Re6}. This also helps fulfill \textbf{U-6}.
 This could be implemented by limiting all text entry to what we call the context popover, shown in Figure~\ref{fig:new_design_popover}.
 The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also fulfills \textbf{Re15} by providing the user with an overview of what is available.
 
@@ -29,10 +29,10 @@ The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also ful
 \label{fig:new_design_popover}
 \end{figure}
 
-In this design, writing a program would consist of filing a series of holes for terms by choosing applicable functions and constructors from the popover, and only using the virtual keyboard for writing constants, variable names, or searching.
-Once a term has been filled, it can be dragged around, and gestures can be used to manipulate it without clashing with text input gestures.
+In this design, writing a program would consist of filing a series of holes for terms by choosing applicable functions and constructors from the popover, and only using the virtual keyboard for writing constants, identifiers, or searching.
 To edit a term, the user can double tap it to bring up the context popover, with any new choices replacing the old choice.
-This design means there would be no risk of the user making syntax errors, but on the other hand there would be less freedom to approach the programming task in the way the user prefers, which will be addresed in Section~\todo{Ref}.
+This design means there would be no risk of the user making syntax errors, but on the other hand there would be less freedom to approach the programming task in the way the user
+prefers.
 
 The content of the context popover can be sorted by both the frequency of use of a specific item, as well as locality, such that functions defined in the same file are given precedence over library functions.
 Getting this heuristic right would require testing with users.
@@ -53,6 +53,13 @@ Tapping other top-level declarations will switch the current editable declaratio
 
 \begin{figure}
 	\centering
+		\includegraphics[width=80mm]{diagrams/final_design_nothing_in_focus.pdf}
+	\caption{The new data declaration, along with the familiar function declaration.}
+\label{fig:new_data_declaration}
+\end{figure}
+
+\begin{figure}
+	\centering
 		\includegraphics[width=100mm]{diagrams/final_design_top_dec_in_focus.pdf}
 	\caption{The new design with a data declarations in focus. The code becomes
 	bigger and easier to tap}
@@ -70,11 +77,11 @@ Tapping other top-level declarations will switch the current editable declaratio
 We have decided to keep our original design for creating new top-level
 declarations. Either, the programmer can use the [+] button at the bottom of
 the program, or he can reverse-pinch two adjacent top-level declarations to
-create a new one between them. This also works for creating constructors
+create a new one between them. This is depicted in Figure \ref{fig:new_function_reverse_pinch} and also works for creating constructors
 between existing constructors in data declarations.
 
 Now that the representation of a term is no longer overloaded with conflicting
-gestures, we can incorporate drag-to-rearrange. Figure\ref{fig:design_drag_to_garbage}
+gestures, we can incorporate drag-to-rearrange. Figure \ref{fig:design_drag_to_garbage}
 shows an example of this behavior. When the user begins to drag a term, it pops
 out of its current position, and can be rearranged with other terms on the same
 line. Also, while the user is dragging the term, a trash icon appears in the
@@ -91,14 +98,8 @@ Clauses in functions and constructors for data can also be deleted in this way, 
 
 \section{Data Declarations}
 \label{subsec:new_design_data_dec}
-Due to the many issues uncovered concerning the Epigram-inspired data declarations (described in \textbf{I1}, \textbf{I6} in Section~\ref{sec:first_issues} and Section~\ref{sec:second_issues}, respectively), and our failure to improve the situation substantially, we decided to try a more traditional approach to data declarations.
-
-\begin{figure}
-	\centering
-		\includegraphics[width=100mm]{diagrams/final_design_nothing_in_focus.pdf}
-	\caption{The new data declaration, along with the familiar function declaration.}
-\label{fig:new_data_declaration}
-\end{figure}
+Due to the many issues uncovered concerning the Epigram-inspired data declarations (described in \textbf{I1}, \textbf{I6} in Section~\ref{sec:first_issues} and Section~\ref{sec:second_issues}, respectively), and our failure to improve the situation substantially, we decided to try a more traditional approach to data declarations
+in this iteration.
 
 The new data declaration is shown in Figure~\ref{fig:new_data_declaration}.
 It is very reminiscent of how data is declared in textual Idris, and in other functional programming languages.
@@ -136,7 +137,7 @@ Each button in the bar can hold several symbols.
 To select a specific symbol, the user first touches the button, then swipes in the direction of the desired symbol, and lets go.
 For example, to select the plus symbol, the user would touch the leftmost button in the bar, then swipe left.
 The bar also features a button to the far right that lets the user add a new argument when specifying types. 
-This design solves requirement \textbf{F-10}. 
+This design virtual keyboard solves requirement \textbf{F-10}. 
 
 \begin{figure}
 	\centering
@@ -159,7 +160,6 @@ If Idris can not identify the exact placement of the error, it might be necessar
 This feature solves \textbf{U-5}.
 
 \section{Third Usability Iteration}
-\todo{Rename all usability sections to "Number Usability Test"}
 \label{subsec:third_usability_test}
 With this new design we feel that the user interface has reached a maturity
 level where it is important to focus on the server-side for a while. In the
@@ -176,13 +176,13 @@ should be screened in the same way as in our second usability test (Section
 What we specifically wish to test in this next usability test is:
 
 \begin{enumerate}
-	\item The flow when declaring new data types and functions. This includes the auto-completion feature and the context popover
-	\item The understandability of the way we now declare data types
+	\item The flow when declaring new data types and functions. This includes the auto-completion feature and the context popover.
+	\item The understandability of the way we now declare data types.
 	\item The focus system, where only one top-level declaration is in focus at a
 	time. Can users maneuver in and out of declarations in a fairly easy way?
 	\item Editing right-hand sides that have already been added.
 	\item Deleting terms by flicking them and rearranging them by dragging.
-	\item Deleting top-level declarations, clauses, and constructors
+	\item Deleting top-level declarations, clauses, and constructors.
 \end{enumerate}
 
 It does not make sense to draw up an exact usability test plan like the ones we have made in previous usability
