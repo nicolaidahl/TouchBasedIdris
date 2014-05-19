@@ -2,35 +2,41 @@
 \chapter{Reflection}
 \label{sec:Reflection}
 
-\section{Third Design Iteration}
-\todo{Write about the dangers of massive untested changes, as well as structured vs. unstructured. Also mention "when to stop", i.e. should you stop with a tested design, but one that has known issues, or come up with a final design that fixes those issues, but is untested}
+\section{Usability Process}
+\todo{Write section}
+
+Write about the dangers of massive untested changes. 
+Well as structured vs. unstructured. 
+Also mention "when to stop", i.e. should you stop with a tested design, but one that has known issues, or come up with a final design that fixes those issues, but is untested.
+Mention that there is a danger that our participants is a convenience sample, but that it is hard to avoid as students: Castillo, J (2009). “Convenience Sampling”. URL: http://explorable.com/convenience-sampling, 18 Sep 2013.
+
 
 \section{Process}
 The initial project plan had a lot of focus on prototype development, but we
 soon realized that we had to shift focus towards usability testing. We
 originally intended only to provide a plan for usability testing and not
 actually carry it out, but we quickly discovered that designing a usable prototype was more or less impossible without
-participation from the intended users. We could probably carried out one more
+participation from the intended users. We could probably have carried out one more
 usability iteration if we had not focused on the server-side at all, and that
 would most likely have resulted in a better user interface. With our
 current approach we are closer to being able to fully test the
 edit-compile-test cycle than we would have been only focusing on usability.
 
-In almost all previous projects we have spent too little time on the literature
+In almost all previous projects we have spent too little time on the initial literature
 study, so in this project we wanted to focus more on it as is reflected by the
-length of Section \ref{sec:Analysis}. Retrospectively, we could have used some of this time to further develop our prototype. 
+length of Section \ref{sec:Analysis}. Retrospectively, we could have used some of this time to further develop our design and prototype. 
 
 \section{Constraining factors}
 During this project we have encountered an incredibly high amount of unforeseen constraining factors. Some of the simplest things turned out to require demanding workarounds due to the strict rules of the iOS platform and the vast amount of technologies and languages that had to work in combination in the finished product.
 
-A good example of the unforeseen complexity of the simplest of components was writing a JSON parser on the client side. Most often this is a tedious task that can be left to standard or third party libraries, which was also the case on the server side in Haskell. A data definition with $n$ constructors in Haskell corresponds to one abstract class with $n$ concrete classes inheriting from the abstract class in Objective-C. It turns out that none of the top Objective-C JSON libraries had a good way of handling this abstraction, which forced us to spend valuable time extending a JSON library when we could have spent it on developing the UI further.
+A good example of the unforeseen complexity of the simplest of components was writing a JSON parser on the client side. Most often this is a tedious task that can be left to standard or third party libraries, which was also the case on the server side in Haskell. A data definition with $n$ constructors in Haskell corresponds to one abstract class with $n$ concrete classes inheriting from the abstract class in Objective-C. It turns out that none of the most popular Objective-C JSON libraries had a good way of handling this abstraction, which forced us to spend valuable time extending a JSON library when we could have spent it on developing the UI further.
 
-Another element that turned out to be way more time consuming than initially planned was defining and laying out the user interface for the prototype. Early on we chose to use Apple's Autolayout technology in which you define the relations between UI components just as you would on a white board instead of calculating spacings and offsets on a pixel level. The idea is that you define your interface once for all screen sizes and interface orientations, but in our case Autolayout turned out to bring just as many problems as benefits to the table, and we found ourselves spending way too much time on debugging our very custom interface.
+Another element that turned out to be way more time consuming than initially planned was defining and laying out the user interface for the prototype. Early on we chose to use Apple's Autolayout technology in which you define the relations between UI components declaratively just as you would on a white board, instead of calculating spacings and offsets on a pixel level. The idea is that you define your interface once for all screen sizes and interface orientations, but in our case Autolayout turned out to bring just as many problems as benefits to the table, and we found ourselves spending way too much time on debugging our very custom interface.
 
 \section{A Different Approach}
-One of the underlying assumptions of this project is that it is not realistic to be able to program with the same speed and accuracy on a touch interface as you would with a normal keyboard. The most advanced touch-based editor is not nearly as powerful as the most advanced desktop editor/IDE. Keyboard-based editors have been developed for centuries whereas touch gesture-based editors have not been explored to the same extent. 
+One of the underlying assumptions of this project is that it is not realistic to be able to program with the same speed and accuracy on a touch interface as you would with a normal keyboard. The most advanced touch-based editor is not nearly as powerful as the most advanced desktop editor/IDE. Keyboard-based editors have been developed for decades whereas touch gesture-based editors have not been explored to the same extent. 
 
-In this project we have taken an existing textual programming language, originally intended for desktop programming and tested how far we were able to take it usability wise. The question we ask is if it is this is the right approach. Keyboard-based editors have been developed with textual programming languages in mind, so why not develop a touch-based editor with a touch-based language in mind? Such a language does not, to our knowledge, exist today. It would require developers to completely rethink the way they program and exclude any and all use of the virtual keyboard.
+In this project we have taken an existing textual programming language, originally intended for desktop programming and tested how far we were able to take it usability-wise. The question we ask is if it is this is the right approach. Textual programming languages have been developed with keyboard-based input in mind, but why not develop a touch-based editor with a touch-based language in mind? Such a language does not, to our knowledge, exist today. It would require developers to completely rethink the way they program and exclude any and all use of the virtual keyboard.
 
-Imagine a solution where the programmer would only use the fastest types of touch-gestures such as swipe, tap, and double-tap, where the hands would stay in the same positions to increase programming speed. Identifiers would be specified by using the built-in microphone. One should only support a very simple expression language to begin with and only try to support more complex constructs when this core had been tested to work as efficiently as keyboard-based programming.
+Imagine a solution where the programmer would only use the fastest types of touch-gestures such as swipe, tap, and double-tap, where the hands would stay in the same positions to increase programming speed. Identifiers would be specified by using the built-in microphone. One should only support a very simple language to begin with and only try to support more complex constructs when this core had been tested to work as efficiently as keyboard-based programming.
 
