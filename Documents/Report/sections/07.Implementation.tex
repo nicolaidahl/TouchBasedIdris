@@ -3,7 +3,7 @@
 \label{sec:Implementation}
 
 With an architecture in hand, it was time for the next design iteration.
-As we mentioned in Section~\ref{subsec:first_design_evaluation}, several requirements and issues were still to resolved, and we felt the biggest remaining issue was the data declaration syntax.
+As we mentioned in Section~\ref{subsec:first_design_evaluation}, several requirements and issues were still to be resolved, and we felt the biggest issue was the data declaration syntax.
 It was the goal to create a prototype running on the iPad, ready for usability testing with a larger group of participants than in the mock-up phase.
 Unfortunately, technical issues arose when implementing the many custom UI elements for the iPad prototype, which meant we had to be significantly less ambitious with regards to design changes from the first iteration.
 
@@ -19,20 +19,20 @@ All these changes can be seen in Figure~\ref{fig:data_declaration}.
 \begin{figure}
 	\centering
 		\includegraphics[width=70mm]{diagrams/data_declaration.png}
-	\caption{A data declaration before the user has filled out anything.}
+	\caption{An empty data declaration in the iPad prototype.}
 \label{fig:data_declaration}
 \end{figure}
 
 \section{Other Changes}
 \label{subsec:other_changes}
 Due to delays caused by the technical issues mentioned above, very few other changes, besides small tweaks, made it into this iteration.
-In fact, one feature that was present in the original design did not make it into the prototype app, the TouchDevelop-like focus shifting, where different top-level elements would be in focus at different times. In this prototype all elements are in focus all the time. This goes against \textbf{U-6} and \textbf{F-9}. 
-The final design can be seen in Figure~\ref{fig:initialiPadInterface}.
+In fact, one feature that was present in the original design did not make it into the prototype app. This was the TouchDevelop-like focus shifting, where different top-level elements would be in focus at different times. In this prototype all elements are in focus all the time. This goes against \textbf{U-6} and \textbf{F-9}. 
+The final design of this iteration can be seen in Figure~\ref{fig:initialiPadInterface}.
 
 \begin{figure}
 	\centering
 		\includegraphics[width=110mm]{diagrams/ipad_interface.PNG}
-	\caption{The initial iPad interface.}
+	\caption{The interface of the prototype.}
 \label{fig:initialiPadInterface}
 \end{figure}
 
@@ -40,8 +40,8 @@ The final design can be seen in Figure~\ref{fig:initialiPadInterface}.
 \label{sec:SecondUsabilityTest}
 The greatest change in the second usability test was the fact that it was
 performed on an actual iPad, using a prototype interface. The full report is
-included in Appendix \todo{insert ref}. As in the first test, S2.4 refers to
-the fourth point in the test summary for subject 2.
+included in Appendix \todo{insert ref} and was also inspired by Kuniavski\,\cite{kuniavsky2003observing}. As in the first test, S2.4, refers to
+the fourth point in the test summary for subject \#2.
 
 \subsection{Participants}
 For our second usability test, we used two subjects from the first test,
@@ -84,8 +84,8 @@ explained how to work around the issue.
 The four tasks they were asked to complete are listed in 
 Figure~\ref{figure:second_tasks}.
 As in the first test, the test subjects had access to the definitions for
-\texttt{Vect} and \texttt{zip} textual Idris. See Section~\ref{subsec:Idris}
-for more on \texttt{Vect} and \texttt{zip}.
+\texttt{Vect} and \texttt{zip} textual Idris. Refer to Section~\ref{subsec:Idris}
+for the definitions of \texttt{Vect} and \texttt{zip}.
 
 \begin{figure}
 \centering
@@ -119,16 +119,18 @@ for more on \texttt{Vect} and \texttt{zip}.
 \subsection{Issues}
 \label{sec:second_issues}
 We discovered many new issues in this usability test, which is not
-surprising. In the first test, the facilitator took over the iPad's role, by
+surprising. In the first usability test, the facilitator took over the iPad's role, by
 manipulating the mockups. This masked many flow and ease of use issues, which
 have now been identified. During the test, several bugs were encountered. These
 are not listed below, as they are not inherent to the design, but rather
 results of the prototypical nature of the app.
 \\ \\
 \textbf{I5: Too many input fields}.
-Most of the users reported that all the grey, unfilled input fields were
-confusing. 
-This will hopefully be partially solved by the focusing system. (S1.20, S2.2, S3.29b)
+Most of the users reported that all the grey, unfilled input fields for example seen in Figure \ref{fig:data_declaration} were
+confusing. These fields are supposed to indicate that new terms can be added
+there, but their appearance are so similar to other fields that they confuse
+more than they help.
+This will hopefully be partially solved by the focusing system that hides most of these unfilled holes. (S1.20, S2.2, S3.29b)
 \todo{Insert screenshot}
 \\ \\
 \textbf{I6: Writing data declaration}
@@ -181,8 +183,9 @@ We have not added recommendations for these issues if we believe the not yet imp
 
 \begin{itemize}
     \item \textbf{Re8} (I5): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
-    \item \textbf{Re9} (I7): Use semicolons instead of arrows in the premise area of data declarations.
-    \item \textbf{Re10} (I8): When showing types that take parameters, indicate these parameters in the popup. Then, after choosing one, create two new sub input fields, with their own suggestions. Make sure there is a good flow between these fields.
+    \item \textbf{Re9} (I7): Use semicolons or spaces instead of arrows in the premise area of data declarations.
+    \item \textbf{Re10} (I8): When showing types that take parameters, indicate these parameters in the popup. For example after selecting the \texttt{Vect} data type that takes two parameters, two new sub input fields, with their own suggestions are created. Make sure there is a good flow between these fields.
+    \todo{Insert screenshot, Christian}
     \item \textbf{Re11} (I9): Automatically close pairs of symbols.
     \item \textbf{Re12} (I10): Include a shortcut bar for symbols.
     \item \textbf{Re13} (I11): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.

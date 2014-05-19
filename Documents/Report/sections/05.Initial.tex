@@ -105,8 +105,10 @@ Section\,\ref{sec:third_design_iteration}. \todo{make sure we describe this}
 \section{Data Declarations}
 Instead of staying visually close to textual Idris, as we had done with function declarations, we decided to try an alternative approach for data declarations, inspired by Epigram.
 This resulted in a more visual way of representing data definitions, where a data definition looks less like a function, and more like a logical inference rule.
-Any parameters for the type are written as premises, with the type being the conclusion.
-Constructors are written in the same manner, with arguments as premises, and the constructed type as the conclusion
+Any parameters for the type are written as premises (above the horizontal line), with the type being the conclusion
+(below the line to the right of the colon). The type identifier is written
+below the horizontal line to the left of the colon.
+Constructors are written in the same manner, with arguments as premises, and the constructed type as the conclusion.
 Our hope was that this way of declaring data would be more visually appealing, while still enabling a smooth work flow, in accordance with \textbf{U-1}.
 The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
 The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity in the rest of the UI\@.
