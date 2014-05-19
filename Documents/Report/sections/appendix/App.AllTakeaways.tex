@@ -1,0 +1,27 @@
+%!TEX root = ../../Touch Based Idris.tex 
+A list of all takeaways from Section \ref{sec:Analysis}.
+\begin{itemize}
+	\item \textbf{Ta-1}: Do not assume that a virtual keyboard is as usable as a physical one\,\cite{nielsen2013mobile}. The touch interface has potential if you design your user experience to take advantage of it, but if you chose to ignore its potential/limitations you will have lower usability\,\cite{nielsen1990heuristic}.
+	\item \textbf{Ta-2}: You need accelerators for users to become faster and more comfortable with the interface\,\cite{nielsen1990heuristic}. An accelerator could, for example, be auto completion and/or static checking.
+	\item \textbf{Ta-3}: Undo support is essential for usability\,\cite{nielsen1990heuristic}, but shaking the device is probably not the right input method.
+	\item \textbf{Ta-4}: The solution Textastic has come up with for quickly accessing a large collection of symbols is the most intuitive we have seen.
+	\item \textbf{Ta-5}: It is not enough to have a good editing interface, if such a basic issue as running your code is unaddressed.
+		\item \textbf{Ta-6}: A good edit-compile-test loop greatly improves the development flow.
+	\item \textbf{Ta-7}: A solid way to recover from syntax errors is essential to a good development experience\,\cite{nielsen1990heuristic}.
+	\item \textbf{Ta-8}: The error messages from the compiler/interpreter should indicate where in the code the syntax errors have occurred. Simply presenting ``Unknown Error'' is frustrating for the user.
+	\item \textbf{Ta-9}: It should not be necessary to add a PDF document with instructions to how the gestures and buttons work. It should be immediately recognized by the user because it is all presented according to the platform standards. This serves as a reminder that the overuse of clever gestures harms the user experience.
+	\item \textbf{Ta-10}: Littering a structured editor with [+] (add) buttons, to indicate that expressions can be added at these positions, is not a good idea. While a good alternative for this solution is hard to come up with we should try to design a different way.
+	\item \textbf{Ta-11}: Having a popup close to the goal makes for quick and easy access. The better that popup is at guessing the right thing for the goal, the faster the tool will seem.
+	\item \textbf{Ta-12}: Eastwest is a good indication that functional languages work well in a structured editor.
+	\item \textbf{Ta-13}: To have a contextual overview can speed up the tasks of programming just as we saw with Eastwest.
+	\item \textbf{Ta-14}: The type system of the TouchDevelop object oriented programming language is not ideal if you want to expose a context for the user to pick from. The type system simply can't narrow down the possibilities efficiently.
+	\item \textbf{Ta-15}: Using a smaller font for code that is not in focus is a clever way to create a better overview for the user.
+	\item \textbf{Ta-16}: There is a clear difference between the feel of a web app like TouchDevelop and a native app like Lisping.
+	\item \textbf{Ta-17}: One interpretation of Whitley and Blackwell's findings\,\cite{WHITLEY2001435} is that although Labview can be hard for programmers not used to the visual syntax, the higher learning curve pays off in the long run.
+	\item \textbf{Ta-18}: The ``boxes and wires'' approach is good at indicating structure and could maybe be transfered to a more general purpose language.
+	\item \textbf{Ta-19}: When designing a visual syntax, making it visually obvious which elements go together greatly increases the ease of learning.
+	\item \textbf{Ta-20}: Using colors and shapes to differentiate elements is very important in a visual language.
+	\item \textbf{Ta-21} Complexity management is hard with visual languages\,\cite{green1992visual}.
+	\item \textbf{Ta-22}: Use all the aspects of visual expressiveness when designing a visual language, e.g.\ shape, color, texture, position, etc.
+	\item \textbf{Ta-23}: The more visual way of writing data types could be more intuitive for people used to reading that sort of notation. This goes well with Nielsen’s ``Match between system and the real world''-heuristic.
+\end{itemize}

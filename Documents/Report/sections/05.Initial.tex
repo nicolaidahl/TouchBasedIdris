@@ -4,26 +4,35 @@
 
 In this section we describe our initial design. 
 We designed it based on the findings described in Section~\ref{sec:Analysis} and the requirements derived from these in Section~\ref{sec:GoalsAndRequirements}.
-This initial design focuses on the flow of creating function and data declarations. A later iteration (see Section~\ref{sec:Implementation}\todo{Is this ref right?}) will address editing and deleting declarations more throughly.
+Based on our findings on touch-based editors in Section \ref{subsec:TouchBasedEditors} we are certain that free-text editors rely too much on the virtual keyboard, which provides for a slow work flow and essentially a bad user experience.
+We have decided to move towards a more structured editor that makes use of
+visual elements to communicate program structure. This approach takes
+advantage of the touch platform it is running on instead of trying to overcome
+it.
+
+This initial design focuses on the flow of creating function and data declarations. A later iteration (see Section~\ref{sec:third_design_iteration}) will address editing and deleting declarations more throughly.
 
 \section{Overall Structure}
-For our initial design we wanted to create a semi-structured editor that lets the user specify data declarations and functions in a structured way, but allows the user to enter free-form text in expressions.
+For our initial design we wanted to create a semi-structured editor that lets the user specify data declarations and functions in a structured way, but allows the user to enter free-form text
+in terms.
 We realized this through a hierarchy of text input fields, that together would make up a data or function definition, somewhat inspired by the structured editing of Lisping.
 We also wanted to use visual elements to indicate program structure like we saw in Labview, but as Idris is a general purpose language, the visual elements also have to be more general.
 We chose this structured approach as it helps fulfill the following goals and requirements:
 \begin{itemize}
-	\item \textbf{G-3}: By lifting elements that would otherwise be text into the UI itself, we can avoid using the keyboard in many situations.
+	\item \textbf{G-3}: By lifting elements, that would otherwise be text, into the UI itself, we can avoid using the keyboard in many situations.
 	\item \textbf{U-1}: The structure of the program can become part of the UI as well. 
 	This means we can use special visual cues to differentiate different elements of a program. 
 \end{itemize}
 
 % So far: G-3, U-1
 
-One of our takeaways from Lisping was to avoid littering the program text itself with UI elements.
+One of our takeaways from Lisping was to avoid littering the program text itself with UI elements
+(Ta-10).
 To help manage this, we adapted the way TouchDevelop manages focus.
 When editing a top-level declaration, it should have a special appearance that takes up more space compared to declarations that are not in focus.
 This extra space ensures that the elements of the declaration in focus are big enough to be easily tappable. 
-Apple recommends that tappable elements are at least 44 points high/wide\todo{ref}, so that has been our scale measure.
+Apple recommends that tappable elements are at least 44 points high/wide\,\cite{mobileHIG}, so that has
+been our guideline.
 At the same time, we can hide unnecessary UI in the declarations that the user is not editing, decreasing clutter.
 This focus mode helps the design live up to the following requirements:
 \begin{itemize}
@@ -43,7 +52,7 @@ Based on these decisions, we ended up with a design that indicates a clear hiera
 \label{fig:initial_mockup_design}
 \end{figure}
 
-At the bottom of every construct, there is a round add button from which the user can add new constructs. These are added to the bottom. 
+At the bottom of every construct, there is a round add button, inspired by TouchDevelop, that lets the user add new constructs. These are added to the bottom. 
 The round handle buttons connecting each construct to the higher-level vertical line can be used for various code management purposes. 
 For example, it is possible to rearrange declarations, clauses, and constructors by dragging these handles. 
 
@@ -52,7 +61,7 @@ Reverse-pinching two adjacent handles will create a new declaration between the 
 This is a good example of how to use gestures as accelerators for advanced users, and helps us fulfill \textbf{U-4}.
 The reverse-pinching gestures is not immediately discoverable (as is the problem with advanced gestures\,\cite[p 141]{nielsen2013mobile}), but power-users will seek faster ways to complete their tasks, for example by reading the accompanying documentation. 
 Nielsen and Budiu\,\cite[p 143]{nielsen2013mobile} recommend that you build this sort of redundancy into your app. 
-Undo and support is implemented as two buttons in the toolbar.
+Undo support is implemented as two buttons in the toolbar.
 This covers the overall structure of a program in this design. Now we will look at the specifics of declaring functions and data.
 
 % So far: G-3, U-1, U-3, U-4, U-6, F-8, F-9
@@ -85,21 +94,21 @@ Pressing the plus button on a function with no clauses will add a clause with an
 Double tapping a pattern variable will perform a case split if possible. 
 The use of this gesture is also a non-standard one, and a tip will have to appear one of the first times case splitting is possible.
 
-Finally, metavariables, expressed as three questions marks, can be tapped for automatic metavariable solving. 
+Finally, metavariables, expressed as three question marks, can be tapped for automatic metavariable solving. 
 There should be clear feedback to the user regardless of the outcome of this action.
 
-Together these features leverage the tool support afforded by Idris to fulfill \textbf{F-1}, \textbf{F-2}, \textbf{F-3}, as well as partially fulfilling \textbf{F-5}. To fully fulfill \textbf{F-5}, we must also support deleting functions, as well as cases. This will be addressed in Section~\todo{Ref}.
+Together these features leverage the tool support afforded by Idris to fulfill \textbf{F-1}, \textbf{F-2}, \textbf{F-3}, as well as partially fulfilling \textbf{F-5}. To fully fulfill \textbf{F-5}, we must also support deleting functions, as well as cases. This will be addressed in
+Section\,\ref{sec:third_design_iteration}. \todo{make sure we describe this}
 
 % So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-1, F-2, F-3, F-7, F-8, F-9
 
 \section{Data Declarations}
-Instead of staying visually close to textual Idris, as we had done with function declarations, we decided to try an alternate approach, inspired by Epigram.
+Instead of staying visually close to textual Idris, as we had done with function declarations, we decided to try an alternative approach for data declarations, inspired by Epigram.
 This resulted in a more visual way of representing data definitions, where a data definition looks less like a function, and more like a logical inference rule.
 Any parameters for the type are written as premises, with the type being the conclusion.
-Constructors are written in the same manner, with arguments as premises, and the constructed type as the conclusion,
+Constructors are written in the same manner, with arguments as premises, and the constructed type as the conclusion
 Our hope was that this way of declaring data would be more visually appealing, while still enabling a smooth work flow, in accordance with \textbf{U-1}.
 The premises of the type constructor and subsequent constructors use the same flow of input as the type declaration of functions.
-\todo{mention recognition rather than recall}
 The reuse of the flow allows the user to learn its behavior once and then use it with a certain feeling of familiarity in the rest of the UI\@.
 
 \begin{figure}
@@ -116,10 +125,9 @@ With a design in hand, it was time to test it. The purpose of this test was to
 get an initial idea of how our ideas worked before spending time implementing
 them. We created paper cutouts based on our mock-ups to represent the different
 elements of the interface, with a test facilitator manipulating the cutouts to
-emulate an interactive environment. See Appendix \todo{Ref} for the full report
-from the test. The report includes a timestamped summary of the test, which we
+emulate an interactive environment. The procedure of the experiment was inspired by Chapter 10 of ``Observing the user experience'' and a more detailed test report is available in Appendix \todo{Ref}. The report includes a timestamped summary of the test, which we
 will sometimes refer to in the following manner: S1.1, which refers to the
-first point in the summary for subject 1.
+first point in the summary for subject \#1.
 \todo{reference the book that I referenced in my usability plan (methodology) /N}
 
 \subsection{Participants}
@@ -156,7 +164,7 @@ ask questions about what they were thinking. At the end of the test, they were a
 \subsection{Tasks}
 The two tasks they were asked to complete are listed in Figure~\ref{figure:first_tasks}.
 It should be noted that since the test was concerning the interface itself, and
-not programming in Idris, the test subjects had access to the definitions for \texttt{Vect} and \texttt{zip} textual Idris. See Section~\ref{subsec:Idris}
+not programming in Idris, the test subjects had access to the definitions for \texttt{Vect} and \texttt{zip} in textual Idris. Refer to Section~\ref{subsec:Idris}
 for more on \texttt{Vect} and \texttt{zip}.
 
 \begin{figure}
@@ -194,7 +202,7 @@ before, it was not immediately clear to them how they should be filled out.
 They did eventually get through it, but they required a great deal of help
 from the test facilitator. Especially step T1.1 was difficult. (S1.1--8, S2.4, S2.9--15)\\ \\
 \textbf{I2: Suggestions for parameterized types}.
-When filling in a type, a popover with suggestions appear. In our mock-up,
+When filling in a type, a contextual popover with suggestions would appear. In our mock-up,
 these suggestions were always correct. But both subjects wondered how one would
 fill in types that take multiple parameters. (S2.29) \\ \\
 \textbf{I3: Gesture overload}
@@ -209,7 +217,7 @@ it. Both subjects tried to use the undo and redo buttons to change contexts.
 
 \subsection{Recommendations}
 \label{sec:first_recommendations}
-Since issue I1 was by far the most problematic issue we discovered, we have
+Since issue \textbf{I1} was by far the most problematic issue we discovered, we have
 focused on mitigating it in our recommendations. The basic strategy is to make
 it easier to understand through examples and help in the interface. If the
 changes listed below are not enough, it might be necessary to completely
@@ -233,10 +241,11 @@ they look in textual Idris.
 While this initial design meets many of the requirements from Section~\ref{sec:GoalsAndRequirements}, there are still issues to resolve.
 Specifically, the following requirements are not fully addressed:
 \begin{itemize}
-	\item \textbf{U-5}: This requires some way to communicate with Idris. The backend required to do this will be covered in Section~\ref{sec:Architecture}, while the design considerations will be covered in Section\todo{Ref}.
-	\item \textbf{F-4} and \textbf{F-5}: We have described how to create functions and data declarations, and how one can add and edit clauses and constructors. However, we still need to devise a way to delete these constructs. This will be covered in Section\todo{Ref}.
-	\item \textbf{F-6}: This will be addresed in the next section.
-	\item \textbf{F-10}: This will be addressed in Section\todo{Ref}.
+	\item \textbf{U-5}: This requires some way to communicate with Idris. The backend required to do this will be covered in Section~\ref{sec:Architecture}, while the design considerations will be covered in
+	Section \ref{sec:third_design_iteration}.
+	\item \textbf{F-4} and \textbf{F-5}: We have described how to create functions and data declarations, and how one can add and edit clauses and constructors. However, we still need to devise a way to delete these constructs. This will be covered in Section \ref{sec:third_design_iteration}.
+	\item \textbf{F-6}: This will be addressed in the next section.
+	\item \textbf{F-10}: This will be addressed in Section \ref{sec:third_design_iteration}.
 \end{itemize}
 
 Beyond these requirements, the greatest remaining challenge is the data declaration syntax, which we will try to improve in the next design iteration, described in Section~\ref{sec:Implementation}.

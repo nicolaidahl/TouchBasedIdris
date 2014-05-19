@@ -1,19 +1,7 @@
-%!TEX root = ../Touch Based Idris.tex 
-\chapter{Goals and Requirements}
-\label{sec:GoalsAndRequirements}
-When designing this product we have had specific target group in mind. 
-First and foremost, the target group consists of programmers that have experience with dependent
-types. In this report we will only usability test designs with people from this
-target group as participants.
+%!TEX root = ../../Touch Based Idris.tex 
 
-\section{Goals}
-\label{sec:Goals}
-The overall goal of this project is to investigate how the features of the dependently typed language, Idris, can improve the touch-based programming experience. 
-It is important to underline that the design we will propose is meant to compete with other touch-based editor designs, and not with traditional keyboard based editors.
-In other words, we are not trying to revolutionize the way we program, instead we are trying to improve the programming experience when using a touch device.
-The use case for programming on a touch device will most likely be a mobile one as it is with most use cases for touch devices\,\cite[p. 26]{nielsen2013mobile}.
-
-If the goals relate to takeaways from Section \ref{sec:Analysis} the relevant takeaway will be listed in parentheses. The high-level goals of the project are:
+\paragraph{Goals}
+The high-level goals of the project:
 
 \begin{itemize} 
 	\item \textbf{G-1}: To design a programming editor that leverages Idris to provide a usable solution for the touch-based iPad device
@@ -25,15 +13,9 @@ If the goals relate to takeaways from Section \ref{sec:Analysis} the relevant ta
 	\item \textbf{G-4}: The solution should be eligible for submission to the Apple App Store (Ta-5). 
 \end{itemize}
 
-All requirements presented in the next two sections will pertain to one or
-several of these goals. This is indicated in parentheses after each requirement
-together with related takeaways.
+\paragraph{Usability Requirements}
 
-\section{Usability Requirements} 
-\label{sec:usability_requirements}
-We will focus on a range of more specific usability requirements that have all been inspired by our analysis of existing
-solutions. The interface should:
-
+The interface should:
 \begin{itemize}     
 	\item \textbf{U-1}: Clearly communicate program structure. One way to accomplish this it through the use of visual elements such as shape, color and connecting lines (G-1)
 	(Ta-18, Ta-19, Ta-20, Ta-22).
@@ -49,9 +31,9 @@ solutions. The interface should:
 	(Ta-10).
 \end{itemize}
 
-\section{Functional Requirements} 
-\label{subsec:FunctionalRequirements} 
-Besides the usability requirements listed above, the design must also enable several functional requirements. Specifically the design must:
+\paragraph{Functional Requirements}
+
+Specifically the design must:
 
 \begin{itemize}
 	\item \textbf{F-1}: Support initial pattern match creation like the Idris Emacs mode\,\cite{Idris:EmacsMode} (G-1, G-2, G-3)
@@ -71,15 +53,3 @@ Besides the usability requirements listed above, the design must also enable sev
 	\item \textbf{F-10}: Allow for a faster way of accessing special characters (see Section~\ref{subsub:Textastic}) (G-2)
 	(Ta-4).
 \end{itemize}
-
-We will refer to these goals and requirements extensively throughout the rest of this report. Appendix \ref{chap:ListOfAllGoalsAndRequirements} includes a list of the these goals and requirements, if the reader wishes to refer to them while reading.
-
-\section{Defining Scope} 
-\label{sec:defining_scope}
-We cannot implement features for all of these requirements for our first prototype, so we focus on language constructs that are essential to declaring and performing simple manipulations of the canonical \texttt{Vect} data type. This data type is, as we explained in Section \ref{sec:DependentTypes}, often used as the basic example of how dependent types work.
-Specifically, we will work towards a prototype that lets our usability test subjects define the \texttt{Vect} data type and \texttt{zip} function (also explained in
-Section\ref{sec:DependentTypes}).
-The \texttt{zip} function allows the testing of automatic initial clause creation, automatic case splitting, and metavariable solving.
-
-Any language features of Idris that are not directly needed to be able to test the usability of defining the above-mentioned top-level declarations will thus be omitted in this prototype. This means we will not handle language features such as dependent pairs, with notation,
-let bindings, do-notation, and case expressions.
