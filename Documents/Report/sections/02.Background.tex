@@ -1,6 +1,6 @@
 %!TEX root = ../Touch Based Idris.tex
 \chapter{Background}
-
+\label{chap:Background}
 \section{Dependent Types}
 \label{sec:DependentTypes}
 In many programming languages, such as Java or Haskell, a type can depend on another type, such as \texttt{ArrayList<A>} in Java, or \texttt{[a]} in Haskell. By suppling a concrete type, we can say that a collection only holds this specific type of values, e.g. \texttt{ArrayList<String>} or \texttt{[String]}. But in a programming language with dependent types, it is possible to go further. With dependent types, a type can be dependent on \emph{values} as well as types. This allows for increased expressiveness in the type system, which can be used for ensuring correctness, conducting proofs, and improving tool support. In this project we focus on the latter. Dependent types have been implemented in several programming languages, such as Coq\cite{Coq}, Agda\cite{Agda}, and
