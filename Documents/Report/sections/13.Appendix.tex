@@ -1,7 +1,29 @@
 %!TEX root = ../Touch Based Idris.tex
 \appendix
 \label{Appendix}
-\chapter{Running The Code and Final Git Revision}
+\chapter{Running The Code}
+\label{chap:RunningTheCode}
+The final revision of the iPad prototype as well as the server is available at
+Github: 
+\paragraph{Repo address:} https://github.com/nicolaidahl/touchbasedidris
+\paragraph{Final git revision:} \todo{insert here}
+\paragraph{}
+Running the iPad prototype in a simulator requires a Mac with Xcode installed. Furthermore,
+Cocoapods is required for dependency management. Get it here: http://cocoapods.org/
+
+To run the iPad prototype: 
+\begin{enumerate}
+	\item Navigate to /src and run \texttt{pod install}
+	\item Open the IdrisTouch.xcworkspace file that just appeared
+	\item Make sure that the upper left-hand side of Xcode says ``IdrisTouch->iPad
+	Retina (64-bit)''
+	\item Hit Cmd+R to run the prototype
+\end{enumerate}
+
+Please note that the app is still unstable and that it has only been developed
+to the point where it sufficed for the second usability test.
+
+\todo{How to build and run the server}
 
 \chapter{First Usability Test}
 \label{chap:FirstUsabilityTest}
@@ -15,9 +37,6 @@
 \label{chap:IdrisTouch_AST}
 
 \lstinputlisting[language=Haskell, firstline=0]{code/IdrisTouchAST.hs}
-
-\chapter{Search Source}
-\label{chap:SearchSource}
 
 \chapter{All Takeaways}
 \todo{make sure this is referenced}
