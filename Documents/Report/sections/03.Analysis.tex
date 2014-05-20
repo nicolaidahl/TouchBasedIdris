@@ -1,11 +1,11 @@
 %!TEX root = ../Touch Based Idris.tex
 \chapter{Analysis of Existing Solutions}
 \label{sec:Analysis}
-In this section, we analyze a range of touch-based programming editors, some structured editors, as well as a few visual programming languages (VPLs) and their editors.
+In this chapter, we analyze a range of touch-based programming editors, some structured editors, as well as a few visual programming languages (VPLs) and their editors.
 The goal of this analysis is to gain a better understanding of what works and what does not work in existing solutions.
-This knowledge will help us in setting realistic and attainable goals and requirements for our own solution, which will be discussed in Section~\ref{sec:GoalsAndRequirements}.
+This knowledge will help us in setting realistic and attainable goals and requirements for our own solution, which will be discussed in Chapter~\ref{sec:GoalsAndRequirements}.
 
-\subsection{Investigation Scope}
+\section{Investigation Scope}
 There is already a large of amount of visual and touch-based programming editors, as can be seen from a list compiled by Eric Hosick\,\cite{hosick2014}.
 For this reason it is important for us to define which types of existing solutions that are of interest.
 
@@ -26,11 +26,11 @@ The thoroughness of our analyses also depends on something as practical as wheth
 Some of the solutions in question are old or experimental.
 In some cases the only available material is conceptual descriptions by the creators.
 
-\subsection{Touch-based Editors}
+\section{Touch-based Editors}
 \label{subsec:TouchBasedEditors}
 We will start by looking at a series of touch-based editors that try to emulate more traditional keyboard-based editors. 
 
-\subsubsection{CodeToGo}
+\subsection{CodeToGo}
 \label{subsub:CodeToGo}
 CodeToGo claims to be the first app for iOS in which the user can write and run code in his favorite language\,\cite{codetogo}. It is backed by the \url{ideone.com} website\cite{ideone} that remotely evaluates the code, when the user presses ``Run'' (See Figure~\ref{fig:CodeToGo_screenshot}). The app provides shortcuts for the most commonly used characters and even lets you customize which ones to have easiest access to in which language. The usability considerations stop here though. CodeToGo does not take advantage of the touch based interface but tries to overcome it. While there is syntax highlighting there is no code completion or static checking, which quickly makes programming a cumbersome task.
 
@@ -56,7 +56,7 @@ Nielsen recommends that you follow the iOS platform standards so that the user d
 	\item \textbf{Ta-3}: Undo support is essential for usability\,\cite{nielsen1990heuristic}, but shaking the device is probably not the right input method.
 \end{itemize}
 
-\subsubsection{Textastic}
+\subsection{Textastic}
 \label{subsub:Textastic}
 Like CodeToGo, Textastic aims to be a general purpose programming editor, and as such supports many popular programming languages. Unlike CodeToGo, however, it does not support any way to run your code (besides manually copying your program to a computer and running the code there). Textastic is interesting due to an interface component that is not seen in CodeToGo.
 
@@ -78,7 +78,7 @@ The biggest problem with Textastic is that you have no way of knowing whether yo
 \end{itemize}
 
 
-\subsubsection{Raskell}
+\subsection{Raskell}
 \label{subsub:Raskell}
 Raskell is a Haskell editor for the iPad and a part of the UI can be see in Figure~\ref{fig:Raskell_screenshot}. It is based on the Hugs implementation of Haskell 98, and includes the ability to interpret your programs locally. The text editor itself is inspired by Vi, featuring many of the same keyboard commands. When you have written your program, you can load it into the interpreter, which gives you a read–eval–print loop (REPL), letting you test out your program. Raskell supports syntax highlighting for Haskell, and features most libraries for Hugs, but does not have auto completion.
 
@@ -110,10 +110,10 @@ interface and not simply convert an existing desktop interface\,\cite[p 26, p
 41]{nielsen2013mobile}.
 One last issue that all of the above editors have in common is the lack of auto completion and user accelerators in general.
 
-\subsection{Structural, Touch-Based Editors}
+\section{Structural, Touch-Based Editors}
 In this section we look at structured editors, which are different from the previously mentioned editors in that the editors are cognizant of the underlying structure of the program, the abstract syntax tree (AST). The user more or less directly manipulates this AST\@.
 
-\subsubsection{Lisping}
+\subsection{Lisping}
 \label{subsub:Lisping}
 Using the Scheme dialect of LISP you can program and execute code right on your iPad with Lisping. The idea is to take advantage of the close proximity between the abstract syntax tree and source syntax of LISP to edit code in a structured way. The programmer is actually almost manipulating the abstract syntax tree directly instead of having to type in every single character of every single line. While other iPad solutions run code on an external server, Lisping runs locally using a Scheme interpreter written in C, called TinyScheme. Lisping has been written with usability in mind\,\cite{lisping}: 
 
@@ -154,7 +154,7 @@ only three [+] buttons. This becomes more severe when the program grows.
 	\item \textbf{Ta-10}: Littering a structured editor with [+] (add) buttons, to indicate that expressions can be added at these positions, is not a good idea. While a good alternative for this solution is hard to come up with we should try to design a different way.
 \end{itemize}
 
-\subsubsection{Eastwest}
+\subsection{Eastwest}
 \label{subsub:Eastwest}
 Even though Eastwest is not a touch-based editor, we have included it in this section as it is a structured editor. 
 While it is more of an experiment than a fully featured editor, we find it very interesting. It is an editor for a functional language that allows the user to ``fill in holes'', i.e.\ fulfill goals of a program from a popup. The context appears right under the goal and thus works as a well-placed auto completion tool. We have been unable to complete a heuristics evaluation of Eastwest, as we were unable to install it on our computers. Several videos are available, though, and it is interesting to see how functional data types are being defined and functions are being built in a structural way.
@@ -166,7 +166,7 @@ While it is more of an experiment than a fully featured editor, we find it very 
 \end{itemize}
 
 
-\subsubsection{TouchDevelop}
+\subsection{TouchDevelop}
 \label{subsub:TouchDevelop}
 TouchDevelop allows developers to make touch and accelerometer enabled games for any device with a web browser by providing a web app. It is generally meant as a way of getting children interested in programming, and the language has been specially designed for this purpose and works hand in hand with the development platform to provide a good experience for touch devices.
 
@@ -212,12 +212,12 @@ The user experience of TouchDevelop suffers from the fact that it is a web app w
 
 As we have learned, it is of paramount importance to have as little use of the virtual keyboard as possible, and adopting the structured approach together with the strong type system of Idris might be able to provide just that.
 
-\subsection{Visual Programming Languages} % (fold)
+\section{Visual Programming Languages} % (fold)
 \label{sub:visual_programming_languages}
 In this section we will investigate three editors with visual components.
 It is possible that a more visual approach will work well on a touch-based interface, so even though Idris is not a visual language at all, we might find elements from these editors that our applicable to our design.
 
-\subsubsection{Labview}
+\subsection{Labview}
 \label{subsub:Labview}
 Labview is a development environment featuring the G VPL which is designed for dataflow programming and uses the popular ``boxes and wires'' abstraction, with boxes performing various functions, and wires leading data between the boxes.
 Labview also lets users combine simple widgets to build GUI programs, using the G language for logic.
@@ -244,7 +244,7 @@ editor\,\cite[pp.
 \end{itemize}
 
 
-\subsubsection{Scratch}
+\subsection{Scratch}
 \label{subsub:Scratch}
 Scratch is a VPL designed to be easy for beginners to use, facilitating the development of simple audio/visual programs. It is implemented as a web app, and features built-in tutorials, tips and help.
 The language is built around a scene containing sprites. A scene can have multiple sprites, and each sprite can be governed by multiple scripts written in the Scratch visual language. The language itself consists of blocks of different shapes, colors and sizes. Scratch does not use the dataflow paradigm, as Labview does. Instead, one programs by snapping blocks together. As can be seen from Figure~\ref{fig:ScratchProgram}, the blocks have different shapes, and only complementing shapes can be put together. Color is used to differentiate types of blocks.
@@ -273,7 +273,7 @@ Scalability in VPLs has been explored in depth by Green and Petre\,\cite{green19
 	\item \textbf{Ta-22}: Use all the aspects of visual expressiveness when designing a visual language, e.g.\ shape, color, texture, position, etc.
 \end{itemize}
 
-\subsubsection{Epigram}
+\subsection{Epigram}
 \label{subsub:Epigram}
 The Epigram\,\cite{mcbride2005epigram} language is a functional and dependently typed language made by Conor McBride, which aims to let the programmer create compiler certified proofs using intuitionistic logic.
 It is not a traditional visual programming language, but it has been put in this category due to its 2D syntax.
@@ -292,7 +292,7 @@ As can be seen in Figure~\ref{fig:epigram_data}, the definition of e.g.\ a data 
 
 While it has not been possible to get a version of Epigram working for any sort of test, we are interested in how this way of expressing data types could benefit the user in a more structured editor, that does not require the user to maintain ASCII art, but still displays the program in a more visual way.
 
-\subsubsection{Takeaways}
+\paragraph{Takeaways}
 \begin{itemize}
 	\item \textbf{Ta-23}: The more visual way of writing data types could be more intuitive for people used to reading that sort of notation. This goes well with Nielsen’s ``Match between system and the real world''-heuristic.
 \end{itemize}
@@ -308,7 +308,7 @@ version of it.
 
 % subsection visual_programming_languages (end)
 
-\subsection{Existing Solutions Overview}
+\section{Existing Solutions Overview}
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 % \usepackage[table,xcdraw]{xcolor}

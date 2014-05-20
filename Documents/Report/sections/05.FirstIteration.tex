@@ -2,15 +2,15 @@
 \chapter{First Design Iteration}
 \label{sec:InitialDesign}
 
-In this section we describe our initial design. 
-We designed it based on the findings described in Section~\ref{sec:Analysis} and the requirements derived from these in Section~\ref{sec:GoalsAndRequirements}.
+In this chapter we describe our initial design. 
+We designed it based on the findings described in Chapter~\ref{sec:Analysis} and the requirements derived from these in Chapter~\ref{sec:GoalsAndRequirements}.
 Based on our findings on touch-based editors in Section~\ref{subsec:TouchBasedEditors} we are certain that free-text editors rely too much on the virtual keyboard, which provides for a slow work flow and essentially a bad user experience.
 We have decided to move towards a more structured editor that makes use of
 visual elements to communicate program structure. This approach takes
 advantage of the touch platform it is running on instead of trying to overcome
 it.
 
-This initial design focuses on the flow of creating function and data declarations. A later iteration (see Section~\ref{sec:third_design_iteration}) will address editing and deleting declarations more throughly.
+This initial design focuses on the flow of creating function and data declarations. A later iteration (see Chapter~\ref{sec:third_design_iteration}) will address editing and deleting declarations more throughly.
 
 \section{Overall Structure}
 For our initial design we wanted to create a semi-structured editor that lets the user specify data declarations and functions in a structured way, but allows the user to enter free-form text
@@ -98,7 +98,7 @@ Finally, metavariables, expressed as three question marks, can be tapped for aut
 There should be clear feedback to the user regardless of the outcome of this action.
 
 Together these features leverage the tool support afforded by Idris to fulfill \textbf{F-1}, \textbf{F-2}, \textbf{F-3}, as well as partially fulfilling \textbf{F-5}. To fully fulfill \textbf{F-5}, we must also support deleting functions, as well as cases. This will be addressed in
-Section\,\ref{sec:third_design_iteration}.
+Chapter~\ref{sec:third_design_iteration}.
 % So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-1, F-2, F-3, F-7, F-8, F-9
 
 \section{Data Declarations}
@@ -238,17 +238,17 @@ they look in textual Idris.
 
 \section{Design Evaluation}
 \label{subsec:first_design_evaluation}
-While this initial design meets many of the requirements from Section~\ref{sec:GoalsAndRequirements}, there are still issues to resolve.
+While this initial design meets many of the requirements from Chapter~\ref{sec:GoalsAndRequirements}, there are still issues to resolve.
 Specifically, the following requirements are not fully addressed:
 \begin{itemize}
-	\item \textbf{U-5}: This requires some way to communicate with Idris. The backend required to do this will be covered in Section~\ref{sec:Architecture}, while the design considerations will be covered in
-	Section \ref{sec:third_design_iteration}.
-	\item \textbf{F-4} and \textbf{F-5}: We have described how to create functions and data declarations, and how one can add and edit clauses and constructors. However, we still need to devise a way to delete these constructs. This will be covered in Section \ref{sec:third_design_iteration}.
-	\item \textbf{F-6}: This will be addressed in the next section.
-	\item \textbf{F-10}: This will be addressed in Section \ref{sec:third_design_iteration}.
+	\item \textbf{U-5}: This requires some way to communicate with Idris. The backend required to do this will be covered in Chapter~\ref{sec:Architecture}, while the design considerations will be covered in
+	Chapter~\ref{sec:third_design_iteration}.
+	\item \textbf{F-4} and \textbf{F-5}: We have described how to create functions and data declarations, and how one can add and edit clauses and constructors. However, we still need to devise a way to delete these constructs. This will be covered in Chapter~\ref{sec:third_design_iteration}.
+	\item \textbf{F-6}: This will be addressed in the next chapter.
+	\item \textbf{F-10}: This will be addressed in Chapter~\ref{sec:third_design_iteration}.
 \end{itemize}
 
-Beyond these requirements, the greatest remaining challenge is the data declaration syntax, which we will try to improve in the next design iteration, described in Section~\ref{sec:Implementation}.
+Beyond these requirements, the greatest remaining challenge is the data declaration syntax, which we will try to improve in the next design iteration, described in Chapter~\ref{sec:Implementation}.
 We have learned a great deal from this initial design, based on mock-ups and paper cutouts, but for our next iteration, we want to produce a simple prototype app.
 Actually implementing our next design is likely to uncover many problems not discovered in our mock-ups.
-But before we can do this, we need to lay some technical groundwork, which is desicribed in the next section.
+But before we can do this, we need to lay some technical groundwork, which is desicribed in the next chapter.

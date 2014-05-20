@@ -78,7 +78,7 @@ We will refer to these goals and requirements extensively throughout the rest of
 \label{sec:defining_scope}
 We cannot implement features for all of these requirements for our first prototype, so we focus on language constructs that are essential to declaring and performing simple manipulations of the canonical \texttt{Vect} data type. This data type is, as we explained in Section~\ref{sec:DependentTypes}, often used as the basic example of how dependent types work.
 Specifically, we will work towards a prototype that lets our usability test subjects define the \texttt{Vect} data type and \texttt{zip} function (also explained in
-Section\ref{sec:DependentTypes}).
+Section~\ref{sec:DependentTypes}).
 The \texttt{zip} function allows the testing of automatic initial clause creation, automatic case splitting, and metavariable solving.
 
 Any language features of Idris that are not directly needed to be able to test the usability of defining the above-mentioned top-level declarations will thus be omitted in this prototype. This means we will not handle language features such as dependent pairs, with notation,
