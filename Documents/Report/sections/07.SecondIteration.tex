@@ -40,7 +40,7 @@ The final design of this iteration can be seen in Figure~\ref{fig:initialiPadInt
 \label{sec:SecondUsabilityTest}
 The greatest change in the second usability test was the fact that it was
 performed on an actual iPad, using a prototype interface. The full report is
-included in Appendix \ref{chap:SecondUsabilityTest} and was also inspired by Kuniavski\,\cite{kuniavsky2003observing}. As in the first test, S2.4, refers to
+included in Appendix~\ref{chap:SecondUsabilityTest} and was also inspired by Kuniavski\,\cite{kuniavsky2003observing}. As in the first test, S2.4, refers to
 the fourth point in the test summary for subject \#2.
 
 \subsection{Participants}
@@ -131,7 +131,6 @@ confusing. These fields are supposed to indicate that new terms can be added
 there, but their appearance are so similar to other fields that they confuse
 more than they help.
 This will hopefully be partially solved by the focusing system that hides most of these unfilled holes. (S1.20, S2.2, S3.29b)
-\todo{Insert screenshot}
 \\ \\
 \textbf{I6: Writing data declaration}
 Everyone was able to decipher the data declarations almost immediately, but
@@ -162,9 +161,8 @@ To move from one input field to the next, the subjects must manually tap each
 input field. This broke the subjects flow. (S1.21, S3.30c)
 \\ \\
 \textbf{I12: Program can look cluttered}
-After finishing all the tasks, the subject's program started to look cluttered.
-This should also be alleviated by the focus system.
-\todo{Insert screenshot} (S3.29a)
+After finishing all the tasks, the subject's program started to look cluttered, as can be seen in Figure~\ref{fig:clutteredInterface}.
+This should also be alleviated by the focus system. (S3.29a)
 \\ \\
 \textbf{I13: Few definitions visible}
 Related to Issue I12, definitions are quite large, so only a few are visible at
@@ -175,6 +173,13 @@ work.
 Some parts of the syntax have not been determined. Some of the subjects
 wondered how one would make an argument implicit. (S1.9, S4.13)
 
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=\linewidth]{diagrams/cluttered_example.PNG}
+	\caption{The prototype interface can become quite cluttered.}
+\label{fig:clutteredInterface}
+\end{figure}
+
 \subsection{Recommendations}
 \label{sec:second_recommendations}
 As we did not have time to implement all the recommendations from our first iteration, they still apply to this iteration, even though they are not listed again here.
@@ -182,10 +187,9 @@ Some issues (such as I5) are partially due to the fact the prototype was missing
 We have not added recommendations for these issues if we believe the not yet implemented features will improve them.
 
 \begin{itemize}
-    \item \textbf{Re8} (I5): When centering text that includes an extra input field, center the text without the input field. \todo{Insert screenshot}
+    \item \textbf{Re8} (I5): When centering text that includes an extra input field, center the text without the input field, as shown in Figure~\ref{fig:centeredFields}.
     \item \textbf{Re9} (I7): Use semicolons or spaces instead of arrows in the premise area of data declarations.
     \item \textbf{Re10} (I8): When showing types that take parameters, indicate these parameters in the popup. For example after selecting the \texttt{Vect} data type that takes two parameters, two new sub input fields, with their own suggestions are created. Make sure there is a good flow between these fields.
-    \todo{Insert screenshot, Christian}
     \item \textbf{Re11} (I9): Automatically close pairs of symbols.
     \item \textbf{Re12} (I10): Include a shortcut bar for symbols.
     \item \textbf{Re13} (I11): After filling a field, automatically move input to next field. Perhaps include a button to move back and forth between fields.
@@ -194,11 +198,18 @@ We have not added recommendations for these issues if we believe the not yet imp
     \item \textbf{Re16}: In general, it might be good to separate text editing from general manipulation of the program. Text editing could occur in popups or a dedicated text input field, freeing gestures for other uses when manipulating the structure of the program.
 \end{itemize}
 
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=45mm]{diagrams/CenteredPremise.PNG}
+	\caption{Not centering unfilled input fields might make it clearer that they do not have to be filled.}
+\label{fig:centeredFields}
+\end{figure}
+
 \section{Design Evaluation}
 \label{second_design_evaluation}
 Unfortunately there were several recommendations from the first iteration that did not make it into this design. 
 The missing functionality mentioned in Section~\ref{subsec:first_design_evaluation} also did not make it into this version.
 While it is regrettable that we did not have a chance to test our recommendations or new features, the mere fact that we tested our design on an iPad led to a wealth of new insight.
 We discovered many issues with the existing design that were only apparent when the design was put to use on a device. 
-The final unmet usability requirement, to do with error handling (\textbf{U-6}), along with the functional requirements concerned with editing declarations (\textbf{F-4}, \textbf{F-5}) and quickly accessing special characters (\textbf{F-10}) will be addressed in the final design, presented in Section~\todo{ref}. 
+The final unmet usability requirement, to do with error handling (\textbf{U-6}), along with the functional requirements concerned with editing declarations (\textbf{F-4}, \textbf{F-5}) and quickly accessing special characters (\textbf{F-10}) will be addressed in the final design, presented in Section~\ref{sec:third_design_iteration}. 
 This final design will also explore the recommendations from the first iteration (see Section~\ref{sec:first_recommendations}) that were not explored here, and experiment with a new way of declaring data.

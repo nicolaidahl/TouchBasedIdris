@@ -28,18 +28,15 @@ which should speed up the user's programming speed considerable making for a
 faster edit-compile-test cycle.
 \item \textbf{U-5}: Syntactical errors are prevented through the use of structured editing, and semantic errors are handled in a simple way, showing the user where the error is directly in the program.
 This was described in Section\,\ref{subsec:error_handling}.
-\item \textbf{U-6}: By only showing input areas when the current declaration is being edited, we keep clutter to a minimum, while still making it clear where the user can make changes.
-\todo{reference difference between Lisping figure, iPad prototype figure with a
-lot of grayed out holes, and the new design that does better than both of these}
+\item \textbf{U-6}: By only showing input areas when the current declaration is being edited, we keep clutter to a minimum, while still making it clear where the user can make changes. For example, compare the Lisping interface in Figure~\ref{fig:Lisping_screenshot} and our initial prototype interface in  Figure~\ref{fig:clutteredInterface} with our final design in Figure~\ref{fig:new_design_data_in_focus}.
 \item \textbf{F-1}, \textbf{F-2}, \textbf{F-3}: Initial pattern matching, case splitting of pattern variables, and automatic metavariable solving is supported, and described in Section~\ref{subsec:new_design_function_dec}.
 \item \textbf{F-4}, \textbf{F-5}: The user can add, delete, and edit data declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_data_dec}
 and function declarations, as described in Section~\ref{subsec:managing_program_structure} and Section~\ref{subsec:new_design_function_dec}.
 \item \textbf{F-6}: By letting the Idris compiler run on a host computer (see Section~\ref{sec:Architecture}), we believe we do not break any App Store guidelines. However, in the end this is up to the App Store review team, and we cannot know without actually submitting an app.
 \item \textbf{F-7}: The user can get an overview of what is available through the context popover, described in Section~\ref{subsec:new_input_model}
-and depicted in Figure \ref{fig:new_design_popover}.
-\item \textbf{F-8}: Undo support is provided by buttons in the interface, which we believe improves the undo-experience considerably
-compared to shaking the device.\todo{Double check that we describe this in our
-design}
+and depicted in Figure\ref{fig:new_design_popover}.
+\item \textbf{F-8}: Undo support is provided by buttons in the interface (see Section~\ref{sec:InitialDesign}), which we believe improves the undo-experience considerably
+compared to shaking the device.
 \item \textbf{F-9}: This requirement is met through the focus system described in Section
 \ref{subsec:managing_program_structure}.
 \item \textbf{F-10}: This requirement is met by the context-dependent virtual keyboard described in Section~\ref{subsec:virtual_keyboard}.
@@ -57,7 +54,4 @@ a longer compiler response time, as the compiler runs on a remote server
 instead of locally on the device. It is our hope that the advanced auto
 completion feature will make up for the limitations of the distributed
 architecture. This architecture was necessary to fulfill G-4.
-
-We are convinced that with further iterations and more usability tests, our design could result in a product that is better suited for touch-based programming than existing
-solutions. \todo{maybe mention that it will take many hours to complete this
-project and to get those results}
+We are convinced that with further iterations and more usability tests, our design could result in a product that is better suited for touch-based programming than existing solutions, but much work still lies ahead.
