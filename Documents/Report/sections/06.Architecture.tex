@@ -2,7 +2,7 @@
 \chapter{Architecture}
 \label{sec:Architecture}
 
-We decided to write our app for the Apple iPad, as it is the most prolific
+We decided to write our app for the Apple iPad, as it is the most widely used
 tablet today. We also want to be able to use the various interactive features
 available in the Emacs mode for Idris, such as case
 splitting and auto completion (F-1, F-2, F-3). One way to achieve this would be to implement
@@ -22,7 +22,7 @@ the App Store, the only official way to publicly distribute iOS apps.
 Because of these factors, we decided to let the Idris interpreter run on a 
 host computer, with a thin client running on the iPad, and a server program 
 facilitating communication between the client and Idris.
-To represent our programs in the editor, we need an abstract syntax tree (AST).
+To represent our programs in the editor, we need an abstract syntax.
 As described in the Section~\ref{sec:defining_scope}, we will only
 provide support for a subset of the total language constructs in our prototype.
 The definition of the AST can be found in Appendix~\ref{chap:IdrisTouch_AST}.

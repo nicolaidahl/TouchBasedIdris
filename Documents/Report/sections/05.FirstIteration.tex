@@ -4,7 +4,7 @@
 
 In this chapter we describe our initial design. 
 We designed it based on the findings described in Chapter~\ref{sec:Analysis} and the requirements derived from these in Chapter~\ref{sec:GoalsAndRequirements}.
-Based on our findings on touch-based editors in Section~\ref{subsec:TouchBasedEditors} we are certain that free-text editors rely too much on the virtual keyboard, which provides for a slow work flow and essentially a bad user experience.
+Based on our findings on touch-based editors in Section~\ref{subsec:TouchBasedEditors}, we are certain that free-text editors rely too much on the virtual keyboard, which provides for a slow work flow and essentially a bad user experience.
 We have decided to move towards a more structured editor that makes use of
 visual elements to communicate program structure. This approach takes
 advantage of the touch platform it is running on instead of trying to overcome
@@ -37,7 +37,7 @@ At the same time, we can hide unnecessary UI in the declarations that the user i
 This focus mode helps the design live up to the following requirements:
 \begin{itemize}
 	\item \textbf{U-1} and \textbf{U-3}: By minimizing declarations not currently being edited, we improve the scalability of the language, as more of a program can be seen at once, thus providing a better overview.
-	\item \textbf{U-6}: Lowers clutter, as UI elements for editing only need to be shown for the declaration currently in focus.
+	\item \textbf{U-6}: Reduces clutter, as UI elements for editing only need to be shown for the declaration currently in focus.
 	\item \textbf{F-9}: This directly fulfills this requirement.
 \end{itemize}
 
@@ -70,7 +70,7 @@ This covers the overall structure of a program in this design.
 For function declarations we wanted to provide an intuitive flow, using Idris to automate as many steps as possible. 
 This meant we had to incorporate initial pattern match creation, case splitting, and automatic metavariable solving into the declaration process.
 
-To be able to declare function types quickly, it was paramount that the interface intelligently presented the user with terms they might have use of.
+To be able to declare function types quickly, it was important that the interface intelligently presented the user with terms they might have use of.
 When a text field takes focus, a context popover with possible terms for that position appears right next to the field. 
 The user then only has to move the finger a few centimeters to auto complete the field. 
 The usability of this feature depends on how fast and how well the contextual suggestions can be provided.
@@ -97,7 +97,7 @@ The use of this gesture is also a non-standard one, and a tip will have to appea
 Finally, metavariables, expressed as three question marks, can be tapped for automatic metavariable solving. 
 There should be clear feedback to the user regardless of the outcome of this action.
 
-Together these features leverage the tool support afforded by Idris to fulfill \textbf{F-1}, \textbf{F-2}, \textbf{F-3}, as well as partially fulfilling \textbf{F-5}. To fully fulfill \textbf{F-5}, we must also support deleting functions, as well as cases. This will be addressed in
+Together these features leverage the tool support afforded by Idris to fulfill \textbf{F-1}, \textbf{F-2}, \textbf{F-3}, as well as partially fulfilling \textbf{F-5}. To fulfill \textbf{F-5}, we must also support deleting functions, as well as cases. This will be addressed in
 Chapter~\ref{sec:third_design_iteration}.
 % So far: G-1, G-2, G-3, U-1, U-3, U-4, U-6, F-1, F-2, F-3, F-7, F-8, F-9
 
@@ -116,7 +116,7 @@ The reuse of the flow allows the user to learn its behavior once and then use it
 	\centering
 		\includegraphics[width=80mm]{diagrams/initial_data_declaration_design.pdf}
 	\caption{Mock-up of a data declaration design in edit mode. The syntax
-	resembles the 2D Epigram syntax}
+	resembles the 2D Epigram syntax.}
 \label{fig:initial_data_declaration_design}
 \end{figure}
 
@@ -126,7 +126,7 @@ With a design in hand, it was time to test it. The purpose of this test was to
 get an initial idea of how our ideas worked before spending time implementing
 them. We created paper cutouts based on our mock-ups to represent the different
 elements of the interface, with a test facilitator manipulating the cutouts to
-emulate an interactive environment. The procedure of the experiment was inspired by Chapter 10 of ``Observing the user experience''\cite{kuniavsky2003observing} and a more detailed test report is available in Appendix~\ref{chap:FirstUsabilityTest}. The report includes a timestamped summary of the test, which we
+emulate an interactive environment. The procedure of the experiment was inspired by Chapter 10 of ``Observing the user experience''\,\cite{kuniavsky2003observing} and a more detailed test report is available in Appendix~\ref{chap:FirstUsabilityTest}. The report includes a timestamped summary of the test, which we
 will sometimes refer to in the following manner: S1.1, which refers to the
 first point in the summary for Subject \#1.
 

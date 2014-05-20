@@ -30,7 +30,7 @@ In almost all previous projects we have spent too little time on the initial lit
 study, so in this project we wanted to focus more on it as is reflected by the
 length of Chapter~\ref{sec:Analysis}. Retrospectively, we could have used some of this time to further develop our design and prototype. 
 
-\section{Constraining factors}
+\section{Constraining Factors}
 During this project we have encountered an incredibly high amount of unforeseen constraining factors. Some of the simplest things turned out to require demanding workarounds due to the strict rules of the iOS platform and the large number of technologies and languages that had to work in combination in the finished product.
 
 A good example of the unforeseen complexity of the simplest of components was writing a JSON parser on the client side. Most often this is a tedious task that can be left to standard or third party libraries, which was also the case on the server side in Haskell. A data definition with $n$ constructors in Haskell corresponds to one abstract class with $n$ concrete classes inheriting from the abstract class in Objective-C. It turns out that none of the most popular Objective-C JSON libraries had a good way of handling this abstraction, which forced us to spend valuable time extending a JSON library when we could have spent it on developing the UI further.

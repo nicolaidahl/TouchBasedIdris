@@ -3,12 +3,12 @@
 \label{chap:Background}
 \section{Dependent Types}
 \label{sec:DependentTypes}
-In many programming languages, such as Java or Haskell, a type can depend on another type, such as \texttt{ArrayList<A>} in Java, or \texttt{[a]} in Haskell. By suppling a concrete type, we can say that a collection only holds this specific type of values, e.g. \texttt{ArrayList<String>} or \texttt{[String]}. But in a programming language with dependent types, it is possible to go further. With dependent types, a type can be dependent on \emph{values} as well as types. This allows for increased expressiveness in the type system, which can be used for ensuring correctness, conducting proofs, and improving tool support. In this project we focus on the latter. Dependent types have been implemented in several programming languages, such as Coq\cite{Coq}, Agda\cite{Agda}, and
+In many programming languages, such as Java or Haskell, a type can depend on another type, such as \texttt{ArrayList<A>} in Java, or \texttt{[a]} in Haskell. By suppling a concrete type, we can say that a collection only holds this specific type of values, e.g. \texttt{ArrayList<String>} or \texttt{[String]}. But in a programming language with dependent types, it is possible to go further. With dependent types, a type can be dependent on \emph{values} as well as types. This allows for increased expressiveness in the type system, which can be used for ensuring correctness, conducting proofs, and improving tool support. In this project we focus on the latter. Dependent types have been implemented in several programming languages, such as Coq\,\cite{Coq}, Agda\,\cite{Agda}, and
 Idris\,\cite{Idris}.
 
 \subsection{Idris}
 \label{subsec:Idris}
-Idris is a dependently typed programming language, initially developed by Edwin Brady~\cite{Idris}. The syntax is heavily inspired by Haskell. Let us start by looking at a simple example. In Figure~\ref{fig:nat}, a data type representing the natural numbers is defined. It consists of two constructs \texttt{Z}, representing zero, and \texttt{S~n}, representing the successor of the natural number \texttt{n}.
+Idris is a dependently typed programming language, initially developed by Edwin Brady\,\cite{Idris}. The syntax is heavily inspired by Haskell. Let us start by looking at a simple example. In Figure~\ref{fig:nat}, a data type representing the natural numbers is defined. It consists of two constructs \texttt{Z}, representing zero, and \texttt{S~n}, representing the successor of the natural number \texttt{n}.
 
 \begin{figure}
 \begin{alltt}
@@ -28,7 +28,7 @@ data Vect : Nat \(\to\) Type \(\to\) Type where
   Nil  : Vect Z a
   (::) : a \(\to\) Vect k a \(\to\) Vect (S k) a
 \end{alltt}
-\caption{The vector data type defined in Idris}
+\caption{The vector data type defined in Idris.}
 \label{fig:vect}
 \end{figure}
 
@@ -54,7 +54,7 @@ The \texttt{zip} function takes two arguments. Each argument is a vector of the 
 	zip : \{n: Nat\} \(\to\) \{a: Type\} \(\to\) \{b: Type\} \(\to\) 
 	      Vect n a \(\to\) Vect n b \(\to\) Vect n (a, b)
 	\end{alltt}
-\caption{The type definition of \texttt{zip} for \texttt{Vect} written in Idris}
+\caption{The type definition of \texttt{zip} for \texttt{Vect} written in Idris.}
 \label{fig:zip_implicit_args}
 \end{figure}
 
@@ -75,9 +75,9 @@ filter p (x::xs) with (filter p xs)
 The \texttt{filter} function uses two constructs that we have not seen so far, dependent pairs and the \texttt{with} rule. Dependent pairs let us specify a type that is dependent on another value. In \texttt{filter}, we do not know beforehand what length the resulting vector will have, so instead we return a dependent pair, where the first element is the length, and the second element is a \texttt{Vect} of that length. Not knowing the length is also a problem in the \texttt{filter p (x::xs)} case. If the head of the \texttt{Vect} passes the predicate \texttt{p}, we want to append the tail of the \texttt{Vect} onto the head. But since we do not know what the length of \texttt{filter p xs} is beforehand (as it depends on how many elements passes the predicate \texttt{p}), we cannot construct the type for the resulting vector. But by using the \texttt{with} keyword, we can pattern match on the result of \texttt{filter p xs}. We know the length of \texttt{tail}, since we have filtered it already, so we can construct the resulting \texttt{Vect} without any problems.
 
 \subsection{Interactive Editing}
-One of the interesting features of languages with dependent types is that the additional information provided by the type information can lead to increased tool support.
+One of the interesting features of languages with dependent types is that the additional information provided by the type system can lead to increased tool support.
 The Idris mode for Emacs, for example, lets the user interact with their program in a number of interesting ways.
-For example, the user can ask Emacs to create an initial pattern match for a function, case split a pattern variable, or solve a meta variable.
+For example, the user can ask Emacs to create an initial pattern match for a function, case split a pattern variable, or solve a metavariable.
 In the Emacs mode, all these actions are activated through keyboard shortcuts.
 
 Sometimes when writing a function, one might not know right away what should be on the right hand side of a clause.
@@ -113,7 +113,7 @@ A prerequisite of all the following chapters is the understanding of Nielsen's
 10 usability heuristics for user interface design\,\cite{nielsen1990heuristic}.
 We will, for example, be using these guidelines extensively in our analysis chapter.
 For reference, here is an overview of Nielsen's 10 usability heuristics.
-A brief of each heuristic can be found on NN Group's
+A explanation of each heuristic can be found on NN Group's
 website\,\cite{niesen10heuristicsweb}.
 
 \begin{enumerate}

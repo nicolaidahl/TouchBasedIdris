@@ -23,7 +23,7 @@ The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also ful
 \begin{figure}
 	\centering
 		\includegraphics[width=110mm]{diagrams/final_design_popover.pdf}
-	\caption{The context popover. Left: How it looks when a \texttt{Vect} is
+	\caption{Mock-up of the context popover. Left: How it looks when a \texttt{Vect} is
 	expected. Right: How it looks when defining a new type constructor.}
 \label{fig:new_design_popover}
 \end{figure}
@@ -31,7 +31,7 @@ The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also ful
 In this design, writing a program would consist of filling a series of holes for terms by choosing applicable functions and constructors from the popover, and only using the virtual keyboard for writing constants, identifiers, or searching
 the context.
 To edit a term, the user can tap it to bring up the context popover. Note that any text input would happen in the search field of the context popover (Figure \ref{fig:new_design_popover}) and
-not in the visual syntax directly. Tapping any choice frmo the context popover replaces the old choice
+not in the visual syntax directly. Tapping any choice from the context popover replaces the old choice
 in the term selected.
 
 This design means there would be no risk of the user making syntax errors, but on the other hand there would be less freedom to approach the programming task in the way the user
@@ -57,14 +57,14 @@ Tapping other top-level declarations will switch the current editable declaratio
 \begin{figure}
 	\centering
 		\includegraphics[width=80mm]{diagrams/final_design_nothing_in_focus.pdf}
-	\caption{The new data declaration, along with the familiar function declaration.}
+	\caption{Mock-up of the new data declaration, along with the familiar function declaration.}
 \label{fig:new_data_declaration}
 \end{figure}
 
 \begin{figure}
 	\centering
 		\includegraphics[width=100mm]{diagrams/final_design_top_dec_in_focus.pdf}
-	\caption{The new design with a data declarations in focus. The code becomes
+	\caption{Mock-up of the new design with a data declarations in focus. The code becomes
 	bigger and easier to tap}
 \label{fig:new_design_data_in_focus}
 \end{figure}
@@ -72,13 +72,13 @@ Tapping other top-level declarations will switch the current editable declaratio
 \begin{figure}
 	\centering
 		\includegraphics[width=110mm]{diagrams/new_function_reverse_pinch.pdf}
-	\caption{When reverse pinching two adjacent handles for top-level
+	\caption{Mock-up: When reverse pinching two adjacent handles for top-level
 	declarations, a new top-level declaration appears between the old ones.}
 \label{fig:new_function_reverse_pinch}
 \end{figure}
 
 We have decided to keep our original design for creating new top-level
-declarations. Either, the programmer can use the [+] button at the bottom of
+declarations. Either the programmer can use the [+] button at the bottom of
 the program, or he can reverse-pinch two adjacent top-level declarations to
 create a new one between them. This is depicted in Figure \ref{fig:new_function_reverse_pinch} and also works for creating constructors
 between existing constructors in data declarations.
@@ -94,8 +94,8 @@ Clauses in functions and constructors for data can also be deleted in this way, 
 \begin{figure}
 	\centering
 		\includegraphics[width=110mm]{diagrams/design_drag_to_garbage.pdf}
-	\caption{When reverse pinching two adjacent handles for top-level
-	declarations, a new top-level declaration appears between the old ones.}
+	\caption{Mock-up of the way terms are rearranged. Notice the trash can icon
+	that can be used to delete terms and declarations.}
 \label{fig:design_drag_to_garbage}
 \end{figure}
 
@@ -112,7 +112,7 @@ It is our hope that this design will make it easier to read and write data decla
 \label{subsec:new_design_function_dec}
 The function declarations work much the same way as the data declarations
 except for the extra support for initial pattern match creation, case splitting
-and meta variable solving.
+and metavariable solving.
 
 The initial pattern match creation is still done by pressing the [+] button to
 add a new clause. We wish to try out a more visual way of case-splitting terms. Instead of double tapping it, the user drags the term
@@ -122,14 +122,14 @@ This behavior should, of course, be usability tested.
 \begin{figure}
 	\centering
 		\includegraphics[width=100mm]{diagrams/design_case_splitting.pdf}
-	\caption{Case splitting is done by dragging a term down until a new clause
+	\caption{Mock-up: Case splitting is done by dragging a term down until a new clause
 	appears.}
 \label{fig:case_splitting}
 \end{figure}
 
 Meta variable solving is managed in an even simpler way. If a term starts with
 a question mark like in Figure~\ref{fig:case_splitting} then double tap will
-tell the compiler to try and automatically solve that meta variable. single tapping it will as always
+tell the compiler to try and automatically solve that metavariable. single tapping it will as always
 bring up the context popover and allow input.
 
 \section{Virtual Keyboard}
@@ -145,7 +145,7 @@ This design of the virtual keyboard solves requirement \textbf{F-10}.
 \begin{figure}
 	\centering
 		\includegraphics[width=115mm]{diagrams/design_keyboard.pdf}
-	\caption{The Textastic-inspired keyboard with common symbols.}
+	\caption{Mock-up of the Textastic-inspired keyboard with common symbols.}
 \label{fig:design_keyboard}
 \end{figure}
 
@@ -159,7 +159,7 @@ For example, say the user has written the term \texttt{foo (bar a b) 2}.
 Somewhere else, \texttt{foo} is redefined so the second argument is no longer needed.
 In this case, the \texttt{2} would be highlighted in red, and the user can then flick it to the trash, as described above.
 For all of our gestures it should be noted that terms are at least 44x44
-points, so the user should have no problem managing them\,\cite[p. 30]{mobileHIG}
+points, so the user should have no problem managing them\,\cite[p. 30]{mobileHIG}.
 Furthermore, it is clear that the error reporting can only be as good as the error messages are in Idris.
 If Idris can not identify the exact placement of the error, it might be necessary to mark a larger area as erroneous, and let the user find the exact problem by reading the error message.
 This feature solves \textbf{U-5}.
@@ -186,8 +186,8 @@ What we specifically wish to test in this next usability test is:
 	\item The focus system, where only one top-level declaration is in focus at a
 	time. Can users maneuver in and out of declarations in a fairly easy way?
 	\item Editing terms that have already been added.
-	\item The new case-splitting gesture and how to make the gesture easier
-	discoverable (e.g. by a tool tip that pops up the first time the user has the
+	\item The new case-splitting gesture and how to make the gesture easier to
+	discover (e.g. by a tool tip that pops up the first time the user has the
 	opportunity to case split).
 	\item Deleting terms by flicking them and rearranging them by dragging.
 	\item Deleting top-level declarations, clauses, and constructors.
