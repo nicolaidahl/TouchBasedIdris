@@ -4,7 +4,7 @@
 
 In this section we describe our initial design. 
 We designed it based on the findings described in Section~\ref{sec:Analysis} and the requirements derived from these in Section~\ref{sec:GoalsAndRequirements}.
-Based on our findings on touch-based editors in Section \ref{subsec:TouchBasedEditors} we are certain that free-text editors rely too much on the virtual keyboard, which provides for a slow work flow and essentially a bad user experience.
+Based on our findings on touch-based editors in Section~\ref{subsec:TouchBasedEditors} we are certain that free-text editors rely too much on the virtual keyboard, which provides for a slow work flow and essentially a bad user experience.
 We have decided to move towards a more structured editor that makes use of
 visual elements to communicate program structure. This approach takes
 advantage of the touch platform it is running on instead of trying to overcome
@@ -19,7 +19,7 @@ We realized this through a hierarchy of text input fields, that together would m
 We also wanted to use visual elements to indicate program structure like we saw in Labview, but as Idris is a general purpose language, the visual elements also have to be more general.
 We chose this structured approach as it helps fulfill the following goals and requirements:
 \begin{itemize}
-	\item \textbf{G-3}: By lifting elements, that would otherwise be text, into the UI itself, we can avoid using the keyboard in many situations.
+	\item \textbf{G-3}: By lifting elements, that would otherwise be text, into the UI itself, the user can avoid using the keyboard in many situations.
 	\item \textbf{U-1}: The structure of the program can become part of the UI as well. 
 	This means we can use special visual cues to differentiate different elements of a program. 
 \end{itemize}
@@ -62,7 +62,7 @@ This is a good example of how to use gestures as accelerators for advanced users
 The reverse-pinching gestures is not immediately discoverable (as is the problem with advanced gestures\,\cite[p 141]{nielsen2013mobile}), but power-users will seek faster ways to complete their tasks, for example by reading the accompanying documentation. 
 Nielsen and Budiu\,\cite[p 143]{nielsen2013mobile} recommend that you build this sort of redundancy into your app. 
 Undo support is implemented as two buttons in the toolbar.
-This covers the overall structure of a program in this design. Now we will look at the specifics of declaring functions and data.
+This covers the overall structure of a program in this design.
 
 % So far: G-3, U-1, U-3, U-4, U-6, F-8, F-9
 
@@ -70,7 +70,7 @@ This covers the overall structure of a program in this design. Now we will look 
 For function declarations we wanted to provide an intuitive flow, using Idris to automate as many steps as possible. 
 This meant we had to incorporate initial pattern match creation, case splitting, and automatic metavariable solving into the declaration process.
 
-To be able to declare function types quickly, it was paramount that the interface intelligently presented you with terms that you might have use of.
+To be able to declare function types quickly, it was paramount that the interface intelligently presented the user with terms they might have use of.
 When a text field takes focus, a context popover with possible terms for that position appears right next to the field. 
 The user then only has to move the finger a few centimeters to auto complete the field. 
 The usability of this feature depends on how fast and how well the contextual suggestions can be provided.
@@ -120,15 +120,15 @@ The reuse of the flow allows the user to learn its behavior once and then use it
 \label{fig:initial_data_declaration_design}
 \end{figure}
 
-\section{First Usability Iteration}
+\section{Usability Test Of The Paper Prototype}
 \label{sec:UsabilityTest}
 With a design in hand, it was time to test it. The purpose of this test was to
 get an initial idea of how our ideas worked before spending time implementing
 them. We created paper cutouts based on our mock-ups to represent the different
 elements of the interface, with a test facilitator manipulating the cutouts to
-emulate an interactive environment. The procedure of the experiment was inspired by Chapter 10 of ``Observing the user experience''\cite{kuniavsky2003observing} and a more detailed test report is available in Appendix \ref{chap:FirstUsabilityTest}. The report includes a timestamped summary of the test, which we
+emulate an interactive environment. The procedure of the experiment was inspired by Chapter 10 of ``Observing the user experience''\cite{kuniavsky2003observing} and a more detailed test report is available in Appendix~\ref{chap:FirstUsabilityTest}. The report includes a timestamped summary of the test, which we
 will sometimes refer to in the following manner: S1.1, which refers to the
-first point in the summary for subject \#1.
+first point in the summary for Subject \#1.
 
 \subsection{Participants}
 As it is beyond the scope of this project to teach new users about dependent
@@ -152,7 +152,7 @@ Subject & Age & Occupation & Experience \\ \hline
 \end{table}
 
 \subsection{Session Details}
-The test was conducted in a meeting room at the IT University, with three
+The test was conducted in a meeting room at the IT University of Copenhagen, with three
 people present: The test subject, the test facilitator, and a note taker. The
 tests were recorded. First, the test subjects were told about the project in
 general. They were then told of the overall structure of the test: They would
@@ -180,10 +180,10 @@ for more on \texttt{Vect} and \texttt{zip}.
 	\begin{itemize}
 		\item \textbf{T2.1}: Specify the identifier for the function (\texttt{zip}), along with its type (\texttt{Vect k a -> Vect k b -> Vect k (a, b)})
 		\item \textbf{T2.2}: Specify the first case (\texttt{zip Nil Nil = Nil})
-		\item \textbf{T2.3}: Specify the second case (\texttt{zip x::xs y::s = (x, y) :: zip xs ys})
+		\item \textbf{T2.3}: Specify the second case (\texttt{zip (x::xs) (y::s) = (x, y) :: zip xs ys})
 	\end{itemize}
 \end{itemize}
-\caption{Tasks for the first usability. The text in parentheses are what we considered the correct answer, and was not given to the test subjects.}
+\caption{Tasks for the first usability test. The text in parentheses are what we considered the correct answer, and was not given to the test subjects.}
 \label{figure:first_tasks}
 \end{figure}
 
@@ -250,5 +250,5 @@ Specifically, the following requirements are not fully addressed:
 
 Beyond these requirements, the greatest remaining challenge is the data declaration syntax, which we will try to improve in the next design iteration, described in Section~\ref{sec:Implementation}.
 We have learned a great deal from this initial design, based on mock-ups and paper cutouts, but for our next iteration, we want to produce a simple prototype app.
-Actually implementing our next design will surely uncover many problems not discovered in our mock-ups.
+Actually implementing our next design is likely to uncover many problems not discovered in our mock-ups.
 But before we can do this, we need to lay some technical groundwork, which is desicribed in the next section.
