@@ -13,12 +13,12 @@ It is important to underline that the design we will propose is meant to compete
 In other words, we are not trying to revolutionize the way we program, instead we are trying to improve the programming experience when using a touch device.
 The use case for programming on a touch device will most likely be a mobile one as it is with most use cases for touch devices\,\cite[p. 26]{nielsen2013mobile}.
 
-If the goals relate to takeaways from Section \ref{sec:Analysis} the relevant takeaway will be listed in parentheses. The high-level goals of the project are:
+If the goals relate to takeaways from Chapter~\ref{sec:Analysis} the relevant takeaway will be listed in parentheses. The high-level goals of the project are:
 
 \begin{itemize} 
 	\item \textbf{G-1}: To design a programming editor that leverages Idris to provide a usable solution for the touch-based iPad device
 	(Ta-12).
-	\item \textbf{G-2}: The edit-compile-test cycle should be as fast as state of the art iPad programming editors
+	\item \textbf{G-2}: The edit-compile-test cycle should be as fast as state-of-the-art iPad programming editors
 	(Ta-6, Ta-12).
 	\item \textbf{G-3}: Minimize the use of the virtual keyboard\,\cite[pp. 76]{nielsen2013mobile} and ideally only make use of it when inputting identifiers or auto completing terms
 	(Ta-1, Ta-11, Ta-12).
@@ -72,11 +72,11 @@ Besides the usability requirements listed above, the design must also enable sev
 	(Ta-4).
 \end{itemize}
 
-We will refer to these goals and requirements extensively throughout the rest of this report. Appendix \ref{chap:ListOfAllGoalsAndRequirements} includes a list of the these goals and requirements, if the reader wishes to refer to them while reading.
+We will refer to these goals and requirements extensively throughout the rest of this report. Appendix~\ref{chap:ListOfAllGoalsAndRequirements} includes a list of the these goals and requirements, if the reader wishes to refer to them while reading.
 
 \section{Defining Scope} 
 \label{sec:defining_scope}
-We cannot implement features for all of these requirements for our first prototype, so we focus on language constructs that are essential to declaring and performing simple manipulations of the canonical \texttt{Vect} data type. This data type is, as we explained in Section \ref{sec:DependentTypes}, often used as the basic example of how dependent types work.
+We cannot implement features for all of these requirements for our first prototype, so we focus on language constructs that are essential to declaring and performing simple manipulations of the canonical \texttt{Vect} data type. This data type is, as we explained in Section~\ref{sec:DependentTypes}, often used as the basic example of how dependent types work.
 Specifically, we will work towards a prototype that lets our usability test subjects define the \texttt{Vect} data type and \texttt{zip} function (also explained in
 Section\ref{sec:DependentTypes}).
 The \texttt{zip} function allows the testing of automatic initial clause creation, automatic case splitting, and metavariable solving.
