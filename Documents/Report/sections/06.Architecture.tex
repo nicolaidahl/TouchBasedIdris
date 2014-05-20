@@ -26,7 +26,7 @@ facilitating communication between the client and Idris.
 \subsubsection{Abstract Syntax}
 \label{subsec:AbstractSyntax}
 \todo{Write some introductory text}
-As described in the scope section (\ref{sec:defining_scope}), we will only
+As described in the Section~\ref{sec:defining_scope}, we will only
 provide support for a subset of the total language constructs in our prototype.
 The definition of the AST can be found in Appendix~\ref{chap:IdrisTouch_AST}.
 
@@ -49,7 +49,6 @@ steps in Idris, so the functions we need from Idris accept Idris AST directly.
 This way we can skip the generation and parsing of concrete Idris. In the end,
 we chose this solution, as it seemed cleaner, although it meant learning much
 about how Idris is implemented in Haskell.
-\todo{Insert diagram showing the two possibilities}
 
 \subsection{Server -- Client}
 This layer is somewhat less difficult. The server exposes a simple RESTful API 
