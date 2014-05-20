@@ -11,7 +11,7 @@ For this reason it is important for us to define which types of existing solutio
 
 As Idris is a general purpose programming language, we will not be investigating domain specific languages or platforms, unless elements of their syntax or integrated development environment (IDE) has potential of working with general purpose languages.
 
-While there are many different VPLs, they often fall into certain categories, such as the ``boxes and wires'' visual workflow languages. For example G, which is used in Labview.
+While there are many different VPLs, they often fall into certain categories, such as the ``boxes and wires'' visual workflow languages. For example G, which is used in LabVIEW.
 Where it is appropriate, we will choose a single representative from a category, as we are more interested in getting a broad view than going in depth.
 As we are designing a touch-based editor, our focus will be on other touch-based editors. Visual editors will not be examined with the same degree of detail.
 
@@ -217,29 +217,29 @@ As we have learned, it is of paramount importance to have as little use of the v
 In this section we will investigate three editors with visual components.
 It is possible that a more visual approach will work well on a touch-based interface, so even though Idris is not a visual language at all, we might find elements from these editors that our applicable to our design.
 
-\subsection{Labview}
-\label{subsub:Labview}
-Labview is a development environment featuring the G VPL which is designed for dataflow programming and uses the popular ``boxes and wires'' abstraction, with boxes performing various functions, and wires leading data between the boxes.
-Labview also lets users combine simple widgets to build GUI programs, using the G language for logic.
+\subsection{LabVIEW}
+\label{subsub:LabVIEW}
+LabVIEW is a development environment featuring the G VPL which is designed for dataflow programming and uses the popular ``boxes and wires'' abstraction, with boxes performing various functions, and wires leading data between the boxes.
+LabVIEW also lets users combine simple widgets to build GUI programs, using the G language for logic.
 It is widely used in the scientific community, especially to work with data collected from sensors, and is often referenced in articles on VPLs\,\cite{Green96usabilityanalysis,DBLP:journals/ijmms/PetreB99}.
 As such, we find it to be a good representative of this style of VPL\@.
-Figure~\ref{fig:LabViewGettingStarted} shows a simple example of calculating a
+Figure~\ref{fig:LabVIEWGettingStarted} shows a simple example of calculating a
 triangle's area.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=110mm]{diagrams/LabView_screenshot.png}
-\caption{A simple LabView program from the tutorial\,\cite{LabView:GettingStarted}}.
-\label{fig:LabViewGettingStarted}
+\includegraphics[width=110mm]{diagrams/LabVIEW_screenshot.png}
+\caption{A simple LabVIEW program from the tutorial\,\cite{LabVIEW:GettingStarted}}.
+\label{fig:LabVIEWGettingStarted}
 \end{figure}
 
-While complex programs in G can be initially overwhelming to even experienced programmers, Whitley and Blackwell\,\cite[p. 445]{WHITLEY2001435} show that seasoned Labview programmers prefer the visual syntax to their favorite textual language. Furthermore, the participants of the study found Labview to be an effective tool, and highly rated the visual aspects of the
+While complex programs in G can be initially overwhelming to even experienced programmers, Whitley and Blackwell\,\cite[p. 445]{WHITLEY2001435} show that seasoned LabVIEW programmers prefer the visual syntax to their favorite textual language. Furthermore, the participants of the study found LabVIEW to be an effective tool, and highly rated the visual aspects of the
 editor\,\cite[pp.
 466]{WHITLEY2001435}.
 
 \paragraph{Takeaways}
 \begin{itemize}
-	\item \textbf{Ta-17}: One interpretation of Whitley and Blackwell's findings\,\cite{WHITLEY2001435} is that although Labview can be hard for programmers not used to the visual syntax, the higher learning curve pays off in the long run.
+	\item \textbf{Ta-17}: One interpretation of Whitley and Blackwell's findings\,\cite{WHITLEY2001435} is that although LabVIEW can be hard for programmers not used to the visual syntax, the higher learning curve pays off in the long run.
 	\item \textbf{Ta-18}: The ``boxes and wires'' approach is good at indicating structure and could maybe be transfered to a more general purpose language.
 \end{itemize}
 
@@ -247,7 +247,7 @@ editor\,\cite[pp.
 \subsection{Scratch}
 \label{subsub:Scratch}
 Scratch is a VPL designed to be easy for beginners to use, facilitating the development of simple audio/visual programs. It is implemented as a web app, and features built-in tutorials, tips and help.
-The language is built around a scene containing sprites. A scene can have multiple sprites, and each sprite can be governed by multiple scripts written in the Scratch visual language. The language itself consists of blocks of different shapes, colors and sizes. Scratch does not use the dataflow paradigm, as Labview does. Instead, one programs by snapping blocks together. As can be seen from Figure~\ref{fig:ScratchProgram}, the blocks have different shapes, and only complementing shapes can be put together. Color is used to differentiate types of blocks.
+The language is built around a scene containing sprites. A scene can have multiple sprites, and each sprite can be governed by multiple scripts written in the Scratch visual language. The language itself consists of blocks of different shapes, colors and sizes. Scratch does not use the dataflow paradigm, as LabVIEW does. Instead, one programs by snapping blocks together. As can be seen from Figure~\ref{fig:ScratchProgram}, the blocks have different shapes, and only complementing shapes can be put together. Color is used to differentiate types of blocks.
 
 \begin{figure}
 	\centering
