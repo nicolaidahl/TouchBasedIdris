@@ -36,6 +36,14 @@ The final design of this iteration can be seen in Figure~\ref{fig:initialiPadInt
 \label{fig:initialiPadInterface}
 \end{figure}
 
+\subsection{State Of The Server}
+\label{subsec:state_of_the_server}
+Sadly, our technical difficulties were not over. The server, described in Section~\ref{sec:Server}, also turned out to be a greater challenge than we had expected.
+The greatest obstacle we faced during the implementation of the server was our inexperience with the Haskell programming language, and in particular, the internals of Idris.
+When it was time to test this iteration, communication between the client and the server was working, and we could deserialize programs sent from the client, but we could not yet translate it into the internal Idris abstract syntax.
+This meant that we had to simulate all the completion suggestions, which affected the test to some degree.
+As the rest of the project period was spent on the third iteration of the design, the server was not revisited.
+
 \section{Second Usability Iteration}
 \label{sec:SecondUsabilityTest}
 The greatest change in the second usability test was the fact that it was
@@ -126,7 +134,7 @@ are not listed below, as they are not inherent to the design, but rather
 results of the prototypical nature of the app.
 \\ \\
 \textbf{I5: Too many input fields}.
-Most of the users reported that all the grey, unfilled input fields for example seen in Figure \ref{fig:data_declaration} were
+Most of the users reported that all the grey, unfilled input fields for example seen in Figure\ref{fig:data_declaration} were
 confusing. These fields are supposed to indicate that new terms can be added
 there, but their appearance are so similar to other fields that they confuse
 more than they help.
