@@ -1,15 +1,19 @@
 %!TEX root = ../Touch Based Idris.tex
 \chapter{Reflection}
 \label{sec:Reflection}
+In this chapter, we will reflect on some of the challenges we faced, as well as on the choices we made.
 
-\section{Usability Process}
-\todo{Write section}
+\section{The Third Design Iteration}
+In the third design iteration (see Chapter~\ref{sec:third_design_iteration}), we proposed large changes to the design.
+In itself this is not a problem, but these changes came at a point where we no longer had time to test them.
+We always planned to propose a last design after our final tests, with the goal of trying to cover any issues we discovered, however we had not planned to propose such radical changes, featuring many unknowns.
+We could have proposed less drastic changes, but these would have left many issues unaddressed.
 
-Write about the dangers of massive untested changes. 
-Well as structured vs. unstructured. 
-Also mention "when to stop", i.e. should you stop with a tested design, but one that has known issues, or come up with a final design that fixes those issues, but is untested.
-Mention that there is a danger that our participants is a convenience sample, but that it is hard to avoid as students: Castillo, J (2009). “Convenience Sampling”. URL: http://explorable.com/convenience-sampling, 18 Sep 2013.
-
+The biggest unknown is probably how the more structured approach would work out in practice.
+Structured editors are not nearly as common as plain text editors, but we have not had the opportunity to look into why this is. 
+One can imagine that one reason might be an increased learning curve. 
+Another might be the more restricted workflow they present.
+If this project was continued, these questions would need to be explored. 
 
 \section{Process}
 The initial project plan had a lot of focus on prototype development, but we
@@ -24,7 +28,7 @@ edit-compile-test cycle than we would have been only focusing on usability.
 
 In almost all previous projects we have spent too little time on the initial literature
 study, so in this project we wanted to focus more on it as is reflected by the
-length of Section \ref{sec:Analysis}. Retrospectively, we could have used some of this time to further develop our design and prototype. 
+length of Section~\ref{sec:Analysis}. Retrospectively, we could have used some of this time to further develop our design and prototype. 
 
 \section{Constraining factors}
 During this project we have encountered an incredibly high amount of unforeseen constraining factors. Some of the simplest things turned out to require demanding workarounds due to the strict rules of the iOS platform and the vast amount of technologies and languages that had to work in combination in the finished product.
@@ -34,7 +38,7 @@ A good example of the unforeseen complexity of the simplest of components was wr
 Another element that turned out to be way more time consuming than initially planned was defining and laying out the user interface for the prototype. Early on we chose to use Apple's Autolayout technology in which you define the relations between UI components declaratively just as you would on a white board, instead of calculating spacings and offsets on a pixel level. The idea is that you define your interface once for all screen sizes and interface orientations, but in our case Autolayout turned out to bring just as many problems as benefits to the table, and we found ourselves spending way too much time on debugging our very custom interface.
 
 \section{A Different Approach}
-One of the underlying assumptions of this project is that it is not realistic to be able to program with the same speed and accuracy on a touch interface as you would with a normal keyboard. The most advanced touch-based editor is not nearly as powerful as the most advanced desktop editor/IDE. Keyboard-based editors have been developed for decades whereas touch gesture-based editors have not been explored to the same extent. 
+One of the underlying assumptions of this project is that it is not realistic to be able to program with the same speed and accuracy on a touch interface as you would with a normal keyboard. The most advanced touch-based editor is not nearly as powerful as the most advanced desktop editor/IDE\@. Keyboard-based editors have been developed for decades whereas touch gesture-based editors have not been explored to the same extent. 
 
 In this project we have taken an existing textual programming language, originally intended for desktop programming and tested how far we were able to take it usability-wise. The question we ask is if it is this is the right approach. Textual programming languages have been developed with keyboard-based input in mind, but why not develop a touch-based editor with a touch-based language in mind? Such a language does not, to our knowledge, exist today. It would require developers to completely rethink the way they program and exclude any and all use of the virtual keyboard.
 
