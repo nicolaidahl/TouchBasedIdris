@@ -7,7 +7,7 @@ tablet today. We also want to be able to use the various interactive features
 available in the Emacs mode for Idris, such as case
 splitting and auto completion (F-1, F-2, F-3). One way to achieve this would be to implement
 the required functionality directly in our app. But there is a much easier way.
-The Emacs mode simply communicates with the Idris interpreter over a socket. 
+The Emacs mode simply communicates with the Idris interpreter over a pipe. 
 In this way the Emacs mode can support advanced features that require an
 understanding of the underlying semantics of a piece of code, while letting
 Idris do all the hard work. We would like to use the same mechanism, but there
@@ -34,7 +34,7 @@ the server, and one between the server and Idris. Several different strategies
 exist for each layer. 
 
 \subsection{Server -- Idris}
-The Emacs mode for Idris communicates to the Idris slave via a simple protocol. This can be avoided by writing the server program in
+The Emacs mode for Idris communicates to the Idris compiler via a simple protocol. This can be avoided by writing the server program in
 Haskell, and using Idris as a library instead. This way we can call the
 functions we need directly. We still have a problem though, as Idris expects
 concrete textual Idris. One solution would involve transforming the AST from 
@@ -56,14 +56,14 @@ serialize the client AST to JSON\@.
 \section{Server}
 \label{sec:Server}
 The architecture of the server is very simple, and consists of two main 
-layers. The outer layers uses the Snap Framework\,\cite{snap_framework} to implement the 
+layers. The outer layer uses the Snap Framework\,\cite{snap_framework} to implement the 
 web-services. This layer also handles marshaling to and from JSON\@, which is 
 implemented using the Aeson library\,\cite{aeson_package}. The inner layer handles the 
 transformations to and from the Idris high level syntax, and performs the 
 actual operations, such as case splitting.
 
 \section{Client}
-The iPad client is, of course, written in Objective-C as is the standard. The
+The iPad client is in written in Objective-C as is the standard language for iOS programs. The
 software architecture is based on the Model View ViewModel (MVVM) design 
 pattern\,\cite{JohnGossman:MVVM}, which is an extension of the popular Model View Controller 
 (MVC) pattern. MVVM nicely separates business logic from the view-related
@@ -78,7 +78,7 @@ efficient way of handling future events.
 
 The model hierarchy resembles the abstract syntax,
 where the type constructors are represented as abstract classes on the client
-and the specific constructors, concrete classes. Note that abstract classes in
+and the specific constructors are represented as concrete classes. Note that abstract classes in
 Objective-C are only abstract by convention, as the language does not directly
 support this feature.
 
@@ -95,18 +95,7 @@ hierarchy representing the AST using ReactiveCocoa, as it is the same type of ne
 \begin{figure}
 	\centering
 		\includegraphics[width=110mm]{diagrams/client_side_class_diagram.pdf}
-	\caption{A subset of the client-side diagram showing how the view hierarchy
-	almost mirrors the Abstract Syntax tree.}
+	\caption{A subset of the client-side UML diagram showing how the view hierarchy
+	almost mirrors the Abstract Syntax tree. }
 \label{fig:clientViewArchitecture}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
