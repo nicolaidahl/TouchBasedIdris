@@ -11,14 +11,13 @@ Unlike the two prior iterations of the design, this version has not been through
 As the two first design iterations did not go into much detail on how text input was handled, we discovered several issues regarding text input, especially when editing existing text.
 Because of these issues, we decided to reevaluate how input is handled.
 
-The text fields of the first and second design are not structured at all, they are simply plain text fields, using the standard text input gestures and customs.
+The input fields of the first and second design are not structured at all, they are simply plain text fields, using the standard text input gestures and customs.
 This gave rise to overloading of gestures, as was also the case in the Lisping editor (see Section~\ref{subsub:Lisping}).
-For example, if the user wants to case split a pattern variable, the user must double tap it, but that gesture is already in use by the text field, as seen in \textbf{I3}.
+For example, if the user wants to case split a pattern variable, the user must double tap it, but that gesture is already in use by the standard text field, as seen in \textbf{I3}.
 Besides these overloading issues, working with plain text on a touch interface is problematic in general, and it is hard to avoid using the virtual keyboard for many operations.
 
 One possible solution would be a more structured approach to text input, as in Eastwest (see Section~\ref{subsub:Eastwest}).
-This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, which negates \textbf{Re6}. This also helps fulfill \textbf{U-6}.
-This could be implemented by limiting all text entry to what we call the context popover, shown in Figure~\ref{fig:new_design_popover}.
+This would let us separate text input from the manipulation of programs, as per \textbf{Re16}, which negates \textbf{Re6}. This also helps fulfill \textbf{U-6} and could be implemented by limiting all text entry to what we call the context popover, shown in Figure~\ref{fig:new_design_popover}.
 The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also fulfills \textbf{Re15} by providing the user with an overview of what is available.
 
 \begin{figure}
@@ -29,8 +28,12 @@ The context popover was inspired by \textbf{Re5} and \textbf{Re10}, and also ful
 \label{fig:new_design_popover}
 \end{figure}
 
-In this design, writing a program would consist of filing a series of holes for terms by choosing applicable functions and constructors from the popover, and only using the virtual keyboard for writing constants, identifiers, or searching.
-To edit a term, the user can double tap it to bring up the context popover, with any new choices replacing the old choice.
+In this design, writing a program would consist of filling a series of holes for terms by choosing applicable functions and constructors from the popover, and only using the virtual keyboard for writing constants, identifiers, or searching
+the context.
+To edit a term, the user can tap it to bring up the context popover. Note that any text input would happen in the search field of the context popover (Figure \ref{fig:new_design_popover}) and
+not in the visual syntax directly. Tapping any choice frmo the context popover replaces the old choice
+in the term selected.
+
 This design means there would be no risk of the user making syntax errors, but on the other hand there would be less freedom to approach the programming task in the way the user
 prefers.
 
@@ -112,9 +115,9 @@ except for the extra support for initial pattern match creation, case splitting
 and meta variable solving.
 
 The initial pattern match creation is still done by pressing the [+] button to
-add a new clause. Case splitting can no longer be done by double tapping a
-term, as this would toggle it to edit mode. Instead, the user drags the term
+add a new clause. We wish to try out a more visual way of case-splitting terms. Instead of double tapping it, the user drags the term
 down and a new clause appears like it can be seen in Figure~\ref{fig:case_splitting}.
+This behavior should, of course, be usability tested.
 
 \begin{figure}
 	\centering
@@ -125,9 +128,9 @@ down and a new clause appears like it can be seen in Figure~\ref{fig:case_splitt
 \end{figure}
 
 Meta variable solving is managed in an even simpler way. If a term starts with
-a question mark like in Figure~\ref{fig:case_splitting} then a single tap will
-tell the compiler to try and automatically solve the meta variable. Double
-tapping it will as always make the term toggle to edit mode.
+a question mark like in Figure~\ref{fig:case_splitting} then double tap will
+tell the compiler to try and automatically solve that meta variable. single tapping it will as always
+bring up the context popover and allow input.
 
 \section{Virtual Keyboard}
 %F-10
@@ -137,7 +140,7 @@ Each button in the bar can hold several symbols.
 To select a specific symbol, the user first touches the button, then swipes in the direction of the desired symbol, and lets go.
 For example, to select the plus symbol, the user would touch the leftmost button in the bar, then swipe left.
 The bar also features a button to the far right that lets the user add a new argument when specifying types. 
-This design virtual keyboard solves requirement \textbf{F-10}. 
+This design of the virtual keyboard solves requirement \textbf{F-10}. 
 
 \begin{figure}
 	\centering
@@ -155,7 +158,9 @@ Tapping on this term will bring up the context popover that will indicate the er
 For example, say the user has written the term \texttt{foo (bar a b) 2}.
 Somewhere else, \texttt{foo} is redefined so the second argument is no longer needed.
 In this case, the \texttt{2} would be highlighted in red, and the user can then flick it to the trash, as described above.
-It should be noted that the error reporting can only be as good as the error messages are in Idris.
+For all of our gestures it should be noted that terms are at least 44x44
+points, so the user should have no problem managing them\,\cite[p. 30]{mobileHIG}
+Furthermore, it is clear that the error reporting can only be as good as the error messages are in Idris.
 If Idris can not identify the exact placement of the error, it might be necessary to mark a larger area as erroneous, and let the user find the exact problem by reading the error message.
 This feature solves \textbf{U-5}.
 
@@ -180,10 +185,14 @@ What we specifically wish to test in this next usability test is:
 	\item The understandability of the way we now declare data types.
 	\item The focus system, where only one top-level declaration is in focus at a
 	time. Can users maneuver in and out of declarations in a fairly easy way?
-	\item Editing right-hand sides that have already been added.
+	\item Editing terms that have already been added.
+	\item The new case-splitting gesture and how to make the gesture easier
+	discoverable (e.g. by a tool tip that pops up the first time the user has the
+	opportunity to case split).
 	\item Deleting terms by flicking them and rearranging them by dragging.
 	\item Deleting top-level declarations, clauses, and constructors.
 \end{enumerate}
 
 It does not make sense to draw up an exact usability test plan like the ones we have made in previous usability
+iterations
 at this point. We would need to have a working version of the solution before a precise test plan can be made. Also, the few points listed above could easily amount to more than 10 tasks, which is more than can be completed in an hour with a participant. For this reason we would have to prioritize the focus of the test, and that can only be done when we have the new solution in our hands and decide what features we are most confident about. 
